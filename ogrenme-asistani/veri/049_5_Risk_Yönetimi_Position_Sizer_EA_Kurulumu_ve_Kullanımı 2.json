@@ -1,0 +1,31 @@
+{
+  "konu": "Risk Yönetimi: Position Sizer EA Kurulumu ve Kullanımı",
+  "anahtar_kavramlar": [
+    "Position Sizer",
+    "Expert Advisor (EA)",
+    "Risk Yönetimi",
+    "Lot Büyüklüğü",
+    "MT5",
+    "MetaQuotes Dil Düzenleyicisi",
+    "Algoritmik Ticaret"
+  ],
+  "tanimlar": {
+    "Position Sizer": "Manuel lot hesaplamalarındaki hataları önlemek ve hesap riskini yüzdesel veya sabit tutar olarak sabitlemek için kullanılan harici bir Expert Advisor (EA)."
+  },
+  "onemli_noktalar": [
+    "Position Sizer dosyası MT5'te 'Dosya -> Veri Klasörünü Aç -> MQL5 -> Experts' dizinine yapıştırılmalıdır.",
+    "MetaQuotes Dil Düzenleyicisi (F4) üzerinden dosya derlenmeli (Compile) ve 0 hata/0 uyarı alındığı görülmelidir.",
+    "MT5 ana ekranındaki Algoritmik Ticaret (Algo Trading) butonu yeşil (aktif) duruma getirilmelidir.",
+    "İşlem tipi, hedeflenen risk oranı, giriş, SL ve TP seviyeleri girildiğinde yazılım uygun lot büyüklüğünü otomatik hesaplayıp emri iletir."
+  ],
+  "sorular_cevaplar": [
+    {
+      "soru": "Position Sizer EA ne amaçla kullanılır?",
+      "cevap": "Manuel lot hesaplamalarındaki hataları önlemek ve hesap riskini yüzdesel olarak sabitlemek için kullanılır."
+    },
+    {
+      "soru": "Position Sizer grafiğe eklendikten sonra lot hesaplaması nasıl yapılır?",
+      "cevap": "İşlem tipi, hedeflenen risk oranı (yüzde veya sabit dolar tutarı), giriş, SL ve TP seviyeleri girildiğinde yazılım uygun lot büyüklüğünü otomatik olarak hesaplar."
+    }
+  ]
+}
