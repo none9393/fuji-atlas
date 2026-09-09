@@ -1,0 +1,22 @@
+{
+  "konu": "Giriş Modelleri ve Zaman Dilimi Çelişkisi",
+  "anahtar_kavramlar": [
+    "45 Dakikalık Onay Bekleme Tuzağı",
+    "HTF",
+    "LTF",
+    "Sweep",
+    "Çerezlik Entry",
+    "Scalp Modeli",
+    "Likidite"
+  ],
+  "tanimlar": {
+    "Çerezlik Entry": "Fiyatın bir alana temas edip yeni High yapamadığı, likidite aldığı ve iç yapıda momentum mumu kapattığı anlarda alınan hızlı scalp işlemleridir."
+  },
+  "onemli_noktalar": [
+    "Birçok traderın 45 dakikalık veya 4 saatlik barların net gövde kapanışıyla onay vermesini beklemesi, fiyat impulsif hareket ettiğinde işlemin kaçmasına neden olur.",
+    "Fiyat HTF bölgeye temas ettiğinde, LTF'de (5m/1m) ilk alıcı-satıcı dengesi ve mikro kırılımlar izlenmelidir.",
+    "45m'de sweep olarak kalan bir bölgede, 5m'de mum kapanışı ve yapı kaybı görüldüğünde işleme dahil olunabilir.",
+    "Çerezlik Entry modelinde hedef, iç yapıdaki en yakın denenmemiş (untested) likidite noktası veya Low/High seviyesidir (genellikle 1R - 2R arası)."
+  ],
+  "sorular_cevaplar": []
+}
