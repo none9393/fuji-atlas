@@ -1,0 +1,19 @@
+{
+  "konu": "Trader İçin Önemli Tavsiyeler",
+  "anahtar_kavramlar": [
+    "Mum Kapanışları",
+    "Emir Akışı",
+    "Teyit",
+    "Stop Yönetimi",
+    "Trailing Stop",
+    "HTF",
+    "LTF"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Fiyatın geçmişte yaptığı hareketleri kopyalamak yerine anlık mum kapanışları ve emir akışı takip edilmelidir.",
+    "Kaçan bir fırsat, teyitsiz girilip stop olunan bir işlemden her zaman daha iyidir.",
+    "Trend tersi hareketlerde stop takipli (trailing stop) veya parçalı kâr alarak ilerlemek riski minimize eder."
+  ],
+  "sorular_cevaplar": []
+}
