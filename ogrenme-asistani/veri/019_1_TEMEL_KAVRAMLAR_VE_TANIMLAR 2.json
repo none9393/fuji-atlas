@@ -1,0 +1,25 @@
+{
+  "konu": "Temel Kavramlar ve Tanımlar",
+  "anahtar_kavramlar": [
+    "Swing Structure (Ana Yapı)",
+    "Internal Structure (İç Yapı)",
+    "Protected High/Low (Korunan Tepe/Dip)",
+    "Target High/Low (Hedef Tepe/Dip)",
+    "Sweep (Likidite Alımı / Fitil)",
+    "BOS (Break of Structure)",
+    "CHoCH (Change of Character) / MSB",
+    "Untested (Test Edilmemiş) Bölge"
+  ],
+  "tanimlar": {
+    "Swing Structure (Ana Yapı)": "İlgili zaman dilimindeki en belirgin, majör tepe ve dip noktalarının oluşturduğu ana trend yapısıdır.",
+    "Internal Structure (İç Yapı)": "Ana swing hareketinin (bacağının) içinde meydana gelen alt zaman dilimi salınımlarıdır.",
+    "Protected High/Low (Korunan Tepe/Dip)": "Yapının devamlılığı için kırılmaması beklenen, hareketi başlatan kritik dip/tepe seviyesidir.",
+    "Target High/Low (Hedef Tepe/Dip)": "Trend yönünde likiditesinin alınması beklenen zayıf dip veya tepe noktasıdır.",
+    "Sweep (Likidite Alımı / Fitil)": "Fiyatın bir seviyenin üzerine/altına mum gövdesi kapatamadan sadece fitil atarak likiditeyi temizlemesi ve geri çekilmesidir.",
+    "BOS (Break of Structure)": "Trend yönündeki tepe/dip kırılımı (mum gövde kapanışı ile teyit edilir).",
+    "CHoCH (Change of Character) / MSB": "Trend yönünün değiştiğini gösteren ilk iç/dış yapı kırılımıdır.",
+    "Untested (Test Edilmemiş) Bölge": "Fiyatın oluştuktan sonra henüz geri çekilip temas etmediği taze (fresh) talep/arz (Demand/Supply) alanlarıdır."
+  },
+  "onemli_noktalar": [],
+  "sorular_cevaplar": []
+}
