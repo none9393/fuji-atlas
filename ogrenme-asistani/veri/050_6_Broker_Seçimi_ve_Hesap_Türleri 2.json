@@ -1,0 +1,23 @@
+{
+  "konu": "Broker Seçimi ve Hesap Türleri",
+  "anahtar_kavramlar": [
+    "Broker",
+    "Lisans ve Regülasyon",
+    "Klasik Hesap",
+    "RAW Hesap",
+    "Spread",
+    "Komisyon",
+    "Kayma (Slippage)",
+    "MT5"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Lisanslı ve regüle edilen (FCA vb.) köklü brokerlar tercih edilmelidir.",
+    "Para yatırma ve çekme işlemlerinde güvenlik protokolleri gereği ortalama 24 iş saati süren manuel onay süreçleri uygulanır.",
+    "Klasik hesaplar geniş/dinamik spread içerir ve komisyonsuzdur; uzun vadeli ve büyük hedefler için uygundur.",
+    "RAW hesaplar sıfıra yakın spread (0.0 - 0.2 pip) ve lot başına sabit düşük komisyon sunar; scalping, day trading ve hassas girişler için önerilir.",
+    "RAW hesaplarda kayma (slippage) minimum düzeydedir ve gece kapanışlarında spread aralığı kontrollü ve dardır.",
+    "MT5'e hesap bağlamak için 'Dosya -> Ticaret Hesabına Giriş Yap' menüsünden Giriş Numarası, Şifre ve Sunucu bilgileri girilmelidir."
+  ],
+  "sorular_cevaplar": []
+}
