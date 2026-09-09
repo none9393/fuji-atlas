@@ -1,0 +1,20 @@
+{
+  "konu": "Temel Kavramlar ve Tanımlar",
+  "anahtar_kavramlar": [
+    "Market Structure",
+    "Piyasa Yapısı",
+    "External Structure",
+    "Dış Yapı",
+    "Internal Structure",
+    "İç Yapı"
+  ],
+  "tanimlar": {
+    "Market Structure (Piyasa Yapısı)": "Fiyatın belirli bir zaman dilimindeki hareket yönünü ve karakterini belirleyen temel iskelettir.",
+    "External Structure (Dış Yapı)": "Bulunulan zaman dilimindeki ana (büyük) swing hareketleridir. Trendin genel/makro yönünü ve ana hedeflerini temsil eder.",
+    "Internal Structure (İç Yapı)": "Ana swing hareketi (External) meydana gelirken bu hareketin içerisinde gerçekleşen daha küçük, alt fraktal hareketlerdir."
+  },
+  "onemli_noktalar": [
+    "Market Structure (Piyasa Yapısı), External Structure (Dış Yapı) ve Internal Structure (İç Yapı) olmak üzere iki ana bileşenden oluşur."
+  ],
+  "sorular_cevaplar": []
+}
