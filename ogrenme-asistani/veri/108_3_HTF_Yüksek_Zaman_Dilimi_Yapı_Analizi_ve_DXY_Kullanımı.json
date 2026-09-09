@@ -1,0 +1,22 @@
+{
+  "konu": "HTF (Yüksek Zaman Dilimi) Yapı Analizi ve DXY Kullanımı",
+  "anahtar_kavramlar": [
+    "HTF (Yüksek Zaman Dilimi)",
+    "DXY",
+    "Sweep (Likidite Alımı)",
+    "İç Yapı Desteği",
+    "Order Flow",
+    "Bullish Order Flow",
+    "EUR/USD",
+    "Pullback"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Grafik analizinde yalnızca tek bir pariteye bakmak yerine DXY ile eş zamanlı karşılaştırma yapılmalıdır.",
+    "DXY bir tepeyi temizlediğinde (sweep) hemen sert bir düşüş başlayacağı varsayılmamalı, son iç yapı desteğinin (Order Flow desteği) aşağı yönlü kırılıp kırılmadığı ve altında mum kapatıp kapatmadığı kontrol edilmelidir.",
+    "Sweep sonrası fiyat destek bölgesini kaybetmez ve direnç üzerinde gövde kapanışı yaparsa, yükseliş akışının (Bullish Order Flow) devam ettiği doğrulanır.",
+    "DXY yükseliş trendi teyit edildiğinde geri çekilmelerde (pullback) yukarı yönlü hedefler belirlenir.",
+    "DXY'de yukarı yönlü kırılım ve trend devamı teyit edildiğinde, eş zamanlı olarak EUR/USD üzerinde aşağı yönlü (short) yapı teyit edilir ve dip hedefleri buna göre belirlenir."
+  ],
+  "sorular_cevaplar": []
+}
