@@ -1,0 +1,21 @@
+{
+  "konu": "İşlem Stratejisi ve Karar Mekanizması",
+  "anahtar_kavramlar": [
+    "Büyük Resim (HTF Analizi)",
+    "Discount (Ucuzluk)",
+    "Premium (Pahalılık)",
+    "Likidite Temizliği",
+    "Alt Yapı / Karşıt Tepki Kontrolü",
+    "4H Kapanış Teyidi",
+    "LTF'de Giriş (Pullback)"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Günlük ve 4H grafikte fiyatın ucuzluk (Discount) veya pahalılık (Premium) bölgesinde olup olmadığı kontrol edilir.",
+    "Fiyatın iç yapı likiditelerini alıp almadığı incelenir.",
+    "Fiyat arz/talep bölgesine çarptığında yeni bir tepe/dip yaptıramıyorsa (momentum kaybı varsa), yapının dönüş hazırlığında olduğu düşünülür.",
+    "Dönüş yönünde net bir 4H mum kapanışı teyidi görülmelidir.",
+    "Kırılım sonrası 5m/15m/45m gibi alt zaman dilimlerinde (LTF) geri çekilme (pullback) beklenerek işleme dahil olunur."
+  ],
+  "sorular_cevaplar": []
+}
