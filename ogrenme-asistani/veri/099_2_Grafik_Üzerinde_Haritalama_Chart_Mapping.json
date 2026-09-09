@@ -1,0 +1,18 @@
+{
+  "konu": "Grafik Üzerinde Haritalama (Chart Mapping)",
+  "anahtar_kavramlar": [
+    "External Swings",
+    "Internal Swings",
+    "Swing High",
+    "Swing Low"
+  ],
+  "tanimlar": {
+    "External Swings": "Grafikteki en yüksek (Swing High) ve en düşük (Swing Low) ana dönüş noktaları büyük çizgilerle birleştirilerek ana hat çizilir.",
+    "Internal Swings": "Bu büyük çizginin içinde kalan zikzaklar, düzeltmeler ve küçük dalgalar ayrı çizgilerle/noktalarla işaretlenerek iç yapı haritalandırılır."
+  },
+  "onemli_noktalar": [
+    "External Swings ile grafikteki en yüksek ve en düşük ana dönüş noktaları birleştirilerek ana hat oluşturulur.",
+    "Internal Swings ile ana yapının içinde kalan zikzaklar, düzeltmeler ve küçük dalgalar işaretlenerek iç yapı haritalandırılır."
+  ],
+  "sorular_cevaplar": []
+}
