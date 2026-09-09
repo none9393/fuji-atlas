@@ -1,0 +1,18 @@
+{
+  "konu": "Temel Tanımlar ve Kavramlar",
+  "anahtar_kavramlar": [
+    "Protected (Korunan Alan / Dip-Tepe)",
+    "Target (Hedef Alan / Likidite)",
+    "Bias",
+    "Stop-loss",
+    "Take-Profit"
+  ],
+  "tanimlar": {
+    "Protected (Korunan Alan / Dip-Tepe)": "Fiyatın trend yönünü devam ettirirken kırmaması, saygı duyması beklenen swing seviyedir. Fiyat yönünün (bias) ve stop-loss noktasının belirlenmesinde en kritik unsurdur.",
+    "Target (Hedef Alan / Likidite)": "Fiyatın ulaşması, temizlemesi veya kırması potansiyel olarak beklenen dip veya tepe noktalarıdır (Take-Profit / Kar Al hedefleri)."
+  },
+  "onemli_noktalar": [
+    "Piyasadaki hiçbir kural kesinlik taşımaz; belirlenen her Protected veya Target alanı potansiyel ihtimaller üzerine kuruludur."
+  ],
+  "sorular_cevaplar": []
+}
