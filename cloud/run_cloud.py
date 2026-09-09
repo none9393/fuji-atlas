@@ -25,13 +25,28 @@ Bilgi tabanı indeks özeti: {index}
 Kurallar: spot ve futures verisini karıştırma; GC=F proxy ise açıkça belirt; kaynak, UTC zaman, veri yaşı ve fallback seviyesini yaz; kritik veri yoksa işlem girişi verme. XAUUSD ve EURUSD için Swing, Intraday, Scalping bölümleri; senaryo, invalidation ve risk notu yaz. Türkçe yaz. Yatırım tavsiyesi olmadığını belirt.
 Çıktıyı yalnızca rapor metni olarak üret."""
 
-payload = json.dumps({"model": os.getenv("FUJI_MODEL", "gpt-5"), "store": False, "input": prompt}).encode()
-req = urllib.request.Request("https://api.openai.com/v1/responses", data=payload, headers={"Authorization": "Bearer " + os.environ["OPENAI_API_KEY"], "Content-Type": "application/json"})
-with urllib.request.urlopen(req, timeout=120) as response:
-    answer = json.load(response)
-text = answer.get("output_text") or "\n".join(x.get("text", "") for o in answer.get("output", []) for x in o.get("content", []) if x.get("type") == "output_text")
+text = ""
+try:
+    payload = json.dumps({"model": os.getenv("FUJI_MODEL", "gpt-5"), "store": False, "input": prompt}).encode()
+    req = urllib.request.Request("https://api.openai.com/v1/responses", data=payload, headers={"Authorization": "Bearer " + os.environ["OPENAI_API_KEY"], "Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=120) as response:
+        answer = json.load(response)
+    text = answer.get("output_text") or "\n".join(x.get("text", "") for o in answer.get("output", []) for x in o.get("content", []) if x.get("type") == "output_text")
+except Exception as exc:
+    # API anahtarı/limit sorunu raporu durdurmasın: canlı veriden deterministik fallback.
+    lines = ["FUJI-DETERMINISTIC FALLBACK — OpenAI zenginleştirmesi kullanılamadı.", f"Neden: {type(exc).__name__}", "Bu rapor yalnızca doğrulanmış canlı OHLC özetinden üretilmiştir."]
+    for symbol, detail in data["symbols"].items():
+        lines.append(f"{symbol}: veri durumu {detail['status']}")
+        for interval in ("1month", "1week", "1day", "4h", "1h", "15min", "5min", "1min"):
+            item = detail.get("intervals", {}).get(interval, {})
+            bar = item.get("bar", {})
+            if item.get("status") == "live":
+                lines.append(f"{interval}: close={bar.get('close')} range={bar.get('low')}–{bar.get('high')} kaynak={item.get('provider')} zaman={item.get('retrieved_at_utc')}")
+            else: lines.append(f"{interval}: veri yok; işlem senaryosu kapalı")
+    lines += ["Karar: canlı veri kaynağı/indikatör geçmişi olmadan educated guess yapılmaz; giriş, SL ve TP verilmez.", "Yatırım tavsiyesi değildir."]
+    text = "\n".join(lines)
 if not text.strip():
-    raise RuntimeError("OpenAI response contained no report text")
+    raise RuntimeError("No report text")
 
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
