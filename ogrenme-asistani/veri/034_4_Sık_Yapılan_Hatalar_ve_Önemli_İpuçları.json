@@ -1,0 +1,22 @@
+{
+  "konu": "Sık Yapılan Hatalar ve Önemli İpuçları",
+  "anahtar_kavramlar": [
+    "İmpulsif Hareket",
+    "Swing",
+    "Pullback",
+    "No-Trade Zone",
+    "Sweep",
+    "Re-Sweep",
+    "Likidite"
+  ],
+  "tanimlar": {
+    "No-Trade Zone (İşlemsiz Alan)": "Fiyat sweep yaptıktan sonra yeni tepe yapamıyor ve alt desteği de kıramıyorsa, iki seviye arasında sıkıştığı ve net kırılım gelmeden işlem alınmaması gereken bölgedir."
+  },
+  "onemli_noktalar": [
+    "Fiyat tek bir impulsif hareketle yükselip tepe yaptıysa, üzerinde ufak bir mum kapatsa bile yapı oturmamış olabilir; alt zaman diliminde net bir swing oluşturması beklenmelidir.",
+    "Günlük mum düşüş (bearish) kapatırken alt zaman dilimlerinde görülen ufak yeşil mumlar sadece üst zaman diliminin pullback hareketidir; ana trend dönüşü sanılmamalıdır.",
+    "No-Trade Zone bölgesinde net kırılım gelmeden işlem açılmamalıdır.",
+    "Bir tepe sweep'lendikten sonra fiyat internal yapıda yeni bir dip getiremiyorsa o tepeyi tekrar sweep'leme (re-sweep) ihtimali yüksektir; karşı likidite dolmadan kalıcı yön başlamaz."
+  ],
+  "sorular_cevaplar": []
+}
