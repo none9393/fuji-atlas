@@ -1,0 +1,26 @@
+{
+  "konu": "MARKET YAPISI KAVRAMLARI VE KIRILIMLAR",
+  "anahtar_kavramlar": [
+    "Swing Structure",
+    "Internal Structure (İç Yapı)",
+    "Fractal Structure",
+    "MSB (Market Structure Break)",
+    "BOS (Break of Structure)",
+    "CH / CHoCH (Change of Character)",
+    "iBOS (Internal BOS)"
+  ],
+  "tanimlar": {
+    "Swing Structure": "Belirli bir zaman diliminde dalgalar halinde ilerleyen en büyük ana yapı birimidir.",
+    "Internal Structure (İç Yapı)": "Bir ana swing dalgasının kendi içinde oluşturduğu alt trend hareketleridir.",
+    "Fractal Structure": "En küçük yapı birimi ve mikro kırılımlardır.",
+    "MSB (Market Structure Break)": "Ana piyasa yapısının bozulmaya başladığını gösteren ilk kırılımdır (Tek başına kesin dönüş sinyali değildir).",
+    "BOS (Break of Structure)": "Trend yönündeki kırılımdır. Fiyatın mevcut yönde devamlılığını veya kırılan yeni yapının onaylandığını gösterir.",
+    "CH / CHoCH (Change of Character)": "İç yapının (Internal structure) karakter değiştirmesidir. Swing trendi Bullish iken iç yapının Bearish'e dönmesi bir pullback (düzeltme) başladığını gösterir.",
+    "iBOS (Internal BOS)": "Karakter değişiminden sonra iç yapının kendi yönünde kırılımlarla akmaya devam etmesidir."
+  },
+  "onemli_noktalar": [
+    "MSB tek başına kesin dönüş sinyali değildir.",
+    "Swing trendi Bullish iken iç yapının Bearish'e dönmesi bir pullback (düzeltme) başladığını gösterir."
+  ],
+  "sorular_cevaplar": []
+}
