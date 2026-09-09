@@ -1,0 +1,21 @@
+{
+  "konu": "2. Temel Kavramlar ve Tanımlar",
+  "anahtar_kavramlar": [
+    "Mitigasyon (Mitigation)",
+    "Sweep (Likidite Alımı)",
+    "Key Level (K-Level)",
+    "Günlük İşlem Dağılımı (Daily Volume / Turnover)",
+    "Majör Pariteler",
+    "Çapraz Pariteler"
+  ],
+  "tanimlar": {
+    "Mitigasyon (Mitigation)": "Fiyatın daha önce oluşturduğu dengesizlikleri veya emir bloklarını (supply/demand) test edip hafifletmesi/doldurması süreci.",
+    "Sweep (Likidite Alımı)": "Fiyatın bir tepe (high) veya dip (low) seviyesini iğneleyerek oradaki stop emirlerini temizlemesi, ardından hızla ters yöne dönmesi.",
+    "Key Level (K-Level)": "Sadece basit bir swing tepe/dip değil; fiyatın yönünü kesin olarak değiştiren, kurumsal satış/alışların toplandığı ana yapısal seviyedir."
+  },
+  "onemli_noktalar": [
+    "Majör paritelerde gün içi likidite yüksek olduğu için spread (makas) açılması nadirdir.",
+    "Çapraz paritelerde (Örn: AUD/NZD) gün içi işlem hacmi düşüktür; özellikle düşük hacimli seanslarda spread açılması ve kayma (slippage) riski yüksektir."
+  ],
+  "sorular_cevaplar": []
+}
