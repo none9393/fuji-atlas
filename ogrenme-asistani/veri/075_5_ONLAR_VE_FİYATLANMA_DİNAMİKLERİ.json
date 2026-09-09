@@ -1,0 +1,27 @@
+{
+  "konu": "5. ONLAR VE FİYATLANMA DİNAMİKLERİ",
+  "anahtar_kavramlar": [
+    "Fiyatlanma",
+    "Premium / Discount",
+    "Equilibrium",
+    "Likidite Manipülasyonu",
+    "Üst Zaman Dilimi Mum Kapanışı",
+    "Orderflow",
+    "Supply/Demand Chain",
+    "Demand Chain",
+    "Supply Chain",
+    "Key Level"
+  ],
+  "tanimlar": {
+    "Demand Chain (Destek Zinciri)": "Yükselen trendde her geri çekilmenin bir önceki talep bölgesinden tepki alarak yükselmesi.",
+    "Supply Chain (Direnç Zinciri)": "Düşen trendde her yükselişin bir önceki arz bölgesinden satış yiyerek düşüşü sürdürmesi.",
+    "Key Level": "Swing hareketin içinde kırılımı tetikleyen ana iç yapı (Internal base) seviyesidir. Bu bölge korunduğu sürece emir akışı (Orderflow) devam eder."
+  },
+  "onemli_noktalar": [
+    "Bir kırılımın kalıcı olabilmesi için fiyatın kırılım yaptığı bölgede zaman geçirmesi, yani alıcı ve satıcı dengesinin (yeni bir Equilibrium / Fiyatlanma aralığı) oluşması gerekir.",
+    "Fiyat sadece bir iğne (sweep) atıp hızla geri dönüyorsa bu bir kırılım değil, likidite manipülasyonudur.",
+    "Bulunulan zaman diliminde (örneğin 4H) bir kırılım görüldüğünde, bu kırılım mutlaka bir üst zaman diliminde (Daily/Günlük) gövde kapanışı ile onaylanmalıdır.",
+    "Üst zaman diliminde gövde kapanışı gelmeden kırılım yönünde kesin pozisyon alınmamalıdır."
+  ],
+  "sorular_cevaplar": []
+}
