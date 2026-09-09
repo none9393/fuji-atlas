@@ -1,0 +1,30 @@
+{
+  "konu": "Yeni High / Yeni Low Getirememe Kuralı (Güç Dengesi)",
+  "anahtar_kavramlar": [
+    "Protected Seviye",
+    "Target (Hedef Likidite)",
+    "Talep (Demand) Bölgesi",
+    "Arz (Supply) Bölgesi",
+    "Sweep",
+    "Yeni High / Yeni Low"
+  ],
+  "tanimlar": {
+    "Yeni High / Yeni Low Getirememe Kuralı": "Protected zannedilen bir seviyenin nasıl Target (Hedefe) dönüştüğünü açıklayan kuraldır."
+  },
+  "onemli_noktalar": [
+    "Fiyat bir talep veya arz bölgesinden tepki aldığında, o bölgenin temel görevi fiyata yeni bir High veya yeni bir Low yaptırmaktır.",
+    "Fiyat talep bölgesinden tepki almasına rağmen önceki tepeyi kıramazsa (daha düşük tepe yaparsa veya sadece sweepleyip dönerse), o bölgedeki alıcıların yetersiz olduğu anlaşılır.",
+    "Fiyata yeni tepe yaptıramayan dip bölgesi 'Protected' olmaktan çıkar ve 'Target (Hedef Likidite)' haline gelir.",
+    "Fiyat bir sonraki dalgada yeni tepe yaptıramayan o dibi süpürmek (sweep/kırmak) isteyecektir."
+  ],
+  "sorular_cevaplar": [
+    {
+      "soru": "Talep veya arz bölgesinden tepki alan bir fiyatın asıl görevi nedir?",
+      "cevap": "Fiyata yeni bir High veya yeni bir Low yaptırmaktır."
+    },
+    {
+      "soru": "Fiyata yeni bir tepe yaptıramayan dip bölgesinin durumu ne olur?",
+      "cevap": "'Protected' (korunan) olmaktan çıkar, 'Target' (hedef likidite) konumuna düşer ve fiyat bir sonraki dalgada o dibi süpürmek ister."
+    }
+  ]
+}
