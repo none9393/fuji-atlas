@@ -1,0 +1,17 @@
+{
+  "konu": "Önemli İpuçları ve Özet Kurallar",
+  "anahtar_kavramlar": [
+    "Yapı kırılımı",
+    "İç yapı tuzakları",
+    "HTF desteği/direnci",
+    "Ekran süresi",
+    "İşlem sıklığı"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Grafikte Aşırı Onay Aramayın: Çok fazla kriter ve aşırı indikatör/onay aramak kafa karışıklığına yol açar. Yapı kırılımını net, temiz seviyelerden takip edin.",
+    "İç Yapı Tuzaklarına Dikkat: Trend yönünde giden sert bir bacakta, iç yapıdaki her kırılımda 'dönüş' aramayın; HTF desteği/direnci kaybedilmediği sürece ana akış geçerlidir.",
+    "Ekran Süresi vs. İşlem Sıklığı: Ekranı sürekli izlemek ve grafiği okumak gereklidir; ancak her dalgaya işlem açmak yerine yalnızca yüksek olasılıklı doğru kırılım ve bölgelerde işlem alınmalıdır."
+  ],
+  "sorular_cevaplar": []
+}
