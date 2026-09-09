@@ -1,0 +1,21 @@
+{
+  "konu": "Mitigasyon (Mitigated) ve Test Edilmemiş (Untested) Bölgeler",
+  "anahtar_kavramlar": [
+    "Mitigated",
+    "Test Edilmiş Alan",
+    "Untested",
+    "Test Edilmemiş Alan",
+    "Supply/Demand",
+    "Pullback",
+    "Zone"
+  ],
+  "tanimlar": {
+    "Mitigated (Test Edilmiş) Alan": "Fiyatın oluşturduğu Supply/Demand bölgesine geri çekilip (pullback) oradaki emirleri alarak yeni bir High (Bullish) veya Low (Bearish) yapmasıdır.",
+    "Untested (Test Edilmemiş) Alan": "Fiyatın kırılım yaptıktan sonra arkasında bıraktığı ve henüz temas etmediği taze emir bölgesidir."
+  },
+  "onemli_noktalar": [
+    "Untested Alanlara Karşı İşlem Açmama: Fiyat untested bir alana doğru sert bir momentumla akıyorsa, o alanın önüne geçip karşıt yönde bodoslama emir atılmamalıdır.",
+    "Kutu Küçültme Hatası: Destek/Direnç çizerken alanı tek bir muma indirmek yerine, fiyat hareketini başlatan karşıt dalgayı içine alacak şekilde geniş bir bölge (zone) olarak belirlemek başarı oranını artırır."
+  ],
+  "sorular_cevaplar": []
+}
