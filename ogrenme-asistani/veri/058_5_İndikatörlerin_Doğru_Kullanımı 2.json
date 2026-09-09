@@ -1,0 +1,21 @@
+{
+  "konu": "5. İndikatörlerin Doğru Kullanımı",
+  "anahtar_kavramlar": [
+    "RSI (Göreceli Güç Endeksi)",
+    "ADX (Average Directional Index)",
+    "Uyumsuzluk (Divergence)",
+    "Trend Gücü",
+    "Momentum"
+  ],
+  "tanimlar": {
+    "ADX (Average Directional Index)": "Yön belirtmeyen, trendin/akışın gücünü ölçen bir indikatördür."
+  },
+  "onemli_noktalar": [
+    "RSI uyumsuzlukları aranırken fitillerden ziyade mum kapanışları baz alınmalıdır.",
+    "RSI'ın kendi hareketli ortalaması (sarı çizgi) üzerindeki/altındaki konumu trend gücünü teyit eder.",
+    "ADX yön belirtmez, sadece trendin/akışın gücünü ölçer.",
+    "ADX > 20 durumu güçlü bir trend/momentum olduğunu gösterir ve trend yönlü işlemler aranır.",
+    "ADX < 20 durumu piyasada yön gücünün zayıf olduğunu, yatay/range hareketlerin hakim olduğunu gösterir."
+  ],
+  "sorular_cevaplar": []
+}
