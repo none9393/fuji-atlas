@@ -1,0 +1,34 @@
+{
+  "konu": "Adım Adım Hesap Açılış ve MetaTrader 5 Kurulumu",
+  "anahtar_kavramlar": [
+    "Bireysel Hesap",
+    "KYC (Belge Doğrulama)",
+    "Trader's Room",
+    "MetaTrader 5 (MT5)",
+    "Kaldıraç",
+    "Tickmill-Live"
+  ],
+  "tanimlar": {
+    "KYC": "Kimlik ve adres bilgilerinin belgelerle onaylandığı Belge Doğrulama süreci."
+  },
+  "onemli_noktalar": [
+    "Kayıt aşamasındaki finansal deneyim anketi bir eleme kriteri olmayıp bilgi amaçlıdır.",
+    "Belge doğrulama için kimlik kartının ön-arka yüzü ve e-Devlet'ten alınan barkodlu ikametgah belgesi gereklidir.",
+    "İşlem hesabı açarken kaldıraç 1:1000, platform MT5, hesap türü Raw veya Classic olarak seçilebilir.",
+    "MT5'e bağlanırken sunucu olarak Tickmill-Live seçilmeli, e-postaya gelen Hesap ID ve İşlem Şifresi girilmelidir."
+  ],
+  "sorular_cevaplar": [
+    {
+      "soru": "Kayıt sırasındaki finansal deneyim anketi bir eleme midir?",
+      "cevap": "Hayır, bu kısım bir eleme değildir, yalnızca bilgi amaçlıdır."
+    },
+    {
+      "soru": "Adres doğrulaması (KYC) için hangi belge gereklidir?",
+      "cevap": "e-Devlet üzerinden alınmış barkodlu İkametgah/Yerleşim Yeri Belgesi gereklidir."
+    },
+    {
+      "soru": "MetaTrader 5'e bağlanırken hangi sunucu seçilmelidir?",
+      "cevap": "Sunucu olarak Tickmill-Live seçilmelidir."
+    }
+  ]
+}
