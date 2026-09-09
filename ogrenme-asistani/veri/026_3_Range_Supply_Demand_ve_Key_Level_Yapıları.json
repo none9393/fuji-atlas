@@ -1,0 +1,17 @@
+{
+  "konu": "3. Range Supply – Demand ve Key Level Yapıları",
+  "anahtar_kavramlar": [
+    "Range İçinde Fiyatlama",
+    "Key Level",
+    "İç Untested Alanlar"
+  ],
+  "tanimlar": {
+    "Key Level": "Range alanından fiyatın çıkışını (kırılımını) sağlayan ana bölgedir."
+  },
+  "onemli_noktalar": [
+    "Fiyat belirli bir bant içinde yatay seyrederken alt ve üst sınırları temizleyebilir.",
+    "Key Level, Range alanından fiyatın çıkışını (kırılımını) sağlayan ana bölgedir.",
+    "Fiyat Range'den ayrıldıktan sonra, Range içerisindeki daha önce temas edilmemiş (untested) bölgeler fiyat tekrar oraya döndüğünde güçlü tepkiler üretebilir."
+  ],
+  "sorular_cevaplar": []
+}
