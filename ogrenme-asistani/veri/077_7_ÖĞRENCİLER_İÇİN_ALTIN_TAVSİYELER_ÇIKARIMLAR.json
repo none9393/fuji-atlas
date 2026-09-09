@@ -1,0 +1,21 @@
+{
+  "konu": "Öğrenciler İçin Altın Tavsiyeler & Çıkarımlar",
+  "anahtar_kavramlar": [
+    "External Trend",
+    "Internal Trend",
+    "CHoCH",
+    "Counter-Trend",
+    "Tek Leg (V-Shape) Tuzağı",
+    "Supply/Demand Zinciri",
+    "Likidite Sweep",
+    "Range/Konsolidasyon"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Ana Swing (External) her zaman İç Yapıdan (Internal) güçlüdür.",
+    "Internal yapıda gelen CHoCH ile işlem alınıyorsa bu bir Counter-Trend (trende karşı) işlemdir; hedefler kısa tutulmalı, kâr hızlı realize edilmelidir.",
+    "Fiyat tek bir sert mumla yapıyı kırar gibi yapıp iç yapı oluşturmadan dönüyorsa (Tek Leg / V-Shape) buna atlanmamalıdır; fiyatlanma ve Supply/Demand zinciri onayı beklenmelidir.",
+    "Grafik her iki yönde de likidite süpürüyor (sweep) ve net bir swing/fiyatlanma oluşturmuyorsa (Range/Konsolidasyon), işlem alınmamalı ve yön kırılımı beklenmelidir."
+  ],
+  "sorular_cevaplar": []
+}
