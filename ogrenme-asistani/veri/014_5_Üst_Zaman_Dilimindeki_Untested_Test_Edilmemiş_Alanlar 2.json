@@ -1,0 +1,16 @@
+{
+  "konu": "Üst Zaman Dilimindeki \"Untested\" (Test Edilmemiş) Alanlar",
+  "anahtar_kavramlar": [
+    "Untested Alanlar",
+    "HTF (Yüksek Zaman Dilimi)",
+    "LTF (Düşük Zaman Dilimi / İç Yapı)",
+    "Arz ve Talep Bölgeleri",
+    "Karşıt Emir Gücü"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Fiyat daha önce hiç temas etmediği taze (fresh/untested) bir HTF (Yüksek Zaman Dilimi) arz veya talep bölgesine çarptığında, oradan gelen karşıt emir gücü çok yüksek olur.",
+    "İç yapıda (LTF) trend ne kadar güçlü görünürse görünsün, untested alandan gelen sert tepki sonrasında iç yapıdaki destekler tek tek kırılmaya başlar ve korunan zannedilen iç dipler hedefe dönüşür."
+  ],
+  "sorular_cevaplar": []
+}
