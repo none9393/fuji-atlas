@@ -1,0 +1,21 @@
+{
+  "konu": "Seans Yapıları ve Globex Stratejisi",
+  "anahtar_kavramlar": [
+    "Globex (ETH - Electronic Trading Hours)",
+    "RTH (Regular Trading Hours)",
+    "Globex Likidite Temizliği (Sweep)",
+    "Globex High",
+    "Globex Low"
+  ],
+  "tanimlar": {
+    "Globex (ETH - Electronic Trading Hours)": "ABD borsa açılışı öncesindeki elektronik işlem seansı (Türkiye saatiyle yaklaşık 01:00 – 16:30).",
+    "RTH (Regular Trading Hours)": "New York borsa açılışıyla başlayan ana seans (16:30 – 00:00/01:00)."
+  },
+  "onemli_noktalar": [
+    "Market genellikle RTH açılışında (16:30 sonrası) Globex seansı boyunca oluşan En Yüksek Seviyeyi (Globex High) veya En Düşük Seviyeyi (Globex Low) temizlemek (sweep) ister.",
+    "Bu yöntem en verimli şekilde yatay / range (konsolidasyon) yapan piyasalarda çalışır.",
+    "Sert trendlerin (flow/momentum) olduğu dönemlerde tek yönlü kırılımlar olabileceğinden Globex seviyeleri doğrudan kırılıp geçilebilir.",
+    "Globex High temizlenip geriye dönüldüğünde ve üst tarafta unmitigated (test edilmemiş) arz alanı bırakılmadığında short (satış); Globex Low temizlendiğinde ise long (alış) yönlü fırsatlar kovalanır."
+  ],
+  "sorular_cevaplar": []
+}
