@@ -1,0 +1,20 @@
+{
+  "konu": "Pratik İpuçları ve İşlem Yönetimi",
+  "anahtar_kavramlar": [
+    "Mum Kapanışı",
+    "Take-Profit (TP)",
+    "Spread",
+    "Likidite",
+    "İç Yapı Onayı",
+    "CHoCH",
+    "BOS",
+    "Pullback"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Fiyatın bir seviyeyi kırdığını söyleyebilmek için belirlenen ana zaman diliminde mum gövdesinin seviye dışında kapandığını mutlaka görün.",
+    "Spread farkları, broker veri uyumsuzlukları ve likidite sıçramaları nedeniyle Kar Al (Take-Profit) emirlerinizi mutlak tepe/dip seviyesinin 1-2 pip/tık altına/üstüne yerleştirin.",
+    "Bir hedef belirlendiğinde doğrudan limite emir atmak yerine (özellikle impulsive leglerde), iç yapının o yöne evrildiğini (CHoCH/BOS) teyit edip düzeltmesinde (pullback) işleme dahil olun."
+  ],
+  "sorular_cevaplar": []
+}
