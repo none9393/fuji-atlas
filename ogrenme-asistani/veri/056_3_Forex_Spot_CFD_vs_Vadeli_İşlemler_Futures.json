@@ -1,0 +1,34 @@
+{
+  "konu": "Forex (Spot/CFD) vs. Vadeli İşlemler (Futures)",
+  "anahtar_kavramlar": [
+    "Forex",
+    "Vadeli İşlemler (Futures)",
+    "B-ADJ (Back-Adjusted)",
+    "CME",
+    "ICE",
+    "Emir Defteri",
+    "BOS",
+    "CHoCH",
+    "Likidite"
+  ],
+  "tanimlar": {
+    "B-ADJ (Back-Adjusted)": "Vadeli kontrat geçişlerinde oluşan fiyat farklarını (gap) dengeleyerek grafiğin organik yapısının incelenmesini sağlayan ayar."
+  },
+  "onemli_noktalar": [
+    "Forex piyasaları merkezsizdir; vadeli işlemler (CME, ICE) ise regüle edilmiş, gerçek hacim ve emir defteri verisi sunar.",
+    "Forex brokerlarındaki mum açılış/kapanış saati farklılıkları sahte sweep veya hatalı kırılım (BOS/CHoCH) algısı oluşturabilir.",
+    "Vadeli kontratlar Mart, Haziran, Eylül ve Aralık olmak üzere 3 ayda bir yenilenir.",
+    "Kontrat geçişlerindeki yanıltıcı boşlukları gidermek için TradingView'de B-ADJ aktif edilmelidir.",
+    "Spot Forex işlem yapılsa bile bias ve likidite seviyeleri 6E (Euro Futures) ve 6B (GBP Futures) gibi vadeli kontratlardan teyit edilmelidir."
+  ],
+  "sorular_cevaplar": [
+    {
+      "soru": "Spot Forex işlemi yapılırken neden Futures grafikleri incelenmelidir?",
+      "cevap": "Forex verileri yapay olabilirken Futures piyasaları regüle ve gerçek hacim barındırır; ayrıca mum kapanış tutarlılığı sağlayarak sahte kırılımları önler ve likidite teyidi sunar."
+    },
+    {
+      "soru": "B-ADJ ayarı neden kullanılır?",
+      "cevap": "3 ayda bir yenilenen kontrat geçişlerinde oluşan fiyat boşluklarını (gap) dengeleyerek grafiğin organik yapısını görmek için kullanılır."
+    }
+  ]
+}
