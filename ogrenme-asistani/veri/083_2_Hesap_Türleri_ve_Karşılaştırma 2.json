@@ -1,0 +1,25 @@
+{
+  "konu": "Hesap Türleri ve Karşılaştırma",
+  "anahtar_kavramlar": [
+    "Classic Account",
+    "Raw Account",
+    "TradingView Raw",
+    "İslami Hesap (Swap-Free)",
+    "Demo Hesap",
+    "Spread",
+    "Komisyon",
+    "Kaldıraç",
+    "Swing Trader",
+    "Scalper & Intraday Trader"
+  ],
+  "tanimlar": {
+    "İslami Hesap (Swap-Free)": "Gecelik faiz/swap işletilmeyen hesap türü.",
+    "Demo Hesap": "Sanal para ile risksiz strateji testi yapılan hesap türü."
+  },
+  "onemli_noktalar": [
+    "Classic Account: ~1.6 pip minimum spread, 0 $ komisyon ve 1:1000'e kadar kaldıraç sunar; Swing Trader'lar (uzun vadeli/gün aşırı pozisyon tutanlar) için uygundur.",
+    "Raw Account: 0.0 pip minimum spread, toplam ~5.8$ - 6$ (3 $ giriş + 3 $ çıkış) komisyon ve 1:1000'e kadar kaldıraç sunar; Scalper ve Intraday Trader'lar için uygundur.",
+    "TradingView Raw: 0.0 pip minimum spread, toplam 7$ (3.5 $ giriş + 3.5 $ çıkış) komisyon ve 1:1000'e kadar kaldıraç sunar; MetaTrader yerine doğrudan TradingView arayüzünden işlem yapmak isteyenler için uygundur."
+  ],
+  "sorular_cevaplar": []
+}
