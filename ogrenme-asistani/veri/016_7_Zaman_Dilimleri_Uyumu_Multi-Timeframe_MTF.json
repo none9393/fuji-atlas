@@ -1,0 +1,18 @@
+{
+  "konu": "Zaman Dilimleri Uyumu (Multi-Timeframe / MTF)",
+  "anahtar_kavramlar": [
+    "Multi-Timeframe (MTF)",
+    "HTF",
+    "LTF",
+    "Fitil (Sweep)",
+    "Gövde Kapanışı"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "HTF Daily (Günlük) olduğunda onay/yapı zaman dilimi 4H, giriş/tetik zaman dilimi (LTF) 45m / 15m'dir.",
+    "HTF 4H (4 Saatlik) olduğunda onay/yapı zaman dilimi 45m / 15m, giriş/tetik zaman dilimi (LTF) 5m / 1m'dir.",
+    "45 dakikalık grafikte kırılım gibi görünen bir hareket, 4 Saatlik grafikte sadece bir fitil (sweep) olarak kalmışsa o kırılıma güvenilmez.",
+    "HTF gövde kapanışı her zaman esastır."
+  ],
+  "sorular_cevaplar": []
+}
