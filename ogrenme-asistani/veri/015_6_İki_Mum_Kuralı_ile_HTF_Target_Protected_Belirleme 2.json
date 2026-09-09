@@ -1,0 +1,28 @@
+{
+  "konu": "İki Mum Kuralı ile HTF Target & Protected Belirleme",
+  "anahtar_kavramlar": [
+    "İki Mum Kuralı",
+    "HTF",
+    "Target",
+    "Protected",
+    "Sweep",
+    "CHoCH",
+    "Bias",
+    "Günlük (Daily)",
+    "4 Saatlik (4H)"
+  ],
+  "tanimlar": {
+    "1. Mum": "Büyük bir yön mumu (tek başına bir arz/talep alanıdır).",
+    "2. Mum": "İlk mumun tepesini veya dibini fitille süpüren (sweep), ancak üzerinde/altında gövde kapanışı yapamayan mum.",
+    "Protected": "İki mum kuralında süpürülen tepe noktası.",
+    "Target": "İki mum kuralında 1. mumun dibi olan doğrudan hedef seviyesi."
+  },
+  "onemli_noktalar": [
+    "Özellikle Günlük (Daily) ve 4 Saatlik (4H) grafiklerde yön tayini (bias) için kullanılır.",
+    "2. Mum, ilk mumun tepesini veya dibini fitille süpürür (sweep), ancak üzerinde/altında gövde kapanışı yapamaz.",
+    "Üst zaman diliminde gelen bu sweep, 2-3 alt zaman dilimine inildiğinde (örneğin Daily'den 45m/15m'ye) bir likidite alımı + karakter değişimi (CHoCH) hareketidir.",
+    "Bu durumda süpürülen tepe Protected, 1. mumun dibi ise doğrudan Target (Hedef) olur.",
+    "Bu yapı trader'a 3 ila 5 günlük net bir yön (bias) sunar."
+  ],
+  "sorular_cevaplar": []
+}
