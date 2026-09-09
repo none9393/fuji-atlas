@@ -1,0 +1,18 @@
+{
+  "konu": "Özet / Adım Adım Analiz Akışı",
+  "anahtar_kavramlar": [
+    "External Swing High",
+    "External Swing Low",
+    "Internal",
+    "Change of Character (CHoCH)",
+    "Senkronizasyon"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Adım 1: Zaman dilimindeki ana yönü (External Swing High / Low) belirle.",
+    "Adım 2: Düzeltme hareketinin iç yapısını (Internal) takip et.",
+    "Adım 3: İç yapının ana trend yönüne dönmesini (Change of Character / CHoCH) bekle.",
+    "Adım 4: Trend yönünde senkronizasyon sağlandığında, ana External Swing Low/High seviyesini hedefleyerek işleme dahil ol."
+  ],
+  "sorular_cevaplar": []
+}
