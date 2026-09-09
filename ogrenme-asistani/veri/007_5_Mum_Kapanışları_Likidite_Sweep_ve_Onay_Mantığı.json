@@ -1,0 +1,21 @@
+{
+  "konu": "Mum Kapanışları, Likidite (Sweep) ve Onay Mantığı",
+  "anahtar_kavramlar": [
+    "Mum Kapanışı",
+    "Likidite (Sweep)",
+    "HTF (Yüksek Zaman Dilimi)",
+    "LTF (Düşük Zaman Dilimi)",
+    "Demand (Destek)",
+    "Mitigasyon",
+    "Pro-Trend"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Bir alt zaman diliminde (ör. 4H) seviye üzerinde gövde kapanışı olsa bile, üst zaman diliminde (ör. Daily) bu hareket sadece fitil/sweep (likidite alımı) olarak kalabilir.",
+    "HTF kapanışı gelmedikçe alt zaman dilimindeki kırılımlara %100 yön değişimi olarak güvenilmemelidir.",
+    "Fiyat bir destek bölgesine (Demand) geldikten sonra yeni bir High yapamıyorsa ve destek bölgesi içinde mum kapatmaya başlıyorsa bu bir zayıflık (Bearish) emaresidir.",
+    "Tüm destek bölgeleri birbirini mitigate ederek yükseldiyse ve tepede yeni tepe gelemiyorsa, fiyat alt taraftaki likiditeleri temizlemek için geri çekilmek zorundadır.",
+    "HTF (4H) Bullish + Ara Zaman Dilimi (45m) Bullish + LTF (5m) Bullish olduğunda, tüm zaman dilimleri aynı yöne baktığı için pullbacklerde işleme girmek en yüksek başarı oranını (%90+) sağlar."
+  ],
+  "sorular_cevaplar": []
+}
