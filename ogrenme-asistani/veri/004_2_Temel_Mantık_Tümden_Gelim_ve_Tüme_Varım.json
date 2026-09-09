@@ -1,0 +1,21 @@
+{
+  "konu": "Temel Mantık: Tümden Gelim ve Tüme Varım",
+  "anahtar_kavramlar": [
+    "Tümden Gelim (Top-Down)",
+    "Tüme Varım (Bottom-Up)",
+    "Haritalama (Mapping)",
+    "2 Üst Zaman Dilimi Kuralı",
+    "Swing Yapısı"
+  ],
+  "tanimlar": {
+    "Tümden Gelim (Top-Down)": "Piyasanın haritası çıkarılırken en yüksek zaman diliminden en küçüğe doğru inilerek analiz yapılması.",
+    "Tüme Varım (Bottom-Up)": "İşleme girerken işlem yapılacak zaman diliminden başlanıp onay için üst zaman dilimlerine çıkılması mantığı.",
+    "2 Üst Zaman Dilimi Kuralı": "İşlem alınan zaman diliminin netliğini görmek için her zaman iki üst zaman diliminin kontrol edilmesi kuralı."
+  },
+  "onemli_noktalar": [
+    "Haritalama (Mapping) sırasında zaman dilimi hiyerarşisi 1W -> 1D -> 4H -> 45M -> 5M -> 1M şeklindedir.",
+    "Büyük zaman dilimindeki swing yapısı belirlendikten sonra sadece son swing aralığını incelemek için alt zaman dilimine inilir.",
+    "İşlem netliğini teyit etmek için 1m işlemde 5m ve 45m, 5m işlemde 45m ve 4H, 45m işlemde 4H ve 1D zaman dilimleri kontrol edilir."
+  ],
+  "sorular_cevaplar": []
+}
