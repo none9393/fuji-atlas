@@ -1,0 +1,40 @@
+{
+  "konu": "Zaman Dilimlerine Göre Haritalandırma (Top-Down Analysis)",
+  "anahtar_kavramlar": [
+    "Top-Down Analysis",
+    "Swing",
+    "Internal",
+    "Untested Demand",
+    "Discount",
+    "Sweep",
+    "Pullback",
+    "Protected Low",
+    "CHoCH",
+    "Fraktal Yapı"
+  ],
+  "tanimlar": {
+    "Daily Protected Low": "Günlükteki son kırılımı yaptıran dip nokta."
+  },
+  "onemli_noktalar": [
+    "Haftalık grafikte son majör swing bacağı tespit edilir, test edilmemiş talep bölgesi (Untested Demand) ve ucuzluk (Discount) alanları işaretlenir.",
+    "Fiyat üstteki likiditeyi/arzı alıp sweep bırakırsa, iç yapılarda satış yönlü derin geri çekilme (pullback) aranır.",
+    "Üst zaman diliminde sweep olan bir hareket, günlükte mum gövdesiyle yeni bir tepe yapamıyorsa fiyatın iç yapıda düzeltmeye (pullback) gideceği öngörülür.",
+    "4H'de yapıyı kıran son dip/tepe kaybedilirse, fiyatın altındaki Untested Demand alanına kadar süzülmesi beklenir.",
+    "4H'de Bearish olan iç yapı, 45m'de Bullish CHoCH veriyorsa ve Daily kapanışla destekleniyorsa dönüş (Long) aranır.",
+    "İşlem giriş aşamasındaki teyit mekanizması '45m CHoCH -> 5m Kırılım / Onay -> 1m Entry' kurgusudur."
+  ],
+  "sorular_cevaplar": [
+    {
+      "soru": "Üst zaman diliminde sweep olan bir hareket günlükte mum gövdesiyle yeni tepe yapamazsa ne öngörülür?",
+      "cevap": "Fiyatın iç yapıda düzeltmeye (pullback) gideceği öngörülür."
+    },
+    {
+      "soru": "İşlem giriş aşamasında kullanılan teyit mekanizması kurgusu nasıldır?",
+      "cevap": "45m CHoCH -> 5m Kırılım / Onay -> 1m Entry kurgusu ile işleme dahil olunur."
+    },
+    {
+      "soru": "4H'de yapıyı kıran son dip veya tepe kaybedilirse fiyatın nereye gitmesi beklenir?",
+      "cevap": "Fiyatın altındaki test edilmemiş talep (Untested Demand) alanına kadar süzülmesi beklenir."
+    }
+  ]
+}
