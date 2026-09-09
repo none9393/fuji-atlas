@@ -1,0 +1,33 @@
+{
+  "konu": "Fiyat İlerleme Tipleri ve Leg Önü Likidite",
+  "anahtar_kavramlar": [
+    "Korektif Yükseliş/Düşüş",
+    "Rounded (Yay) Yapılar",
+    "V-Shape / Impulsive Hareket",
+    "Leg Önü Likidite",
+    "Protected Alanlar",
+    "Sweep",
+    "Perakende Likiditesi"
+  ],
+  "tanimlar": {
+    "Korektif (Düzeltmeli) Yükseliş/Düşüş": "Fiyatın destek/direnç bölgelerine saygı göstererek adım adım ilerlediği ve perakende likiditesi oluşturduğu sağlıklı hareket tipi.",
+    "Rounded (Yay) Yapılar": "Volatilitenin yavaş yavaş artıp en sonda tepe/dip yaptığı ve likidite dengesinin oturduğu yapılar.",
+    "V-Shape / Impulsive Hareket": "Fiyatın ara likidite oluşturmadan tek bir büyük mumla dümdüz hareket ettiği yapı."
+  },
+  "onemli_noktalar": [
+    "Fiyatın düzeltme ve itki hareketlerinin karakteri, Protected alanların ne kadar güvenilir olduğunu belirler.",
+    "Korektif hareketlerde perakende likiditesi oluştuğu için fiyatın dönüşleri ve akışı daha sağlıklıdır.",
+    "V-Shape / Impulsive hareketlerde ara likidite oluşmadığından, bacağın başladığı destek/direnç noktaları doğrudan 'korunan' kabul edilip körü körüne işleme girilmemelidir.",
+    "V-Shape hareketlerin başladığı seviyelerde fiyat sıklıkla likidite temizliği (sweep) yapmak ister, bu nedenle alt zaman diliminde onay (karakter değişimi) beklenmelidir."
+  ],
+  "sorular_cevaplar": [
+    {
+      "soru": "V-Shape / Impulsive hareketlerin başladığı seviyelerde neden doğrudan işleme girilmemelidir?",
+      "cevap": "Hareket içinde ara likiditeler oluşmadığı için fiyat bu seviyeleri sıklıkla sweep etmek ister. Bu nedenle doğrudan 'korunan' kabul edilmeyip alt zaman diliminde onay beklenmelidir."
+    },
+    {
+      "soru": "Korektif hareketlerin dönüşlerinin ve akışının daha sağlıklı olmasının sebebi nedir?",
+      "cevap": "Fiyatın destek/direnç bölgelerine saygı göstererek adım adım ilerlemesi ve hareket içinde perakende (retail) likiditesi oluşmasıdır."
+    }
+  ]
+}
