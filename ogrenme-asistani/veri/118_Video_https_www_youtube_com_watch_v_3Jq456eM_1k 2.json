@@ -1,0 +1,18 @@
+{
+  "konu": "Fiyat Yapısı (Market Structure), Likidite ve İşlem Yönetimi Eğitimi (Bölüm 1)",
+  "anahtar_kavramlar": [
+    "Fiyat Yapısı (Market Structure)",
+    "Likidite",
+    "İşlem Yönetimi",
+    "Çoklu zaman dilimi analizi (HTF/LTF)",
+    "Arz-talep bölgelerinin mitigasyonu",
+    "Likidite tasfiyesi (sweep)",
+    "Piyasanın yönü (orderflow)",
+    "Giriş/risk yönetimi psikolojisi"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Bu ders; çoklu zaman dilimi analizi (HTF/LTF), arz-talep bölgelerinin mitigasyonu, likidite tasfiyesi (sweep), piyasanın yönü (orderflow) ve giriş/risk yönetimi psikolojisi üzerine odaklanmaktadır."
+  ],
+  "sorular_cevaplar": []
+}
