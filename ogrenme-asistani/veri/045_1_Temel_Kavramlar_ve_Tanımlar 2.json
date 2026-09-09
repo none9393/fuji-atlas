@@ -1,0 +1,21 @@
+{
+  "konu": "1. Temel Kavramlar ve Tanımlar",
+  "anahtar_kavramlar": [
+    "MetaTrader 5 (MT5)",
+    "Makas Aralığı (Spread)",
+    "Lot",
+    "Stop Loss (SL - Zarar Durdur)",
+    "Take Profit (TP - Kâr Al)",
+    "Expert Advisor (EA / Uzman Danışman)"
+  ],
+  "tanimlar": {
+    "MetaTrader 5 (MT5)": "Forex, hisse senedi ve emtia piyasalarında teknik analiz yapmayı ve aracı kurumlar (broker) üzerinden işlem açıp kapamayı sağlayan profesyonel bir işlem platformudur.",
+    "Makas Aralığı (Spread)": "Bir finansal varlığın alış (Ask) ve satış (Bid) fiyatı arasındaki farktır.",
+    "Lot": "Finansal piyasalardaki standart işlem büyüklüğü birimidir.",
+    "Stop Loss (SL - Zarar Durdur)": "Olası kayıpları sınırlandırmak için önceden belirlenen çıkış fiyat seviyesi.",
+    "Take Profit (TP - Kâr Al)": "Hedeflenen kâr seviyesine ulaşıldığında pozisyonun otomatik kapanmasını sağlayan fiyat seviyesi.",
+    "Expert Advisor (EA / Uzman Danışman)": "Platform üzerinde otomatik işlem yapan veya işlem yönetimini/hesaplamalarını kolaylaştıran özel kodlanmış yazılımlar/araçlar."
+  },
+  "onemli_noktalar": [],
+  "sorular_cevaplar": []
+}
