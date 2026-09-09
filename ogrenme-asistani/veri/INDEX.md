@@ -1,0 +1,834 @@
+# Bilgi Tabani Indeksi (otomatik uretilir)
+
+Kaynak: `/Users/b/Documents/FUJI/ogrenme-asistani/veri/*.json`. Uretim komutu: `python3 /Users/b/Documents/FUJI/05_araclar/build_index.py`
+
+Son uretim: 2026-09-02 19:28 — 157 dosya tarandi, 130 tanesi veri iceriyor, 27 tanesi atlandi (konu bos / parse hatasi).
+
+**Kullanim:** Bir chart analizinde ilgili anahtar kavramlari asagidaki "Kavram -> Dosya" bolumunde ara, eslesen dosyalari `veri/<dosya>` yolundan oku. Aranan kavram tam eslesmiyorsa (esanlamli/kismi ifade olabilir) bu dosyada Ctrl+F/grep ile de dogrulanabilir; bu indeks aramayi hizlandirir, dosyalarin yerini almaz.
+
+## Kavram -> Dosya
+
+- **%30 Kuralı**: `143_3_EUR_USD_İstatistiksel_Piyasa_Ortalamaları.json`
+- **2 Yıllık Tahvil Getirisi**: `154_Dosya_pdf-kuyruk_forex_makro_hafta1_analizi_pdf.json`, `forex_makro_hafta1_analizi.json`
+- **2 Üst Zaman Dilimi Kuralı**: `004_2_Temel_Mantık_Tümden_Gelim_ve_Tüme_Varım.json`
+- **4 Saatlik (4H)**: `015_6_İki_Mum_Kuralı_ile_HTF_Target_Protected_Belirleme.json`
+- **45 Dakikalık Onay Bekleme Tuzağı**: `121_3_Giriş_Modelleri_ve_Zaman_Dilimi_Çelişkisi.json`
+- **45M**: `032_2_Zaman_Dilimi_Hiyerarşisi_MTF_Senkronizasyonu.json`
+- **4H**: `032_2_Zaman_Dilimi_Hiyerarşisi_MTF_Senkronizasyonu.json`
+- **4H Kapanış Teyidi**: `067_2_İşlem_Stratejisi_ve_Karar_Mekanizması.json`
+- **5M**: `032_2_Zaman_Dilimi_Hiyerarşisi_MTF_Senkronizasyonu.json`
+- **ABD Doları**: `106_1_DXY_US_Dollar_Index_Nedir.json`
+- **ADP**: `forex_makro_hafta1_analizi.json`
+- **ADX (Average Directional Index)**: `058_5_İndikatörlerin_Doğru_Kullanımı.json`
+- **Aktarım Zinciri**: `forex_makro_hafta1_analizi.json`
+- **Akümülasyon**: `057_4_COT_Commitment_of_Traders_Raporu_Analizi.json`
+- **Algo Trading Butonu**: `051_Özet_İpuçları.json`
+- **Algoritmik Mumlar**: `021_3_ÖNEMLİ_STRATEJİK_KURALLAR_VE_PÜF_NOKTALARI.json`
+- **Algoritmik Ticaret**: `049_5_Risk_Yönetimi_Position_Sizer_EA_Kurulumu_ve_Kullanımı.json`
+- **Alpha Trend**: `153_Dosya_pdf-kuyruk_Sinanenginnft-Ders_Notlari_pdf.json`, `Sinanenginnft-Ders Notlari.json`
+- **Alt Yapı / Karşıt Tepki Kontrolü**: `067_2_İşlem_Stratejisi_ve_Karar_Mekanizması.json`
+- **Arz (Supply) Bölgesi**: `013_4_Yeni_High_Yeni_Low_Getirememe_Kuralı_Güç_Dengesi.json`
+- **Arz / Direnç Bölgesi**: `024_1_Temel_Tanımlar_ve_Kavramlar.json`
+- **Arz ve Talep Bölgeleri**: `014_5_Üst_Zaman_Dilimindeki_Untested_Test_Edilmemiş_Alanlar.json`
+- **Arz-Talep Bölgeleri (Supply/Demand)**: `065_Video_https_www_youtube_com_watch_v_92kwt30MdRQ.json`
+- **Arz-talep bölgelerinin mitigasyonu**: `118_Video_https_www_youtube_com_watch_v_3Jq456eM_1k.json`
+- **At Nalı Mum Formasyonu**: `153_Dosya_pdf-kuyruk_Sinanenginnft-Ders_Notlari_pdf.json`, `Sinanenginnft-Ders Notlari.json`
+- **Aşırı Onay Arayışı (Analysis Paralysis)**: `135_1_Temel_Kavramlar_ve_Karşılaşılan_Psikolojik_Hatalar.json`
+- **B-ADJ (Back-Adjusted)**: `056_3_Forex_Spot_CFD_vs_Vadeli_İşlemler_Futures.json`
+- **Balanced Price Range (BPR)**: `153_Dosya_pdf-kuyruk_Sinanenginnft-Ders_Notlari_pdf.json`
+- **Base**: `122_4_Grafik_Üzerinden_Çıkarılan_Pratik_Kurallar_EUR_USD_-_DXY_Örnekleri.json`
+- **Baz Etkisi**: `155_Dosya_pdf-kuyruk_forex_makro_hafta2_analizi_pdf.json`
+- **Baz Etkisi (Base Effect)**: `forex_makro_hafta2_analizi.json`
+- **Baz Para Birimi**: `107_2_Pariteler_Arası_Korelasyon_Mantığı.json`
+- **Bearish**: `040_4_İşleme_Giriş_ve_Fiyat_Alanları_Premium_Discount.json`, `100_3_Piyasa_Mantığı_ve_İşlem_Stratejisi_Düşüş_Trendi_Bearish_Örneği.json`, `120_2_Piyasa_Yapısı_ve_Fiyat_Mekaniği.json`, `147_1_Temel_Piyasa_Felsefesi_ve_İşlem_Mantığı.json`
+- **Bearish (Düşen Trend)**: `011_2_Temel_Target_Protected_Mantığı.json`
+- **Bearish Orderflow**: `122_4_Grafik_Üzerinden_Çıkarılan_Pratik_Kurallar_EUR_USD_-_DXY_Örnekleri.json`
+- **Bekleyen Emirler (Pending Orders)**: `048_4_İşlem_Giriş_Tipleri.json`
+- **Bias**: `003_1_Multi_Time_Frame_MTF_Nedir_ve_Neden_Kullanılır.json`, `010_1_Temel_Tanımlar_ve_Kavramlar.json`, `015_6_İki_Mum_Kuralı_ile_HTF_Target_Protected_Belirleme.json`, `147_1_Temel_Piyasa_Felsefesi_ve_İşlem_Mantığı.json`
+- **Bias (Yön Tayini)**: `071_1_GİRİŞ_VE_TEMEL_KAVRAMLAR.json`
+- **Bias Belirleme**: `146_6_Özet_Çıkarım.json`
+- **Bid-to-Cover**: `forex_makro_hafta2_analizi.json`
+- **Bid-to-Cover Oranı**: `155_Dosya_pdf-kuyruk_forex_makro_hafta2_analizi_pdf.json`
+- **Bireysel Hesap**: `086_5_Adım_Adım_Hesap_Açılış_ve_MetaTrader_5_Kurulumu.json`
+- **Birim İşgücü Maliyeti**: `154_Dosya_pdf-kuyruk_forex_makro_hafta1_analizi_pdf.json`
+- **Birim İşgücü Maliyeti (Unit Labor Costs)**: `forex_makro_hafta1_analizi.json`
+- **Bobin**: `153_Dosya_pdf-kuyruk_Sinanenginnft-Ders_Notlari_pdf.json`, `Sinanenginnft-Ders Notlari.json`
+- **Bonus Tuzakları**: `088_7_Önemli_Uyarılar_ve_Broker_Seçiminde_Kritik_Kriterler.json`
+- **Borç**: `138_4_Finansal_Baskı_ve_Psikoloji.json`
+- **BOS**: `017_Pratik_İpuçları_ve_İşlem_Yönetimi.json`, `031_1_Temel_Kavramlar_ve_Tanımlar.json`, `056_3_Forex_Spot_CFD_vs_Vadeli_İşlemler_Futures.json`
+- **BOS (Break of Structure)**: `011_2_Temel_Target_Protected_Mantığı.json`, `019_1_TEMEL_KAVRAMLAR_VE_TANIMLAR.json`, `074_4_MARKET_YAPISI_KAVRAMLARI_VE_KIRILIMLAR.json`
+- **BPR**: `Sinanenginnft-Ders Notlari.json`
+- **Breakout**: `076_6_DOĞRU_SWİNG_BELİRLEME_METODOLOJİSİ_7_KURAL_PRENSİBİ.json`
+- **Broker**: `050_6_Broker_Seçimi_ve_Hesap_Türleri.json`
+- **Broker (Aracı Kurum)**: `082_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **BTC/USD**: `068_3_Parite_Örnekleri_ve_Vaka_Analizleri.json`
+- **BTC/USDT**: `063_3_Enstrüman_Bazlı_Teknik_İncelemeler_ve_Yol_Haritaları.json`
+- **Building Permits**: `156_Dosya_pdf-kuyruk-kalan_forex_makro_hafta3_analizi_pdf.json`, `forex_makro_hafta3_analizi.json`
+- **Bullish**: `040_4_İşleme_Giriş_ve_Fiyat_Alanları_Premium_Discount.json`, `100_3_Piyasa_Mantığı_ve_İşlem_Stratejisi_Düşüş_Trendi_Bearish_Örneği.json`
+- **Bullish (Yükselen Trend)**: `011_2_Temel_Target_Protected_Mantığı.json`
+- **Bullish Candle**: `031_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Bullish Konfirmasyon**: `063_3_Enstrüman_Bazlı_Teknik_İncelemeler_ve_Yol_Haritaları.json`
+- **Bullish Order Flow**: `108_3_HTF_Yüksek_Zaman_Dilimi_Yapı_Analizi_ve_DXY_Kullanımı.json`
+- **Buy/Sell Limit**: `048_4_İşlem_Giriş_Tipleri.json`
+- **Buy/Sell Stop**: `048_4_İşlem_Giriş_Tipleri.json`
+- **Büyük Resim (HTF Analizi)**: `067_2_İşlem_Stratejisi_ve_Karar_Mekanizması.json`
+- **CAD (Kanada Doları)**: `106_1_DXY_US_Dollar_Index_Nedir.json`
+- **Candle (Mum) analizi**: `035_Özet_Kural.json`
+- **Candle by Candle**: `030_Video_https_www_youtube_com_watch_v_vIImABpy8PM.json`, `031_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Candle Close (Mum Kapanışı)**: `132_3_Çoklu_Zaman_Dilimi_MTF_ve_Piyasa_Yapısı_Analizi.json`
+- **Capacity Utilization**: `forex_makro_hafta3_analizi.json`
+- **CB Leading Index**: `156_Dosya_pdf-kuyruk-kalan_forex_makro_hafta3_analizi_pdf.json`
+- **CFTC**: `057_4_COT_Commitment_of_Traders_Raporu_Analizi.json`
+- **CH / CHoCH (Change of Character)**: `074_4_MARKET_YAPISI_KAVRAMLARI_VE_KIRILIMLAR.json`
+- **Change of Character (CHoCH)**: `101_4_Özet_Adım_Adım_Analiz_Akışı.json`
+- **Chart Hygiene**: `022_4_GRAFİK_DÜZENİ_VE_ANALİZ_TAKİBİ_CHART_HYGIENE.json`
+- **Chart Mapping**: `152_6_Öğrenme_ve_Analiz_Hiyerarşisi.json`
+- **CHF (İsviçre Frangı)**: `106_1_DXY_US_Dollar_Index_Nedir.json`
+- **CHoCH**: `015_6_İki_Mum_Kuralı_ile_HTF_Target_Protected_Belirleme.json`, `017_Pratik_İpuçları_ve_İşlem_Yönetimi.json`, `020_2_ZAMAN_DİLİMLERİNE_GÖRE_HARİTALANDIRMA_TOP-DOWN_ANALYSIS.json`, `056_3_Forex_Spot_CFD_vs_Vadeli_İşlemler_Futures.json`, `077_7_ÖĞRENCİLER_İÇİN_ALTIN_TAVSİYELER_ÇIKARIMLAR.json`
+- **CHoCH (Change of Character)**: `100_3_Piyasa_Mantığı_ve_İşlem_Stratejisi_Düşüş_Trendi_Bearish_Örneği.json`
+- **CHoCH (Change of Character) / MSB**: `019_1_TEMEL_KAVRAMLAR_VE_TANIMLAR.json`
+- **CHoCH / iBOS**: `029_6_İşlem_Alma_ve_Konfirmasyon_Stratejisi.json`
+- **CHoCH / MSB**: `128_5_Grafiksel_Giriş_Şablonu_Price_Action_Döngüsü.json`
+- **Classic Account**: `083_2_Hesap_Türleri_ve_Karşılaştırma.json`
+- **CME**: `056_3_Forex_Spot_CFD_vs_Vadeli_İşlemler_Futures.json`
+- **Commercials**: `057_4_COT_Commitment_of_Traders_Raporu_Analizi.json`
+- **Copy Trading**: `087_6_Sosyal_Ticaret_Copy_Trading_ve_Ayın_Trader_ı_Wall_of_Fame.json`
+- **Core CPI**: `forex_makro_hafta2_analizi.json`
+- **COT Raporu**: `057_4_COT_Commitment_of_Traders_Raporu_Analizi.json`
+- **Counter-Trend**: `077_7_ÖĞRENCİLER_İÇİN_ALTIN_TAVSİYELER_ÇIKARIMLAR.json`
+- **CPI (Tüketici Fiyat Endeksi)**: `155_Dosya_pdf-kuyruk_forex_makro_hafta2_analizi_pdf.json`, `forex_makro_hafta2_analizi.json`
+- **CySEC**: `088_7_Önemli_Uyarılar_ve_Broker_Seçiminde_Kritik_Kriterler.json`
+- **Daily**: `032_2_Zaman_Dilimi_Hiyerarşisi_MTF_Senkronizasyonu.json`
+- **Demand**: `024_1_Temel_Tanımlar_ve_Kavramlar.json`, `029_6_İşlem_Alma_ve_Konfirmasyon_Stratejisi.json`
+- **Demand (Destek)**: `007_5_Mum_Kapanışları_Likidite_Sweep_ve_Onay_Mantığı.json`
+- **Demand (Talep) Bölgesi**: `120_2_Piyasa_Yapısı_ve_Fiyat_Mekaniği.json`
+- **Demand / Supply**: `021_3_ÖNEMLİ_STRATEJİK_KURALLAR_VE_PÜF_NOKTALARI.json`
+- **Demand Chain**: `075_5_ONLAR_VE_FİYATLANMA_DİNAMİKLERİ.json`
+- **Demo Hesap**: `083_2_Hesap_Türleri_ve_Karşılaştırma.json`
+- **Destek ve direnç**: `064_4_Trader_İçin_Önemli_Çıkarımlar_İpuçları.json`
+- **Deviasyon**: `153_Dosya_pdf-kuyruk_Sinanenginnft-Ders_Notlari_pdf.json`
+- **değerlendirme toplantısı**: `139_5_Uygulama_ve_Aksiyon_Planı_Grup_Görevi.json`
+- **Dinamik Yönetim**: `146_6_Özet_Çıkarım.json`
+- **Discount**: `020_2_ZAMAN_DİLİMLERİNE_GÖRE_HARİTALANDIRMA_TOP-DOWN_ANALYSIS.json`, `040_4_İşleme_Giriş_ve_Fiyat_Alanları_Premium_Discount.json`
+- **Discount (Ucuzluk)**: `067_2_İşlem_Stratejisi_ve_Karar_Mekanizması.json`
+- **disiplin**: `139_5_Uygulama_ve_Aksiyon_Planı_Grup_Görevi.json`
+- **Doji**: `153_Dosya_pdf-kuyruk_Sinanenginnft-Ders_Notlari_pdf.json`, `Sinanenginnft-Ders Notlari.json`
+- **Doygunluk Noktaları**: `127_4_İstatistiksel_Yaklaşım_ve_Literatür_Referansı.json`
+- **Doğru (Pozitif) Korelasyon**: `107_2_Pariteler_Arası_Korelasyon_Mantığı.json`
+- **Drawdown**: `126_3_Kademeli_Giriş_Scale-In_Layering_ve_Teminat_Margin_Yönetimi.json`
+- **DXY**: `063_3_Enstrüman_Bazlı_Teknik_İncelemeler_ve_Yol_Haritaları.json`, `064_4_Trader_İçin_Önemli_Çıkarımlar_İpuçları.json`, `068_3_Parite_Örnekleri_ve_Vaka_Analizleri.json`, `107_2_Pariteler_Arası_Korelasyon_Mantığı.json`, `108_3_HTF_Yüksek_Zaman_Dilimi_Yapı_Analizi_ve_DXY_Kullanımı.json`, `154_Dosya_pdf-kuyruk_forex_makro_hafta1_analizi_pdf.json`, `forex_makro_hafta1_analizi.json`
+- **DXY (US Dollar Index)**: `106_1_DXY_US_Dollar_Index_Nedir.json`
+- **Düzeltme (Pullback)**: `143_3_EUR_USD_İstatistiksel_Piyasa_Ortalamaları.json`
+- **Düzeltme / Tepki**: `150_4_İstatistiksel_Sapma_ve_Aralık_Verileri_EUR_USD_Örneği.json`
+- **Düşük Zaman Dilimi (LTF)**: `059_6_Trade_Yönetimi_ve_Psikoloji.json`
+- **Dış Yapı**: `098_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **E-cüzdanlar**: `085_4_Para_Yatırma_Çekme_ve_Müşteri_Hizmetleri.json`
+- **EA**: `051_Özet_İpuçları.json`
+- **Egzotik / Çapraz Pariteler**: `068_3_Parite_Örnekleri_ve_Vaka_Analizleri.json`
+- **Ekran süresi**: `041_5_Önemli_İpuçları_ve_Özet_Kurallar.json`
+- **Elliott Dalgaları**: `072_2_ANALİZ_TÜRLERİ_VE_FİYAT_YORUMLAMA.json`
+- **EMA Cloud**: `153_Dosya_pdf-kuyruk_Sinanenginnft-Ders_Notlari_pdf.json`, `Sinanenginnft-Ders Notlari.json`
+- **Emir Akışı**: `069_4_Trader_İçin_Önemli_Tavsiyeler.json`
+- **Emir Akışı (Orderflow)**: `120_2_Piyasa_Yapısı_ve_Fiyat_Mekaniği.json`
+- **Emir Defteri**: `056_3_Forex_Spot_CFD_vs_Vadeli_İşlemler_Futures.json`
+- **Empire State İmalat Endeksi**: `156_Dosya_pdf-kuyruk-kalan_forex_makro_hafta3_analizi_pdf.json`
+- **Empire State Manufacturing**: `forex_makro_hafta3_analizi.json`
+- **Emtialar**: `084_3_Desteklenen_Enstrümanlar_ve_İşlem_Koşulları.json`
+- **Enflasyon Boru Hattı**: `forex_makro_hafta3_analizi.json`
+- **Enflasyon Haftası**: `155_Dosya_pdf-kuyruk_forex_makro_hafta2_analizi_pdf.json`
+- **Engulfing (Yutan Mum)**: `055_2_Fiyat_Hareketi_Price_Action_Engulfing_Yutan_Mum_Modeli.json`
+- **Entry**: `003_1_Multi_Time_Frame_MTF_Nedir_ve_Neden_Kullanılır.json`
+- **Equilibrium**: `075_5_ONLAR_VE_FİYATLANMA_DİNAMİKLERİ.json`
+- **Equilibrium (EQ)**: `076_6_DOĞRU_SWİNG_BELİRLEME_METODOLOJİSİ_7_KURAL_PRENSİBİ.json`
+- **Erken Çıkış Sendromu (Fear of Losing Profit)**: `135_1_Temel_Kavramlar_ve_Karşılaşılan_Psikolojik_Hatalar.json`
+- **EUR (Euro)**: `106_1_DXY_US_Dollar_Index_Nedir.json`
+- **EUR/USD**: `018_Video_https_www_youtube_com_watch_v_6v9qZqYPOpw.json`, `063_3_Enstrüman_Bazlı_Teknik_İncelemeler_ve_Yol_Haritaları.json`, `068_3_Parite_Örnekleri_ve_Vaka_Analizleri.json`, `106_1_DXY_US_Dollar_Index_Nedir.json`, `108_3_HTF_Yüksek_Zaman_Dilimi_Yapı_Analizi_ve_DXY_Kullanımı.json`, `124_1_Temel_Piyasa_Yapısı_ve_Parite_Tercihi_EUR_USD_Odaklı.json`, `127_4_İstatistiksel_Yaklaşım_ve_Literatür_Referansı.json`, `143_3_EUR_USD_İstatistiksel_Piyasa_Ortalamaları.json`
+- **EUR/USD - DXY Korelasyonu**: `021_3_ÖNEMLİ_STRATEJİK_KURALLAR_VE_PÜF_NOKTALARI.json`
+- **EURUSD**: `154_Dosya_pdf-kuyruk_forex_makro_hafta1_analizi_pdf.json`, `forex_makro_hafta1_analizi.json`
+- **Expert Advisor (EA / Uzman Danışman)**: `045_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Expert Advisor (EA)**: `049_5_Risk_Yönetimi_Position_Sizer_EA_Kurulumu_ve_Kullanımı.json`
+- **External (Dış) Yapı**: `037_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **External Structure**: `098_1_Temel_Kavramlar_ve_Tanımlar.json`, `100_3_Piyasa_Mantığı_ve_İşlem_Stratejisi_Düşüş_Trendi_Bearish_Örneği.json`
+- **External Swing**: `039_3_Zaman_Dilimleri_Multi-Timeframe_ve_Onay_Mekanizması.json`
+- **External Swing High**: `101_4_Özet_Adım_Adım_Analiz_Akışı.json`
+- **External Swing Low**: `101_4_Özet_Adım_Adım_Analiz_Akışı.json`
+- **External Swings**: `099_2_Grafik_Üzerinde_Haritalama_Chart_Mapping.json`
+- **External Trend**: `077_7_ÖĞRENCİLER_İÇİN_ALTIN_TAVSİYELER_ÇIKARIMLAR.json`
+- **External Yapı**: `097_Video_https_www_youtube_com_watch_v_tE_eWFz7wn4.json`
+- **External/Swing (Ana Yapı)**: `006_4_HTF_LTF_Arasındaki_Fraktal_İlişki.json`
+- **Extreme Demand**: `033_3_İşlem_ve_Analiz_Stratejisi_EUR_USD_Örneği.json`
+- **Extreme Supply**: `033_3_İşlem_ve_Analiz_Stratejisi_EUR_USD_Örneği.json`
+- **F8**: `047_3_Grafik_ve_Çalışma_Alanı_Ayarları.json`
+- **Failure Swing**: `128_5_Grafiksel_Giriş_Şablonu_Price_Action_Döngüsü.json`
+- **Fair Value Gap (FVG)**: `153_Dosya_pdf-kuyruk_Sinanenginnft-Ders_Notlari_pdf.json`
+- **FCA**: `088_7_Önemli_Uyarılar_ve_Broker_Seçiminde_Kritik_Kriterler.json`
+- **FCA Lisansı (Financial Conduct Authority)**: `082_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Fed Haftası**: `156_Dosya_pdf-kuyruk-kalan_forex_makro_hafta3_analizi_pdf.json`
+- **Fibonacci**: `040_4_İşleme_Giriş_ve_Fiyat_Alanları_Premium_Discount.json`
+- **Finansal Baskı**: `138_4_Finansal_Baskı_ve_Psikoloji.json`
+- **Finansal Piyasalar**: `053_Video_https_www_youtube_com_watch_v_mB3bRNZNHvo.json`
+- **Fitil (Sweep)**: `016_7_Zaman_Dilimleri_Uyumu_Multi-Timeframe_MTF.json`, `039_3_Zaman_Dilimleri_Multi-Timeframe_ve_Onay_Mekanizması.json`
+- **Fiyat Alanı (Candle Range)**: `031_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Fiyat Hareketi**: `072_2_ANALİZ_TÜRLERİ_VE_FİYAT_YORUMLAMA.json`
+- **Fiyat Hareketi (Price Action)**: `055_2_Fiyat_Hareketi_Price_Action_Engulfing_Yutan_Mum_Modeli.json`
+- **Fiyat Yapısı (Market Structure)**: `118_Video_https_www_youtube_com_watch_v_3Jq456eM_1k.json`
+- **Fiyat Yapısı Haritalandırma**: `018_Video_https_www_youtube_com_watch_v_6v9qZqYPOpw.json`
+- **Fiyatlanma**: `075_5_ONLAR_VE_FİYATLANMA_DİNAMİKLERİ.json`
+- **Flash PMI**: `156_Dosya_pdf-kuyruk-kalan_forex_makro_hafta3_analizi_pdf.json`, `forex_makro_hafta3_analizi.json`
+- **Flow**: `Sinanenginnft-Ders Notlari.json`
+- **FOMC Toplantı Tutanakları**: `forex_makro_hafta3_analizi.json`
+- **FOMC Tutanakları**: `156_Dosya_pdf-kuyruk-kalan_forex_makro_hafta3_analizi_pdf.json`
+- **Fon / Prop Firm Hesapları**: `126_3_Kademeli_Giriş_Scale-In_Layering_ve_Teminat_Margin_Yönetimi.json`
+- **Forex**: `056_3_Forex_Spot_CFD_vs_Vadeli_İşlemler_Futures.json`, `084_3_Desteklenen_Enstrümanlar_ve_İşlem_Koşulları.json`, `136_2_Kâr_ve_İşlem_Yönetimi_Günü_Artıda_Kapatma_İlkesi.json`
+- **Fractal Structure**: `074_4_MARKET_YAPISI_KAVRAMLARI_VE_KIRILIMLAR.json`
+- **Fraktal Yapı**: `020_2_ZAMAN_DİLİMLERİNE_GÖRE_HARİTALANDIRMA_TOP-DOWN_ANALYSIS.json`
+- **Fundamental Analysis**: `072_2_ANALİZ_TÜRLERİ_VE_FİYAT_YORUMLAMA.json`
+- **FVG**: `Sinanenginnft-Ders Notlari.json`
+- **Gap (Boşluk) Tuzağı**: `068_3_Parite_Örnekleri_ve_Vaka_Analizleri.json`
+- **GBP (İngiliz Sterlini)**: `106_1_DXY_US_Dollar_Index_Nedir.json`
+- **GBP/USD**: `063_3_Enstrüman_Bazlı_Teknik_İncelemeler_ve_Yol_Haritaları.json`
+- **Gece Seansı**: `051_Özet_İpuçları.json`
+- **Geçim Kaygısı**: `138_4_Finansal_Baskı_ve_Psikoloji.json`
+- **Geçmiş (History)**: `046_2_Platform_Arayüzü_ve_Temel_Pencereler.json`
+- **Giriş Konfirmasyonu**: `028_5_Zaman_Dilimleri_Multi-Timeframe_Koordinasyonu_ve_Mum_Onayları.json`
+- **Giriş/risk yönetimi psikolojisi**: `118_Video_https_www_youtube_com_watch_v_3Jq456eM_1k.json`
+- **Globex (ETH - Electronic Trading Hours)**: `054_1_Seans_Yapıları_ve_Globex_Stratejisi.json`
+- **Globex High**: `054_1_Seans_Yapıları_ve_Globex_Stratejisi.json`
+- **Globex Likidite Temizliği (Sweep)**: `054_1_Seans_Yapıları_ve_Globex_Stratejisi.json`
+- **Globex Low**: `054_1_Seans_Yapıları_ve_Globex_Stratejisi.json`
+- **Grafik Düzeni**: `022_4_GRAFİK_DÜZENİ_VE_ANALİZ_TAKİBİ_CHART_HYGIENE.json`
+- **Grafik Okuma**: `036_Video_https_www_youtube_com_watch_v_hbb8qVFCjSM.json`
+- **Grafik Özellikleri**: `047_3_Grafik_ve_Çalışma_Alanı_Ayarları.json`
+- **Grid / Ekleme**: `151_5_Swing_İşlem_vs_Tepki_Reaction_İşlemi_Ayrımı.json`
+- **Grid Giriş**: `148_2_Kademeli_Giriş_Grid_ve_Ortalama_Yönetim_Stratejisi.json`
+- **Grid Sistemi**: `143_3_EUR_USD_İstatistiksel_Piyasa_Ortalamaları.json`
+- **Grid Stratejisi**: `144_4_Grid_Stratejisinin_Çalışma_Mantığı.json`
+- **Grid Trading**: `140_Video_https_www_youtube_com_watch_v_gQxosD9I7jQ.json`
+- **GSYİH**: `061_1_Makroekonomik_Takvim_ve_Piyasa_Ön_Hazırlığı.json`
+- **Gövde Kapanışı**: `016_7_Zaman_Dilimleri_Uyumu_Multi-Timeframe_MTF.json`, `149_3_İptal_Şartları_Invalidation_ve_Manuel_Stop_Mantığı.json`
+- **Günlük (Daily)**: `015_6_İki_Mum_Kuralı_ile_HTF_Target_Protected_Belirleme.json`
+- **Günlük İşlem Dağılımı (Daily Volume / Turnover)**: `062_2_Temel_Kavramlar_ve_Tanımlar.json`
+- **Günlük Maksimum Sapma**: `150_4_İstatistiksel_Sapma_ve_Aralık_Verileri_EUR_USD_Örneği.json`
+- **Günlük Maksimum Tek Yönlü Hareket**: `143_3_EUR_USD_İstatistiksel_Piyasa_Ortalamaları.json`
+- **Günlük Ortalama Hareket**: `143_3_EUR_USD_İstatistiksel_Piyasa_Ortalamaları.json`, `150_4_İstatistiksel_Sapma_ve_Aralık_Verileri_EUR_USD_Örneği.json`
+- **Günlük Swing**: `008_6_Grafik_Üzerinde_Not_Alma_Mapping_Yöntemi.json`
+- **Günü Artıda Kapatma**: `130_1_Trading_Psikolojisi_ve_İşlem_Yönetimi.json`, `136_2_Kâr_ve_İşlem_Yönetimi_Günü_Artıda_Kapatma_İlkesi.json`
+- **Güvenli Stop**: `131_2_Risk_Yönetimi_ve_Stop_Yerleşimi_Kuralları.json`
+- **Güç Karşılaştırması**: `107_2_Pariteler_Arası_Korelasyon_Mantığı.json`
+- **Hacim**: `061_1_Makroekonomik_Takvim_ve_Piyasa_Ön_Hazırlığı.json`
+- **Haftalık Internal**: `008_6_Grafik_Üzerinde_Not_Alma_Mapping_Yöntemi.json`
+- **Haftalık Maksimum Sapma**: `150_4_İstatistiksel_Sapma_ve_Aralık_Verileri_EUR_USD_Örneği.json`
+- **Haftalık Maksimum Tek Yönlü Hareket**: `143_3_EUR_USD_İstatistiksel_Piyasa_Ortalamaları.json`
+- **Haftalık Ortalama Hareket**: `143_3_EUR_USD_İstatistiksel_Piyasa_Ortalamaları.json`
+- **Haftalık Swing**: `008_6_Grafik_Üzerinde_Not_Alma_Mapping_Yöntemi.json`
+- **Haritalama (Mapping)**: `004_2_Temel_Mantık_Tümden_Gelim_ve_Tüme_Varım.json`
+- **Havale/EFT**: `085_4_Para_Yatırma_Çekme_ve_Müşteri_Hizmetleri.json`
+- **Hedefe Sadakat**: `059_6_Trade_Yönetimi_ve_Psikoloji.json`
+- **Hedefe Ulaşınca Durmak**: `059_6_Trade_Yönetimi_ve_Psikoloji.json`
+- **HH**: `031_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **High/Low**: `055_2_Fiyat_Hareketi_Price_Action_Engulfing_Yutan_Mum_Modeli.json`
+- **High/Low Failure**: `029_6_İşlem_Alma_ve_Konfirmasyon_Stratejisi.json`
+- **Hisse Endeksleri**: `084_3_Desteklenen_Enstrümanlar_ve_İşlem_Koşulları.json`
+- **HL**: `031_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Housing Starts**: `156_Dosya_pdf-kuyruk-kalan_forex_makro_hafta3_analizi_pdf.json`
+- **HTF**: `006_4_HTF_LTF_Arasındaki_Fraktal_İlişki.json`, `015_6_İki_Mum_Kuralı_ile_HTF_Target_Protected_Belirleme.json`, `016_7_Zaman_Dilimleri_Uyumu_Multi-Timeframe_MTF.json`, `069_4_Trader_İçin_Önemli_Tavsiyeler.json`, `121_3_Giriş_Modelleri_ve_Zaman_Dilimi_Çelişkisi.json`, `151_5_Swing_İşlem_vs_Tepki_Reaction_İşlemi_Ayrımı.json`
+- **HTF (4H/45M)**: `124_1_Temel_Piyasa_Yapısı_ve_Parite_Tercihi_EUR_USD_Odaklı.json`
+- **HTF (High Time Frame)**: `122_4_Grafik_Üzerinden_Çıkarılan_Pratik_Kurallar_EUR_USD_-_DXY_Örnekleri.json`
+- **HTF (High Timeframe)**: `073_3_ZAMAN_DİLİMLERİ_TIMEFRAMES_VE_HİYERARŞİ.json`
+- **HTF (Higher Timeframe - Yüksek Zaman Dilimi)**: `066_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **HTF (Yüksek Zaman Dilimi)**: `003_1_Multi_Time_Frame_MTF_Nedir_ve_Neden_Kullanılır.json`, `007_5_Mum_Kapanışları_Likidite_Sweep_ve_Onay_Mantığı.json`, `014_5_Üst_Zaman_Dilimindeki_Untested_Test_Edilmemiş_Alanlar.json`, `055_2_Fiyat_Hareketi_Price_Action_Engulfing_Yutan_Mum_Modeli.json`, `108_3_HTF_Yüksek_Zaman_Dilimi_Yapı_Analizi_ve_DXY_Kullanımı.json`, `144_4_Grid_Stratejisinin_Çalışma_Mantığı.json`, `147_1_Temel_Piyasa_Felsefesi_ve_İşlem_Mantığı.json`
+- **HTF (Üst Zaman Dilimi)**: `028_5_Zaman_Dilimleri_Multi-Timeframe_Koordinasyonu_ve_Mum_Onayları.json`, `033_3_İşlem_ve_Analiz_Stratejisi_EUR_USD_Örneği.json`
+- **HTF / LTF Uyumu**: `153_Dosya_pdf-kuyruk_Sinanenginnft-Ders_Notlari_pdf.json`
+- **HTF desteği/direnci**: `041_5_Önemli_İpuçları_ve_Özet_Kurallar.json`
+- **HTF Kapanışı**: `126_3_Kademeli_Giriş_Scale-In_Layering_ve_Teminat_Margin_Yönetimi.json`
+- **HTF/LTF İlişkisi**: `065_Video_https_www_youtube_com_watch_v_92kwt30MdRQ.json`
+- **Hızlanan (Parabolik/Rounded) Akış**: `027_4_Supply_Demand_Chain_Zincir_Oluşturma_ve_Order_Flow.json`
+- **iBOS (Internal BOS)**: `074_4_MARKET_YAPISI_KAVRAMLARI_VE_KIRILIMLAR.json`
+- **ICE**: `056_3_Forex_Spot_CFD_vs_Vadeli_İşlemler_Futures.json`
+- **ICT**: `072_2_ANALİZ_TÜRLERİ_VE_FİYAT_YORUMLAMA.json`
+- **IDM**: `033_3_İşlem_ve_Analiz_Stratejisi_EUR_USD_Örneği.json`, `151_5_Swing_İşlem_vs_Tepki_Reaction_İşlemi_Ayrımı.json`
+- **Import Prices**: `156_Dosya_pdf-kuyruk-kalan_forex_makro_hafta3_analizi_pdf.json`, `forex_makro_hafta3_analizi.json`
+- **Impulsive Mum**: `124_1_Temel_Piyasa_Yapısı_ve_Parite_Tercihi_EUR_USD_Odaklı.json`
+- **In-Internal Yapı**: `037_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Indecision Candle (IC / FTR)**: `153_Dosya_pdf-kuyruk_Sinanenginnft-Ders_Notlari_pdf.json`
+- **Indecision Candle (IC)**: `Sinanenginnft-Ders Notlari.json`
+- **Inside Bar (IB)**: `153_Dosya_pdf-kuyruk_Sinanenginnft-Ders_Notlari_pdf.json`, `Sinanenginnft-Ders Notlari.json`
+- **Internal**: `020_2_ZAMAN_DİLİMLERİNE_GÖRE_HARİTALANDIRMA_TOP-DOWN_ANALYSIS.json`, `101_4_Özet_Adım_Adım_Analiz_Akışı.json`
+- **Internal (İç Yapı)**: `006_4_HTF_LTF_Arasındaki_Fraktal_İlişki.json`
+- **Internal (İç) Yapı**: `037_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Internal (İç) Yapılar**: `131_2_Risk_Yönetimi_ve_Stop_Yerleşimi_Kuralları.json`
+- **Internal Stop**: `122_4_Grafik_Üzerinden_Çıkarılan_Pratik_Kurallar_EUR_USD_-_DXY_Örnekleri.json`
+- **Internal Structure**: `039_3_Zaman_Dilimleri_Multi-Timeframe_ve_Onay_Mekanizması.json`, `098_1_Temel_Kavramlar_ve_Tanımlar.json`, `100_3_Piyasa_Mantığı_ve_İşlem_Stratejisi_Düşüş_Trendi_Bearish_Örneği.json`
+- **Internal Structure (İç Yapı)**: `019_1_TEMEL_KAVRAMLAR_VE_TANIMLAR.json`, `074_4_MARKET_YAPISI_KAVRAMLARI_VE_KIRILIMLAR.json`
+- **Internal Swings**: `099_2_Grafik_Üzerinde_Haritalama_Chart_Mapping.json`
+- **Internal Trend**: `077_7_ÖĞRENCİLER_İÇİN_ALTIN_TAVSİYELER_ÇIKARIMLAR.json`
+- **Internal Yapı**: `097_Video_https_www_youtube_com_watch_v_tE_eWFz7wn4.json`
+- **Internal Yönü**: `022_4_GRAFİK_DÜZENİ_VE_ANALİZ_TAKİBİ_CHART_HYGIENE.json`
+- **Intraday**: `005_3_Trader_Tiplerine_Göre_Zaman_Dilimi_Matrisi.json`, `073_3_ZAMAN_DİLİMLERİ_TIMEFRAMES_VE_HİYERARŞİ.json`
+- **ISM Manufacturing & Services**: `forex_makro_hafta1_analizi.json`
+- **ISM PMI**: `154_Dosya_pdf-kuyruk_forex_makro_hafta1_analizi_pdf.json`
+- **Izgara (Grid)**: `047_3_Grafik_ve_Çalışma_Alanı_Ayarları.json`
+- **İki Mum Kuralı**: `015_6_İki_Mum_Kuralı_ile_HTF_Target_Protected_Belirleme.json`
+- **İlk Mum Tuzağı**: `156_Dosya_pdf-kuyruk-kalan_forex_makro_hafta3_analizi_pdf.json`
+- **İmpulsif Hareket**: `034_4_Sık_Yapılan_Hatalar_ve_Önemli_İpuçları.json`
+- **İmpulsif hareket**: `064_4_Trader_İçin_Önemli_Çıkarımlar_İpuçları.json`
+- **İptal Kuralı**: `149_3_İptal_Şartları_Invalidation_ve_Manuel_Stop_Mantığı.json`
+- **İslami Hesap (Swap-Free)**: `083_2_Hesap_Türleri_ve_Karşılaştırma.json`
+- **İstatistiksel hareket sınırları**: `141_1_Giriş_ve_Temel_Prensipler.json`
+- **İstatistiksel Limit**: `146_6_Özet_Çıkarım.json`
+- **İstatistiksel Ortalama Stratejisi**: `140_Video_https_www_youtube_com_watch_v_gQxosD9I7jQ.json`
+- **İstikrarlı Kazanç**: `138_4_Finansal_Baskı_ve_Psikoloji.json`
+- **İtki Dalgası**: `038_2_Tek_Leg_Mantığı_ve_Doğru_Kırılım_Okuma_Doğru_vs_Yanlış.json`
+- **İyi Tür ve Kötü Tür Getiri Artışı**: `forex_makro_hafta3_analizi.json`
+- **İç Untested Alanlar**: `026_3_Range_Supply_Demand_ve_Key_Level_Yapıları.json`
+- **İç Yapı**: `098_1_Temel_Kavramlar_ve_Tanımlar.json`, `134_5_Özet_Tavsiyeler.json`
+- **İç Yapı (Internal)**: `038_2_Tek_Leg_Mantığı_ve_Doğru_Kırılım_Okuma_Doğru_vs_Yanlış.json`, `132_3_Çoklu_Zaman_Dilimi_MTF_ve_Piyasa_Yapısı_Analizi.json`
+- **İç Yapı Desteği**: `108_3_HTF_Yüksek_Zaman_Dilimi_Yapı_Analizi_ve_DXY_Kullanımı.json`
+- **İç Yapı Hareketi**: `076_6_DOĞRU_SWİNG_BELİRLEME_METODOLOJİSİ_7_KURAL_PRENSİBİ.json`
+- **İç Yapı Likiditesi (Internal Liquidity)**: `066_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **İç Yapı Onayı**: `017_Pratik_İpuçları_ve_İşlem_Yönetimi.json`
+- **İç yapı tuzakları**: `041_5_Önemli_İpuçları_ve_Özet_Kurallar.json`
+- **İşlem (Trade)**: `046_2_Platform_Arayüzü_ve_Temel_Pencereler.json`
+- **İşlem / Giriş Zaman Dilimi**: `005_3_Trader_Tiplerine_Göre_Zaman_Dilimi_Matrisi.json`
+- **İşlem Boyutu**: `125_2_Lot_ve_Risk_Hesaplama_Mantığı.json`
+- **İşlem Doğrulama (Confirmation)**: `065_Video_https_www_youtube_com_watch_v_92kwt30MdRQ.json`
+- **İşlem İletim Hızı**: `084_3_Desteklenen_Enstrümanlar_ve_İşlem_Koşulları.json`
+- **İşlem Süresi**: `085_4_Para_Yatırma_Çekme_ve_Müşteri_Hizmetleri.json`
+- **İşlem sıklığı**: `041_5_Önemli_İpuçları_ve_Özet_Kurallar.json`
+- **İşlem Yönetimi**: `118_Video_https_www_youtube_com_watch_v_3Jq456eM_1k.json`, `123_5_Öne_Çıkan_Tavsiyeler_ve_Ders_Çıkarımları.json`, `136_2_Kâr_ve_İşlem_Yönetimi_Günü_Artıda_Kapatma_İlkesi.json`
+- **İşlemdeyken Grafiği Okumak**: `129_6_Öne_Çıkan_Tavsiyeler.json`
+- **İşsizlik Haklarından Yararlanma Başvuruları**: `061_1_Makroekonomik_Takvim_ve_Piyasa_Ön_Hazırlığı.json`
+- **İşsizlik Oranı Tuzağı**: `154_Dosya_pdf-kuyruk_forex_makro_hafta1_analizi_pdf.json`
+- **JOLTS**: `154_Dosya_pdf-kuyruk_forex_makro_hafta1_analizi_pdf.json`, `forex_makro_hafta1_analizi.json`
+- **JPY (Japon Yeni)**: `106_1_DXY_US_Dollar_Index_Nedir.json`
+- **Kademe Atmak**: `150_4_İstatistiksel_Sapma_ve_Aralık_Verileri_EUR_USD_Örneği.json`
+- **Kademeli Giriş (Entry)**: `144_4_Grid_Stratejisinin_Çalışma_Mantığı.json`
+- **Kademeli Giriş (Scale-In / Layering)**: `126_3_Kademeli_Giriş_Scale-In_Layering_ve_Teminat_Margin_Yönetimi.json`
+- **Kademeli Giriş Stratejileri**: `123_5_Öne_Çıkan_Tavsiyeler_ve_Ders_Çıkarımları.json`
+- **Kaldıraç**: `083_2_Hesap_Türleri_ve_Karşılaştırma.json`, `084_3_Desteklenen_Enstrümanlar_ve_İşlem_Koşulları.json`, `086_5_Adım_Adım_Hesap_Açılış_ve_MetaTrader_5_Kurulumu.json`
+- **Kaldıraç (Leverage)**: `082_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Kapasite Kullanım Oranı**: `156_Dosya_pdf-kuyruk-kalan_forex_makro_hafta3_analizi_pdf.json`
+- **Karşıt Emir Gücü**: `014_5_Üst_Zaman_Dilimindeki_Untested_Test_Edilmemiş_Alanlar.json`
+- **Karşıt Para Birimi**: `107_2_Pariteler_Arası_Korelasyon_Mantığı.json`
+- **Kasa Riski**: `145_5_Risk_Teminat_Margin_ve_Zarar_Kes_Stop_Yönetimi.json`
+- **Kathy Lien**: `127_4_İstatistiksel_Yaklaşım_ve_Literatür_Referansı.json`
+- **Kayma (Slippage)**: `050_6_Broker_Seçimi_ve_Hesap_Türleri.json`
+- **Kelime Hiyerarşisi**: `forex_makro_hafta3_analizi.json`
+- **Key Level**: `008_6_Grafik_Üzerinde_Not_Alma_Mapping_Yöntemi.json`, `026_3_Range_Supply_Demand_ve_Key_Level_Yapıları.json`, `075_5_ONLAR_VE_FİYATLANMA_DİNAMİKLERİ.json`
+- **Key Level (K-Level)**: `062_2_Temel_Kavramlar_ve_Tanımlar.json`
+- **Klasik Hesap**: `050_6_Broker_Seçimi_ve_Hesap_Türleri.json`
+- **Komisyon**: `050_6_Broker_Seçimi_ve_Hesap_Türleri.json`, `082_1_Temel_Kavramlar_ve_Tanımlar.json`, `083_2_Hesap_Türleri_ve_Karşılaştırma.json`
+- **Konfirmasyon Entry**: `128_5_Grafiksel_Giriş_Şablonu_Price_Action_Döngüsü.json`
+- **Konsolidasyon**: `057_4_COT_Commitment_of_Traders_Raporu_Analizi.json`
+- **Korektif Yükseliş/Düşüş**: `012_3_Fiyat_İlerleme_Tipleri_ve_Leg_Önü_Likidite.json`
+- **Korelasyon**: `064_4_Trader_İçin_Önemli_Çıkarımlar_İpuçları.json`
+- **Kredi/Banka kartı**: `085_4_Para_Yatırma_Çekme_ve_Müşteri_Hizmetleri.json`
+- **Kripto para**: `085_4_Para_Yatırma_Çekme_ve_Müşteri_Hizmetleri.json`
+- **Kripto Para Birimleri**: `084_3_Desteklenen_Enstrümanlar_ve_İşlem_Koşulları.json`
+- **KYC (Belge Doğrulama)**: `086_5_Adım_Adım_Hesap_Açılış_ve_MetaTrader_5_Kurulumu.json`
+- **kârda kapatma**: `139_5_Uygulama_ve_Aksiyon_Planı_Grup_Görevi.json`
+- **Kârı Cebe Koymak (Cash-in)**: `129_6_Öne_Çıkan_Tavsiyeler.json`
+- **Kümülatif Kazanç**: `130_1_Trading_Psikolojisi_ve_İşlem_Yönetimi.json`
+- **Kılavuz (Navigator)**: `046_2_Platform_Arayüzü_ve_Temel_Pencereler.json`
+- **Kırılım Okuma**: `038_2_Tek_Leg_Mantığı_ve_Doğru_Kırılım_Okuma_Doğru_vs_Yanlış.json`
+- **Leg**: `036_Video_https_www_youtube_com_watch_v_hbb8qVFCjSM.json`
+- **Leg (Bacak)**: `037_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Leg High**: `038_2_Tek_Leg_Mantığı_ve_Doğru_Kırılım_Okuma_Doğru_vs_Yanlış.json`, `040_4_İşleme_Giriş_ve_Fiyat_Alanları_Premium_Discount.json`
+- **Leg Low**: `038_2_Tek_Leg_Mantığı_ve_Doğru_Kırılım_Okuma_Doğru_vs_Yanlış.json`, `040_4_İşleme_Giriş_ve_Fiyat_Alanları_Premium_Discount.json`
+- **Leg Önü Likidite**: `012_3_Fiyat_İlerleme_Tipleri_ve_Leg_Önü_Likidite.json`
+- **Likidasyon Riski**: `145_5_Risk_Teminat_Margin_ve_Zarar_Kes_Stop_Yönetimi.json`
+- **Likidite**: `017_Pratik_İpuçları_ve_İşlem_Yönetimi.json`, `034_4_Sık_Yapılan_Hatalar_ve_Önemli_İpuçları.json`, `035_Özet_Kural.json`, `040_4_İşleme_Giriş_ve_Fiyat_Alanları_Premium_Discount.json`, `056_3_Forex_Spot_CFD_vs_Vadeli_İşlemler_Futures.json`, `068_3_Parite_Örnekleri_ve_Vaka_Analizleri.json`, `118_Video_https_www_youtube_com_watch_v_3Jq456eM_1k.json`, `120_2_Piyasa_Yapısı_ve_Fiyat_Mekaniği.json`, `121_3_Giriş_Modelleri_ve_Zaman_Dilimi_Çelişkisi.json`, `123_5_Öne_Çıkan_Tavsiyeler_ve_Ders_Çıkarımları.json`, `131_2_Risk_Yönetimi_ve_Stop_Yerleşimi_Kuralları.json`, `132_3_Çoklu_Zaman_Dilimi_MTF_ve_Piyasa_Yapısı_Analizi.json`, `151_5_Swing_İşlem_vs_Tepki_Reaction_İşlemi_Ayrımı.json`, `152_6_Öğrenme_ve_Analiz_Hiyerarşisi.json`
+- **Likidite (Sweep)**: `007_5_Mum_Kapanışları_Likidite_Sweep_ve_Onay_Mantığı.json`
+- **Likidite Alımı**: `029_6_İşlem_Alma_ve_Konfirmasyon_Stratejisi.json`, `039_3_Zaman_Dilimleri_Multi-Timeframe_ve_Onay_Mekanizması.json`
+- **Likidite Alımı (Liquidity Sweep)**: `066_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Likidite Alımı (Sweep)**: `063_3_Enstrüman_Bazlı_Teknik_İncelemeler_ve_Yol_Haritaları.json`
+- **Likidite Konseptleri**: `065_Video_https_www_youtube_com_watch_v_92kwt30MdRQ.json`
+- **Likidite Manipülasyonu**: `075_5_ONLAR_VE_FİYATLANMA_DİNAMİKLERİ.json`
+- **Likidite Sağlayıcılar**: `088_7_Önemli_Uyarılar_ve_Broker_Seçiminde_Kritik_Kriterler.json`
+- **Likidite Sweep**: `033_3_İşlem_ve_Analiz_Stratejisi_EUR_USD_Örneği.json`, `077_7_ÖĞRENCİLER_İÇİN_ALTIN_TAVSİYELER_ÇIKARIMLAR.json`, `133_4_Grafik_İncelemeleri_ve_Pratik_Örnekler.json`
+- **Likidite Süpürmesi (Sweep)**: `028_5_Zaman_Dilimleri_Multi-Timeframe_Koordinasyonu_ve_Mum_Onayları.json`
+- **Likidite tasfiyesi (sweep)**: `118_Video_https_www_youtube_com_watch_v_3Jq456eM_1k.json`
+- **Likidite Temizliği**: `067_2_İşlem_Stratejisi_ve_Karar_Mekanizması.json`, `124_1_Temel_Piyasa_Yapısı_ve_Parite_Tercihi_EUR_USD_Odaklı.json`
+- **Likidite Temizliği (Sweep)**: `128_5_Grafiksel_Giriş_Şablonu_Price_Action_Döngüsü.json`, `148_2_Kademeli_Giriş_Grid_ve_Ortalama_Yönetim_Stratejisi.json`
+- **Likidite Tespiti**: `033_3_İşlem_ve_Analiz_Stratejisi_EUR_USD_Örneği.json`
+- **Lisans ve Regülasyon**: `050_6_Broker_Seçimi_ve_Hesap_Türleri.json`
+- **Lisans Şartı**: `088_7_Önemli_Uyarılar_ve_Broker_Seçiminde_Kritik_Kriterler.json`
+- **Long**: `040_4_İşleme_Giriş_ve_Fiyat_Alanları_Premium_Discount.json`
+- **Lot**: `045_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Lot Büyüklüğü**: `049_5_Risk_Yönetimi_Position_Sizer_EA_Kurulumu_ve_Kullanımı.json`, `145_5_Risk_Teminat_Margin_ve_Zarar_Kes_Stop_Yönetimi.json`
+- **Low/High Sweep**: `124_1_Temel_Piyasa_Yapısı_ve_Parite_Tercihi_EUR_USD_Odaklı.json`
+- **LTF**: `006_4_HTF_LTF_Arasındaki_Fraktal_İlişki.json`, `016_7_Zaman_Dilimleri_Uyumu_Multi-Timeframe_MTF.json`, `038_2_Tek_Leg_Mantığı_ve_Doğru_Kırılım_Okuma_Doğru_vs_Yanlış.json`, `069_4_Trader_İçin_Önemli_Tavsiyeler.json`, `121_3_Giriş_Modelleri_ve_Zaman_Dilimi_Çelişkisi.json`
+- **LTF (Alt Zaman Dilimi)**: `028_5_Zaman_Dilimleri_Multi-Timeframe_Koordinasyonu_ve_Mum_Onayları.json`
+- **LTF (Alt Zaman Dilimi) konfirmasyonu**: `064_4_Trader_İçin_Önemli_Çıkarımlar_İpuçları.json`
+- **LTF (Düşük Zaman Dilimi / İç Yapı)**: `014_5_Üst_Zaman_Dilimindeki_Untested_Test_Edilmemiş_Alanlar.json`
+- **LTF (Düşük Zaman Dilimi)**: `003_1_Multi_Time_Frame_MTF_Nedir_ve_Neden_Kullanılır.json`, `007_5_Mum_Kapanışları_Likidite_Sweep_ve_Onay_Mantığı.json`
+- **LTF (Low Time Frame)**: `122_4_Grafik_Üzerinden_Çıkarılan_Pratik_Kurallar_EUR_USD_-_DXY_Örnekleri.json`
+- **LTF (Low Timeframe)**: `073_3_ZAMAN_DİLİMLERİ_TIMEFRAMES_VE_HİYERARŞİ.json`
+- **LTF (Lower Timeframe - Düşük Zaman Dilimi)**: `066_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **LTF Pullback**: `151_5_Swing_İşlem_vs_Tepki_Reaction_İşlemi_Ayrımı.json`
+- **LTF'de Giriş (Pullback)**: `067_2_İşlem_Stratejisi_ve_Karar_Mekanizması.json`
+- **Macro Bias**: `073_3_ZAMAN_DİLİMLERİ_TIMEFRAMES_VE_HİYERARŞİ.json`
+- **Majör Pariteler**: `062_2_Temel_Kavramlar_ve_Tanımlar.json`
+- **Majör pariteler**: `064_4_Trader_İçin_Önemli_Çıkarımlar_İpuçları.json`
+- **Makas Aralığı (Spread)**: `045_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Makro Aktarım Zinciri**: `154_Dosya_pdf-kuyruk_forex_makro_hafta1_analizi_pdf.json`
+- **Maksimum Düşüş (Drawdown)**: `087_6_Sosyal_Ticaret_Copy_Trading_ve_Ayın_Trader_ı_Wall_of_Fame.json`
+- **Maksimum Çekilme (Drawdown)**: `149_3_İptal_Şartları_Invalidation_ve_Manuel_Stop_Mantığı.json`
+- **Maliyet Düşürme / Ortalama Çekme**: `144_4_Grid_Stratejisinin_Çalışma_Mantığı.json`
+- **Maliyet İyileştirme**: `148_2_Kademeli_Giriş_Grid_ve_Ortalama_Yönetim_Stratejisi.json`
+- **Manuel Stop-Loss**: `149_3_İptal_Şartları_Invalidation_ve_Manuel_Stop_Mantığı.json`
+- **Mapping**: `006_4_HTF_LTF_Arasındaki_Fraktal_İlişki.json`, `008_6_Grafik_Üzerinde_Not_Alma_Mapping_Yöntemi.json`
+- **Market (Piyasa)**: `071_1_GİRİŞ_VE_TEMEL_KAVRAMLAR.json`
+- **Market Akışı (Flow)**: `153_Dosya_pdf-kuyruk_Sinanenginnft-Ders_Notlari_pdf.json`
+- **Market Structure**: `097_Video_https_www_youtube_com_watch_v_tE_eWFz7wn4.json`, `098_1_Temel_Kavramlar_ve_Tanımlar.json`, `141_1_Giriş_ve_Temel_Prensipler.json`, `147_1_Temel_Piyasa_Felsefesi_ve_İşlem_Mantığı.json`
+- **Market Structure (Piyasa Yapısı)**: `152_6_Öğrenme_ve_Analiz_Hiyerarşisi.json`
+- **Market Structure Mapping**: `018_Video_https_www_youtube_com_watch_v_6v9qZqYPOpw.json`
+- **Marubozu**: `153_Dosya_pdf-kuyruk_Sinanenginnft-Ders_Notlari_pdf.json`, `Sinanenginnft-Ders Notlari.json`
+- **Marubozu Likiditesi**: `021_3_ÖNEMLİ_STRATEJİK_KURALLAR_VE_PÜF_NOKTALARI.json`
+- **MetaQuotes Dil Düzenleyicisi**: `049_5_Risk_Yönetimi_Position_Sizer_EA_Kurulumu_ve_Kullanımı.json`
+- **MetaTrader 5 (MT5)**: `045_1_Temel_Kavramlar_ve_Tanımlar.json`, `086_5_Adım_Adım_Hesap_Açılış_ve_MetaTrader_5_Kurulumu.json`
+- **Micro LTF**: `073_3_ZAMAN_DİLİMLERİ_TIMEFRAMES_VE_HİYERARŞİ.json`
+- **Mitigasyon**: `007_5_Mum_Kapanışları_Likidite_Sweep_ve_Onay_Mantığı.json`
+- **Mitigasyon (Mitigated)**: `028_5_Zaman_Dilimleri_Multi-Timeframe_Koordinasyonu_ve_Mum_Onayları.json`
+- **Mitigasyon (Mitigation)**: `062_2_Temel_Kavramlar_ve_Tanımlar.json`, `066_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Mitigate**: `027_4_Supply_Demand_Chain_Zincir_Oluşturma_ve_Order_Flow.json`
+- **Mitigated**: `025_2_Mitigasyon_Mitigated_ve_Test_Edilmemiş_Untested_Bölgeler.json`
+- **Mitigation**: `124_1_Temel_Piyasa_Yapısı_ve_Parite_Tercihi_EUR_USD_Odaklı.json`
+- **Momentum**: `058_5_İndikatörlerin_Doğru_Kullanımı.json`, `122_4_Grafik_Üzerinden_Çıkarılan_Pratik_Kurallar_EUR_USD_-_DXY_Örnekleri.json`
+- **Mother Bar (MB)**: `153_Dosya_pdf-kuyruk_Sinanenginnft-Ders_Notlari_pdf.json`, `Sinanenginnft-Ders Notlari.json`
+- **MSB (Market Structure Break)**: `074_4_MARKET_YAPISI_KAVRAMLARI_VE_KIRILIMLAR.json`
+- **MT5**: `049_5_Risk_Yönetimi_Position_Sizer_EA_Kurulumu_ve_Kullanımı.json`, `050_6_Broker_Seçimi_ve_Hesap_Türleri.json`
+- **MTF Senkronizasyonu**: `032_2_Zaman_Dilimi_Hiyerarşisi_MTF_Senkronizasyonu.json`
+- **Multi Time Frame**: `002_Video_https_www_youtube_com_watch_v_bFfNa-5up58.json`
+- **Multi Time Frame (MTF)**: `003_1_Multi_Time_Frame_MTF_Nedir_ve_Neden_Kullanılır.json`
+- **Multi-Timeframe**: `018_Video_https_www_youtube_com_watch_v_6v9qZqYPOpw.json`, `028_5_Zaman_Dilimleri_Multi-Timeframe_Koordinasyonu_ve_Mum_Onayları.json`, `039_3_Zaman_Dilimleri_Multi-Timeframe_ve_Onay_Mekanizması.json`
+- **Multi-Timeframe (MTF)**: `016_7_Zaman_Dilimleri_Uyumu_Multi-Timeframe_MTF.json`, `152_6_Öğrenme_ve_Analiz_Hiyerarşisi.json`
+- **Mum Düzeltmesi**: `032_2_Zaman_Dilimi_Hiyerarşisi_MTF_Senkronizasyonu.json`
+- **Mum Grafikleri (Candlestick Charts)**: `071_1_GİRİŞ_VE_TEMEL_KAVRAMLAR.json`
+- **Mum İçi Alt Zaman Dilimi Yapısı**: `031_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Mum Kapanışları**: `069_4_Trader_İçin_Önemli_Tavsiyeler.json`
+- **Mum Kapanışı**: `007_5_Mum_Kapanışları_Likidite_Sweep_ve_Onay_Mantığı.json`, `017_Pratik_İpuçları_ve_İşlem_Yönetimi.json`, `039_3_Zaman_Dilimleri_Multi-Timeframe_ve_Onay_Mekanizması.json`, `076_6_DOĞRU_SWİNG_BELİRLEME_METODOLOJİSİ_7_KURAL_PRENSİBİ.json`
+- **Mum Kapanışı (Body Close)**: `029_6_İşlem_Alma_ve_Konfirmasyon_Stratejisi.json`
+- **Mum Mum Analiz**: `030_Video_https_www_youtube_com_watch_v_vIImABpy8PM.json`
+- **Mum Mum İlerleme Mantığı**: `031_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Müşteri Hizmetleri**: `085_4_Para_Yatırma_Çekme_ve_Müşteri_Hizmetleri.json`
+- **Net Long**: `057_4_COT_Commitment_of_Traders_Raporu_Analizi.json`
+- **NFP**: `154_Dosya_pdf-kuyruk_forex_makro_hafta1_analizi_pdf.json`
+- **No-Trade Zone**: `034_4_Sık_Yapılan_Hatalar_ve_Önemli_İpuçları.json`
+- **No-Trade Zone (İşlem Dışı Alan)**: `066_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Non-Commercials**: `057_4_COT_Commitment_of_Traders_Raporu_Analizi.json`
+- **Non-Farm Payrolls (NFP)**: `forex_makro_hafta1_analizi.json`
+- **Non-Reportable**: `057_4_COT_Commitment_of_Traders_Raporu_Analizi.json`
+- **NZD Faiz Kararı**: `061_1_Makroekonomik_Takvim_ve_Piyasa_Ön_Hazırlığı.json`
+- **NZDJPY**: `133_4_Grafik_İncelemeleri_ve_Pratik_Örnekler.json`
+- **Old Low / Old High Testi**: `076_6_DOĞRU_SWİNG_BELİRLEME_METODOLOJİSİ_7_KURAL_PRENSİBİ.json`
+- **Onay & Takip Zaman Dilimi**: `005_3_Trader_Tiplerine_Göre_Zaman_Dilimi_Matrisi.json`
+- **Onay Arayışı**: `129_6_Öne_Çıkan_Tavsiyeler.json`
+- **Onay Bekleme**: `029_6_İşlem_Alma_ve_Konfirmasyon_Stratejisi.json`
+- **OPEC-JMMC**: `154_Dosya_pdf-kuyruk_forex_makro_hafta1_analizi_pdf.json`
+- **Order Flow**: `027_4_Supply_Demand_Chain_Zincir_Oluşturma_ve_Order_Flow.json`, `029_6_İşlem_Alma_ve_Konfirmasyon_Stratejisi.json`, `063_3_Enstrüman_Bazlı_Teknik_İncelemeler_ve_Yol_Haritaları.json`, `108_3_HTF_Yüksek_Zaman_Dilimi_Yapı_Analizi_ve_DXY_Kullanımı.json`, `132_3_Çoklu_Zaman_Dilimi_MTF_ve_Piyasa_Yapısı_Analizi.json`, `134_5_Özet_Tavsiyeler.json`, `147_1_Temel_Piyasa_Felsefesi_ve_İşlem_Mantığı.json`
+- **Orderflow**: `075_5_ONLAR_VE_FİYATLANMA_DİNAMİKLERİ.json`
+- **Ortalama Günlük Dalgalanma (ADR)**: `127_4_İstatistiksel_Yaklaşım_ve_Literatür_Referansı.json`
+- **Ortalama maliyet**: `141_1_Giriş_ve_Temel_Prensipler.json`
+- **Overtrading (Aşırı İşlem)**: `130_1_Trading_Psikolojisi_ve_İşlem_Yönetimi.json`
+- **Parçalı Giriş**: `029_6_İşlem_Alma_ve_Konfirmasyon_Stratejisi.json`
+- **PCE**: `155_Dosya_pdf-kuyruk_forex_makro_hafta2_analizi_pdf.json`, `forex_makro_hafta2_analizi.json`
+- **PD Array**: `040_4_İşleme_Giriş_ve_Fiyat_Alanları_Premium_Discount.json`
+- **Pencere Yönetimi**: `047_3_Grafik_ve_Çalışma_Alanı_Ayarları.json`
+- **Perakende Likiditesi**: `012_3_Fiyat_İlerleme_Tipleri_ve_Leg_Önü_Likidite.json`
+- **Phantom**: `072_2_ANALİZ_TÜRLERİ_VE_FİYAT_YORUMLAMA.json`
+- **Philly Fed**: `156_Dosya_pdf-kuyruk-kalan_forex_makro_hafta3_analizi_pdf.json`
+- **Philly Fed Index**: `forex_makro_hafta3_analizi.json`
+- **Photon**: `072_2_ANALİZ_TÜRLERİ_VE_FİYAT_YORUMLAMA.json`
+- **Pip**: `127_4_İstatistiksel_Yaklaşım_ve_Literatür_Referansı.json`, `150_4_İstatistiksel_Sapma_ve_Aralık_Verileri_EUR_USD_Örneği.json`
+- **Pip/lot hesabı**: `141_1_Giriş_ve_Temel_Prensipler.json`
+- **Pipette**: `125_2_Lot_ve_Risk_Hesaplama_Mantığı.json`
+- **Piyasa Emri (Market Execution)**: `048_4_İşlem_Giriş_Tipleri.json`
+- **Piyasa fazları**: `064_4_Trader_İçin_Önemli_Çıkarımlar_İpuçları.json`
+- **Piyasa Gözlemi (Market Watch)**: `046_2_Platform_Arayüzü_ve_Temel_Pencereler.json`
+- **Piyasa Tatilleri**: `061_1_Makroekonomik_Takvim_ve_Piyasa_Ön_Hazırlığı.json`
+- **Piyasa Yapısı**: `065_Video_https_www_youtube_com_watch_v_92kwt30MdRQ.json`, `097_Video_https_www_youtube_com_watch_v_tE_eWFz7wn4.json`, `098_1_Temel_Kavramlar_ve_Tanımlar.json`, `132_3_Çoklu_Zaman_Dilimi_MTF_ve_Piyasa_Yapısı_Analizi.json`
+- **Piyasanın yönü (orderflow)**: `118_Video_https_www_youtube_com_watch_v_3Jq456eM_1k.json`
+- **PMI**: `061_1_Makroekonomik_Takvim_ve_Piyasa_Ön_Hazırlığı.json`
+- **Point**: `125_2_Lot_ve_Risk_Hesaplama_Mantığı.json`, `127_4_İstatistiksel_Yaklaşım_ve_Literatür_Referansı.json`
+- **Position Sizer**: `049_5_Risk_Yönetimi_Position_Sizer_EA_Kurulumu_ve_Kullanımı.json`
+- **PPI (Üretici Fiyat Endeksi)**: `155_Dosya_pdf-kuyruk_forex_makro_hafta2_analizi_pdf.json`, `forex_makro_hafta2_analizi.json`
+- **Premium**: `040_4_İşleme_Giriş_ve_Fiyat_Alanları_Premium_Discount.json`
+- **Premium (Pahalılık)**: `067_2_İşlem_Stratejisi_ve_Karar_Mekanizması.json`
+- **Premium / Discount**: `075_5_ONLAR_VE_FİYATLANMA_DİNAMİKLERİ.json`
+- **Premium Bölgesi**: `148_2_Kademeli_Giriş_Grid_ve_Ortalama_Yönetim_Stratejisi.json`
+- **Premium/Discount**: `063_3_Enstrüman_Bazlı_Teknik_İncelemeler_ve_Yol_Haritaları.json`
+- **Price Action**: `072_2_ANALİZ_TÜRLERİ_VE_FİYAT_YORUMLAMA.json`, `123_5_Öne_Çıkan_Tavsiyeler_ve_Ders_Çıkarımları.json`
+- **Price Action (Fiyat Hareketi)**: `065_Video_https_www_youtube_com_watch_v_92kwt30MdRQ.json`
+- **Price Action Döngüsü**: `128_5_Grafiksel_Giriş_Şablonu_Price_Action_Döngüsü.json`
+- **Pro-Trend**: `007_5_Mum_Kapanışları_Likidite_Sweep_ve_Onay_Mantığı.json`, `100_3_Piyasa_Mantığı_ve_İşlem_Stratejisi_Düşüş_Trendi_Bearish_Örneği.json`
+- **Protected**: `015_6_İki_Mum_Kuralı_ile_HTF_Target_Protected_Belirleme.json`
+- **Protected (Korunan Alan / Dip-Tepe)**: `010_1_Temel_Tanımlar_ve_Kavramlar.json`
+- **Protected (Korunan Dip / Korunan Tepe)**: `011_2_Temel_Target_Protected_Mantığı.json`
+- **Protected Alanlar**: `012_3_Fiyat_İlerleme_Tipleri_ve_Leg_Önü_Likidite.json`
+- **Protected High/Low**: `149_3_İptal_Şartları_Invalidation_ve_Manuel_Stop_Mantığı.json`
+- **Protected High/Low (Korunan Tepe/Dip)**: `019_1_TEMEL_KAVRAMLAR_VE_TANIMLAR.json`, `037_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Protected Level**: `038_2_Tek_Leg_Mantığı_ve_Doğru_Kırılım_Okuma_Doğru_vs_Yanlış.json`
+- **Protected Low**: `020_2_ZAMAN_DİLİMLERİNE_GÖRE_HARİTALANDIRMA_TOP-DOWN_ANALYSIS.json`
+- **Protected Seviye**: `013_4_Yeni_High_Yeni_Low_Getirememe_Kuralı_Güç_Dengesi.json`
+- **psikolojik süreçler**: `139_5_Uygulama_ve_Aksiyon_Planı_Grup_Görevi.json`
+- **Pullback**: `017_Pratik_İpuçları_ve_İşlem_Yönetimi.json`, `020_2_ZAMAN_DİLİMLERİNE_GÖRE_HARİTALANDIRMA_TOP-DOWN_ANALYSIS.json`, `025_2_Mitigasyon_Mitigated_ve_Test_Edilmemiş_Untested_Bölgeler.json`, `031_1_Temel_Kavramlar_ve_Tanımlar.json`, `033_3_İşlem_ve_Analiz_Stratejisi_EUR_USD_Örneği.json`, `034_4_Sık_Yapılan_Hatalar_ve_Önemli_İpuçları.json`, `035_Özet_Kural.json`, `040_4_İşleme_Giriş_ve_Fiyat_Alanları_Premium_Discount.json`, `055_2_Fiyat_Hareketi_Price_Action_Engulfing_Yutan_Mum_Modeli.json`, `068_3_Parite_Örnekleri_ve_Vaka_Analizleri.json`, `100_3_Piyasa_Mantığı_ve_İşlem_Stratejisi_Düşüş_Trendi_Bearish_Örneği.json`, `108_3_HTF_Yüksek_Zaman_Dilimi_Yapı_Analizi_ve_DXY_Kullanımı.json`, `128_5_Grafiksel_Giriş_Şablonu_Price_Action_Döngüsü.json`, `144_4_Grid_Stratejisinin_Çalışma_Mantığı.json`, `147_1_Temel_Piyasa_Felsefesi_ve_İşlem_Mantığı.json`
+- **Pullback (Düzeltme)**: `011_2_Temel_Target_Protected_Mantığı.json`
+- **Range**: `063_3_Enstrüman_Bazlı_Teknik_İncelemeler_ve_Yol_Haritaları.json`
+- **Range (Dar Bant)**: `061_1_Makroekonomik_Takvim_ve_Piyasa_Ön_Hazırlığı.json`
+- **Range Copy**: `Sinanenginnft-Ders Notlari.json`
+- **Range fazı**: `064_4_Trader_İçin_Önemli_Çıkarımlar_İpuçları.json`
+- **Range İçinde Fiyatlama**: `026_3_Range_Supply_Demand_ve_Key_Level_Yapıları.json`
+- **Range/Konsolidasyon**: `077_7_ÖĞRENCİLER_İÇİN_ALTIN_TAVSİYELER_ÇIKARIMLAR.json`
+- **Raporlar (Reports)**: `046_2_Platform_Arayüzü_ve_Temel_Pencereler.json`
+- **Raw Account**: `083_2_Hesap_Türleri_ve_Karşılaştırma.json`
+- **RAW Hesap**: `050_6_Broker_Seçimi_ve_Hesap_Türleri.json`, `051_Özet_İpuçları.json`
+- **Re-Sweep**: `034_4_Sık_Yapılan_Hatalar_ve_Önemli_İpuçları.json`
+- **Reclaim**: `063_3_Enstrüman_Bazlı_Teknik_İncelemeler_ve_Yol_Haritaları.json`
+- **Regülatör**: `088_7_Önemli_Uyarılar_ve_Broker_Seçiminde_Kritik_Kriterler.json`
+- **Renkler**: `047_3_Grafik_ve_Çalışma_Alanı_Ayarları.json`
+- **Retail Sales Control Group**: `155_Dosya_pdf-kuyruk_forex_makro_hafta2_analizi_pdf.json`, `forex_makro_hafta2_analizi.json`
+- **Reversal**: `122_4_Grafik_Üzerinden_Çıkarılan_Pratik_Kurallar_EUR_USD_-_DXY_Örnekleri.json`
+- **Reversal Giriş**: `133_4_Grafik_İncelemeleri_ve_Pratik_Örnekler.json`
+- **Revizyon Tuzağı**: `forex_makro_hafta1_analizi.json`
+- **Risk Entry**: `128_5_Grafiksel_Giriş_Şablonu_Price_Action_Döngüsü.json`
+- **Risk Tutarı**: `125_2_Lot_ve_Risk_Hesaplama_Mantığı.json`
+- **Risk ve İşlem Yönetimi**: `130_1_Trading_Psikolojisi_ve_İşlem_Yönetimi.json`
+- **Risk Yönetimi**: `049_5_Risk_Yönetimi_Position_Sizer_EA_Kurulumu_ve_Kullanımı.json`, `059_6_Trade_Yönetimi_ve_Psikoloji.json`, `122_4_Grafik_Üzerinden_Çıkarılan_Pratik_Kurallar_EUR_USD_-_DXY_Örnekleri.json`, `134_5_Özet_Tavsiyeler.json`, `140_Video_https_www_youtube_com_watch_v_gQxosD9I7jQ.json`, `146_6_Özet_Çıkarım.json`
+- **Risk/Lot Yönetimi**: `123_5_Öne_Çıkan_Tavsiyeler_ve_Ders_Çıkarımları.json`
+- **Rollover**: `051_Özet_İpuçları.json`
+- **Rounded (Yay) Yapılar**: `012_3_Fiyat_İlerleme_Tipleri_ve_Leg_Önü_Likidite.json`
+- **RSI (Göreceli Güç Endeksi)**: `058_5_İndikatörlerin_Doğru_Kullanımı.json`
+- **RTH (Regular Trading Hours)**: `054_1_Seans_Yapıları_ve_Globex_Stratejisi.json`
+- **Sabitlenmiş Metin**: `008_6_Grafik_Üzerinde_Not_Alma_Mapping_Yöntemi.json`
+- **Sabitlenmiş Metin (Sticky Note)**: `022_4_GRAFİK_DÜZENİ_VE_ANALİZ_TAKİBİ_CHART_HYGIENE.json`
+- **Scaling In**: `148_2_Kademeli_Giriş_Grid_ve_Ortalama_Yönetim_Stratejisi.json`
+- **Scalp**: `005_3_Trader_Tiplerine_Göre_Zaman_Dilimi_Matrisi.json`, `073_3_ZAMAN_DİLİMLERİ_TIMEFRAMES_VE_HİYERARŞİ.json`, `126_3_Kademeli_Giriş_Scale-In_Layering_ve_Teminat_Margin_Yönetimi.json`, `146_6_Özet_Çıkarım.json`, `151_5_Swing_İşlem_vs_Tepki_Reaction_İşlemi_Ayrımı.json`
+- **Scalp İşlem**: `144_4_Grid_Stratejisinin_Çalışma_Mantığı.json`
+- **Scalp Modeli**: `121_3_Giriş_Modelleri_ve_Zaman_Dilimi_Çelişkisi.json`
+- **Scalper & Intraday Trader**: `083_2_Hesap_Türleri_ve_Karşılaştırma.json`
+- **SEK (İsveç Kronu)**: `106_1_DXY_US_Dollar_Index_Nedir.json`
+- **Senkronizasyon**: `101_4_Özet_Adım_Adım_Analiz_Akışı.json`
+- **Sermaye Büyümesi**: `136_2_Kâr_ve_İşlem_Yönetimi_Günü_Artıda_Kapatma_İlkesi.json`
+- **Sermaye ve Fon Yönetimi**: `149_3_İptal_Şartları_Invalidation_ve_Manuel_Stop_Mantığı.json`
+- **Short**: `040_4_İşleme_Giriş_ve_Fiyat_Alanları_Premium_Discount.json`
+- **Short Senaryosu**: `033_3_İşlem_ve_Analiz_Stratejisi_EUR_USD_Örneği.json`
+- **Single Leg Anlayışı**: `152_6_Öğrenme_ve_Analiz_Hiyerarşisi.json`
+- **Slippage**: `068_3_Parite_Örnekleri_ve_Vaka_Analizleri.json`
+- **Smart Money**: `057_4_COT_Commitment_of_Traders_Raporu_Analizi.json`
+- **Social / Copy Trading**: `082_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Social Trading (Sosyal Ticaret)**: `087_6_Sosyal_Ticaret_Copy_Trading_ve_Ayın_Trader_ı_Wall_of_Fame.json`
+- **Spread**: `017_Pratik_İpuçları_ve_İşlem_Yönetimi.json`, `050_6_Broker_Seçimi_ve_Hesap_Türleri.json`, `051_Özet_İpuçları.json`, `068_3_Parite_Örnekleri_ve_Vaka_Analizleri.json`, `083_2_Hesap_Türleri_ve_Karşılaştırma.json`, `084_3_Desteklenen_Enstrümanlar_ve_İşlem_Koşulları.json`, `088_7_Önemli_Uyarılar_ve_Broker_Seçiminde_Kritik_Kriterler.json`
+- **Spread (Makas Aralığı)**: `082_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **SSL**: `153_Dosya_pdf-kuyruk_Sinanenginnft-Ders_Notlari_pdf.json`, `Sinanenginnft-Ders Notlari.json`
+- **Stagflasyon**: `forex_makro_hafta2_analizi.json`
+- **Stagflasyon Sinyali**: `155_Dosya_pdf-kuyruk_forex_makro_hafta2_analizi_pdf.json`
+- **Standart Lot**: `125_2_Lot_ve_Risk_Hesaplama_Mantığı.json`
+- **Stop**: `003_1_Multi_Time_Frame_MTF_Nedir_ve_Neden_Kullanılır.json`, `134_5_Özet_Tavsiyeler.json`
+- **Stop Hunt**: `149_3_İptal_Şartları_Invalidation_ve_Manuel_Stop_Mantığı.json`
+- **Stop Loss (SL - Zarar Durdur)**: `045_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Stop Mesafesi**: `125_2_Lot_ve_Risk_Hesaplama_Mantığı.json`
+- **Stop Yönetimi**: `069_4_Trader_İçin_Önemli_Tavsiyeler.json`
+- **Stop-loss**: `010_1_Temel_Tanımlar_ve_Kavramlar.json`
+- **Stop-out**: `126_3_Kademeli_Giriş_Scale-In_Layering_ve_Teminat_Margin_Yönetimi.json`
+- **Stop-to-Entry**: `063_3_Enstrüman_Bazlı_Teknik_İncelemeler_ve_Yol_Haritaları.json`
+- **Strateji Sağlayıcı**: `087_6_Sosyal_Ticaret_Copy_Trading_ve_Ayın_Trader_ı_Wall_of_Fame.json`
+- **Strong Likidite**: `076_6_DOĞRU_SWİNG_BELİRLEME_METODOLOJİSİ_7_KURAL_PRENSİBİ.json`
+- **Structure (Yapı)**: `035_Özet_Kural.json`, `071_1_GİRİŞ_VE_TEMEL_KAVRAMLAR.json`
+- **Supercore**: `forex_makro_hafta2_analizi.json`
+- **Supply**: `024_1_Temel_Tanımlar_ve_Kavramlar.json`, `029_6_İşlem_Alma_ve_Konfirmasyon_Stratejisi.json`, `132_3_Çoklu_Zaman_Dilimi_MTF_ve_Piyasa_Yapısı_Analizi.json`
+- **Supply (Arz) Bölgesi**: `120_2_Piyasa_Yapısı_ve_Fiyat_Mekaniği.json`
+- **Supply / Demand**: `152_6_Öğrenme_ve_Analiz_Hiyerarşisi.json`
+- **Supply Bölgesi**: `145_5_Risk_Teminat_Margin_ve_Zarar_Kes_Stop_Yönetimi.json`
+- **Supply Chain**: `075_5_ONLAR_VE_FİYATLANMA_DİNAMİKLERİ.json`
+- **Supply – Demand Chain**: `027_4_Supply_Demand_Chain_Zincir_Oluşturma_ve_Order_Flow.json`
+- **Supply-Demand**: `008_6_Grafik_Üzerinde_Not_Alma_Mapping_Yöntemi.json`
+- **Supply/Demand**: `025_2_Mitigasyon_Mitigated_ve_Test_Edilmemiş_Untested_Bölgeler.json`, `028_5_Zaman_Dilimleri_Multi-Timeframe_Koordinasyonu_ve_Mum_Onayları.json`, `063_3_Enstrüman_Bazlı_Teknik_İncelemeler_ve_Yol_Haritaları.json`, `124_1_Temel_Piyasa_Yapısı_ve_Parite_Tercihi_EUR_USD_Odaklı.json`, `131_2_Risk_Yönetimi_ve_Stop_Yerleşimi_Kuralları.json`, `148_2_Kademeli_Giriş_Grid_ve_Ortalama_Yönetim_Stratejisi.json`
+- **Supply/Demand (Arz/Talep)**: `144_4_Grid_Stratejisinin_Çalışma_Mantığı.json`
+- **Supply/Demand Chain**: `075_5_ONLAR_VE_FİYATLANMA_DİNAMİKLERİ.json`
+- **Supply/Demand Zinciri**: `077_7_ÖĞRENCİLER_İÇİN_ALTIN_TAVSİYELER_ÇIKARIMLAR.json`
+- **Sweep**: `012_3_Fiyat_İlerleme_Tipleri_ve_Leg_Önü_Likidite.json`, `013_4_Yeni_High_Yeni_Low_Getirememe_Kuralı_Güç_Dengesi.json`, `015_6_İki_Mum_Kuralı_ile_HTF_Target_Protected_Belirleme.json`, `020_2_ZAMAN_DİLİMLERİNE_GÖRE_HARİTALANDIRMA_TOP-DOWN_ANALYSIS.json`, `021_3_ÖNEMLİ_STRATEJİK_KURALLAR_VE_PÜF_NOKTALARI.json`, `027_4_Supply_Demand_Chain_Zincir_Oluşturma_ve_Order_Flow.json`, `029_6_İşlem_Alma_ve_Konfirmasyon_Stratejisi.json`, `034_4_Sık_Yapılan_Hatalar_ve_Önemli_İpuçları.json`, `055_2_Fiyat_Hareketi_Price_Action_Engulfing_Yutan_Mum_Modeli.json`, `121_3_Giriş_Modelleri_ve_Zaman_Dilimi_Çelişkisi.json`, `132_3_Çoklu_Zaman_Dilimi_MTF_ve_Piyasa_Yapısı_Analizi.json`
+- **Sweep (Likidite Alımı / Fitil)**: `019_1_TEMEL_KAVRAMLAR_VE_TANIMLAR.json`
+- **Sweep (Likidite Alımı)**: `062_2_Temel_Kavramlar_ve_Tanımlar.json`, `108_3_HTF_Yüksek_Zaman_Dilimi_Yapı_Analizi_ve_DXY_Kullanımı.json`
+- **Swing**: `005_3_Trader_Tiplerine_Göre_Zaman_Dilimi_Matrisi.json`, `020_2_ZAMAN_DİLİMLERİNE_GÖRE_HARİTALANDIRMA_TOP-DOWN_ANALYSIS.json`, `034_4_Sık_Yapılan_Hatalar_ve_Önemli_İpuçları.json`, `147_1_Temel_Piyasa_Felsefesi_ve_İşlem_Mantığı.json`
+- **Swing Dalgası**: `076_6_DOĞRU_SWİNG_BELİRLEME_METODOLOJİSİ_7_KURAL_PRENSİBİ.json`
+- **Swing Hareketi**: `037_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Swing High**: `006_4_HTF_LTF_Arasındaki_Fraktal_İlişki.json`, `040_4_İşleme_Giriş_ve_Fiyat_Alanları_Premium_Discount.json`, `099_2_Grafik_Üzerinde_Haritalama_Chart_Mapping.json`
+- **Swing High/Low**: `131_2_Risk_Yönetimi_ve_Stop_Yerleşimi_Kuralları.json`
+- **Swing İşlem**: `126_3_Kademeli_Giriş_Scale-In_Layering_ve_Teminat_Margin_Yönetimi.json`, `151_5_Swing_İşlem_vs_Tepki_Reaction_İşlemi_Ayrımı.json`
+- **Swing Low**: `006_4_HTF_LTF_Arasındaki_Fraktal_İlişki.json`, `040_4_İşleme_Giriş_ve_Fiyat_Alanları_Premium_Discount.json`, `099_2_Grafik_Üzerinde_Haritalama_Chart_Mapping.json`, `100_3_Piyasa_Mantığı_ve_İşlem_Stratejisi_Düşüş_Trendi_Bearish_Örneği.json`
+- **Swing Structure**: `074_4_MARKET_YAPISI_KAVRAMLARI_VE_KIRILIMLAR.json`
+- **Swing Structure (Ana Yapı)**: `019_1_TEMEL_KAVRAMLAR_VE_TANIMLAR.json`
+- **Swing Trader**: `083_2_Hesap_Türleri_ve_Karşılaştırma.json`
+- **Swing Yapısı**: `004_2_Temel_Mantık_Tümden_Gelim_ve_Tüme_Varım.json`
+- **Swing Yönü**: `022_4_GRAFİK_DÜZENİ_VE_ANALİZ_TAKİBİ_CHART_HYGIENE.json`
+- **Süper Çekirdek (Supercore)**: `155_Dosya_pdf-kuyruk_forex_makro_hafta2_analizi_pdf.json`
+- **Sürdürülebilirlik**: `134_5_Özet_Tavsiyeler.json`, `136_2_Kâr_ve_İşlem_Yönetimi_Günü_Artıda_Kapatma_İlkesi.json`
+- **Tahvil İhaleleri**: `155_Dosya_pdf-kuyruk_forex_makro_hafta2_analizi_pdf.json`
+- **Take Profit (TP - Kâr Al)**: `045_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Take Profit (TP)**: `033_3_İşlem_ve_Analiz_Stratejisi_EUR_USD_Örneği.json`
+- **Take-Profit**: `010_1_Temel_Tanımlar_ve_Kavramlar.json`
+- **Take-Profit (TP)**: `017_Pratik_İpuçları_ve_İşlem_Yönetimi.json`
+- **Takipçi**: `087_6_Sosyal_Ticaret_Copy_Trading_ve_Ayın_Trader_ı_Wall_of_Fame.json`
+- **Talep (Demand) Bölgesi**: `013_4_Yeni_High_Yeni_Low_Getirememe_Kuralı_Güç_Dengesi.json`
+- **Talep / Destek Bölgesi**: `024_1_Temel_Tanımlar_ve_Kavramlar.json`
+- **Talep Bölgesi**: `122_4_Grafik_Üzerinden_Çıkarılan_Pratik_Kurallar_EUR_USD_-_DXY_Örnekleri.json`
+- **Talep-Arz Bölgesi**: `055_2_Fiyat_Hareketi_Price_Action_Engulfing_Yutan_Mum_Modeli.json`
+- **Target**: `015_6_İki_Mum_Kuralı_ile_HTF_Target_Protected_Belirleme.json`
+- **Target (Hedef Alan / Likidite)**: `010_1_Temel_Tanımlar_ve_Kavramlar.json`
+- **Target (Hedef Likidite)**: `013_4_Yeni_High_Yeni_Low_Getirememe_Kuralı_Güç_Dengesi.json`
+- **Target (Hedef)**: `011_2_Temel_Target_Protected_Mantığı.json`
+- **Target High/Low (Hedef Tepe/Dip)**: `019_1_TEMEL_KAVRAMLAR_VE_TANIMLAR.json`
+- **Target vs. Protected Levels**: `152_6_Öğrenme_ve_Analiz_Hiyerarşisi.json`
+- **Tasfiye (Sweep)**: `120_2_Piyasa_Yapısı_ve_Fiyat_Mekaniği.json`
+- **Technical Analysis**: `072_2_ANALİZ_TÜRLERİ_VE_FİYAT_YORUMLAMA.json`
+- **Tek Bilek (Single Leg) Kırılımı**: `021_3_ÖNEMLİ_STRATEJİK_KURALLAR_VE_PÜF_NOKTALARI.json`
+- **Tek Bir Girişe Aşırı Anlam Yükleme**: `135_1_Temel_Kavramlar_ve_Karşılaşılan_Psikolojik_Hatalar.json`
+- **Tek Leg**: `036_Video_https_www_youtube_com_watch_v_hbb8qVFCjSM.json`
+- **Tek Leg (V-Shape) Tuzağı**: `077_7_ÖĞRENCİLER_İÇİN_ALTIN_TAVSİYELER_ÇIKARIMLAR.json`
+- **Tek Leg Mantığı**: `038_2_Tek_Leg_Mantığı_ve_Doğru_Kırılım_Okuma_Doğru_vs_Yanlış.json`
+- **Tek Tıkla İşlem (One-Click Trading)**: `048_4_İşlem_Giriş_Tipleri.json`
+- **Teknik Analiz**: `053_Video_https_www_youtube_com_watch_v_mB3bRNZNHvo.json`, `072_2_ANALİZ_TÜRLERİ_VE_FİYAT_YORUMLAMA.json`
+- **Teknik Hesaplamalar**: `140_Video_https_www_youtube_com_watch_v_gQxosD9I7jQ.json`
+- **Temel Analiz**: `053_Video_https_www_youtube_com_watch_v_mB3bRNZNHvo.json`, `072_2_ANALİZ_TÜRLERİ_VE_FİYAT_YORUMLAMA.json`
+- **Teminat (Margin) Yönetimi**: `126_3_Kademeli_Giriş_Scale-In_Layering_ve_Teminat_Margin_Yönetimi.json`
+- **Teminat Planlaması**: `127_4_İstatistiksel_Yaklaşım_ve_Literatür_Referansı.json`
+- **Teminat Seviyesi (Margin Level)**: `145_5_Risk_Teminat_Margin_ve_Zarar_Kes_Stop_Yönetimi.json`
+- **Tepki (Reaction) İşlemi**: `151_5_Swing_İşlem_vs_Tepki_Reaction_İşlemi_Ayrımı.json`
+- **Terminal / Araç Kutusu**: `046_2_Platform_Arayüzü_ve_Temel_Pencereler.json`
+- **Ters (Negatif) Korelasyon**: `107_2_Pariteler_Arası_Korelasyon_Mantığı.json`
+- **Ters-U Eğrisi**: `forex_makro_hafta1_analizi.json`
+- **Ters-U İstisnası**: `154_Dosya_pdf-kuyruk_forex_makro_hafta1_analizi_pdf.json`
+- **Test Edilmemiş Alan**: `025_2_Mitigasyon_Mitigated_ve_Test_Edilmemiş_Untested_Bölgeler.json`
+- **Test Edilmiş Alan**: `025_2_Mitigasyon_Mitigated_ve_Test_Edilmemiş_Untested_Bölgeler.json`
+- **Teyit**: `069_4_Trader_İçin_Önemli_Tavsiyeler.json`
+- **TIC Long-Term Purchases**: `156_Dosya_pdf-kuyruk-kalan_forex_makro_hafta3_analizi_pdf.json`, `forex_makro_hafta3_analizi.json`
+- **Tickmill**: `087_6_Sosyal_Ticaret_Copy_Trading_ve_Ayın_Trader_ı_Wall_of_Fame.json`
+- **Tickmill-Live**: `086_5_Adım_Adım_Hesap_Açılış_ve_MetaTrader_5_Kurulumu.json`
+- **Top-Down Analysis**: `020_2_ZAMAN_DİLİMLERİNE_GÖRE_HARİTALANDIRMA_TOP-DOWN_ANALYSIS.json`
+- **Trade Management**: `147_1_Temel_Piyasa_Felsefesi_ve_İşlem_Mantığı.json`
+- **Trade Psikolojisi**: `138_4_Finansal_Baskı_ve_Psikoloji.json`
+- **Trader of the Month (Ayın Trader'ı)**: `087_6_Sosyal_Ticaret_Copy_Trading_ve_Ayın_Trader_ı_Wall_of_Fame.json`
+- **Trader's Room**: `086_5_Adım_Adım_Hesap_Açılış_ve_MetaTrader_5_Kurulumu.json`
+- **Trading**: `053_Video_https_www_youtube_com_watch_v_mB3bRNZNHvo.json`
+- **Trading Psikolojisi**: `134_5_Özet_Tavsiyeler.json`
+- **TradingView Raw**: `083_2_Hesap_Türleri_ve_Karşılaştırma.json`
+- **Trailing Stop**: `069_4_Trader_İçin_Önemli_Tavsiyeler.json`
+- **Trend**: `003_1_Multi_Time_Frame_MTF_Nedir_ve_Neden_Kullanılır.json`
+- **Trend Gücü**: `058_5_İndikatörlerin_Doğru_Kullanımı.json`
+- **TÜFE**: `061_1_Makroekonomik_Takvim_ve_Piyasa_Ön_Hazırlığı.json`
+- **Tümden Gelim (Top-Down)**: `004_2_Temel_Mantık_Tümden_Gelim_ve_Tüme_Varım.json`
+- **Tüme Varım (Bottom-Up)**: `004_2_Temel_Mantık_Tümden_Gelim_ve_Tüme_Varım.json`
+- **Unemployment Claims**: `156_Dosya_pdf-kuyruk-kalan_forex_makro_hafta3_analizi_pdf.json`, `forex_makro_hafta1_analizi.json`, `forex_makro_hafta3_analizi.json`
+- **Unmitigated Supply / Demand**: `128_5_Grafiksel_Giriş_Şablonu_Price_Action_Döngüsü.json`
+- **Untested**: `025_2_Mitigasyon_Mitigated_ve_Test_Edilmemiş_Untested_Bölgeler.json`
+- **Untested (Test Edilmemiş) Bölge**: `019_1_TEMEL_KAVRAMLAR_VE_TANIMLAR.json`, `066_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Untested Alanlar**: `014_5_Üst_Zaman_Dilimindeki_Untested_Test_Edilmemiş_Alanlar.json`
+- **Untested Demand**: `020_2_ZAMAN_DİLİMLERİNE_GÖRE_HARİTALANDIRMA_TOP-DOWN_ANALYSIS.json`
+- **UoM Enflasyon Beklentileri**: `155_Dosya_pdf-kuyruk_forex_makro_hafta2_analizi_pdf.json`
+- **UoM Enflasyon Beklentisi**: `forex_makro_hafta2_analizi.json`
+- **USD/JPY**: `063_3_Enstrüman_Bazlı_Teknik_İncelemeler_ve_Yol_Haritaları.json`
+- **USDT.D**: `106_1_DXY_US_Dollar_Index_Nedir.json`
+- **Uyumsuzluk (Divergence)**: `058_5_İndikatörlerin_Doğru_Kullanımı.json`
+- **V-Shape / Impulsive Hareket**: `012_3_Fiyat_İlerleme_Tipleri_ve_Leg_Önü_Likidite.json`
+- **Vadeli İşlemler (Futures)**: `056_3_Forex_Spot_CFD_vs_Vadeli_İşlemler_Futures.json`
+- **Valid Kapanış (Gövde Kapanışı)**: `066_1_Temel_Kavramlar_ve_Tanımlar.json`
+- **Veri Penceresi (Data Window)**: `046_2_Platform_Arayüzü_ve_Temel_Pencereler.json`
+- **Verimlilik (Productivity)**: `forex_makro_hafta1_analizi.json`
+- **Volatilite**: `061_1_Makroekonomik_Takvim_ve_Piyasa_Ön_Hazırlığı.json`
+- **Volatilite Fitilleri**: `131_2_Risk_Yönetimi_ve_Stop_Yerleşimi_Kuralları.json`
+- **Weak High**: `133_4_Grafik_İncelemeleri_ve_Pratik_Örnekler.json`
+- **Win-rate**: `003_1_Multi_Time_Frame_MTF_Nedir_ve_Neden_Kullanılır.json`
+- **WTI**: `068_3_Parite_Örnekleri_ve_Vaka_Analizleri.json`
+- **Wyckoff**: `072_2_ANALİZ_TÜRLERİ_VE_FİYAT_YORUMLAMA.json`
+- **XAU/USD**: `063_3_Enstrüman_Bazlı_Teknik_İncelemeler_ve_Yol_Haritaları.json`, `068_3_Parite_Örnekleri_ve_Vaka_Analizleri.json`
+- **XAUUSD**: `133_4_Grafik_İncelemeleri_ve_Pratik_Örnekler.json`
+- **Yapı Kırılımı**: `032_2_Zaman_Dilimi_Hiyerarşisi_MTF_Senkronizasyonu.json`
+- **Yapı kırılımı**: `041_5_Önemli_İpuçları_ve_Özet_Kurallar.json`
+- **Yapı Okuma Mantığı**: `036_Video_https_www_youtube_com_watch_v_hbb8qVFCjSM.json`
+- **Yapı/Mum İlişkisi**: `030_Video_https_www_youtube_com_watch_v_vIImABpy8PM.json`
+- **Yeni High / Yeni Low**: `013_4_Yeni_High_Yeni_Low_Getirememe_Kuralı_Güç_Dengesi.json`
+- **Yüksek Zaman Dilimi (HTF)**: `146_6_Özet_Çıkarım.json`
+- **Zaman Dilimi Analizi**: `022_4_GRAFİK_DÜZENİ_VE_ANALİZ_TAKİBİ_CHART_HYGIENE.json`
+- **Zaman Dilimi Hiyerarşisi**: `032_2_Zaman_Dilimi_Hiyerarşisi_MTF_Senkronizasyonu.json`
+- **Zaman Dilimleri (Timeframes)**: `055_2_Fiyat_Hareketi_Price_Action_Engulfing_Yutan_Mum_Modeli.json`
+- **Zarar kes (stop)**: `141_1_Giriş_ve_Temel_Prensipler.json`
+- **Zarar Kesme (Stop-Out)**: `145_5_Risk_Teminat_Margin_ve_Zarar_Kes_Stop_Yönetimi.json`
+- **Zihinsel Disiplin**: `136_2_Kâr_ve_İşlem_Yönetimi_Günü_Artıda_Kapatma_İlkesi.json`
+- **Zincir Mantığı**: `027_4_Supply_Demand_Chain_Zincir_Oluşturma_ve_Order_Flow.json`
+- **Zone**: `025_2_Mitigasyon_Mitigated_ve_Test_Edilmemiş_Untested_Bölgeler.json`
+- **Çapraz Pariteler**: `062_2_Temel_Kavramlar_ve_Tanımlar.json`, `107_2_Pariteler_Arası_Korelasyon_Mantığı.json`
+- **Çekirdek CPI**: `155_Dosya_pdf-kuyruk_forex_makro_hafta2_analizi_pdf.json`
+- **Çerezlik Entry**: `121_3_Giriş_Modelleri_ve_Zaman_Dilimi_Çelişkisi.json`
+- **Çizim Gruplandırma**: `022_4_GRAFİK_DÜZENİ_VE_ANALİZ_TAKİBİ_CHART_HYGIENE.json`
+- **Çoklu Zaman Dilimi (MTF)**: `132_3_Çoklu_Zaman_Dilimi_MTF_ve_Piyasa_Yapısı_Analizi.json`
+- **Çoklu Zaman Dilimi (MTF) Analizi**: `030_Video_https_www_youtube_com_watch_v_vIImABpy8PM.json`
+- **Çoklu Zaman Dilimi Analizi**: `002_Video_https_www_youtube_com_watch_v_bFfNa-5up58.json`, `018_Video_https_www_youtube_com_watch_v_6v9qZqYPOpw.json`
+- **Çoklu zaman dilimi analizi (HTF/LTF)**: `118_Video_https_www_youtube_com_watch_v_3Jq456eM_1k.json`
+- **Özgüven Eksikliği**: `130_1_Trading_Psikolojisi_ve_İşlem_Yönetimi.json`
+- **Üst Zaman Dilimi (HTF)**: `059_6_Trade_Yönetimi_ve_Psikoloji.json`
+- **Üst Zaman Dilimi Mum Kapanışı**: `075_5_ONLAR_VE_FİYATLANMA_DİNAMİKLERİ.json`
+- **Üst Zaman Dilimi Teyidi**: `133_4_Grafik_İncelemeleri_ve_Pratik_Örnekler.json`
+
+## Dosya -> Konu (dosya adi sirasina gore)
+
+- `002_Video_https_www_youtube_com_watch_v_bFfNa-5up58.json`: Multi Time Frame (Çoklu Zaman Dilimi) Analizi
+- `003_1_Multi_Time_Frame_MTF_Nedir_ve_Neden_Kullanılır.json`: Multi Time Frame (MTF) Nedir ve Neden Kullanılır?
+- `004_2_Temel_Mantık_Tümden_Gelim_ve_Tüme_Varım.json`: Temel Mantık: Tümden Gelim ve Tüme Varım
+- `005_3_Trader_Tiplerine_Göre_Zaman_Dilimi_Matrisi.json`: Trader Tiplerine Göre Zaman Dilimi Matrisi
+- `006_4_HTF_LTF_Arasındaki_Fraktal_İlişki.json`: HTF & LTF Arasındaki Fraktal İlişki
+- `007_5_Mum_Kapanışları_Likidite_Sweep_ve_Onay_Mantığı.json`: Mum Kapanışları, Likidite (Sweep) ve Onay Mantığı
+- `008_6_Grafik_Üzerinde_Not_Alma_Mapping_Yöntemi.json`: Grafik Üzerinde Not Alma (Mapping) Yöntemi
+- `009_Video_https_www_youtube_com_watch_v_dWK4WzrXXq8.json`: Target & Protected Yapıları (Hedef ve Korunan Alanlar)
+- `010_1_Temel_Tanımlar_ve_Kavramlar.json`: Temel Tanımlar ve Kavramlar
+- `011_2_Temel_Target_Protected_Mantığı.json`: Temel Target & Protected Mantığı
+- `012_3_Fiyat_İlerleme_Tipleri_ve_Leg_Önü_Likidite.json`: Fiyat İlerleme Tipleri ve Leg Önü Likidite
+- `013_4_Yeni_High_Yeni_Low_Getirememe_Kuralı_Güç_Dengesi.json`: Yeni High / Yeni Low Getirememe Kuralı (Güç Dengesi)
+- `014_5_Üst_Zaman_Dilimindeki_Untested_Test_Edilmemiş_Alanlar.json`: Üst Zaman Dilimindeki "Untested" (Test Edilmemiş) Alanlar
+- `015_6_İki_Mum_Kuralı_ile_HTF_Target_Protected_Belirleme.json`: İki Mum Kuralı ile HTF Target & Protected Belirleme
+- `016_7_Zaman_Dilimleri_Uyumu_Multi-Timeframe_MTF.json`: Zaman Dilimleri Uyumu (Multi-Timeframe / MTF)
+- `017_Pratik_İpuçları_ve_İşlem_Yönetimi.json`: Pratik İpuçları ve İşlem Yönetimi
+- `018_Video_https_www_youtube_com_watch_v_6v9qZqYPOpw.json`: Çoklu Zaman Dilimi Analizi ve Market Yapısı Haritalandırma (EUR/USD Örneği)
+- `019_1_TEMEL_KAVRAMLAR_VE_TANIMLAR.json`: Temel Kavramlar ve Tanımlar
+- `020_2_ZAMAN_DİLİMLERİNE_GÖRE_HARİTALANDIRMA_TOP-DOWN_ANALYSIS.json`: Zaman Dilimlerine Göre Haritalandırma (Top-Down Analysis)
+- `021_3_ÖNEMLİ_STRATEJİK_KURALLAR_VE_PÜF_NOKTALARI.json`: Önemli Stratejik Kurallar ve Püf Noktaları
+- `022_4_GRAFİK_DÜZENİ_VE_ANALİZ_TAKİBİ_CHART_HYGIENE.json`: Grafik Düzeni ve Analiz Takibi (Chart Hygiene)
+- `023_Video_https_www_youtube_com_watch_v_etkjBVraf9k.json`: Supply – Demand (Arz – Talep / Destek – Direnç) ve Fiyat Akışı (Order Flow)
+- `024_1_Temel_Tanımlar_ve_Kavramlar.json`: 1. Temel Tanımlar ve Kavramlar
+- `025_2_Mitigasyon_Mitigated_ve_Test_Edilmemiş_Untested_Bölgeler.json`: Mitigasyon (Mitigated) ve Test Edilmemiş (Untested) Bölgeler
+- `026_3_Range_Supply_Demand_ve_Key_Level_Yapıları.json`: 3. Range Supply – Demand ve Key Level Yapıları
+- `027_4_Supply_Demand_Chain_Zincir_Oluşturma_ve_Order_Flow.json`: Supply – Demand Chain (Zincir Oluşturma) ve Order Flow
+- `028_5_Zaman_Dilimleri_Multi-Timeframe_Koordinasyonu_ve_Mum_Onayları.json`: Zaman Dilimleri (Multi-Timeframe) Koordinasyonu ve Mum Onayları
+- `029_6_İşlem_Alma_ve_Konfirmasyon_Stratejisi.json`: İşlem Alma ve Konfirmasyon Stratejisi
+- `030_Video_https_www_youtube_com_watch_v_vIImABpy8PM.json`: Candle by Candle & Çoklu Zaman Dilimi (MTF) Analizi
+- `031_1_Temel_Kavramlar_ve_Tanımlar.json`: Temel Kavramlar ve Tanımlar
+- `032_2_Zaman_Dilimi_Hiyerarşisi_MTF_Senkronizasyonu.json`: Zaman Dilimi Hiyerarşisi (MTF Senkronizasyonu)
+- `033_3_İşlem_ve_Analiz_Stratejisi_EUR_USD_Örneği.json`: İşlem ve Analiz Stratejisi (EUR/USD Örneği)
+- `034_4_Sık_Yapılan_Hatalar_ve_Önemli_İpuçları.json`: Sık Yapılan Hatalar ve Önemli İpuçları
+- `035_Özet_Kural.json`: Özet Kural
+- `036_Video_https_www_youtube_com_watch_v_hbb8qVFCjSM.json`: Leg – Tek Leg / Temelden Grafik Okuma
+- `037_1_Temel_Kavramlar_ve_Tanımlar.json`: Temel Kavramlar ve Tanımlar
+- `038_2_Tek_Leg_Mantığı_ve_Doğru_Kırılım_Okuma_Doğru_vs_Yanlış.json`: Tek Leg Mantığı ve Doğru Kırılım Okuma (Doğru vs. Yanlış)
+- `039_3_Zaman_Dilimleri_Multi-Timeframe_ve_Onay_Mekanizması.json`: Zaman Dilimleri (Multi-Timeframe) ve Onay Mekanizması
+- `040_4_İşleme_Giriş_ve_Fiyat_Alanları_Premium_Discount.json`: İşleme Giriş ve Fiyat Alanları (Premium / Discount)
+- `041_5_Önemli_İpuçları_ve_Özet_Kurallar.json`: Önemli İpuçları ve Özet Kurallar
+- `044_Video_https_www_youtube_com_watch_v_cZXJ-upNsD4.json`: MetaTrader 5 (MT5) Kullanımı, Risk Yönetimi ve Broker Entegrasyonu
+- `045_1_Temel_Kavramlar_ve_Tanımlar.json`: 1. Temel Kavramlar ve Tanımlar
+- `046_2_Platform_Arayüzü_ve_Temel_Pencereler.json`: Platform Arayüzü ve Temel Pencereler
+- `047_3_Grafik_ve_Çalışma_Alanı_Ayarları.json`: Grafik ve Çalışma Alanı Ayarları
+- `048_4_İşlem_Giriş_Tipleri.json`: 4. İşlem Giriş Tipleri
+- `049_5_Risk_Yönetimi_Position_Sizer_EA_Kurulumu_ve_Kullanımı.json`: Risk Yönetimi: Position Sizer EA Kurulumu ve Kullanımı
+- `050_6_Broker_Seçimi_ve_Hesap_Türleri.json`: Broker Seçimi ve Hesap Türleri
+- `051_Özet_İpuçları.json`: Özet İpuçları
+- `053_Video_https_www_youtube_com_watch_v_mB3bRNZNHvo.json`: Finansal Piyasalar & Trading
+- `054_1_Seans_Yapıları_ve_Globex_Stratejisi.json`: Seans Yapıları ve Globex Stratejisi
+- `055_2_Fiyat_Hareketi_Price_Action_Engulfing_Yutan_Mum_Modeli.json`: Fiyat Hareketi (Price Action): Engulfing (Yutan Mum) Modeli
+- `056_3_Forex_Spot_CFD_vs_Vadeli_İşlemler_Futures.json`: Forex (Spot/CFD) vs. Vadeli İşlemler (Futures)
+- `057_4_COT_Commitment_of_Traders_Raporu_Analizi.json`: COT (Commitment of Traders) Raporu Analizi
+- `058_5_İndikatörlerin_Doğru_Kullanımı.json`: 5. İndikatörlerin Doğru Kullanımı
+- `059_6_Trade_Yönetimi_ve_Psikoloji.json`: Trade Yönetimi ve Psikoloji
+- `060_Video_https_www_youtube_com_watch_v_lmToaHnciug.json`: Piyasa Analizi, Fiyat Yapısı (Market Structure) ve Likidite Konseptleri
+- `061_1_Makroekonomik_Takvim_ve_Piyasa_Ön_Hazırlığı.json`: Makroekonomik Takvim ve Piyasa Ön Hazırlığı
+- `062_2_Temel_Kavramlar_ve_Tanımlar.json`: 2. Temel Kavramlar ve Tanımlar
+- `063_3_Enstrüman_Bazlı_Teknik_İncelemeler_ve_Yol_Haritaları.json`: Enstrüman Bazlı Teknik İncelemeler ve Yol Haritaları
+- `064_4_Trader_İçin_Önemli_Çıkarımlar_İpuçları.json`: Trader İçin Önemli Çıkarımlar & İpuçları
+- `065_Video_https_www_youtube_com_watch_v_92kwt30MdRQ.json`: Fiyat Hareketi (Price Action) ve Piyasa Yapısı Analizi
+- `066_1_Temel_Kavramlar_ve_Tanımlar.json`: Temel Kavramlar ve Tanımlar
+- `067_2_İşlem_Stratejisi_ve_Karar_Mekanizması.json`: İşlem Stratejisi ve Karar Mekanizması
+- `068_3_Parite_Örnekleri_ve_Vaka_Analizleri.json`: Parite Örnekleri ve Vaka Analizleri
+- `069_4_Trader_İçin_Önemli_Tavsiyeler.json`: Trader İçin Önemli Tavsiyeler
+- `070_Video_https_www_youtube_com_watch_v_eEXsIST_kBU.json`: Market Structure (Market Yapısı) ve Price Action Temelleri
+- `071_1_GİRİŞ_VE_TEMEL_KAVRAMLAR.json`: Giriş ve Temel Kavramlar
+- `072_2_ANALİZ_TÜRLERİ_VE_FİYAT_YORUMLAMA.json`: ANALİZ TÜRLERİ VE FİYAT YORUMLAMA
+- `073_3_ZAMAN_DİLİMLERİ_TIMEFRAMES_VE_HİYERARŞİ.json`: Zaman Dilimleri (Timeframes) ve Hiyerarşi
+- `074_4_MARKET_YAPISI_KAVRAMLARI_VE_KIRILIMLAR.json`: MARKET YAPISI KAVRAMLARI VE KIRILIMLAR
+- `075_5_ONLAR_VE_FİYATLANMA_DİNAMİKLERİ.json`: 5. ONLAR VE FİYATLANMA DİNAMİKLERİ
+- `076_6_DOĞRU_SWİNG_BELİRLEME_METODOLOJİSİ_7_KURAL_PRENSİBİ.json`: Doğru Swing Belirleme Metodolojisi (7 Kural Prensibi)
+- `077_7_ÖĞRENCİLER_İÇİN_ALTIN_TAVSİYELER_ÇIKARIMLAR.json`: Öğrenciler İçin Altın Tavsiyeler & Çıkarımlar
+- `081_Video_https_www_youtube_com_watch_v_oexVISF5Mhk.json`: Finansal Piyasalarda Broker Seçimi ve Tickmill Platform Rehberi
+- `082_1_Temel_Kavramlar_ve_Tanımlar.json`: Temel Kavramlar ve Tanımlar
+- `083_2_Hesap_Türleri_ve_Karşılaştırma.json`: Hesap Türleri ve Karşılaştırma
+- `084_3_Desteklenen_Enstrümanlar_ve_İşlem_Koşulları.json`: Desteklenen Enstrümanlar ve İşlem Koşulları
+- `085_4_Para_Yatırma_Çekme_ve_Müşteri_Hizmetleri.json`: Para Yatırma, Çekme ve Müşteri Hizmetleri
+- `086_5_Adım_Adım_Hesap_Açılış_ve_MetaTrader_5_Kurulumu.json`: Adım Adım Hesap Açılış ve MetaTrader 5 Kurulumu
+- `087_6_Sosyal_Ticaret_Copy_Trading_ve_Ayın_Trader_ı_Wall_of_Fame.json`: Sosyal Ticaret (Copy Trading) ve Ayın Trader'ı (Wall of Fame)
+- `088_7_Önemli_Uyarılar_ve_Broker_Seçiminde_Kritik_Kriterler.json`: Önemli Uyarılar ve Broker Seçiminde Kritik Kriterler
+- `097_Video_https_www_youtube_com_watch_v_tE_eWFz7wn4.json`: Market Structure (Piyasa Yapısı) – External & Internal Yapı
+- `098_1_Temel_Kavramlar_ve_Tanımlar.json`: Temel Kavramlar ve Tanımlar
+- `099_2_Grafik_Üzerinde_Haritalama_Chart_Mapping.json`: Grafik Üzerinde Haritalama (Chart Mapping)
+- `100_3_Piyasa_Mantığı_ve_İşlem_Stratejisi_Düşüş_Trendi_Bearish_Örneği.json`: Piyasa Mantığı ve İşlem Stratejisi (Düşüş Trendi / Bearish Örneği)
+- `101_4_Özet_Adım_Adım_Analiz_Akışı.json`: Özet / Adım Adım Analiz Akışı
+- `105_Video_https_www_youtube_com_watch_v_g9z4u5bVojA.json`: DXY (Dolar Endeksi) ve Forex Korelasyon Analizi
+- `106_1_DXY_US_Dollar_Index_Nedir.json`: DXY (US Dollar Index) Nedir?
+- `107_2_Pariteler_Arası_Korelasyon_Mantığı.json`: Pariteler Arası Korelasyon Mantığı
+- `108_3_HTF_Yüksek_Zaman_Dilimi_Yapı_Analizi_ve_DXY_Kullanımı.json`: HTF (Yüksek Zaman Dilimi) Yapı Analizi ve DXY Kullanımı
+- `118_Video_https_www_youtube_com_watch_v_3Jq456eM_1k.json`: Fiyat Yapısı (Market Structure), Likidite ve İşlem Yönetimi Eğitimi (Bölüm 1)
+- `120_2_Piyasa_Yapısı_ve_Fiyat_Mekaniği.json`: Piyasa Yapısı ve Fiyat Mekaniği
+- `121_3_Giriş_Modelleri_ve_Zaman_Dilimi_Çelişkisi.json`: Giriş Modelleri ve Zaman Dilimi Çelişkisi
+- `122_4_Grafik_Üzerinden_Çıkarılan_Pratik_Kurallar_EUR_USD_-_DXY_Örnekleri.json`: Grafik Üzerinden Çıkarılan Pratik Kurallar (EUR/USD - DXY Örnekleri)
+- `123_5_Öne_Çıkan_Tavsiyeler_ve_Ders_Çıkarımları.json`: Öne Çıkan Tavsiyeler ve Ders Çıkarımları
+- `124_1_Temel_Piyasa_Yapısı_ve_Parite_Tercihi_EUR_USD_Odaklı.json`: Temel Piyasa Yapısı ve Parite Tercihi (EUR/USD Odaklı)
+- `125_2_Lot_ve_Risk_Hesaplama_Mantığı.json`: Lot ve Risk Hesaplama Mantığı
+- `126_3_Kademeli_Giriş_Scale-In_Layering_ve_Teminat_Margin_Yönetimi.json`: Kademeli Giriş (Scale-In / Layering) ve Teminat (Margin) Yönetimi
+- `127_4_İstatistiksel_Yaklaşım_ve_Literatür_Referansı.json`: İstatistiksel Yaklaşım ve Literatür Referansı
+- `128_5_Grafiksel_Giriş_Şablonu_Price_Action_Döngüsü.json`: Grafiksel Giriş Şablonu: Price Action Döngüsü
+- `129_6_Öne_Çıkan_Tavsiyeler.json`: Trading - Öne Çıkan Tavsiyeler
+- `130_1_Trading_Psikolojisi_ve_İşlem_Yönetimi.json`: Trading Psikolojisi ve İşlem Yönetimi
+- `131_2_Risk_Yönetimi_ve_Stop_Yerleşimi_Kuralları.json`: Risk Yönetimi ve Stop Yerleşimi Kuralları
+- `132_3_Çoklu_Zaman_Dilimi_MTF_ve_Piyasa_Yapısı_Analizi.json`: Çoklu Zaman Dilimi (MTF) ve Piyasa Yapısı Analizi
+- `133_4_Grafik_İncelemeleri_ve_Pratik_Örnekler.json`: Grafik İncelemeleri ve Pratik Örnekler
+- `134_5_Özet_Tavsiyeler.json`: Trading Psikolojisi, Risk Yönetimi ve Sürdürülebilirlik - Özet Tavsiyeler
+- `135_1_Temel_Kavramlar_ve_Karşılaşılan_Psikolojik_Hatalar.json`: Temel Kavramlar ve Karşılaşılan Psikolojik Hatalar
+- `136_2_Kâr_ve_İşlem_Yönetimi_Günü_Artıda_Kapatma_İlkesi.json`: Kâr ve İşlem Yönetimi: "Günü Artıda Kapatma" İlkesi
+- `138_4_Finansal_Baskı_ve_Psikoloji.json`: Finansal Baskı ve Psikoloji
+- `139_5_Uygulama_ve_Aksiyon_Planı_Grup_Görevi.json`: Uygulama ve Aksiyon Planı (Grup Görevi)
+- `140_Video_https_www_youtube_com_watch_v_gQxosD9I7jQ.json`: Grid Trading ve İstatistiksel Ortalama Stratejisi (Bölüm 1)
+- `141_1_Giriş_ve_Temel_Prensipler.json`: Giriş ve Temel Prensipler
+- `143_3_EUR_USD_İstatistiksel_Piyasa_Ortalamaları.json`: EUR/USD İstatistiksel Piyasa Ortalamaları
+- `144_4_Grid_Stratejisinin_Çalışma_Mantığı.json`: Grid Stratejisinin Çalışma Mantığı
+- `145_5_Risk_Teminat_Margin_ve_Zarar_Kes_Stop_Yönetimi.json`: Risk, Teminat (Margin) ve Zarar Kes (Stop) Yönetimi
+- `146_6_Özet_Çıkarım.json`: İleri Düzey Fiyat Hareketi (PA), Kademeli (Grid) İşlem ve Risk Yönetimi
+- `147_1_Temel_Piyasa_Felsefesi_ve_İşlem_Mantığı.json`: Temel Piyasa Felsefesi ve İşlem Mantığı
+- `148_2_Kademeli_Giriş_Grid_ve_Ortalama_Yönetim_Stratejisi.json`: Kademeli Giriş (Grid) ve Ortalama Yönetim Stratejisi
+- `149_3_İptal_Şartları_Invalidation_ve_Manuel_Stop_Mantığı.json`: İptal Şartları (Invalidation) ve Manuel Stop Mantığı
+- `150_4_İstatistiksel_Sapma_ve_Aralık_Verileri_EUR_USD_Örneği.json`: İstatistiksel Sapma ve Aralık Verileri (EUR/USD Örneği)
+- `151_5_Swing_İşlem_vs_Tepki_Reaction_İşlemi_Ayrımı.json`: Swing İşlem vs. Tepki (Reaction) İşlemi Ayrımı
+- `152_6_Öğrenme_ve_Analiz_Hiyerarşisi.json`: Öğrenme ve Analiz Hiyerarşisi
+- `153_Dosya_pdf-kuyruk_Sinanenginnft-Ders_Notlari_pdf.json`: Mum Formasyonları ve Market Dinamikleri
+- `154_Dosya_pdf-kuyruk_forex_makro_hafta1_analizi_pdf.json`: Forex ve Makroekonomik Analiz Mekanikleri
+- `155_Dosya_pdf-kuyruk_forex_makro_hafta2_analizi_pdf.json`: Forex Makro Analiz Rehberi: Enflasyon Haftası
+- `156_Dosya_pdf-kuyruk-kalan_forex_makro_hafta3_analizi_pdf.json`: Forex Makro Analiz Rehberi: 3. Hafta Fed ve Sindirme Haftası Analizi
+- `Sinanenginnft-Ders Notlari.json`: Mum Formasyonları, Fiyat Hareketi (PA) ve İndikatör Stratejileri
+- `forex_makro_hafta1_analizi.json`: Forex Makro Analiz ve Ekonomik Takvim Göstergeleri Rehberi
+- `forex_makro_hafta2_analizi.json`: Forex Makro Analiz Rehberi - Enflasyon Haftası Dinamikleri ve Göstergeleri
+- `forex_makro_hafta3_analizi.json`: Forex Makro Analiz Rehberi - 3. Hafta: Fed Haftası
+
+## Atlanan dosyalar
+
+- `001_Video_https_www_youtube_com_watch_v_eEXsIST_kBU.json`: konu bos
+- `042_Video_https_www_youtube_com_watch_v_oexVISF5Mhk.json`: konu bos
+- `043_Video_https_www_youtube_com_watch_v_tE_eWFz7wn4.json`: konu bos
+- `052_Video_https_www_youtube_com_watch_v_g9z4u5bVojA.json`: konu bos
+- `078_Video_https_www_youtube_com_watch_v_oexVISF5Mhk.json`: konu bos
+- `079_Video_https_www_youtube_com_watch_v_tE_eWFz7wn4.json`: konu bos
+- `080_Video_https_www_youtube_com_watch_v_g9z4u5bVojA.json`: konu bos
+- `089_Video_https_www_youtube_com_watch_v_tE_eWFz7wn4.json`: konu bos
+- `090_Video_https_www_youtube_com_watch_v_g9z4u5bVojA.json`: konu bos
+- `091_Video_https_www_youtube_com_watch_v_tE_eWFz7wn4.json`: konu bos
+- `092_Video_https_www_youtube_com_watch_v_g9z4u5bVojA.json`: konu bos
+- `093_Video_https_www_youtube_com_watch_v_tE_eWFz7wn4.json`: konu bos
+- `094_Video_https_www_youtube_com_watch_v_g9z4u5bVojA.json`: konu bos
+- `095_Video_https_www_youtube_com_watch_v_tE_eWFz7wn4.json`: konu bos
+- `096_Video_https_www_youtube_com_watch_v_g9z4u5bVojA.json`: konu bos
+- `102_Video_https_www_youtube_com_watch_v_g9z4u5bVojA.json`: konu bos
+- `103_Video_https_www_youtube_com_watch_v_g9z4u5bVojA.json`: konu bos
+- `104_Video_https_www_youtube_com_watch_v_g9z4u5bVojA.json`: konu bos
+- `109_Video_https_rr1---sn-u0g3jxaa-5qcz_googlevideo_com_videoplayback_expire_17877687.json`: konu bos
+- `110_Video_python3_gemini_learning_assistant_py.json`: konu bos
+- `111_Video_https_www_youtube_com_watch_v_3Jq456eM_1k.json`: konu bos
+- `112_Video_https_www_youtube_com_watch_v_3Jq456eM_1k.json`: konu bos
+- `113_Video_python3_gemini_learning_assistant_py.json`: konu bos
+- `114_Video_https_www_youtube_com_watch_v_3Jq456eM_1k.json`: konu bos
+- `115_Video_https_www_youtube_com_watch_v_3Jq456eM_1k.json`: konu bos
+- `116_Video_https_www_youtube_com_watch_v_3Jq456eM_1k.json`: konu bos
+- `117_Video_https_www_youtube_com_watch_v_3Jq456eM_1k.json`: konu bos
