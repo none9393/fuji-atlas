@@ -1,0 +1,20 @@
+{
+  "konu": "HTF & LTF Arasındaki Fraktal İlişki",
+  "anahtar_kavramlar": [
+    "HTF",
+    "LTF",
+    "Internal (İç Yapı)",
+    "External/Swing (Ana Yapı)",
+    "Mapping",
+    "Swing High",
+    "Swing Low"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Bir üst zaman diliminin Internal (İç Yapı) hareketleri, bir alt zaman diliminin External/Swing (Ana Yapı) hareketlerine eşittir.",
+    "Mapping yaparken grafik kirliliğinden kaçınmak için bütün geçmiş grafik çizgiyle doldurulmamalıdır.",
+    "HTF'de sadece son Swing High ve Swing Low aralığı belirlenmelidir.",
+    "Alt zaman dilimine geçildiğinde yalnızca bu iki sınır aralığındaki fiyat hareketi analiz edilmelidir."
+  ],
+  "sorular_cevaplar": []
+}
