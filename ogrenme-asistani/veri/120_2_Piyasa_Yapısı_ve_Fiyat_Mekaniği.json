@@ -1,0 +1,32 @@
+{
+  "konu": "Piyasa Yapısı ve Fiyat Mekaniği",
+  "anahtar_kavramlar": [
+    "Demand (Talep) Bölgesi",
+    "Supply (Arz) Bölgesi",
+    "Tasfiye (Sweep)",
+    "Emir Akışı (Orderflow)",
+    "Likidite",
+    "Bearish"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Bir Demand veya Supply bölgesinin çalıştığını anlamak için fiyatın temas sonrası reaksiyonuna bakılır; yeni bir High veya Low yaptırabiliyorsa bölge sağlıklıdır.",
+    "Fiyat talep bölgesine dokunup yeni High yapamaz, likiditeyi sweep eder ve tekrar denemesinde de yeni High çıkaramazsa alıcıların tükendiğini ve fiyatın düşeceğini (Bearish) gösterir.",
+    "Fiyat trend yönünde gitmeden önce emir akışının sağlıklı ilerlemesi için iç yapılarda sert bir tasfiye (sweep/pullback) hareketi yapabilir.",
+    "Tasfiye hareketleri trendin tersine döndüğü yanılgısını yaratmamalı, trend yönündeki işleme dahil olmak için bir fırsat olarak görülmelidir."
+  ],
+  "sorular_cevaplar": [
+    {
+      "soru": "Bir Demand veya Supply bölgesinin sağlıklı çalıştığı nasıl anlaşılır?",
+      "cevap": "Fiyat bölgeye dokunduktan sonra yeni bir High (veya düşüşte Low) yaptırabiliyorsa bölge sağlıklıdır ve trend devam eder."
+    },
+    {
+      "soru": "Fiyat talep bölgesine dokunduktan sonra yeni bir High yapamazsa ve likiditeyi sweep'lerse bu ne anlama gelir?",
+      "cevap": "Alıcıların tükendiğini ve fiyatın aşağı akacağını (Bearish) gösterir."
+    },
+    {
+      "soru": "Trend içindeki tasfiye (sweep) hareketleri nasıl yorumlanmalıdır?",
+      "cevap": "Trendin tersine döndüğü yanılgısına düşülmemeli, emir akışının sağlıklı ilerlemesi için gereken bu hareket trend yönündeki işleme dahil olmak için fırsat olarak görülmelidir."
+    }
+  ]
+}
