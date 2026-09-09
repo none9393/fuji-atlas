@@ -23,5 +23,6 @@ Data, MetalpriceAPI spot fallback, XAUS spot fallback, then explicitly labelled
 Yahoo futures proxy. Secrets are read from the runtime environment only.
 
 Every run must write provider, UTC retrieval time, status, data age, bar count,
-and fallback level. Missing critical data produces `BLOCKED` and no PDF or
-journal update.
+and fallback level. Missing critical data, failed model analysis, or an
+incomplete knowledge-base/top-down step produces `BLOCKED` and no PDF, journal
+update, Telegram message, or artifact.
