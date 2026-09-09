@@ -1,0 +1,30 @@
+{
+  "konu": "İşleme Giriş ve Fiyat Alanları (Premium / Discount)",
+  "anahtar_kavramlar": [
+    "Premium",
+    "Discount",
+    "Leg High",
+    "Leg Low",
+    "Fibonacci",
+    "PD Array",
+    "Pullback",
+    "Likidite",
+    "Swing High",
+    "Swing Low",
+    "Bearish",
+    "Bullish",
+    "Short",
+    "Long"
+  ],
+  "tanimlar": {
+    "Premium": "Pahalı bölge",
+    "Discount": "Ucuz bölge"
+  },
+  "onemli_noktalar": [
+    "Doğru Leg High ve Leg Low belirlendikten sonra Fibonacci veya PD Array ile Premium (Pahalı) ve Discount (Ucuz) bölgeleri tespit edilir.",
+    "Düşüş yönlü (Bearish) bir yapıda fiyat Premium bölgeye pullback verdiğinde satış (Short) aranır.",
+    "Yükseliş yönlü (Bullish) bir yapıda fiyat Discount bölgeye pullback verdiğinde alış (Long) aranır.",
+    "Fiyat manipülasyonu yapıp likiditeyi aldıktan sonra, ana swing hedefi olan karşı taraftaki likiditeye (Swing Low / Swing High) doğru sürülür."
+  ],
+  "sorular_cevaplar": []
+}
