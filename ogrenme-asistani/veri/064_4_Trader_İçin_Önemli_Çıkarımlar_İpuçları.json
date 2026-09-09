@@ -1,0 +1,20 @@
+{
+  "konu": "Trader İçin Önemli Çıkarımlar & İpuçları",
+  "anahtar_kavramlar": [
+    "LTF (Alt Zaman Dilimi) konfirmasyonu",
+    "Destek ve direnç",
+    "Korelasyon",
+    "DXY",
+    "Majör pariteler",
+    "Piyasa fazları",
+    "İmpulsif hareket",
+    "Range fazı"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Bir destek veya direnç bölgesine fiyat geldiğinde körlemesine emir koymak yerine alt zaman dilimlerinde (LTF) konfirmasyon aranmalıdır.",
+    "DXY ile majör pariteler arasındaki korelasyon gözlemlenmeli; ancak çaprazlarda birebir aynı davranış beklenmemelidir.",
+    "İmpulsif büyük hareketler sonrası piyasaların dinlenme/range fazına geçtiği unutulmamalıdır."
+  ],
+  "sorular_cevaplar": []
+}
