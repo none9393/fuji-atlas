@@ -1,0 +1,20 @@
+{
+  "konu": "Desteklenen Enstrümanlar ve İşlem Koşulları",
+  "anahtar_kavramlar": [
+    "Forex",
+    "Emtialar",
+    "Kripto Para Birimleri",
+    "Hisse Endeksleri",
+    "Kaldıraç",
+    "Spread",
+    "İşlem İletim Hızı"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Forex: 60+ döviz çifti, 1:1000 kaldıraç, 0.0 pip'e kadar düşen spread ve ortalama 0.15 milisaniye işlem iletim hızı.",
+    "Emtialar (Altın/Gümüş/Petrol): Ons Altın (XAUUSD) tarafında 4–6 birim dar spread oranları ve 1:1000'e varan kaldıraç.",
+    "Kripto Para Birimleri: BTC, ETH ve majör kripto paralar; 1:200 kaldıraç, 0 komisyon, dar makas aralığı ve 7/24 işlem imkanı.",
+    "Hisse Endeksleri (Nasdaq, SPX, Dow Jones, DAX vb.): 1:100 kaldıraç ve 0 komisyon."
+  ],
+  "sorular_cevaplar": []
+}
