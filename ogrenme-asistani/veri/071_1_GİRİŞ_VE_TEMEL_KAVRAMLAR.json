@@ -1,0 +1,20 @@
+{
+  "konu": "Giriş ve Temel Kavramlar",
+  "anahtar_kavramlar": [
+    "Market (Piyasa)",
+    "Structure (Yapı)",
+    "Bias (Yön Tayini)",
+    "Mum Grafikleri (Candlestick Charts)"
+  ],
+  "tanimlar": {
+    "Market (Piyasa)": "Ortak özelliklere sahip finansal enstrümanların oluşturduğu kümedir (Forex, Endeksler, Kripto, Emtialar, Hisse Senetleri vb.).",
+    "Structure (Yapı)": "Fiyatın grafik üzerinde zaman içinde oluşturduğu dalgalar ve hareketler silsilesidir.",
+    "Bias (Yön Tayini)": "İşleme giriş modellerine (entry) odaklanmadan önce piyasanın ana yönünün (Bullish/Yükseliş veya Bearish/Düşüş) tespit edilmesidir."
+  },
+  "onemli_noktalar": [
+    "Her piyasanın hacmi, regülasyonları, işlem saatleri ve volatilite dinamikleri farklıdır.",
+    "Başlangıç aşamasında zihnin dağılmaması için tek bir market ve maksimum 2-3 parite seçilerek odaklanılmalıdır.",
+    "Çubuk veya çizgi grafikler yerine volatiliteyi, alıcı-satıcı dengesini ve likiditeyi en net gösteren mum grafikleri (candlestick charts) tercih edilir."
+  ],
+  "sorular_cevaplar": []
+}
