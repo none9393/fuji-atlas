@@ -1,0 +1,23 @@
+{
+  "konu": "Temel Kavramlar ve Tanımlar",
+  "anahtar_kavramlar": [
+    "Candle by Candle",
+    "Mum Mum İlerleme Mantığı",
+    "Mum İçi Alt Zaman Dilimi Yapısı",
+    "Fiyat Alanı (Candle Range)",
+    "Bullish Candle",
+    "HH",
+    "HL",
+    "Pullback",
+    "BOS"
+  ],
+  "tanimlar": {
+    "Candle by Candle (Mum Mum İlerleme Mantığı)": "Fiyatın her bir mumunun bir önceki mumun High/Low seviyelerine göre yaptığı kapanışları ve hareketleri okuma yöntemidir.",
+    "Fiyat Alanı (Candle Range)": "Yeni bir tepe/dip kapanışı geldiğinde, yeni referans aralığımız son geçerli mumun Low (Dibi) ve High (Tepesi) olur."
+  },
+  "onemli_noktalar": [
+    "Bir zaman diliminde ardışık yükselen bir mum (Bullish Candle), alt zaman diliminde aslında: Yeni Tepe (HH) → Düzeltme (HL / Pullback) → Yapı Kırılımı (BOS / Kapanış) hareketidir.",
+    "Yeni bir tepe/dip kapanışı geldiğinde, yeni referans aralığımız son geçerli mumun Low (Dibi) ve High (Tepesi) olur."
+  ],
+  "sorular_cevaplar": []
+}
