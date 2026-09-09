@@ -1,0 +1,20 @@
+{
+  "konu": "Supply – Demand Chain (Zincir Oluşturma) ve Order Flow",
+  "anahtar_kavramlar": [
+    "Supply – Demand Chain",
+    "Order Flow",
+    "Zincir Mantığı",
+    "Hızlanan (Parabolik/Rounded) Akış",
+    "Mitigate",
+    "Sweep"
+  ],
+  "tanimlar": {
+    "Zincir Mantığı": "Sağlıklı bir trendde her yeni kırılımın yeni bir Demand/Supply oluşturması ve fiyatın önceki bölgeyi mitigate ederek sırayla basamak basamak ilerlemesi."
+  },
+  "onemli_noktalar": [
+    "Sağlıklı bir trendde her yeni kırılım yeni bir Demand/Supply oluşturur ve fiyat önceki bölgeyi mitigate ederek sırayla basamak basamak ilerler.",
+    "Fiyat iç likiditeleri temizlemeden sürekli yukarı/aşağı yuvarlak (rounded) bir ivmeyle akıyorsa, Demand/Supply kontrolleri zayıflar.",
+    "Hızlı/parabolik akışların bitişi genellikle sert bir Sweep (likidite alımı) ve ani bir karşıt hareketle gerçekleşir."
+  ],
+  "sorular_cevaplar": []
+}
