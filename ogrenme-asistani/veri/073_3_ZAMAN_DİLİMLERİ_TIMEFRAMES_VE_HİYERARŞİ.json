@@ -1,0 +1,31 @@
+{
+  "konu": "Zaman Dilimleri (Timeframes) ve Hiyerarşi",
+  "anahtar_kavramlar": [
+    "HTF (High Timeframe)",
+    "LTF (Low Timeframe)",
+    "Micro LTF",
+    "Macro Bias",
+    "Intraday",
+    "Scalp"
+  ],
+  "tanimlar": {
+    "HTF (High Timeframe - Yüksek Zaman)": "Aylık, Haftalık, Günlük (Daily) ve 4 Saatlik (4H) zaman dilimlerini kapsayan, ana yönün (Macro Bias) ve büyük swing yapısının belirlenmesinde kullanılan kategori.",
+    "LTF (Low Timeframe - Düşük Zaman)": "4H, 1H, 45m, 15m zaman dilimlerini kapsayan, gün içi (Intraday) yön tayini ve iç yapı takibi amacıyla kullanılan kategori.",
+    "Micro LTF (Çok Düşük Zaman)": "5m, 3m, 1m ve saniyelik zaman dilimlerini kapsayan, scalp işlemler ve hassas giriş tetikleyicileri için kullanılan kategori."
+  },
+  "onemli_noktalar": [
+    "HTF, ana yönün ve büyük swing yapısının belirlenmesi için kullanılır.",
+    "LTF, gün içi yön tayini ve iç yapı takibinde etkilidir.",
+    "Micro LTF, scalp ve hassas girişler için kullanılsa da yeni başlayanlar için kafa karıştırıcıdır ve önerilmez."
+  ],
+  "sorular_cevaplar": [
+    {
+      "soru": "HTF (Yüksek Zaman Dilimi) kullanım amacı nedir?",
+      "cevap": "Ana yönün (Macro Bias) ve büyük swing yapısının belirlenmesidir."
+    },
+    {
+      "soru": "Micro LTF hangi zaman dilimlerini kapsar ve kimler için önerilmez?",
+      "cevap": "5m, 3m, 1m ve saniyelik zaman dilimlerini kapsar; kafa karıştırıcı olduğu için yeni başlayanlara önerilmez."
+    }
+  ]
+}
