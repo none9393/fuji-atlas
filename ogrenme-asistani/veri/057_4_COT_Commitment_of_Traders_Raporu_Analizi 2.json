@@ -1,0 +1,27 @@
+{
+  "konu": "COT (Commitment of Traders) Raporu Analizi",
+  "anahtar_kavramlar": [
+    "COT Raporu",
+    "CFTC",
+    "Non-Commercials",
+    "Commercials",
+    "Non-Reportable",
+    "Smart Money",
+    "Akümülasyon",
+    "Konsolidasyon",
+    "Net Long"
+  ],
+  "tanimlar": {
+    "COT (Commitment of Traders) Raporu": "ABD Emtia Vadeli İşlemler Komisyonu (CFTC) tarafından her Cuma günü yayımlanan haftalık rapordur.",
+    "Non-Commercials (Büyük Spekülatörler / Smart Money)": "Hedge fonları ve büyük finansal kuruluşlar. Piyasa yönünü belirleyen ana gruptur.",
+    "Commercials (Ticari Kuruluşlar / Hedgers)": "Riskten korunma amaçlı işlem yapanlar (üreticiler, ihracatçılar).",
+    "Non-Reportable (Küçük Yatırımcı / Retail)": "Bireysel yatırımcılar."
+  },
+  "onemli_noktalar": [
+    "ABD Emtia Vadeli İşlemler Komisyonu (CFTC) tarafından her Cuma günü yayımlanır.",
+    "Rapor Barchart.com (Currencies > Futures > Commitments of Traders) üzerinden incelenebilir.",
+    "Fiyat yatay giderken Non-Commercial grubun Net Long kontrat sayısının sürekli artması (veya Short kontratların kapatılması), Smart Money'nin mal topladığına (akümülasyon) işaret eder ve orta-uzun vadeli Bullish (Yükseliş) yönlü bir bias oluşturur.",
+    "COT raporu günlük giriş-çıkışlar için değil, haftalık/aylık makro yön belirlemek için kullanılır."
+  ],
+  "sorular_cevaplar": []
+}
