@@ -1,0 +1,25 @@
+{
+  "konu": "Parite Örnekleri ve Vaka Analizleri",
+  "anahtar_kavramlar": [
+    "EUR/USD",
+    "DXY",
+    "XAU/USD",
+    "BTC/USD",
+    "WTI",
+    "Gap (Boşluk) Tuzağı",
+    "Egzotik / Çapraz Pariteler",
+    "Likidite",
+    "Pullback",
+    "Spread",
+    "Slippage"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "EUR/USD için 4H seviye altı gövde kapanışı (valid teyit) gelmeden, milimetrik kırılımlar veya fitillere güvenilerek agresif short açılmamalıdır.",
+    "XAU/USD'de iç yapı likiditeleri temizlendikten sonra fiyatın arz (supply) bölgesine doğru bir pullback yapması, üzerinde kapanış gelmezse sert düşüşe geçmesi beklenir.",
+    "BTC/USD günlük yapıda ucuzluk bölgesinde olup genel bias yükseliştir (Bullish); 45m/5m destekleri korunduğu sürece ilk hedef ~67.250 seviyesidir.",
+    "WTI tarafında aşağıda açık bir gap bulunması fiyatın hemen düşeceği anlamına gelmez; boğa momentumu sürerken 'gap dolacak' beklentisiyle teyitsiz short pozisyon alınmamalıdır.",
+    "Egzotik/çapraz paritelerde düşük hacim ve gece rollover saatlerindeki yüksek spread/slippage riskleri nedeniyle dar stoplu scalp işlemlerden kaçınılmalıdır."
+  ],
+  "sorular_cevaplar": []
+}
