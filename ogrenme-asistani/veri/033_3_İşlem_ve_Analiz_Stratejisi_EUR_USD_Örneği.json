@@ -1,0 +1,23 @@
+{
+  "konu": "İşlem ve Analiz Stratejisi (EUR/USD Örneği)",
+  "anahtar_kavramlar": [
+    "HTF (Üst Zaman Dilimi)",
+    "Likidite Tespiti",
+    "Extreme Supply",
+    "Likidite Sweep",
+    "Pullback",
+    "Short Senaryosu",
+    "IDM",
+    "Extreme Demand",
+    "Take Profit (TP)"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Fiyat Extreme bir likidite sweep'i yapmışsa veya güçlü bir satıcı bölgesine çarpmışsa, alt zaman dilimindeki her yeşil mum güvenli bir devam işareti değildir.",
+    "Fiyat tek bir leg halinde yükselmişse, yalnızca tek bir 4H mum üzerinde kapanış yaptı diye körü körüne Long aranmamalı, yapıya odaklanılmalıdır.",
+    "Fiyat 4H'ta yükselişi başlatan son Bull mumun altına mum kapatırsa, Daily mumun geri çekilme (pullback) evresine geçtiği kesinleşir.",
+    "Short senaryosu; 4H onayı (son Bull mum Low'u altı kapanış), 45M onayı (iç yapının aşağı kırılması) ve 5M giriş (iç likidite temizliği ve manipülasyon sonrası giriş) adımlarından oluşur.",
+    "Daily mum geri çekilmeye başladığında ilk hedef önceki Daily mumun Low'u veya test edilmemiş Extreme Demand / Likidite Havuzudur."
+  ],
+  "sorular_cevaplar": []
+}
