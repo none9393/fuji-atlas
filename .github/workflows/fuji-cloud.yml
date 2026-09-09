@@ -27,6 +27,18 @@ jobs:
         run: |
           printf '%s\n' '{}' > /tmp/fuji-empty.json
           python cloud/run_cloud.py
+      - name: Send PDFs to Telegram (optional)
+        if: ${{ env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != '' }}
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          for pdf in cloud-output/*.pdf; do
+            curl --fail --silent --show-error --max-time 30 \
+              -F chat_id="$TELEGRAM_CHAT_ID" \
+              -F document="@$pdf" \
+              "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendDocument" >/dev/null
+          done
       - uses: actions/upload-artifact@v4
         if: success()
         with:
