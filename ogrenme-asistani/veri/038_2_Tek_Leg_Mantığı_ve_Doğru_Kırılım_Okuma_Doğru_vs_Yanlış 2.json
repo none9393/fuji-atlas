@@ -1,0 +1,22 @@
+{
+  "konu": "Tek Leg Mantığı ve Doğru Kırılım Okuma (Doğru vs. Yanlış)",
+  "anahtar_kavramlar": [
+    "Tek Leg Mantığı",
+    "Kırılım Okuma",
+    "İç Yapı (Internal)",
+    "Protected Level",
+    "Leg Low",
+    "Leg High",
+    "İtki Dalgası",
+    "LTF"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Tek bir itki dalgası (leg) içinde oluşan küçük iç düzeltme dipleri veya tepeleri ana yapı seviyesi (protected level) olarak değerlendirilmemelidir.",
+    "İç yapıdaki bir seviye kırıldığında trendin tamamen döndüğünü varsayıp erken veya ters yönde işleme girmek, özellikle LTF'de dar stoplu işlemlerin stop olmasına sebep olur.",
+    "Tek bir leg boyunca fiyatın tepe ve dip sınırları tek bir bütün kabul edilir.",
+    "Fiyatın yön değiştirdiğini (Bear -> Bull veya Bull -> Bear) teyit etmek için itki dalgasını başlatan gerçek bacak dibinin (Leg Low) veya tepesinin (Leg High) kırılması ve onaylanması gerekir.",
+    "Ana leg sınırları kırılmadıkça aralıkta gerçekleşen kırılımlar yalnızca iç yapı (internal) düzeltmesi niteliğindedir ve yön değişmez."
+  ],
+  "sorular_cevaplar": []
+}
