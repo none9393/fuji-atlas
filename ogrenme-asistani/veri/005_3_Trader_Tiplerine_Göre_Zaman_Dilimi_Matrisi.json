@@ -1,0 +1,20 @@
+{
+  "konu": "Trader Tiplerine Göre Zaman Dilimi Matrisi",
+  "anahtar_kavramlar": [
+    "Scalp",
+    "Intraday",
+    "Swing",
+    "İşlem / Giriş Zaman Dilimi",
+    "Onay & Takip Zaman Dilimi"
+  ],
+  "tanimlar": {
+    "Scalp": "İşlem ve giriş için 1m, 3m, 5m; onay ve takip için 15m, 45m (maksimum 1H) zaman dilimlerini kullanan trader tipi.",
+    "Intraday": "İşlem ve giriş için 15m, 45m, 1H; onay ve takip için 4H, Daily (1D) ve swing için 1W zaman dilimlerini kullanan gün içi/hafta içi trader tipi.",
+    "Swing": "İşlem ve giriş için 2H, 4H, 8H, 12H; onay ve takip için Daily (1D), Haftalık (1W), Aylık (1M) zaman dilimlerini kullanan trader tipi."
+  },
+  "onemli_noktalar": [
+    "Çok yakın zaman dilimleri (örneğin 5m ile 15m) birbiriyle onay aracı olarak kullanılmamalıdır; çünkü swing hareketleri neredeyse aynı yere denk gelir.",
+    "Zaman dilimi seçiminde aralarında mesafe olan dilimler tercih edilmelidir (ör. 5m → 45m → 4H)."
+  ],
+  "sorular_cevaplar": []
+}
