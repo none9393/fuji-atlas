@@ -1,0 +1,16 @@
+{
+  "konu": "Özet Kural",
+  "anahtar_kavramlar": [
+    "Structure (Yapı)",
+    "Candle (Mum) analizi",
+    "Likidite",
+    "Pullback"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Structure (Yapı) ile Candle (Mum) analizini birleştirin.",
+    "Üst zaman diliminde likidite alındıysa, alt zaman dilimindeki mum kayıplarını pullback ve giriş fırsatı olarak takip edin.",
+    "Ters yöndeki zayıf mumlara aldanmayın."
+  ],
+  "sorular_cevaplar": []
+}
