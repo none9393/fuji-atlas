@@ -1,0 +1,18 @@
+{
+  "konu": "Zaman Dilimleri (Multi-Timeframe) ve Onay Mekanizması",
+  "anahtar_kavramlar": [
+    "Multi-Timeframe",
+    "Mum Kapanışı",
+    "Fitil (Sweep)",
+    "Likidite Alımı",
+    "External Swing",
+    "Internal Structure"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Üst zaman diliminde (ör. 4H/Daily) seviyenin altında/üstünde gövde kapanışı gelmedikçe yapı kırılmış sayılmaz; hareket yalnızca bir likidite alımı (sweep/manipülasyon) olarak kalabilir.",
+    "45 dakikalık grafikte kırılım gibi görünen bir hareket, 4 saatlikte sadece fitil (sweep) olarak kalabilir.",
+    "Kademeli Zaman Dilimi Analizi: External Swing (Daily / 4H), Internal Structure (45M / 15M), Giriş ve İnce Yapı (5M / 1M)."
+  ],
+  "sorular_cevaplar": []
+}
