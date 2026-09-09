@@ -1,0 +1,18 @@
+{
+  "konu": "Özet İpuçları",
+  "anahtar_kavramlar": [
+    "Algo Trading Butonu",
+    "EA",
+    "RAW Hesap",
+    "Spread",
+    "Rollover",
+    "Gece Seansı"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Algo Trading butonu kapalıysa hiçbir EA veya otomatik lot hesaplayıcı çalışmaz.",
+    "RAW hesapta komisyon ödense bile dar spread sayesinde erken stop olma riski minimuma iner.",
+    "Gece seansı rollover saatlerinde (piyasa kapanış/açılış saatleri) spreadler likidite azlığı nedeniyle anlık olarak açılabilir."
+  ],
+  "sorular_cevaplar": []
+}
