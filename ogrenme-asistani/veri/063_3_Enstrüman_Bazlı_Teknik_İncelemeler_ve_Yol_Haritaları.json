@@ -1,0 +1,46 @@
+{
+  "konu": "Enstrüman Bazlı Teknik İncelemeler ve Yol Haritaları",
+  "anahtar_kavramlar": [
+    "EUR/USD",
+    "DXY",
+    "GBP/USD",
+    "USD/JPY",
+    "XAU/USD",
+    "BTC/USDT",
+    "Order Flow",
+    "Likidite Alımı (Sweep)",
+    "Bullish Konfirmasyon",
+    "Supply/Demand",
+    "Range",
+    "Premium/Discount",
+    "Stop-to-Entry",
+    "Reclaim"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "EUR/USD üzerinde düşüş yönlü order flow baskısı hakimdir; 1.17655 talep bölgesinde likidite temizliği ve alt zaman dilimi Bullish konfirmasyonu beklenmelidir.",
+    "DXY dip likiditesini alarak tepki vermiştir ve test edilmemiş Supply bölgesine doğru yükseliş beklenmektedir.",
+    "GBP/USD'de 4 saatlik mumlar direnç üzerine çıkamadığı sürece dip likiditeleri hedeflenmeli, ilk hedefte risk sıfırlanmalı veya kısmi kâr alınmalıdır.",
+    "USD/JPY swing düşüş yapısındadır; belirlenen direnç altında satış baskısı sürer.",
+    "XAU/USD sert satış dalgası sonrası hemen yeni zirve yapmayıp Range oluşturması beklenmektedir; Premium bölgede Short, Discount bölgede Long aranmalıdır.",
+    "BTC/USDT düşüş trendindedir; fiyat çok düştü diye plansız işlem açılmamalı, ~73.116 üstü günlük kazanım veya dip sweep + reclaim senaryosu beklenmelidir."
+  ],
+  "sorular_cevaplar": [
+    {
+      "soru": "EUR/USD paritesinde 1.17655 talep bölgesine ulaşıldığında nasıl bir işlem planı uygulanmalıdır?",
+      "cevap": "Doğrudan işleme girmek yerine bölge içi likidite temizliği (low sweep) ve alt zaman dilimlerinde (1D, 5D, 45D) Bullish konfirmasyon (yapı kırılımı) beklenerek Long aranmalıdır."
+    },
+    {
+      "soru": "GBP/USD işlemlerinde uygulanması gereken risk kuralı nedir?",
+      "cevap": "İlk hedef bölgesine ulaşıldığında risk sıfırlanmalı (Stop-to-Entry) veya kısmi kâr alınmalıdır."
+    },
+    {
+      "soru": "XAU/USD (Ons Altın) için önerilen Range stratejisi nedir?",
+      "cevap": "Range içi Premium (Pahalı) bölgede sweep görüldükçe Short, Discount (Ucuz) bölgede dip likiditesi alındıkça alt zaman dilimi onayıyla Long fırsatları taranmalıdır."
+    },
+    {
+      "soru": "BTC/USDT paritesinde Long yönlü işlem açmak için hangi teknik senaryo beklenmelidir?",
+      "cevap": "Fiyatın dip seviyelerin likiditesini alıp impulsif bir mum ile içeri dönmesi (sweep + reclaim) veya ~73.116 seviyesi üzerinde günlük güçlü mum kazanımı gerçekleştirmesi beklenmelidir."
+    }
+  ]
+}
