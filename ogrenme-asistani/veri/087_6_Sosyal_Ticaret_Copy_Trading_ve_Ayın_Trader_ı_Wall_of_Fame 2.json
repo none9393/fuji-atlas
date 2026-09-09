@@ -1,0 +1,37 @@
+{
+  "konu": "Sosyal Ticaret (Copy Trading) ve Ayın Trader'ı (Wall of Fame)",
+  "anahtar_kavramlar": [
+    "Social Trading (Sosyal Ticaret)",
+    "Copy Trading",
+    "Strateji Sağlayıcı",
+    "Takipçi",
+    "Maksimum Düşüş (Drawdown)",
+    "Trader of the Month (Ayın Trader'ı)",
+    "Tickmill"
+  ],
+  "tanimlar": {
+    "Strateji Sağlayıcı": "Kendi stratejisini sisteme bağlayan ve belirlediği kâr payı yüzdesi üzerinden takipçileri kâr ettikçe kazanç sağlayan yatırımcı.",
+    "Takipçi": "Başarılı yatırımcıların geçmiş kârlılık, maksimum düşüş (drawdown) ve işlem geçmişi verilerini inceleyerek hesabını bu kişilere bağlayan yatırımcı.",
+    "Trader of the Month (Ayın Trader'ı)": "Tickmill tarafından her ay en iyi risk yönetimi ve yüzdelik büyüme sağlayan yatırımcıya verilen unvan ve $1.000 ödüllü uygulama."
+  },
+  "onemli_noktalar": [
+    "Strateji sağlayıcılar %20–%30 gibi kâr payı yüzdesi belirler ve takipçiler kâr ettikçe bu pay otomatik olarak hesaba yatar.",
+    "Takipçiler hesaplarını bağlamadan önce strateji sağlayıcıların geçmiş kârlılık, maksimum düşüş (drawdown) ve işlem geçmişi verilerini inceler.",
+    "Tickmill, her ay en iyi risk yönetimi ve yüzdelik büyüme sağlayan yatırımcıya $1.000 ödül verir.",
+    "Ayın Trader'ı seçilen yatırımcıların işlem dökümleri (hesap ekstreleri) ve röportajları platformda PDF formatında şeffaf bir şekilde yayınlanır."
+  ],
+  "sorular_cevaplar": [
+    {
+      "soru": "Sosyal ticarette strateji sağlayıcılar nasıl gelir elde eder?",
+      "cevap": "Belirledikleri kâr payı yüzdesi (%20–%30 vb.) doğrultusunda, takipçileri kâr ettikçe bu pay otomatik olarak hesaplarına yatar."
+    },
+    {
+      "soru": "Takipçiler strateji seçerken hangi verilere dikkat eder?",
+      "cevap": "Geçmiş kârlılık, maksimum düşüş (drawdown) ve işlem geçmişi verilerine dikkat eder."
+    },
+    {
+      "soru": "Tickmill Ayın Trader'ını neye göre seçer ve ne ödül verir?",
+      "cevap": "Her ay en iyi risk yönetimi ve yüzdelik büyüme sağlayan yatırımcıyı seçer ve $1.000 ödül verir."
+    }
+  ]
+}
