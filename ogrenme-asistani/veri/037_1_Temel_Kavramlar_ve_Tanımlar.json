@@ -1,0 +1,21 @@
+{
+  "konu": "Temel Kavramlar ve Tanımlar",
+  "anahtar_kavramlar": [
+    "Swing Hareketi",
+    "Leg (Bacak)",
+    "External (Dış) Yapı",
+    "Internal (İç) Yapı",
+    "In-Internal Yapı",
+    "Protected High/Low (Korunan Tepe/Dip)"
+  ],
+  "tanimlar": {
+    "Swing Hareketi": "Fiyatın ana yönlü bir dalgası ile bu dalganın düzeltme (pullback) hareketinin birleşiminden oluşan bütündür.",
+    "Leg (Bacak)": "Fiyatın belirli bir yöne doğru oluşturduğu tek yönlü itki (impulse) veya düzeltme (pullback) dalgasıdır.",
+    "External (Dış) Yapı": "Üst zaman dilimindeki (HTF) ana tepe ve dip noktalarını belirleyen ana swing yapısıdır.",
+    "Internal (İç) Yapı": "External bir swing bacağının içinde, alt zaman dilimlerinde (LTF) oluşan daha küçük swing ve leg hareketleridir.",
+    "In-Internal Yapı": "Internal yapının da içine inildiğinde (örneğin 4H $\\rightarrow$ 45M $\\rightarrow$ 5M/1M) görülen mikro fraktal dalgalardır.",
+    "Protected High/Low (Korunan Tepe/Dip)": "Bir trendin yönünün değiştiğini kabul etmek için kırılması zorunlu olan gerçek yapısal seviyedir."
+  },
+  "onemli_noktalar": [],
+  "sorular_cevaplar": []
+}
