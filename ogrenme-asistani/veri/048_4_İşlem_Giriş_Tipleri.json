@@ -1,0 +1,22 @@
+{
+  "konu": "4. İşlem Giriş Tipleri",
+  "anahtar_kavramlar": [
+    "Piyasa Emri (Market Execution)",
+    "Bekleyen Emirler (Pending Orders)",
+    "Buy/Sell Limit",
+    "Buy/Sell Stop",
+    "Tek Tıkla İşlem (One-Click Trading)"
+  ],
+  "tanimlar": {
+    "Piyasa Emri (Market Execution)": "O anki piyasa fiyatından anında alım veya satım yapar.",
+    "Buy/Sell Limit": "Fiyatın mevcut seviyeden daha iyi bir seviyeye düşmesi/yükselmesi durumunda devreye giren emir türü.",
+    "Buy/Sell Stop": "Trend yönünde kırılım gerçekleştiğinde devreye giren emir türü.",
+    "Tek Tıkla İşlem (One-Click Trading)": "Grafik üzerinde beliren hızlı al/sat paneli üzerinden saniyeler içinde piyasa fiyatından işlem açmayı sağlar."
+  },
+  "onemli_noktalar": [
+    "Piyasa Emri ile o anki piyasa fiyatından anında alım veya satım yapılır.",
+    "Buy/Sell Limit fiyatın daha iyi bir seviyeye gelmesiyle, Buy/Sell Stop ise trend yönünde kırılım gerçekleştiğinde devreye girer.",
+    "Tek Tıkla İşlem (One-Click Trading) paneli [Alt + T] kısayolu ile kullanılır."
+  ],
+  "sorular_cevaplar": []
+}
