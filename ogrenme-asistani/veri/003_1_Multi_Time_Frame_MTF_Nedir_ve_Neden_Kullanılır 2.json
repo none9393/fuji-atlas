@@ -1,0 +1,31 @@
+{
+  "konu": "Multi Time Frame (MTF) Nedir ve Neden Kullanılır?",
+  "anahtar_kavramlar": [
+    "Multi Time Frame (MTF)",
+    "HTF (Yüksek Zaman Dilimi)",
+    "LTF (Düşük Zaman Dilimi)",
+    "Bias",
+    "Entry",
+    "Stop",
+    "Win-rate",
+    "Trend"
+  ],
+  "tanimlar": {
+    "Multi Time Frame (MTF)": "Trade edilen paritede tüm zaman dilimlerini (HTF - Yüksek Zaman Dilimi, LTF - Düşük Zaman Dilimi) birlikte baz alarak piyasanın genel yönünü (bias), hedef, giriş (entry) ve zarar kes (stop) noktalarını belirleme yöntemidir."
+  },
+  "onemli_noktalar": [
+    "Güvenli işlem almak ve kazanma oranını (win-rate) artırmak amacıyla kullanılır.",
+    "Piyasada daha az ama daha yüksek kaliteli/onaylı işlemler yakalamayı sağlar.",
+    "Büyük resimdeki yönü (trend) kaçırmamayı sağlar."
+  ],
+  "sorular_cevaplar": [
+    {
+      "soru": "Multi Time Frame (MTF) nedir?",
+      "cevap": "Trade edilen paritede tüm zaman dilimlerini (HTF - Yüksek Zaman Dilimi, LTF - Düşük Zaman Dilimi) birlikte baz alarak piyasanın genel yönünü (bias), hedef, giriş (entry) ve zarar kes (stop) noktalarını belirleme yöntemidir."
+    },
+    {
+      "soru": "Multi Time Frame (MTF) neden kullanılır?",
+      "cevap": "Güvenli işlem almak, kazanma oranını (win-rate) artırmak, daha az ama daha yüksek kaliteli/onaylı işlemler yakalamak ve büyük resimdeki yönü (trend) kaçırmamak için kullanılır."
+    }
+  ]
+}
