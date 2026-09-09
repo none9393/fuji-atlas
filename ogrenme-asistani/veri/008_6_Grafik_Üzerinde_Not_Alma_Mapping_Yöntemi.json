@@ -1,0 +1,21 @@
+{
+  "konu": "Grafik Üzerinde Not Alma (Mapping) Yöntemi",
+  "anahtar_kavramlar": [
+    "Mapping",
+    "Sabitlenmiş Metin",
+    "Haftalık Swing",
+    "Haftalık Internal",
+    "Günlük Swing",
+    "Key Level",
+    "Supply-Demand"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "TradingView üzerinde grafiğe 'Sabitlenmiş Metin' eklenerek her zaman diliminin durumu yazılmalıdır.",
+    "Haftalık Swing durumu Bullish veya Bearish olarak belirtilmelidir.",
+    "Haftalık Internal durumu (örn. Pullback Fazında) not edilmelidir.",
+    "Günlük Swing yönü not edilmelidir.",
+    "4H / 45m / 5m zaman dilimleri için kilit seviyeler (Key Level / Tested / Untested Supply-Demand bölgeleri) ve beklentiler belirlenmelidir."
+  ],
+  "sorular_cevaplar": []
+}
