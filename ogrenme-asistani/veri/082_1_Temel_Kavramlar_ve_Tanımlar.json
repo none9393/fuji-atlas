@@ -1,0 +1,24 @@
+{
+  "konu": "Temel Kavramlar ve Tanımlar",
+  "anahtar_kavramlar": [
+    "Broker (Aracı Kurum)",
+    "FCA Lisansı (Financial Conduct Authority)",
+    "Spread (Makas Aralığı)",
+    "Kaldıraç (Leverage)",
+    "Komisyon",
+    "Social / Copy Trading"
+  ],
+  "tanimlar": {
+    "Broker (Aracı Kurum)": "Yatırımcıların döviz, emtia, kripto ve endeks gibi finansal piyasalarda alım-satım işlemi yapmasını sağlayan regüle edilmiş finans kuruluşu.",
+    "FCA Lisansı (Financial Conduct Authority)": "İngiltere merkezli, dünyanın en prestijli finansal denetleme kurumlarından biridir.",
+    "Spread (Makas Aralığı)": "Bir varlığın alış (Ask) ve satış (Bid) fiyatı arasındaki farktır. Pip/puan cinsinden ölçülür.",
+    "Kaldıraç (Leverage)": "Yatırımcının anaparasının katları kadar pozisyon açmasına imkan tanıyan sistemdir (Örn: 1:1000 kaldıraç, 1 $ teminatla 1000 $'lık pozisyon büyüklüğü yönetmeyi sağlar).",
+    "Komisyon": "Pozisyon açılış ve kapanışında lot başına ödenen sabit hizmet bedeli.",
+    "Social / Copy Trading": "Başarılı yatırımcıların (Strateji Sağlayıcı) işlemlerinin, takipçiler (Follower) tarafından belirli bir kâr payı karşılığında otomatik olarak kopyalanması sistemi."
+  },
+  "onemli_noktalar": [
+    "Tickmill, FCA lisansına sahiptir ve yatırımcı bakiyelerini 1.000.000 $'a kadar sigorta güvencesi altına alır.",
+    "Düşük spread, işlem maliyetini doğrudan düşürür."
+  ],
+  "sorular_cevaplar": []
+}
