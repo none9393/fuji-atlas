@@ -1,0 +1,21 @@
+{
+  "konu": "Zaman Dilimi Hiyerarşisi (MTF Senkronizasyonu)",
+  "anahtar_kavramlar": [
+    "Zaman Dilimi Hiyerarşisi",
+    "MTF Senkronizasyonu",
+    "Yapı Kırılımı",
+    "Mum Düzeltmesi",
+    "Daily",
+    "4H",
+    "45M",
+    "5M"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Üst zaman dilimindeki bir mumun iç hareketi, alt zaman dilimindeki yapı kırılımlarıyla doğrudan bağlantılıdır.",
+    "Daily (Günlük) Mum Düzeltmesi, 4H grafikte son Bull mumun Low'unun kaybedilmesi veya yapı kırılımı ile gerçekleşir.",
+    "4H Mum Düzeltmesi, 45M grafikte internal (iç) yapı kırılımı veya Bearish mum kapanışı ile gerçekleşir.",
+    "45M Mum Düzeltmesi, 5M grafikte trend değişimi veya kırılım ve retest ile gerçekleşir."
+  ],
+  "sorular_cevaplar": []
+}
