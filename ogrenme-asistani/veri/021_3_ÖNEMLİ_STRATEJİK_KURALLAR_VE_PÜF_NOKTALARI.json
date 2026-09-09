@@ -1,0 +1,23 @@
+{
+  "konu": "Önemli Stratejik Kurallar ve Püf Noktaları",
+  "anahtar_kavramlar": [
+    "Tek Bilek (Single Leg) Kırılımı",
+    "Sweep",
+    "Algoritmik Mumlar",
+    "Marubozu Likiditesi",
+    "EUR/USD - DXY Korelasyonu",
+    "Demand / Supply"
+  ],
+  "tanimlar": {
+    "Tek Bilek (Single Leg) Kırılımı": "Fiyatın bir bölgeyi hiç pullback vermeden tek bir impulsif hareketle kırması.",
+    "Marubozu Mumları": "Hacimli, fitilsiz veya çok küçük fitilli, arkalarında yoğun likidite bırakan algoritmik mumlar."
+  },
+  "onemli_noktalar": [
+    "Tek bilek kırılımlarında hareket alt zaman dilimlerinde (45m/5m) incelenmeli; fiyat geri döndüğünde impulsif hareketin başladığı ilk demand/supply alanından sert tepki verebilir.",
+    "Bir zaman diliminde sweep gerçekleştiğinde, bir alt zaman diliminde leg/demand kaybı yaşanmadan trendin kesin döndüğü söylenemez.",
+    "Alt zaman diliminde talep kaybı gerçekleşmezse, fiyat bölgeyi sadece likidite alımı olarak kullanıp mevcut hareketine devam edebilir.",
+    "Fiyat, derinleşen pullback aşamalarında Marubozu mumlarının başlangıç seviyelerine kadar çekilip oradan yön bulma eğilimindedir.",
+    "DXY sepetinde EUR ağırlığı yaklaşık %57 olduğundan ve 2 saatlik kapanış farkları bulunduğundan DXY ile EUR/USD %100 birebir uyuşmaz; yön tayini EUR/USD'nin kendi iç yapısıyla teyit edilmelidir."
+  ],
+  "sorular_cevaplar": []
+}
