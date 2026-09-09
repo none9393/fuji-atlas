@@ -1,0 +1,29 @@
+{
+  "konu": "İşlem Alma ve Konfirmasyon Stratejisi",
+  "anahtar_kavramlar": [
+    "High/Low Failure",
+    "Demand",
+    "Supply",
+    "Mum Kapanışı (Body Close)",
+    "Sweep",
+    "Likidite Alımı",
+    "Parçalı Giriş",
+    "Onay Bekleme",
+    "CHoCH / iBOS",
+    "Order Flow"
+  ],
+  "tanimlar": {
+    "Mum Kapanışı (Body Close)": "Bir bölgenin kırıldığını ve Order Flow'un devam ettiğini onaylayan durum.",
+    "Sweep (Fitil Bırakma)": "Bölgenin altına/üstüne sarkıp gövde kapatamaması, likidite alımı yapıldığını ve tersine dönüş (reversal) olasılığının yüksek olduğunu gösteren fitil hareketi.",
+    "Parçalı Giriş": "Geniş bölgelerde riski bölerek (ör. 2-3 parçalı limit emir ile) maliyet ve risk yönetimini kolaylaştıran işlem alma yöntemi.",
+    "Onay Bekleme": "Doğrudan emir atmak yerine alt zaman diliminde (LTF) iç yapı kırılımı (CHoCH / iBOS) veya mum kapanış onayı görerek stop olma ihtimalini düşüren strateji."
+  },
+  "onemli_noktalar": [
+    "Fiyat bir Demand bölgesine temas ettiğinde temel beklenti yeni bir High yapmasıdır.",
+    "Demand bölgesine temas sonrası yeni High yapılamıyor ve iç yapıda kırılım geliyorsa talep tükenmiştir ve fiyat alttaki likiditeyi (Low Liquidity) hedefler.",
+    "Supply bölgesine temas sonrası yeni Low yapılamıyorsa Supply başarısız olmuştur ve fiyat yukarıdaki tepeyi (High Target) hedefler.",
+    "Mum gövde kapanışı (Body Close) kırılımı onaylarken, sadece fitil bırakılması (Sweep) likidite alımı ve tersine dönüş işaretidir.",
+    "Parçalı giriş ve LTF'de onay bekleme stratejileri risk yönetimini güçlendirir ve stop olma ihtimalini azaltır."
+  ],
+  "sorular_cevaplar": []
+}
