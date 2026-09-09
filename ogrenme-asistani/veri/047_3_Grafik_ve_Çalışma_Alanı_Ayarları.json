@@ -1,0 +1,18 @@
+{
+  "konu": "Grafik ve Çalışma Alanı Ayarları",
+  "anahtar_kavramlar": [
+    "Grafik Özellikleri",
+    "F8",
+    "Izgara (Grid)",
+    "Renkler",
+    "Pencere Yönetimi"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "Grafik özelliklerine F8 kısayol tuşu ile erişilebilir.",
+    "Görsel kirliliği azaltmak için ızgara (grid) rengi arka planla aynı yapılabilir veya gizlenebilir.",
+    "Boğa/Ayı mum renkleri ile alış/satış çizgileri grafik özelliklerinden özelleştirilir.",
+    "Pencere yönetimi sayesinde ekran ikiye veya dörde bölünerek birden fazla parite grafiği aynı anda takip edilebilir."
+  ],
+  "sorular_cevaplar": []
+}
