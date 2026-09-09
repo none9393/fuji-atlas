@@ -1,0 +1,32 @@
+{
+  "konu": "Temel Target & Protected Mantığı",
+  "anahtar_kavramlar": [
+    "BOS (Break of Structure)",
+    "Protected (Korunan Dip / Korunan Tepe)",
+    "Target (Hedef)",
+    "Bullish (Yükselen Trend)",
+    "Bearish (Düşen Trend)",
+    "Pullback (Düzeltme)"
+  ],
+  "tanimlar": {
+    "BOS": "Break of Structure (Yapıda gerçekleşen kırılım).",
+    "Protected (Yükselen Trend)": "Kırılımı yaptıran en son dip seviye (Korunan Dip).",
+    "Target (Yükselen Trend)": "Yeni oluşan tepe; fiyatın düzeltmeden (pullback) sonra geçmesini beklediğimiz hedef noktası.",
+    "Protected (Düşen Trend)": "Kırılımı yaptıran en son tepe seviye (Korunan Tepe).",
+    "Target (Düşen Trend)": "Yeni oluşan dip seviyesi (Hedef noktası)."
+  },
+  "onemli_noktalar": [
+    "Yükselen trendde (Bullish), kırılımı yaptıran en son dip seviye Protected kabul edilirken yeni oluşan tepe Target noktasıdır.",
+    "Düşen trendde (Bearish), kırılımı yaptıran en son tepe seviye Protected kabul edilirken yeni oluşan dip Target noktasıdır."
+  ],
+  "sorular_cevaplar": [
+    {
+      "soru": "Yükselen trendde (Bullish) BOS gerçekleştikten sonra Protected ve Target noktaları neresidir?",
+      "cevap": "Kırılımı yaptıran en son dip seviye Protected (Korunan Dip), yeni oluşan tepe ise fiyatın düzeltmeden sonra geçmesini beklediğimiz Target (Hedef) noktasıdır."
+    },
+    {
+      "soru": "Düşen trendde (Bearish) BOS gerçekleştikten sonra Protected ve Target noktaları neresidir?",
+      "cevap": "Kırılımı yaptıran en son tepe seviye Protected (Korunan Tepe), yeni oluşan dip ise Target (Hedef) noktasıdır."
+    }
+  ]
+}
