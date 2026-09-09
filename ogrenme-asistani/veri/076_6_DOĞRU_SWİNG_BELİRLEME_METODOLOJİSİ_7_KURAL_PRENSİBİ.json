@@ -1,0 +1,31 @@
+{
+  "konu": "Doğru Swing Belirleme Metodolojisi (7 Kural Prensibi)",
+  "anahtar_kavramlar": [
+    "Swing Dalgası",
+    "İç Yapı Hareketi",
+    "Old Low / Old High Testi",
+    "Equilibrium (EQ)",
+    "Breakout",
+    "Strong Likidite",
+    "Mum Kapanışı"
+  ],
+  "tanimlar": {
+    "Equilibrium (EQ)": "Fibonacci %50 (denge) seviyesi."
+  },
+  "onemli_noktalar": [
+    "Bir fiyat hareketinin gerçek bir Swing Dalgası sayılması için 7 kriterden en az 4 tanesinin gerçekleşmesi gerekir.",
+    "1. Kural (Old Low / Old High Testi): Fiyatın önceki tepe veya dip seviyesini test/mitige etmesi veya süpürmesi gerekir.",
+    "2. Kural (Equilibrium Bölgesinin Testi): Fibonacci %50 seviyesinin en az bir kez mitige edilmesi gerekir.",
+    "3. Kural (Alanın Breakout ile Terk Edilmesi): Fiyatın hacimli ve sert (impulsive) mumlarla bölgeden ayrılması gerekir.",
+    "4. Kural (Yeterli Zaman Geçirilmesi): Düzeltme hareketinin ana hareket süresinin en az 1/3'ü kadar zaman alması gerekir.",
+    "5. Kural (Pips Bazında 1/3 Geri Çekilme): Fiyat mesafesi olarak ana dalganın en az 1/3'ü kadar geri çekilme yapılması gerekir.",
+    "6. Kural (Strong Likidite Oluşumu): Net bir likidite alımı ve sweep hareketi barındırması gerekir.",
+    "7. Kural (Kesinlikle Mum Kapanışı): Üst zaman diliminde kırılım seviyesinin ötesinde mum gövde kapanışı gerçekleşmelidir."
+  ],
+  "sorular_cevaplar": [
+    {
+      "soru": "Bir fiyat hareketinin gerçek bir Swing Dalgası mı yoksa İç Yapı Hareketi mi olduğunu belirlemek için 7 kriterden en az kaç tanesi gerçekleşmelidir?",
+      "cevap": "En az 4 tanesinin gerçekleşmiş olması gerekir."
+    }
+  ]
+}
