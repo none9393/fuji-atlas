@@ -1,0 +1,19 @@
+{
+  "konu": "Grafik Düzeni ve Analiz Takibi (Chart Hygiene)",
+  "anahtar_kavramlar": [
+    "Chart Hygiene",
+    "Grafik Düzeni",
+    "Çizim Gruplandırma",
+    "Sabitlenmiş Metin (Sticky Note)",
+    "Zaman Dilimi Analizi",
+    "Swing Yönü",
+    "Internal Yönü"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "TradingView'de görsel karmaşayı önlemek amacıyla çizimler zaman dilimlerine göre (Haftalık, Günlük, 4H, 45m) klasörlenmeli ve sadece bulunulan zaman dilimine ait klasör açılmalıdır.",
+    "Grafiğin sağ üst köşesine tüm zaman dilimlerinin durumunu (Swing Yönü, Internal Yönü, Beklenti / Not) özetleyen bir Sabitlenmiş Metin (Sticky Note) tablosu eklenmelidir.",
+    "Farklı zaman dilimlerinde swing ve internal yönler birbirinden farklı trend eğilimleri gösterebilir (Örn. Haftalık Swing Bearish iken Günlük Swing Bullish olabilir)."
+  ],
+  "sorular_cevaplar": []
+}
