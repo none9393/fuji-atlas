@@ -1,0 +1,24 @@
+{
+  "konu": "Zaman Dilimleri (Multi-Timeframe) Koordinasyonu ve Mum Onayları",
+  "anahtar_kavramlar": [
+    "HTF (Üst Zaman Dilimi)",
+    "LTF (Alt Zaman Dilimi)",
+    "Multi-Timeframe",
+    "Supply/Demand",
+    "Likidite Süpürmesi (Sweep)",
+    "Mitigasyon (Mitigated)",
+    "Giriş Konfirmasyonu"
+  ],
+  "tanimlar": {
+    "HTF (Üst Zaman Dilimi)": "Yönü ve ana alanları belirleyen üst zaman dilimi.",
+    "LTF (Alt Zaman Dilimi)": "Giriş konfirmasyonu sağlayan alt zaman dilimi."
+  },
+  "onemli_noktalar": [
+    "4H zaman dilimi; ana trend yönü, ana Supply/Demand bölgeleri ve ana likidite hedeflerini belirlemek için kullanılır.",
+    "45M zaman dilimi; yapısal kırılımlar, ara bölgelerin doğrulanması ve mum kapanış onayları için kullanılır.",
+    "5M / 1M zaman dilimleri; bölge içi giriş konfirmasyonu, likidite süpürmeleri (sweep) ve mikro kırılımlar için kullanılır.",
+    "Bir bölge 4H grafikte untested görünüp 45M veya 5M'de net bir fitille test edilmiş ve yeni dip/tepe gelmişse o bölge mitigated kabul edilir.",
+    "1M gibi mikro zaman dilimlerindeki önemsiz fitiller için bölge 'test edildi' sayılmamalıdır."
+  ],
+  "sorular_cevaplar": []
+}
