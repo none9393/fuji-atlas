@@ -1,0 +1,23 @@
+{
+  "konu": "Fiyat Hareketi (Price Action): Engulfing (Yutan Mum) Modeli",
+  "anahtar_kavramlar": [
+    "Fiyat Hareketi (Price Action)",
+    "Engulfing (Yutan Mum)",
+    "High/Low",
+    "Sweep",
+    "Zaman Dilimleri (Timeframes)",
+    "HTF (Yüksek Zaman Dilimi)",
+    "Pullback",
+    "Talep-Arz Bölgesi"
+  ],
+  "tanimlar": {
+    "Klasik Engulfing'den Farkı": "Oluşan engulfing mumunun bir önceki mumun hem High/Low seviyesini süpürmesi (sweep) hem de gövdesinin/kapanışının önceki mumun en uç fitilinin ötesinde kapanış yapması şartı aranan modeldir."
+  },
+  "onemli_noktalar": [
+    "Engulfing mumunun bir önceki mumun hem High/Low seviyesini süpürmesi (sweep) hem de gövdesinin/kapanışının önceki mumun en uç fitilinin ötesinde kapanış yapması şartı aranır.",
+    "Özellikle 45 Dakikalık (45m) ve 4 Saatlik (4H) grafiklerde yüksek başarı oranına sahiptir.",
+    "Yüksek zaman dilimi (HTF) yönünde (bias) bir kırılım/engulf görüldüğünde mum kapanışında doğrudan işleme girilebilir.",
+    "Mumun oluşturduğu dengesizlik/talep-arz bölgesine verilen geri çekilmede (pullback) işleme dahil olunabilir."
+  ],
+  "sorular_cevaplar": []
+}
