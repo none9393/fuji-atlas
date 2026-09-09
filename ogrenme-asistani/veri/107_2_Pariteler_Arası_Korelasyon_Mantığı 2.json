@@ -1,0 +1,23 @@
+{
+  "konu": "Pariteler Arası Korelasyon Mantığı",
+  "anahtar_kavramlar": [
+    "Doğru (Pozitif) Korelasyon",
+    "Ters (Negatif) Korelasyon",
+    "DXY",
+    "Baz Para Birimi",
+    "Karşıt Para Birimi",
+    "Çapraz Pariteler",
+    "Güç Karşılaştırması"
+  ],
+  "tanimlar": {
+    "Doğru (Pozitif) Korelasyon": "Doların baz (ilk) para birimi olduğu paritelerde, parite fiyatı ile DXY'nin aynı yönde hareket etmesi durumu (USD/XXX).",
+    "Ters (Negatif) Korelasyon": "Doların karşıt (ikinci) para birimi olduğu paritelerin DXY ile zıt yönde hareket etmesi durumu (XXX/USD)."
+  },
+  "onemli_noktalar": [
+    "Doların baz para birimi olduğu paritelerde (USD/JPY, USD/CHF, USD/CAD) parite fiyatı ile DXY pozitif korelasyon gösterir (aynı yönde hareket eder).",
+    "Doların karşıt para birimi olduğu pariteler (EUR/USD, GBP/USD, AUD/USD, NZD/USD) DXY ile ters/negatif korelasyon gösterir (zıt yönde hareket eder).",
+    "DXY düşerken (dolar zayıflarken) Long yönlü işlem arandığında çapraz pariteler analiz edilerek en güçlü para birimi seçilmelidir.",
+    "EUR/GBP paritesi düşüş trendindeyse GBP'nin Euro'dan daha güçlü olduğu anlaşılır; bu durumda GBP/USD'de Long işlem almak EUR/USD'ye göre hedefe (TP) daha hızlı ve kolay ulaşmayı sağlar."
+  ],
+  "sorular_cevaplar": []
+}
