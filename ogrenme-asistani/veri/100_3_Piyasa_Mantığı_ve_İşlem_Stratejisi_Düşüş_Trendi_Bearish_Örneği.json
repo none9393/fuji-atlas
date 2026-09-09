@@ -1,0 +1,25 @@
+{
+  "konu": "Piyasa Mantığı ve İşlem Stratejisi (Düşüş Trendi / Bearish Örneği)",
+  "anahtar_kavramlar": [
+    "External Structure",
+    "Internal Structure",
+    "Bearish",
+    "Bullish",
+    "Swing Low",
+    "Pullback",
+    "CHoCH (Change of Character)",
+    "Pro-Trend"
+  ],
+  "tanimlar": {
+    "CHoCH": "İç yapıda yön değişimi sağlayan kırılım (Change of Character).",
+    "External Swing Low": "Düşüş yönlü piyasada ana hedef olan en son dip seviye."
+  },
+  "onemli_noktalar": [
+    "External düşüş yönlüyse ana hedef her zaman External Swing Low noktasıdır.",
+    "Fiyat düzeltmesini (Pullback) tamamladıktan sonra ana hedefine doğru düşüşüne devam etmesi beklenir.",
+    "Düzeltme aşamasında External yapı Bearish iken Internal yapı Bullish olabilir; bu aşamada acele edilmemelidir.",
+    "Düzeltme tamamlandığında iç yapıda aşağı yönlü bir CHoCH gerçekleşmesi beklenir.",
+    "İç yapının tekrar Bearish'e dönmesiyle hem External hem Internal yapı aynı yöne (Pro-trend) hizalanmış olur."
+  ],
+  "sorular_cevaplar": []
+}
