@@ -1,0 +1,25 @@
+{
+  "konu": "Temel Kavramlar ve Tanımlar",
+  "anahtar_kavramlar": [
+    "HTF (Higher Timeframe - Yüksek Zaman Dilimi)",
+    "LTF (Lower Timeframe - Düşük Zaman Dilimi)",
+    "Likidite Alımı (Liquidity Sweep)",
+    "İç Yapı Likiditesi (Internal Liquidity)",
+    "Mitigasyon (Mitigation)",
+    "Untested (Test Edilmemiş) Bölge",
+    "Valid Kapanış (Gövde Kapanışı)",
+    "No-Trade Zone (İşlem Dışı Alan)"
+  ],
+  "tanimlar": {
+    "HTF (Higher Timeframe - Yüksek Zaman Dilimi)": "Günlük (Daily) ve 4 Saatlik (4H) grafiklerdir. Ana yönü (trend/bias) ve majör destek/direnç bölgelerini belirlemek için kullanılır.",
+    "LTF (Lower Timeframe - Düşük Zaman Dilimi)": "5 dakikalık (5m), 15 dakikalık (15m) veya 45 dakikalık grafiklerdir. Giriş optimizasyonu ve yapı içi kırılımları teyit etmek için kullanılır.",
+    "Likidite Alımı (Liquidity Sweep)": "Fiyatın bir tepe (High) veya dip (Low) seviyesinin üzerine/altına fitil atarak oradaki stop emirlerini temizleyip yön değiştirmesidir.",
+    "İç Yapı Likiditesi (Internal Liquidity)": "Ana swing hareketinin içerisinde kalan ara tepe ve diplerin likiditesidir. Fiyatın düzeltme (pullback) evresinde bu likiditeleri temizlemesi beklenir.",
+    "Mitigasyon (Mitigation)": "Fiyatın daha önce test edilmemiş bir arz/talep (OB/Supply/Demand) kutusuna geri dönüp emirleri doldurması ve alanı hafifletmesidir.",
+    "Untested (Test Edilmemiş) Bölge": "Fiyatın daha önce temas etmediği taze arz veya talep alanıdır. Tepki verme ihtimali çok yüksektir.",
+    "Valid Kapanış (Gövde Kapanışı)": "Bir seviyenin sadece fitille (milimetrik) aşılması değil, mum gövdesinin seviyenin üzerinde/altında net bir şekilde kapanış yapması durumudur.",
+    "No-Trade Zone (İşlem Dışı Alan)": "Fiyatın iki majör seviye arasında sıkıştığı, iç yapıda net bir yön teyidi veya kırılım vermediği, işlem açmanın riskli olduğu belirsizlik bölgesidir."
+  },
+  "onemli_noktalar": [],
+  "sorular_cevaplar": []
+}
