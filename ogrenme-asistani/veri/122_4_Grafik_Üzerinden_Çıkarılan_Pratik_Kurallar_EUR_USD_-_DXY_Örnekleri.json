@@ -1,0 +1,22 @@
+{
+  "konu": "Grafik Üzerinden Çıkarılan Pratik Kurallar (EUR/USD - DXY Örnekleri)",
+  "anahtar_kavramlar": [
+    "Base",
+    "HTF (High Time Frame)",
+    "LTF (Low Time Frame)",
+    "Reversal",
+    "Bearish Orderflow",
+    "Talep Bölgesi",
+    "Momentum",
+    "Internal Stop",
+    "Risk Yönetimi"
+  ],
+  "tanimlar": {},
+  "onemli_noktalar": [
+    "HTF'de belirlenen geniş bir base alanı varsa, bunun içindeki küçük 1m/5m dokunuşlarına aşırı anlam yükleyip ana plan bozulmamalıdır.",
+    "Sert düşüş gösteren paritelerde (Bearish Orderflow), sadece geçmişte talep bölgesi var diye her düşüşte zorlama reversal (Long) aranmamalı, piyasanın o anki akış yönüne (momentum) sadık kalınmalıdır.",
+    "Görsel hafıza trader'ı yanıltabilir.",
+    "Çok dar internal stoplar koymak yerine, HTF yapısının korunduğu mantıklı seviyelerin üzerine stop koymak veya LTF'de yapının bozulduğu görüldüğünde işlemi manuel kapatmak risk yönetimini güçlendirir."
+  ],
+  "sorular_cevaplar": []
+}
