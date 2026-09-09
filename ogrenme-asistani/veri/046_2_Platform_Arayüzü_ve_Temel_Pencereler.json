@@ -1,0 +1,28 @@
+{
+  "konu": "Platform Arayüzü ve Temel Pencereler",
+  "anahtar_kavramlar": [
+    "Piyasa Gözlemi (Market Watch)",
+    "Veri Penceresi (Data Window)",
+    "Kılavuz (Navigator)",
+    "Terminal / Araç Kutusu",
+    "İşlem (Trade)",
+    "Geçmiş (History)",
+    "Raporlar (Reports)"
+  ],
+  "tanimlar": {
+    "Piyasa Gözlemi (Market Watch)": "Takip edilen tüm paritelerin listelendiği yerdir.",
+    "Veri Penceresi (Data Window)": "Seçili mumun açılış, yüksek, düşük, kapanış (OHLC) değerlerini ve anlık hacim/spread verilerini gösteren penceredir.",
+    "Kılavuz (Navigator)": "Bağlı işlem hesapları, teknik indikatörler, komut dosyaları ve Uzman Danışmanların (EA) bulunduğu yönetim panelidir.",
+    "İşlem (Trade)": "Açık pozisyonlar, bekleyen emirler, bakiye ve serbest teminatın bulunduğu Terminal sekmesidir.",
+    "Geçmiş (History)": "Kapanmış geçmiş işlemler, kâr/zarar dökümü, komisyonlar ve giriş-çıkış zamanlarının yer aldığı sekmedir.",
+    "Raporlar (Reports)": "Detaylı performans grafiği, kâr oranı (Win Rate), kâr faktörü ve bakiye eğrisinin bulunduğu sekmedir."
+  },
+  "onemli_noktalar": [
+    "Platformun ana pencereleri 'Görünüm' menüsü altından açılıp kapatılır.",
+    "Piyasa Gözlemi [Ctrl + M] penceresine sağ tıklanarak Hacim, Makas (Spread) ve Günlük Değişim oranları sütunları eklenebilir.",
+    "Veri Penceresi [Ctrl + D] kısayolu ile açılır.",
+    "Kılavuz [Ctrl + N] kısayolu ile açılır.",
+    "Terminal / Araç Kutusu [Ctrl + T] kısayolu ile açılır."
+  ],
+  "sorular_cevaplar": []
+}
