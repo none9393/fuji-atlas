@@ -1,0 +1,17 @@
+{
+  "konu": "1. Temel Tanımlar ve Kavramlar",
+  "anahtar_kavramlar": [
+    "Demand",
+    "Talep / Destek Bölgesi",
+    "Supply",
+    "Arz / Direnç Bölgesi"
+  ],
+  "tanimlar": {
+    "Demand (Talep / Destek Bölgesi)": "Bullish (yükseliş yönlü) bir akışta, iç yapıda veya ana swing yapıda kırılım gerçekleşmeden hemen önceki satış hareketinin başladığı ve ardından kırılımı getiren alıcıların devreye girdiği alanın bütünüdür.",
+    "Supply (Arz / Direnç Bölgesi)": "Bearish (düşüş yönlü) bir akışta, yapı kırılmadan önce gerçekleşen son alış hareketinin başladığı ve ardından sert kırılımı getiren satışın geldiği alanın bütünüdür."
+  },
+  "onemli_noktalar": [
+    "Sadece tek bir mum değil; satıcıların karşılandığı ve kurumsal alıcıların fiyatı yukarı ittiği taban (base) bölgesidir."
+  ],
+  "sorular_cevaplar": []
+}
