@@ -28,6 +28,11 @@ türetilmiş timeframe hesabına girmez. Haftalık ve aylık veri yaşı mum aç
 değil kapanış sınırından hesaplanır. Raporlar timestamp'li ve değişmezdir; legacy
 sabit adlı PDF'ler yayımlanmaz.
 
+Actionable tablolar yalnız doğrulanmış stratejiler için koşullu teyit, SL, TP1,
+TP2 ve risk/getiri oranı gösterebilir. Pip, standart-lot USD ve yüzde hareket
+değerleri brüt matematiksel tahmindir; spread, komisyon ve slippage içermez ve
+kesin getiri olarak sunulamaz.
+
 ## Çalışma ve teslim
 
 Varsayılan analiz kurala dayalıdır; OpenAI zorunlu değildir. Telegram ve e-posta

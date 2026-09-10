@@ -27,6 +27,11 @@ katılmaz. Her çalışma sabit adın üzerine yazmak yerine
 güncel raporu öne çıkarır ve sembol başına son 200 raporu “Geçmiş raporlar”
 bölümünde tutar.
 
+Her PDF yönetici özeti ve renk kodlu top-down tabloyla başlar. Yalnız hazır
+stratejiler için kapanış teyidine bağlı giriş, SL, TP1, TP2, R:R ve muhtemel brüt
+pip/standart-lot USD/yüzde hareketi gösterilir. Bu seviyeler emir veya getiri
+vaadi değildir; blocked strateji için seviye üretilmez.
+
 Portal public GitHub Pages üzerinde olabilir. İlk çevrimiçi ziyaretten sonra mevcut
 raporlar service worker cache'i sayesinde offline açılabilir. Sohbette veya loglarda
 açığa çıkan tüm secret'lar yenilenmelidir.
