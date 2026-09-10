@@ -43,6 +43,9 @@ class PipelineTests(unittest.TestCase):
     def test_futures_proxy_cannot_enable_xau_scalping(self): self.assertEqual(verifier.verify(contract(xau_source="futures_proxy"))["symbols"]["XAUUSD"]["strategies"]["scalping"]["status"],"blocked")
     def test_spot_ready_without_provider_comparison(self): self.assertEqual(verifier.verify(contract())["decision"],"ready")
     def test_config_sha_is_shared(self): self.assertEqual(collector.load_config()[1],verifier.load_config()[1]); self.assertEqual(runner.digest(),SHA)
+    def test_actionable_levels_include_entry_sl_targets_and_rr(self):
+        stats={"close":100.0,"atr14":2.0,"direction":"yukarı"}; levels=runner.actionable_levels("XAUUSD",stats)
+        self.assertEqual(levels["side"],"ALIM"); self.assertLess(levels["sl"],levels["entry"]); self.assertGreater(levels["tp1"],levels["entry"]); self.assertGreater(levels["tp2"],levels["tp1"]); self.assertEqual(levels["rr1"],1.5); self.assertEqual(levels["rr2"],2.5); self.assertGreater(levels["tp2_usd"],levels["tp1_usd"]); self.assertGreater(levels["tp2_pct"],levels["tp1_pct"])
     def test_timestamped_rule_reports_without_openai(self):
         with tempfile.TemporaryDirectory() as td:
             data=Path(td)/"data.json"; data.write_text(json.dumps(contract())); old=runner.OUT; runner.OUT=Path(td)/"out"; when=datetime(2026,1,2,3,4,5,tzinfo=timezone.utc)

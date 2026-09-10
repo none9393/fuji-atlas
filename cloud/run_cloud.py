@@ -21,6 +21,13 @@ def indicators(values):
     for previous,current in zip(values[-15:-1],values[-14:]): trs.append(max(current["high"]-current["low"],abs(current["high"]-previous["close"]),abs(current["low"]-previous["close"])))
     atr=sum(trs)/len(trs) if trs else 0; avg=sum(closes[-20:])/20; direction="yukarı" if closes[-1]>ema else "aşağı" if closes[-1]<ema else "yatay"
     return {"close":closes[-1],"average20":avg,"ema20":ema,"rsi14":rsi,"atr14":atr,"direction":direction,"low":min(closes[-20:]),"high":max(closes[-20:])}
+def actionable_levels(symbol,stats):
+    """Return conditional, explicitly non-executing levels and gross-move math."""
+    if not stats or stats["atr14"]<=0: return None
+    sign=1 if stats["direction"]=="yukarı" else -1
+    entry=stats["close"]+sign*stats["atr14"]*.10; sl=entry-sign*stats["atr14"]; risk=abs(entry-sl); tp1=entry+sign*risk*1.5; tp2=entry+sign*risk*2.5
+    pip_size=.01 if symbol=="XAUUSD" else .0001; pip_value=1.0 if symbol=="XAUUSD" else 10.0
+    return {"side":"ALIM" if sign>0 else "SATIM","entry":entry,"sl":sl,"tp1":tp1,"tp2":tp2,"rr1":1.5,"rr2":2.5,"tp1_pips":abs(tp1-entry)/pip_size,"tp2_pips":abs(tp2-entry)/pip_size,"tp1_usd":abs(tp1-entry)/pip_size*pip_value,"tp2_usd":abs(tp2-entry)/pip_size*pip_value,"tp1_pct":abs(tp1-entry)/entry*100,"tp2_pct":abs(tp2-entry)/entry*100}
 def knowledge_notes(symbol):
     folder=ROOT/"ogrenme-asistani/veri"; notes=[]
     index=folder/"INDEX.md"
@@ -45,13 +52,26 @@ def render_pdf(symbol,market,verification,target,report_id,created):
     from reportlab.platypus import SimpleDocTemplate,Paragraph,Spacer,PageBreak,Table,TableStyle
     from reportlab.lib import colors
     regular,bold=font_names(); entries=market["symbols"][symbol]["intervals"]; primary=entries.get("1h",{}); stats=indicators(closed_values(primary)) or indicators(closed_values(entries.get("1day",{}))); latest=(primary.get("values") or [{}])[-1]
+    timeframe_stats={interval:indicators(closed_values(entries.get(interval,{}))) for interval in json.loads(CONFIG.read_text())["required_intervals"]}; ready=[name for name,state in verification["symbols"][symbol]["strategies"].items() if state["status"]=="ready"]; blocked=[name for name,state in verification["symbols"][symbol]["strategies"].items() if state["status"]=="blocked"]
     title=ParagraphStyle("title",fontName=bold,fontSize=16,leading=20); body=ParagraphStyle("body",fontName=regular,fontSize=8.5,leading=11); head=ParagraphStyle("head",fontName=bold,fontSize=11,leading=14,spaceBefore=8)
-    story=[Paragraph(f"FUJI-ATLAS — {symbol}",title),Paragraph(f"Rapor kimliği: {report_id}<br/>Üretim zamanı: {created.isoformat()}",body),Paragraph(f"Güncel fiyat: {latest.get('close','-')} · Son mum: {'kapalı' if latest.get('is_closed') else 'açık'}",body)]
+    story=[Paragraph(f"FUJI-ATLAS — {symbol}",title),Paragraph(f"Rapor kimliği: {report_id}<br/>Üretim zamanı: {created.isoformat()}",body),Paragraph("Yönetici özeti",head),Paragraph(f"Güncel fiyat: {latest.get('close','-')} · Son mum: {'kapalı' if latest.get('is_closed') else 'açık'} · Ana yön: {stats.get('direction') if stats else 'hesaplanamadı'} · Hazır stratejiler: {', '.join(ready) or 'yok'} · Blocked: {', '.join(blocked) or 'yok'}",body)]
+    story.append(Paragraph("Renk kodlu top-down analiz",head)); top_rows=[["Timeframe","Yön","EMA20","RSI14","ATR14"]]; row_colors=[]
+    for row_index,interval in enumerate(json.loads(CONFIG.read_text())["required_intervals"],start=1):
+        item=timeframe_stats[interval]
+        if item: top_rows.append([interval,item["direction"],f"{item['ema20']:.5f}",f"{item['rsi14']:.1f}",f"{item['atr14']:.5f}"]); row_colors.append((row_index,item["direction"]))
+        else: top_rows.append([interval,"veri yetersiz","-","-","-"]); row_colors.append((row_index,"yatay"))
+    top=Table(top_rows,repeatRows=1,colWidths=[28*mm,30*mm,35*mm,25*mm,35*mm]); top_style=[("FONT",(0,0),(-1,-1),regular,7),("FONT",(0,0),(-1,0),bold,7),("BACKGROUND",(0,0),(-1,0),colors.HexColor("#dceaf3")),("GRID",(0,0),(-1,-1),.25,colors.grey)]
+    for row_index,direction in row_colors: top_style.append(("BACKGROUND",(0,row_index),(-1,row_index),colors.HexColor("#d9f2e6" if direction=="yukarı" else "#f7dada" if direction=="aşağı" else "#fff0c2")))
+    top.setStyle(TableStyle(top_style)); story.append(top)
     story.append(Paragraph("Strateji analizleri",head))
     for name,label in (("swing","Swing"),("intraday","Intraday"),("scalping","Scalping")):
         state=verification["symbols"][symbol]["strategies"][name]; story.append(Paragraph(label,head))
         if state["status"]=="blocked": story.append(Paragraph("BLOCKED — fiyat senaryosu üretilmedi. "+"; ".join(state["reasons"]),body))
-        elif stats: story.append(Paragraph(f"Yön {stats['direction']}; EMA20 {stats['ema20']:.5f}, RSI14 {stats['rsi14']:.2f}, ATR14 {stats['atr14']:.5f}. Koşullu teyit: {stats['high']:.5f} üzeri veya {stats['low']:.5f} altı kapanış. Invalidation: teyit sonrası referans aralığına geri kapanış. Risk pozisyon öncesinde sınırlanmalıdır.",body))
+        elif stats:
+            levels=actionable_levels(symbol,stats); story.append(Paragraph(f"Yön {stats['direction']}; EMA20 {stats['ema20']:.5f}, RSI14 {stats['rsi14']:.2f}, ATR14 {stats['atr14']:.5f}.",body))
+            if levels:
+                story.append(Paragraph(f"Koşullu giriş ({levels['side']}): {levels['entry']:.5f} kapanış teyidi · SL: {levels['sl']:.5f} · TP1: {levels['tp1']:.5f} · TP2: {levels['tp2']:.5f} · R:R: 1:{levels['rr1']:.1f} / 1:{levels['rr2']:.1f}. Invalidation: SL veya teyit sonrası referans aralığına geri kapanış.",body))
+                story.append(Paragraph(f"Muhtemel brüt hareket — TP1: {levels['tp1_pips']:.1f} pip, standart lotta yaklaşık ${levels['tp1_usd']:.2f}, %{levels['tp1_pct']:.2f}; TP2: {levels['tp2_pips']:.1f} pip, yaklaşık ${levels['tp2_usd']:.2f}, %{levels['tp2_pct']:.2f}.",body))
     story += [Paragraph("Risk notu",head),Paragraph("Kaldıraç kayıp riskini büyütür. Blocked stratejide işlem senaryosu yoktur; partial veri tam teyit sayılmaz. Bu rapor yatırım tavsiyesi değildir.",body),PageBreak(),Paragraph("Bilgi tabanı uygulama notları",head)]
     for note in knowledge_notes(symbol): story.append(Paragraph("• "+html.escape(note),body))
     story.append(Paragraph("Timeframe veri sözleşmesi",head)); rows=[["TF","Provider","Tür/Mod","Son kapalı mum","Yaş(sn)","Kapalı/Toplam"]]
