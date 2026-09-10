@@ -32,6 +32,12 @@ stratejiler için kapanış teyidine bağlı giriş, SL, TP1, TP2, R:R ve muhtem
 pip/standart-lot USD/yüzde hareketi gösterilir. Bu seviyeler emir veya getiri
 vaadi değildir; blocked strateji için seviye üretilmez.
 
+Actionable seviyeler ayrıca empirical outcome gate arkasındadır. Her
+sembol/strateji için `.fuji-cache/actionable-outcomes.json` içindeki yalnız kapanmış
+ve sayısal `pnl_r` sonucu bulunan kayıtlar kullanılır. Minimum örneklem, kazanma
+oranı ve profit factor eşikleri `FUJI_RUNTIME_CONFIG.json` içindedir. Eşikler
+sağlanmazsa rapor araştırma modunda kalır ve giriş/SL/TP/R:R yayımlamaz.
+
 Portal public GitHub Pages üzerinde olabilir. İlk çevrimiçi ziyaretten sonra mevcut
 raporlar service worker cache'i sayesinde offline açılabilir. Sohbette veya loglarda
 açığa çıkan tüm secret'lar yenilenmelidir.

@@ -33,6 +33,11 @@ TP2 ve risk/getiri oranı gösterebilir. Pip, standart-lot USD ve yüzde hareket
 değerleri brüt matematiksel tahmindir; spread, komisyon ve slippage içermez ve
 kesin getiri olarak sunulamaz.
 
+Actionable fiyat seviyeleri yalnız doğrulanmış piyasa verisiyle değil, kapanmış
+empirical sonuçlarla da kapılanır. Açık/bekleyen sonuçlar istatistiğe katılmaz.
+Örneklem, kazanma oranı veya profit factor eşiği sağlanmadığında teknik okuma
+gösterilebilir fakat giriş, SL, TP ve R:R araştırma modu dışında yayımlanamaz.
+
 ## Çalışma ve teslim
 
 Varsayılan analiz kurala dayalıdır; OpenAI zorunlu değildir. Telegram ve e-posta

@@ -28,6 +28,21 @@ def actionable_levels(symbol,stats):
     entry=stats["close"]+sign*stats["atr14"]*.10; sl=entry-sign*stats["atr14"]; risk=abs(entry-sl); tp1=entry+sign*risk*1.5; tp2=entry+sign*risk*2.5
     pip_size=.01 if symbol=="XAUUSD" else .0001; pip_value=1.0 if symbol=="XAUUSD" else 10.0
     return {"side":"ALIM" if sign>0 else "SATIM","entry":entry,"sl":sl,"tp1":tp1,"tp2":tp2,"rr1":1.5,"rr2":2.5,"tp1_pips":abs(tp1-entry)/pip_size,"tp2_pips":abs(tp2-entry)/pip_size,"tp1_usd":abs(tp1-entry)/pip_size*pip_value,"tp2_usd":abs(tp2-entry)/pip_size*pip_value,"tp1_pct":abs(tp1-entry)/entry*100,"tp2_pct":abs(tp2-entry)/entry*100}
+def load_outcomes(config):
+    path=ROOT/config["empirical_outcome_gate"]["outcomes_path"]
+    try:
+        payload=json.loads(path.read_text(encoding="utf-8")); return payload.get("outcomes",[]) if isinstance(payload,dict) else payload
+    except (FileNotFoundError,json.JSONDecodeError): return []
+def empirical_gate(outcomes,symbol,strategy,config):
+    policy=config["empirical_outcome_gate"]
+    if not policy.get("enabled",True): return {"passed":True,"sample_size":0,"win_rate":None,"profit_factor":None,"reason":"gate disabled"}
+    rows=[row for row in outcomes if row.get("symbol")==symbol and row.get("strategy")==strategy and row.get("status")=="closed" and isinstance(row.get("pnl_r"),(int,float))]
+    wins=sum(1 for row in rows if row["pnl_r"]>0); gross_win=sum(max(row["pnl_r"],0) for row in rows); gross_loss=sum(max(-row["pnl_r"],0) for row in rows); win_rate=wins/len(rows) if rows else 0.0; profit_factor=gross_win/gross_loss if gross_loss else (float("inf") if gross_win else 0.0)
+    reasons=[]
+    if len(rows)<policy["minimum_closed_outcomes"]: reasons.append(f"kapalı sonuç örneklemi {len(rows)}/{policy['minimum_closed_outcomes']}")
+    if win_rate<policy["minimum_win_rate"]: reasons.append(f"kazanma oranı %{win_rate*100:.1f} < %{policy['minimum_win_rate']*100:.1f}")
+    if profit_factor<policy["minimum_profit_factor"]: reasons.append(f"profit factor {profit_factor:.2f} < {policy['minimum_profit_factor']:.2f}")
+    return {"passed":not reasons,"sample_size":len(rows),"win_rate":win_rate,"profit_factor":profit_factor,"reason":"; ".join(reasons) if reasons else "empirical eşikler sağlandı"}
 def knowledge_notes(symbol):
     folder=ROOT/"ogrenme-asistani/veri"; notes=[]
     index=folder/"INDEX.md"
@@ -45,14 +60,14 @@ def font_names():
     return "Helvetica","Helvetica-Bold"
 def page_number(canvas,doc):
     canvas.saveState(); canvas.setFont("Helvetica",8); canvas.drawRightString(doc.pagesize[0]-36,20,f"Sayfa {doc.page}"); canvas.restoreState()
-def render_pdf(symbol,market,verification,target,report_id,created):
+def render_pdf(symbol,market,verification,target,report_id,created,outcomes,config):
     from reportlab.lib.pagesizes import A4
     from reportlab.lib.styles import ParagraphStyle
     from reportlab.lib.units import mm
     from reportlab.platypus import SimpleDocTemplate,Paragraph,Spacer,PageBreak,Table,TableStyle
     from reportlab.lib import colors
     regular,bold=font_names(); entries=market["symbols"][symbol]["intervals"]; primary=entries.get("1h",{}); stats=indicators(closed_values(primary)) or indicators(closed_values(entries.get("1day",{}))); latest=(primary.get("values") or [{}])[-1]
-    timeframe_stats={interval:indicators(closed_values(entries.get(interval,{}))) for interval in json.loads(CONFIG.read_text())["required_intervals"]}; ready=[name for name,state in verification["symbols"][symbol]["strategies"].items() if state["status"]=="ready"]; blocked=[name for name,state in verification["symbols"][symbol]["strategies"].items() if state["status"]=="blocked"]
+    timeframe_stats={interval:indicators(closed_values(entries.get(interval,{}))) for interval in config["required_intervals"]}; ready=[name for name,state in verification["symbols"][symbol]["strategies"].items() if state["status"]=="ready"]; blocked=[name for name,state in verification["symbols"][symbol]["strategies"].items() if state["status"]=="blocked"]
     title=ParagraphStyle("title",fontName=bold,fontSize=16,leading=20); body=ParagraphStyle("body",fontName=regular,fontSize=8.5,leading=11); head=ParagraphStyle("head",fontName=bold,fontSize=11,leading=14,spaceBefore=8)
     story=[Paragraph(f"FUJI-ATLAS — {symbol}",title),Paragraph(f"Rapor kimliği: {report_id}<br/>Üretim zamanı: {created.isoformat()}",body),Paragraph("Yönetici özeti",head),Paragraph(f"Güncel fiyat: {latest.get('close','-')} · Son mum: {'kapalı' if latest.get('is_closed') else 'açık'} · Ana yön: {stats.get('direction') if stats else 'hesaplanamadı'} · Hazır stratejiler: {', '.join(ready) or 'yok'} · Blocked: {', '.join(blocked) or 'yok'}",body)]
     story.append(Paragraph("Renk kodlu top-down analiz",head)); top_rows=[["Timeframe","Yön","EMA20","RSI14","ATR14"]]; row_colors=[]
@@ -65,13 +80,14 @@ def render_pdf(symbol,market,verification,target,report_id,created):
     top.setStyle(TableStyle(top_style)); story.append(top)
     story.append(Paragraph("Strateji analizleri",head))
     for name,label in (("swing","Swing"),("intraday","Intraday"),("scalping","Scalping")):
-        state=verification["symbols"][symbol]["strategies"][name]; story.append(Paragraph(label,head))
+        state=verification["symbols"][symbol]["strategies"][name]; evidence=empirical_gate(outcomes,symbol,name,config); story.append(Paragraph(label,head))
         if state["status"]=="blocked": story.append(Paragraph("BLOCKED — fiyat senaryosu üretilmedi. "+"; ".join(state["reasons"]),body))
         elif stats:
-            levels=actionable_levels(symbol,stats); story.append(Paragraph(f"Yön {stats['direction']}; EMA20 {stats['ema20']:.5f}, RSI14 {stats['rsi14']:.2f}, ATR14 {stats['atr14']:.5f}.",body))
+            levels=actionable_levels(symbol,stats) if evidence["passed"] else None; story.append(Paragraph(f"Yön {stats['direction']}; EMA20 {stats['ema20']:.5f}, RSI14 {stats['rsi14']:.2f}, ATR14 {stats['atr14']:.5f}.",body)); story.append(Paragraph(f"Empirical outcome gate: {'AÇIK' if evidence['passed'] else 'KAPALI'} · örneklem {evidence['sample_size']} · kazanma oranı %{evidence['win_rate']*100:.1f} · profit factor {evidence['profit_factor']:.2f} · {evidence['reason']}",body))
             if levels:
                 story.append(Paragraph(f"Koşullu giriş ({levels['side']}): {levels['entry']:.5f} kapanış teyidi · SL: {levels['sl']:.5f} · TP1: {levels['tp1']:.5f} · TP2: {levels['tp2']:.5f} · R:R: 1:{levels['rr1']:.1f} / 1:{levels['rr2']:.1f}. Invalidation: SL veya teyit sonrası referans aralığına geri kapanış.",body))
                 story.append(Paragraph(f"Muhtemel brüt hareket — TP1: {levels['tp1_pips']:.1f} pip, standart lotta yaklaşık ${levels['tp1_usd']:.2f}, %{levels['tp1_pct']:.2f}; TP2: {levels['tp2_pips']:.1f} pip, yaklaşık ${levels['tp2_usd']:.2f}, %{levels['tp2_pct']:.2f}.",body))
+            else: story.append(Paragraph("ARAŞTIRMA MODU — doğrulanmış strateji verisi var ancak empirical sonuç eşiği sağlanmadığı için giriş, SL, TP ve R:R yayımlanmadı.",body))
     story += [Paragraph("Risk notu",head),Paragraph("Kaldıraç kayıp riskini büyütür. Blocked stratejide işlem senaryosu yoktur; partial veri tam teyit sayılmaz. Bu rapor yatırım tavsiyesi değildir.",body),PageBreak(),Paragraph("Bilgi tabanı uygulama notları",head)]
     for note in knowledge_notes(symbol): story.append(Paragraph("• "+html.escape(note),body))
     story.append(Paragraph("Timeframe veri sözleşmesi",head)); rows=[["TF","Provider","Tür/Mod","Son kapalı mum","Yaş(sn)","Kapalı/Toplam"]]
@@ -80,16 +96,16 @@ def render_pdf(symbol,market,verification,target,report_id,created):
     table=Table(rows,repeatRows=1,colWidths=[17*mm,25*mm,30*mm,45*mm,18*mm,24*mm]); table.setStyle(TableStyle([("FONT",(0,0),(-1,-1),regular,6.5),("FONT",(0,0),(-1,0),bold,6.5),("BACKGROUND",(0,0),(-1,0),colors.HexColor("#dceaf3")),("GRID",(0,0),(-1,-1),.25,colors.grey),("VALIGN",(0,0),(-1,-1),"TOP")])) ; story.append(table); story += [Spacer(1,8),Paragraph("Bu rapor yatırım tavsiyesi değildir.",body)]
     SimpleDocTemplate(str(target),pagesize=A4,leftMargin=13*mm,rightMargin=13*mm,topMargin=13*mm,bottomMargin=13*mm).build(story,onFirstPage=page_number,onLaterPages=page_number)
 def run(market_data=None,analysis_mode="rules",now=None):
-    OUT.mkdir(exist_ok=True); now=now or datetime.now(timezone.utc); path,market=load_market(market_data)
+    OUT.mkdir(exist_ok=True); now=now or datetime.now(timezone.utc); path,market=load_market(market_data); config=json.loads(CONFIG.read_text(encoding="utf-8")); outcomes=load_outcomes(config)
     if market.get("config_sha256")!=digest(): raise RuntimeError("market data/config SHA mismatch")
     verify_path=OUT/"verification.json"; subprocess.run([sys.executable,str(ROOT/"05_araclar/fuji_live_data_verifier.py"),str(path),"--output",str(verify_path)],check=True,stdout=subprocess.DEVNULL); verification=json.loads(verify_path.read_text(encoding="utf-8"))
     if analysis_mode=="openai" and not os.getenv("OPENAI_API_KEY"): raise RuntimeError("OPENAI_API_KEY is required only for openai mode")
     stamp=now.strftime("%Y%m%d_%H%M%S"); files=[]
     for symbol,detail in verification["symbols"].items():
         if any(v["status"]=="ready" for v in detail["strategies"].values()):
-            name=f"{symbol}_{stamp}.pdf"; render_pdf(symbol,market,verification,OUT/name,f"{symbol}-{stamp}",now); files.append(name)
+            name=f"{symbol}_{stamp}.pdf"; render_pdf(symbol,market,verification,OUT/name,f"{symbol}-{stamp}",now,outcomes,config); files.append(name)
     providers={s:{i:{k:v.get(k) for k in ("provider","source_type","source_mode","last_bar_closed","last_bar_at_utc","last_closed_bar_at_utc","data_age_seconds","bar_count","total_bar_count","fallback_level")} for i,v in d["intervals"].items()} for s,d in market["symbols"].items()}
-    health={"generated_at_utc":now.isoformat(),"analysis_mode":analysis_mode,"config_sha256":digest(),"decision":verification["decision"],"symbols":verification["symbols"],"providers":providers,"files":files}; (OUT/"health.json").write_text(json.dumps(health,ensure_ascii=False,indent=2),encoding="utf-8")
+    gates={symbol:{strategy:empirical_gate(outcomes,symbol,strategy,config) for strategy in config["strategies"]} for symbol in config["symbols"]}; health={"generated_at_utc":now.isoformat(),"analysis_mode":analysis_mode,"config_sha256":digest(),"decision":verification["decision"],"symbols":verification["symbols"],"empirical_outcome_gates":gates,"providers":providers,"files":files}; (OUT/"health.json").write_text(json.dumps(health,ensure_ascii=False,indent=2),encoding="utf-8")
     return 4 if verification["decision"]=="blocked" else 0
 def main():
     p=argparse.ArgumentParser(); p.add_argument("--market-data"); p.add_argument("--analysis-mode",choices=("rules","openai"),default="rules"); a=p.parse_args()
