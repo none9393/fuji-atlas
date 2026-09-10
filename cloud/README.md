@@ -20,6 +20,13 @@ Runner `cloud-output/health.json` dosyasını her durumda üretir. Tüm strateji
 blocked ise exit code 4 döner; workflow bunu veri güvenliği kararı olarak kabul edip
 son geçerli PDF'leri korur ve sağlık portalını yayımlar.
 
+Base OHLC serileri timeframe yenileme süresine göre incremental güncellenir. Açık
+1min mum güncellik için saklanır fakat indikatörlere ve kapalı mum resampling'ine
+katılmaz. Her çalışma sabit adın üzerine yazmak yerine
+`XAUUSD_YYYYMMDD_HHMMSS.pdf` ve `EURUSD_YYYYMMDD_HHMMSS.pdf` üretir. Portal en
+güncel raporu öne çıkarır ve sembol başına son 200 raporu “Geçmiş raporlar”
+bölümünde tutar.
+
 Portal public GitHub Pages üzerinde olabilir. İlk çevrimiçi ziyaretten sonra mevcut
 raporlar service worker cache'i sayesinde offline açılabilir. Sohbette veya loglarda
 açığa çıkan tüm secret'lar yenilenmelidir.
