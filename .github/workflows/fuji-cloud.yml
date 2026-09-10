@@ -55,7 +55,12 @@ jobs:
         if: always()
         run: |
           mkdir -p .fuji-published cloud-output
+          rm -f .fuji-published/XAUUSD.pdf .fuji-published/EURUSD.pdf
           if find cloud-output -maxdepth 1 -name '*.pdf' -print -quit | grep -q .; then cp cloud-output/*.pdf .fuji-published/; fi
+          for symbol in XAUUSD EURUSD; do
+            find .fuji-published -maxdepth 1 -name "${symbol}_*.pdf" -printf '%T@ %p\n' \
+              | sort -rn | tail -n +201 | cut -d' ' -f2- | while IFS= read -r old; do rm -f "$old"; done
+          done
           test -f cloud-output/health.json || printf '%s\n' '{"decision":"blocked","reason":"runner did not produce health.json"}' > cloud-output/health.json
           python cloud/build_report_portal.py
       - uses: actions/cache/save@v4

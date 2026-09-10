@@ -22,6 +22,12 @@ engellemez. Blocked strateji için fiyat senaryosu üretilmez.
 Last-known-good cache yalnız timeframe'e özel freshness sınırı içindeyse kullanılır.
 Yeni geçerli PDF yoksa yayımlanmış son PDF silinmez.
 
+Base 1day, 1h ve 1min geçmişleri timestamp üzerinden incremental birleştirilir.
+Açık mum güncellik metadata'sında korunur; kapalı mum sayısına, indikatörlere veya
+türetilmiş timeframe hesabına girmez. Haftalık ve aylık veri yaşı mum açılışından
+değil kapanış sınırından hesaplanır. Raporlar timestamp'li ve değişmezdir; legacy
+sabit adlı PDF'ler yayımlanmaz.
+
 ## Çalışma ve teslim
 
 Varsayılan analiz kurala dayalıdır; OpenAI zorunlu değildir. Telegram ve e-posta
