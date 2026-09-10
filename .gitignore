@@ -116,6 +116,10 @@ ipython_config.py
 # pdm.toml
 .pdm-python
 .pdm-build/
+.fuji-cache/
+.fuji-published/
+cloud-output/
+cloud-site/
 
 # pixi
 #   Similar to Pipfile.lock, it is generally recommended to include pixi.lock in version control.

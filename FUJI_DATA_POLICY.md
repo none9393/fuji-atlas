@@ -1,24 +1,33 @@
 # FUJI veri güvenliği ve kaynak politikası
 
-Bu politika yerel ve bulut çalıştırmalarında aynıdır.
+## Kaynak seçimi
 
-## Kaynak önceliği
+Her sembol ve temel timeframe için ilk yeterli kaynak seçilir:
 
-1. Resmî kurumlar: Fed/FRED, BLS, ECB/Eurostat, TCMB/TÜİK ve CME.
-2. Kimlik doğrulamalı piyasa API'leri: Twelve Data; XAU/USD için MetalpriceAPI yedek.
-3. Spot yedek: XAUS API.
-4. EURUSD yedek: Yahoo Finance `EURUSD=X`.
-5. Yahoo `GC=F` yalnızca XAU/USD spot bulunamadığında proxy'dir; spot gibi gösterilemez.
-6. TradingView yalnızca görsel doğrulama içindir; sayısal OHLC'nin otomatik karar kaynağı değildir.
-7. Exa/Firecrawl haber ve belge keşfi içindir; bulunan bilgi orijinal kaynakta doğrulanır.
-8. Context7 yalnızca teknik dokümantasyon içindir; piyasa verisi değildir.
+1. Twelve Data (`TWELVEDATA_API_KEY` yalnız ortamdan okunur)
+2. XAUUSD için XAUS spot
+3. EURUSD için Yahoo `EURUSD=X` spot
+4. XAUUSD için son çare Yahoo `GC=F` futures proxy
 
-## Güvenlik ve bütünlük
+Farklı sağlayıcı fiyatları karşılaştırılmaz. Spot ve futures verileri aynı timeframe
+kaydında birleştirilmez. `GC=F`, XAUUSD spot scalping üretmek için kullanılamaz.
 
-- Anahtarlar yalnızca ortam değişkeni, GitHub Actions Secrets veya Secret Manager'da tutulur.
-- API anahtarları URL yerine mümkün olduğunda header ile gönderilir; log, PDF ve Git'e yazılmaz.
-- Her kaynakta `provider`, `retrieved_at_utc`, `status`, `data_age_seconds`, `bar_count` ve `fallback_level` kaydedilir.
-- Spot ve futures verisi birleştirilmez. Kaynaklar çelişirse en güncel veri korunur ve fark raporlanır.
-- Kritik timeframe eksikse sonuç `BLOCKED` olur; eski chart, tahmin veya tek mumla rapor üretilmez.
-- Başarılı koşuda en az iki bağımsız fiyat katmanı karşılaştırılır; anlamlı sapmada işlem senaryosu kapatılır.
-- Sohbette veya log'da açığa çıkan anahtarlar iptal edilip yenilenir.
+## Bütünlük
+
+Collector, verifier ve runner aynı `FUJI_RUNTIME_CONFIG.json` SHA-256 özetini
+doğrular. Mum sayısı, benzersiz timestamp, veri yaşı ve piyasa kapanışı strateji
+bazında değerlendirilir. Eksik 1min veri swing/intraday raporunu gereksiz yere
+engellemez. Blocked strateji için fiyat senaryosu üretilmez.
+
+Last-known-good cache yalnız timeframe'e özel freshness sınırı içindeyse kullanılır.
+Yeni geçerli PDF yoksa yayımlanmış son PDF silinmez.
+
+## Çalışma ve teslim
+
+Varsayılan analiz kurala dayalıdır; OpenAI zorunlu değildir. Telegram ve e-posta
+kullanılmaz. GitHub Actions telefon veya laptop açık olmasa bile bulutta çalışır.
+Pages portalı ilk çevrimiçi ziyaretten sonra mevcut raporları offline açabilir ve
+public olabilir.
+
+Secret'lar yalnız ortam değişkeni veya GitHub Actions Secrets üzerinden okunur.
+Sohbette açığa çıkan secret'lar yenilenmelidir; log, PDF veya Git'e yazılmaz.

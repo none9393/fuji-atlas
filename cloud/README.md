@@ -1,28 +1,25 @@
 # FUJI-ATLAS Cloud Runtime
 
-Cloud deployment must run from a clean checkout and use repository secrets.
-Local Mac paths, PDFs, logs, chart images, credentials, and `node_modules` are
-intentionally excluded from version control.
+FUJI, GitHub Actions üzerinde laptop veya telefon açık olmadan çalışır. Varsayılan
+`rules` modu OpenAI anahtarı istemez. Piyasa verisi ilk yeterli kaynaktan alınır;
+farklı sağlayıcı fiyatları karşılaştırılmaz veya aynı timeframe içinde birleştirilmez.
 
-Planned schedule (Europe/Istanbul):
+Gerekli tek runtime secret'ı `TWELVEDATA_API_KEY` değeridir. Anahtar yoksa sistem
+tanımlı spot/proxy fallback'lerini dener; eksik veriyi uydurmaz. Telegram ve e-posta
+kullanılmaz.
 
-- Weekdays 06:35: full macro and higher-timeframe analysis.
-- Weekdays 09:15–17:15: hourly refresh.
-- A 15-minute news cadence should be enabled only by a separate event trigger;
-  GitHub Actions scheduled workflows are not suitable for guaranteed 15-minute
-  execution.
+Çalıştırma:
 
-Required secrets:
+```sh
+python3 -m pip install -r cloud/requirements.txt
+python3 cloud/run_cloud.py
+python3 cloud/build_report_portal.py
+```
 
-`OPENAI_API_KEY`, `EXA_API_KEY`, `FIRECRAWL_API_KEY`, `CONTEXT7_API_KEY`,
-`TWELVEDATA_API_KEY`, and `METALPRICEAPI_KEY`.
+Runner `cloud-output/health.json` dosyasını her durumda üretir. Tüm stratejiler
+blocked ise exit code 4 döner; workflow bunu veri güvenliği kararı olarak kabul edip
+son geçerli PDF'leri korur ve sağlık portalını yayımlar.
 
-The canonical source/security policy is `FUJI_DATA_POLICY.md`. The cloud runner
-must use the same priority order as local runs: official macro sources, Twelve
-Data, MetalpriceAPI spot fallback, XAUS spot fallback, then explicitly labelled
-Yahoo futures proxy. Secrets are read from the runtime environment only.
-
-Every run must write provider, UTC retrieval time, status, data age, bar count,
-and fallback level. Missing critical data, failed model analysis, or an
-incomplete knowledge-base/top-down step produces `BLOCKED` and no PDF, journal
-update, Telegram message, or artifact.
+Portal public GitHub Pages üzerinde olabilir. İlk çevrimiçi ziyaretten sonra mevcut
+raporlar service worker cache'i sayesinde offline açılabilir. Sohbette veya loglarda
+açığa çıkan tüm secret'lar yenilenmelidir.
