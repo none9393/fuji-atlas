@@ -8,40 +8,84 @@ on:
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: fuji-cloud-pages
+  cancel-in-progress: false
 
 jobs:
   analyze:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: python -m pip install --disable-pip-version-check reportlab
-      - name: Verify and generate FUJI PDFs
+          cache: pip
+          cache-dependency-path: cloud/requirements.txt
+      - run: python -m pip install --disable-pip-version-check -r cloud/requirements.txt
+      - uses: actions/cache/restore@v4
+        with:
+          path: .fuji-cache
+          key: fuji-market-cache-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: fuji-market-cache-${{ runner.os }}-
+      - uses: actions/cache/restore@v4
+        with:
+          path: .fuji-published
+          key: fuji-published-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: fuji-published-${{ runner.os }}-
+      - name: Run FUJI safely
+        id: analysis
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          METALPRICEAPI_KEY: ${{ secrets.METALPRICEAPI_KEY }}
           TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
         run: |
-          printf '%s\n' '{}' > /tmp/fuji-empty.json
+          set +e
           python cloud/run_cloud.py
-      - name: Send PDFs to Telegram (optional)
-        if: ${{ env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != '' }}
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          code=$?
+          set -e
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          if [ "$code" -ne 0 ] && [ "$code" -ne 4 ]; then exit "$code"; fi
+      - name: Preserve latest valid reports
+        if: always()
         run: |
-          for pdf in cloud-output/*.pdf; do
-            curl --fail --silent --show-error --max-time 30 \
-              -F chat_id="$TELEGRAM_CHAT_ID" \
-              -F document="@$pdf" \
-              "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendDocument" >/dev/null
-          done
+          mkdir -p .fuji-published cloud-output
+          if find cloud-output -maxdepth 1 -name '*.pdf' -print -quit | grep -q .; then cp cloud-output/*.pdf .fuji-published/; fi
+          test -f cloud-output/health.json || printf '%s\n' '{"decision":"blocked","reason":"runner did not produce health.json"}' > cloud-output/health.json
+          python cloud/build_report_portal.py
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: .fuji-cache
+          key: fuji-market-cache-${{ runner.os }}-${{ github.run_id }}
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: .fuji-published
+          key: fuji-published-${{ runner.os }}-${{ github.run_id }}
       - uses: actions/upload-artifact@v4
-        if: success()
+        if: always()
         with:
           name: fuji-reports-${{ github.run_number }}
-          path: cloud-output/*.pdf
+          path: |
+            cloud-output/*.pdf
+            cloud-output/health.json
+          if-no-files-found: warn
           retention-days: 30
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: cloud-site
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Summary
+        if: always()
+        run: |
+          echo "Analysis exit code: ${{ steps.analysis.outputs.exit_code }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "Pages: https://none9393.github.io/fuji-atlas/" >> "$GITHUB_STEP_SUMMARY"
