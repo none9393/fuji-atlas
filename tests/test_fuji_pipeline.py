@@ -46,6 +46,12 @@ class PipelineTests(unittest.TestCase):
     def test_actionable_levels_include_entry_sl_targets_and_rr(self):
         stats={"close":100.0,"atr14":2.0,"direction":"yukarı"}; levels=runner.actionable_levels("XAUUSD",stats)
         self.assertEqual(levels["side"],"ALIM"); self.assertLess(levels["sl"],levels["entry"]); self.assertGreater(levels["tp1"],levels["entry"]); self.assertGreater(levels["tp2"],levels["tp1"]); self.assertEqual(levels["rr1"],1.5); self.assertEqual(levels["rr2"],2.5); self.assertGreater(levels["tp2_usd"],levels["tp1_usd"]); self.assertGreater(levels["tp2_pct"],levels["tp1_pct"])
+    def test_empirical_gate_blocks_small_or_weak_samples(self):
+        weak=[{"symbol":"EURUSD","strategy":"swing","status":"closed","pnl_r":1 if i<20 else -1} for i in range(29)]
+        result=runner.empirical_gate(weak,"EURUSD","swing",CONFIG); self.assertFalse(result["passed"]); self.assertEqual(result["sample_size"],29)
+    def test_empirical_gate_opens_only_after_thresholds(self):
+        strong=[{"symbol":"EURUSD","strategy":"swing","status":"closed","pnl_r":1.5 if i<18 else -1} for i in range(30)]
+        result=runner.empirical_gate(strong,"EURUSD","swing",CONFIG); self.assertTrue(result["passed"]); self.assertEqual(result["sample_size"],30); self.assertGreaterEqual(result["win_rate"],CONFIG["empirical_outcome_gate"]["minimum_win_rate"]); self.assertGreaterEqual(result["profit_factor"],CONFIG["empirical_outcome_gate"]["minimum_profit_factor"])
     def test_timestamped_rule_reports_without_openai(self):
         with tempfile.TemporaryDirectory() as td:
             data=Path(td)/"data.json"; data.write_text(json.dumps(contract())); old=runner.OUT; runner.OUT=Path(td)/"out"; when=datetime(2026,1,2,3,4,5,tzinfo=timezone.utc)
