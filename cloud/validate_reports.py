@@ -11,7 +11,7 @@ REQUIRED = (
     "Koşullu giriş", "SL", "TP1", "TP2", "Geçmiş gerçekleşme", "Risk notu",
 )
 DECISIONS = ("YEŞİL · GİR", "SARI · TEMKİNLİ", "KIRMIZI · GİRME")
-ACTIONABLE_SCENARIO = re.compile(r"Koşullu giriş\s*\((?:ALIM|SATIM)\)\s*:\s*[0-9]")
+ACTIONABLE_SCENARIO = re.compile(r"Koşullu giriş\s*\((?:LONG / ALIM|SHORT / SATIM)\)\s*:\s*[0-9]")
 
 def validate(path: Path) -> None:
     text = "\n".join(page.extract_text() or "" for page in PdfReader(path).pages)

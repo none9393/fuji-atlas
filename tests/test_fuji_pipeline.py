@@ -54,7 +54,7 @@ class PipelineTests(unittest.TestCase):
     def test_config_sha_is_shared(self): self.assertEqual(collector.load_config()[1],verifier.load_config()[1]); self.assertEqual(runner.digest(),SHA)
     def test_actionable_levels_include_entry_sl_targets_and_rr(self):
         stats={"close":100.0,"atr14":2.0,"direction":"yukarı"}; levels=runner.actionable_levels("XAUUSD",stats)
-        self.assertEqual(levels["side"],"ALIM"); self.assertLess(levels["sl"],levels["entry"]); self.assertGreater(levels["tp1"],levels["entry"]); self.assertGreater(levels["tp2"],levels["tp1"]); self.assertEqual(levels["rr1"],1.5); self.assertEqual(levels["rr2"],2.5); self.assertGreater(levels["tp2_usd"],levels["tp1_usd"]); self.assertGreater(levels["tp2_pct"],levels["tp1_pct"])
+        self.assertEqual(levels["side"],"LONG"); self.assertEqual(levels["side_tr"],"ALIM"); self.assertLess(levels["sl"],levels["entry"]); self.assertGreater(levels["tp1"],levels["entry"]); self.assertGreater(levels["tp2"],levels["tp1"]); self.assertEqual(levels["rr1"],1.5); self.assertEqual(levels["rr2"],2.5); self.assertGreater(levels["tp2_usd"],levels["tp1_usd"]); self.assertGreater(levels["tp2_pct"],levels["tp1_pct"])
     def test_empirical_gate_blocks_small_or_weak_samples(self):
         weak=[{"symbol":"EURUSD","strategy":"swing","status":"closed","pnl_r":1 if i<20 else -1} for i in range(29)]
         result=runner.empirical_gate(weak,"EURUSD","swing",CONFIG); self.assertFalse(result["passed"]); self.assertEqual(result["sample_size"],29)
