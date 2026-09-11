@@ -2,6 +2,12 @@ name: FUJI-ATLAS cloud analysis
 
 on:
   workflow_dispatch:
+    inputs:
+      fresh_data:
+        description: "Ignore saved market cache and collect a fresh bootstrap"
+        required: false
+        type: boolean
+        default: false
   schedule:
     - cron: "35 3 * * 1-5"
     - cron: "15 5-14 * * 1-5"
@@ -42,6 +48,9 @@ jobs:
           path: .fuji-published
           key: fuji-published-${{ runner.os }}-${{ github.run_id }}
           restore-keys: fuji-published-${{ runner.os }}-
+      - name: Reset market cache for a fresh run
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.fresh_data }}
+        run: rm -rf .fuji-cache /tmp/fuji-market-data.json
       - name: Run FUJI safely
         id: analysis
         env:
