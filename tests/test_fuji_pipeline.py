@@ -63,7 +63,7 @@ class PipelineTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             source=Path(td)/"source"; target=Path(td)/"site"; source.mkdir()
             for name in ("XAUUSD_20260101_000000.pdf","XAUUSD_20260102_000000.pdf","EURUSD_20260102_000000.pdf"): (source/name).write_bytes(b"pdf")
-            portal.build(source,target); page=(target/"index.html").read_text(); sw=(target/"sw.js").read_text(); self.assertIn("Geçmiş raporlar",page); self.assertIn("XAUUSD_20260102_000000.pdf",page); self.assertIn("EURUSD_20260102_000000.pdf",sw); self.assertIn('name="viewport"',page); self.assertIn("serviceWorker.register",page); self.assertIn("networkFirst",sw); self.assertIn("no-store",sw); self.assertIn("registration.update",page)
+            portal.build(source,target); page=(target/"index.html").read_text(); sw=(target/"sw.js").read_text(); self.assertIn("Geçmiş raporlar",page); self.assertIn("XAUUSD_20260102_000000.pdf",page); self.assertRegex(page, r'XAUUSD_20260102_000000\.pdf\?v=[0-9a-f]{12}'); self.assertIn('data-fuji-version="',page); self.assertIn("EURUSD_20260102_000000.pdf",sw); self.assertIn('manifest.webmanifest?v=',page); self.assertIn('sw.js?v=',page); self.assertIn('name="viewport"',page); self.assertIn("serviceWorker.register",page); self.assertIn("networkFirst",sw); self.assertIn("no-store",sw); self.assertIn("registration.update",page)
     def test_blocked_portal_without_pdf(self):
         with tempfile.TemporaryDirectory() as td:
             source=Path(td)/"source"; target=Path(td)/"site"; source.mkdir(); portal.build(source,target); self.assertIn("Rapor bekleniyor",(target/"index.html").read_text())
