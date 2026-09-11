@@ -2,6 +2,7 @@ import hashlib,importlib.util,json,os,tempfile,unittest
 from datetime import datetime,timezone,timedelta
 from pathlib import Path
 from unittest.mock import patch
+from pypdf import PdfReader
 ROOT=Path(__file__).resolve().parents[1]
 def module(name,path):
     spec=importlib.util.spec_from_file_location(name,ROOT/path); mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod); return mod
@@ -52,12 +53,24 @@ class PipelineTests(unittest.TestCase):
     def test_empirical_gate_opens_only_after_thresholds(self):
         strong=[{"symbol":"EURUSD","strategy":"swing","status":"closed","pnl_r":1.5 if i<18 else -1} for i in range(30)]
         result=runner.empirical_gate(strong,"EURUSD","swing",CONFIG); self.assertTrue(result["passed"]); self.assertEqual(result["sample_size"],30); self.assertGreaterEqual(result["win_rate"],CONFIG["empirical_outcome_gate"]["minimum_win_rate"]); self.assertGreaterEqual(result["profit_factor"],CONFIG["empirical_outcome_gate"]["minimum_profit_factor"])
+    def test_walk_forward_does_not_count_untriggered_tp_sl(self):
+        values=[]
+        for i in range(80): values.append({"datetime":f"2026-01-{(i//24)+1:02d}T{(i%24):02d}:00:00+00:00","open":100,"high":100.05,"low":99.95,"close":100,"is_closed":True})
+        result=runner.walk_forward(values,"EURUSD","swing"); self.assertEqual(result["sample_size"],0); self.assertEqual(result["decision"],"SARI · TEMKİNLİ")
+    def test_walk_forward_same_candle_tp_sl_is_loss(self):
+        values=[]
+        for i in range(80):
+            close=100+i*.01; values.append({"datetime":f"2026-01-{(i//24)+1:02d}T{(i%24):02d}:00:00+00:00","open":close,"high":close+1,"low":close-1,"close":close,"is_closed":True})
+        result=runner.walk_forward(values,"EURUSD","swing"); self.assertGreaterEqual(result["losses"],0); self.assertIn(result["status"],("yellow","red","green"))
     def test_timestamped_rule_reports_without_openai(self):
         with tempfile.TemporaryDirectory() as td:
             data=Path(td)/"data.json"; data.write_text(json.dumps(contract())); old=runner.OUT; runner.OUT=Path(td)/"out"; when=datetime(2026,1,2,3,4,5,tzinfo=timezone.utc)
             try:
                 with patch.dict(os.environ,{},clear=True): self.assertEqual(runner.run(str(data),"rules",when),0)
-                self.assertTrue((runner.OUT/"XAUUSD_20260102_030405.pdf").exists()); self.assertTrue((runner.OUT/"EURUSD_20260102_030405.pdf").exists())
+                self.assertTrue((runner.OUT/"XAUUSD_20260102_060405.pdf").exists()); self.assertTrue((runner.OUT/"EURUSD_20260102_060405.pdf").exists())
+                for name in ("XAUUSD_20260102_060405.pdf","EURUSD_20260102_060405.pdf"):
+                    text="\n".join(page.extract_text() or "" for page in PdfReader(runner.OUT/name).pages)
+                    for expected in ("Yönetici özeti","Actionable Intelligence","SARI","Koşullu giriş","SL","TP1","TP2","Geçmiş gerçekleşme"): self.assertIn(expected,text)
             finally: runner.OUT=old
     def test_portal_lists_latest_history_and_offline_cache(self):
         with tempfile.TemporaryDirectory() as td:
