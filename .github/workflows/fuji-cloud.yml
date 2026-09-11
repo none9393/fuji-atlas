@@ -81,8 +81,14 @@ jobs:
               --notes "Automatically updated latest FUJI PDF reports." \
               --target "${GITHUB_SHA}"
           fi
-          if [ -n "$xau" ]; then gh release upload fuji-latest "$xau#XAUUSD-latest.pdf" --repo "${GITHUB_REPOSITORY}" --clobber; fi
-          if [ -n "$eur" ]; then gh release upload fuji-latest "$eur#EURUSD-latest.pdf" --repo "${GITHUB_REPOSITORY}" --clobber; fi
+          if [ -n "$xau" ]; then
+            cp "$xau" /tmp/XAUUSD-latest.pdf
+            gh release upload fuji-latest /tmp/XAUUSD-latest.pdf --repo "${GITHUB_REPOSITORY}" --clobber
+          fi
+          if [ -n "$eur" ]; then
+            cp "$eur" /tmp/EURUSD-latest.pdf
+            gh release upload fuji-latest /tmp/EURUSD-latest.pdf --repo "${GITHUB_REPOSITORY}" --clobber
+          fi
       - uses: actions/cache/save@v4
         if: always()
         with:
