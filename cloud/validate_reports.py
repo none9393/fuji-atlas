@@ -9,8 +9,8 @@ from pypdf import PdfReader
 REQUIRED = (
     "Yönetici özeti", "Actionable Intelligence", "Piyasa durumu bülteni",
     "Koşullu giriş", "SL", "TP1", "TP2", "Geçmiş gerçekleşme", "Risk notu",
-    "Karar özeti", "fırsat ve pozisyon radarı", "Açık pozisyon desteği",
-    "Aktif koşullar ve dikkat noktaları", "Fırsat ayrıntıları",
+    "Açık pozisyon desteği", "Aktif koşullar ve dikkat noktaları", "Fırsat ayrıntıları",
+    "Karar ekranı", "Genel piyasa durumu", "Fırsat planları",
 )
 DECISIONS = ("YEŞİL · GİR", "SARI · TEMKİNLİ", "KIRMIZI · GİRME")
 ACTIONABLE_SCENARIO = re.compile(r"Koşullu giriş\s*\((?:LONG / ALIM|SHORT / SATIM)\)\s*:\s*[0-9]")
