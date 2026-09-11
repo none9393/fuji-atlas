@@ -60,11 +60,15 @@ def merge_bars(old,new,limit):
     merged={b["datetime"]:b for b in old}; merged.update({b["datetime"]:b for b in new}); return [merged[k] for k in sorted(merged)][-limit:]
 
 def twelve(symbol,interval,key,count):
-    q=urlencode({"symbol":"XAU/USD" if symbol=="XAUUSD" else "EUR/USD","interval":interval,"outputsize":count,"timezone":"UTC","apikey":key}); payload=request_json("https://api.twelvedata.com/time_series?"+q)
+    config,_=load_config(); ticker=(config.get("instrument_profiles",{}).get(symbol) or {}).get("twelve")
+    if not ticker: raise RuntimeError(f"Twelve Data mapping unavailable for {symbol}")
+    q=urlencode({"symbol":ticker,"interval":interval,"outputsize":count,"timezone":"UTC","apikey":key}); payload=request_json("https://api.twelvedata.com/time_series?"+q)
     if payload.get("status")=="error": raise RuntimeError(payload.get("message","Twelve Data error"))
     bars=[normalize_bar(v.get("datetime"),v.get("open"),v.get("high"),v.get("low"),v.get("close")) for v in payload.get("values",[])]; return [b for b in reversed(bars) if b]
 def yahoo(symbol,interval,_count):
-    ticker="EURUSD=X" if symbol=="EURUSD" else "GC=F"; api,span={"1day":("1d","2y"),"1h":("1h","730d"),"1min":("1m","7d")}[interval]
+    config,_=load_config(); ticker=(config.get("instrument_profiles",{}).get(symbol) or {}).get("yahoo")
+    if not ticker: raise RuntimeError(f"Yahoo mapping unavailable for {symbol}")
+    api,span={"1day":("1d","2y"),"1h":("1h","730d"),"1min":("1m","7d")}[interval]
     result=(request_json(f"https://query1.finance.yahoo.com/v8/finance/chart/{quote(ticker,safe='')}?range={span}&interval={api}&includePrePost=false").get("chart",{}).get("result") or [None])[0]
     if not result: raise RuntimeError("empty Yahoo chart")
     stamps=result.get("timestamp") or []; q=(result.get("indicators",{}).get("quote") or [{}])[0]; out=[]
@@ -89,9 +93,10 @@ def collect_base(symbol,interval,config,cached,now):
         fresh=(now-parse_time(old["retrieved_at_utc"])).total_seconds()<config["refresh_seconds"][interval]
     if fresh: return metadata(old.get("values",[]),interval,old.get("provider"),old.get("source_type"),old.get("fallback_level"),now,"cache_fresh")
     count=config["incremental_outputsize"][interval] if old else config["initial_outputsize"][interval]; key=os.getenv("TWELVEDATA_API_KEY"); plans=[]
-    if key: plans.append(("Twelve Data","spot",0,lambda:twelve(symbol,interval,key,count)))
+    profile=config.get("instrument_profiles",{}).get(symbol,{})
+    if key and profile.get("twelve"): plans.append(("Twelve Data",profile.get("source_type","spot"),0,lambda:twelve(symbol,interval,key,count)))
     if symbol=="XAUUSD": plans.append(("XAUS","spot",1,lambda:xaus(symbol,interval,count)))
-    plans.append(("Yahoo Finance","spot" if symbol=="EURUSD" else "futures_proxy",2 if symbol=="EURUSD" else 3,lambda:yahoo(symbol,interval,count)))
+    plans.append(("Yahoo Finance",profile.get("yahoo_source_type",profile.get("source_type","spot")),2,lambda:yahoo(symbol,interval,count)))
     error="no provider"
     for provider,source_type,level,loader in plans:
         try:

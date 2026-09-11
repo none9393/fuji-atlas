@@ -25,6 +25,12 @@ def contract(missing=None,xau_source="spot",now=None):
     return {"config_sha256":SHA,"symbols":symbols}
 
 class PipelineTests(unittest.TestCase):
+    def test_cross_market_profiles_and_correlations(self):
+        self.assertEqual(len(CONFIG["symbols"]),11); self.assertEqual(CONFIG["instrument_profiles"]["USDJPY"]["yahoo"],"JPY=X"); self.assertIsNone(CONFIG["instrument_profiles"]["US10Y"]["twelve"])
+        rx=[.01,-.02,.03,-.01,.02,-.03,.015,-.01,.025,-.02]*3; a=100; b=200; av=[]; bv=[]
+        for i,r in enumerate(rx,1): a*=1+r; b*=1-r; av.append({"datetime":f"2026-01-{i:02d}T00:00:00+00:00","close":a,"is_closed":True}); bv.append({"datetime":f"2026-01-{i:02d}T00:00:00+00:00","close":b,"is_closed":True})
+        market={"symbols":{"EURUSD":{"intervals":{"1day":{"values":av}}},"DXY":{"intervals":{"1day":{"values":bv}}}}}
+        ctx=runner.cross_market_context(market,"EURUSD"); self.assertEqual(ctx["sample"],29); self.assertLess(ctx["correlation"],0); self.assertTrue(runner.dxy_conflict("EURUSD",{"correlation":.3},CONFIG)); self.assertFalse(runner.dxy_conflict("WTIUSD",{"correlation":.9},CONFIG))
     def test_workflow_exposes_fresh_data_cache_bypass(self):
         workflow=(ROOT/".github/workflows/fuji-cloud.yml").read_text(encoding="utf-8")
         self.assertIn("fresh_data:",workflow)
@@ -62,7 +68,7 @@ class PipelineTests(unittest.TestCase):
     def test_config_sha_is_shared(self): self.assertEqual(collector.load_config()[1],verifier.load_config()[1]); self.assertEqual(runner.digest(),SHA)
     def test_actionable_levels_include_entry_sl_targets_and_rr(self):
         stats={"close":100.0,"atr14":2.0,"direction":"yukarı"}; levels=runner.actionable_levels("XAUUSD",stats)
-        self.assertEqual(levels["side"],"LONG"); self.assertEqual(levels["side_tr"],"ALIM"); self.assertLess(levels["sl"],levels["entry"]); self.assertGreater(levels["tp1"],levels["entry"]); self.assertGreater(levels["tp2"],levels["tp1"]); self.assertEqual(levels["rr1"],1.5); self.assertEqual(levels["rr2"],2.5); self.assertGreater(levels["tp2_usd"],levels["tp1_usd"]); self.assertGreater(levels["tp2_pct"],levels["tp1_pct"])
+        self.assertEqual(levels["side"],"LONG"); self.assertEqual(levels["side_tr"],"ALIM"); self.assertLess(levels["sl"],levels["entry"]); self.assertGreater(levels["tp1"],levels["entry"]); self.assertGreater(levels["tp2"],levels["tp1"]); self.assertEqual(levels["rr1"],1.5); self.assertEqual(levels["rr2"],2.5); self.assertIsNone(levels["tp1_usd"]); self.assertIsNone(levels["tp2_usd"]); self.assertGreater(levels["tp2_pct"],levels["tp1_pct"])
     def test_empirical_gate_blocks_small_or_weak_samples(self):
         weak=[{"symbol":"EURUSD","strategy":"swing","status":"closed","pnl_r":1 if i<20 else -1} for i in range(29)]
         result=runner.empirical_gate(weak,"EURUSD","swing",CONFIG); self.assertFalse(result["passed"]); self.assertEqual(result["sample_size"],29)
