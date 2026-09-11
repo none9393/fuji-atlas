@@ -25,6 +25,14 @@ def contract(missing=None,xau_source="spot",now=None):
     return {"config_sha256":SHA,"symbols":symbols}
 
 class PipelineTests(unittest.TestCase):
+    def test_validator_rejects_heading_only_actionable_fields(self):
+        validator=module("validator", "cloud/validate_reports.py")
+        from reportlab.pdfgen import canvas
+        with tempfile.TemporaryDirectory() as td:
+            path=Path(td)/"EURUSD_20260101_000000.pdf"
+            c=canvas.Canvas(str(path)); c.drawString(40,780,"Yönetici özeti Actionable Intelligence"); c.drawString(40,760,"Piyasa durumu bülteni"); c.drawString(40,740,"Koşullu giriş SL TP1 TP2 Geçmiş gerçekleşme Risk notu SARI · TEMKİNLİ"); c.save()
+            with self.assertRaises(AssertionError): validator.validate(path)
+
     def test_open_one_minute_is_retained_not_counted(self):
         now=datetime(2026,1,1,10,0,30,tzinfo=timezone.utc); values=[{"datetime":"2026-01-01T09:59:00+00:00","open":1,"high":2,"low":.5,"close":1.5},{"datetime":"2026-01-01T10:00:00+00:00","open":1.5,"high":2,"low":1,"close":1.8}]
         item=collector.metadata(values,"1min","fixture","spot",0,now); self.assertEqual(item["total_bar_count"],2); self.assertEqual(item["bar_count"],1); self.assertFalse(item["last_bar_closed"]); self.assertFalse(item["values"][-1]["is_closed"])

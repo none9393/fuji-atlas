@@ -2,6 +2,7 @@
 """Validate the mandatory text contract of FUJI PDF reports."""
 from __future__ import annotations
 import sys
+import re
 from pathlib import Path
 from pypdf import PdfReader
 
@@ -10,12 +11,15 @@ REQUIRED = (
     "Koşullu giriş", "SL", "TP1", "TP2", "Geçmiş gerçekleşme", "Risk notu",
 )
 DECISIONS = ("YEŞİL · GİR", "SARI · TEMKİNLİ", "KIRMIZI · GİRME")
+ACTIONABLE_SCENARIO = re.compile(r"Koşullu giriş\s*\((?:ALIM|SATIM)\)\s*:\s*[0-9]")
 
 def validate(path: Path) -> None:
     text = "\n".join(page.extract_text() or "" for page in PdfReader(path).pages)
     missing = [item for item in REQUIRED if item not in text]
     if not any(item in text for item in DECISIONS): missing.append("karar renk etiketi")
     if "ARAŞTIRMA MODU" in text: missing.append("ARAŞTIRMA MODU yasak")
+    if not ACTIONABLE_SCENARIO.search(text):
+        missing.append("sayısal actionable senaryo")
     if missing: raise AssertionError(f"{path.name}: eksik/geçersiz alanlar: {', '.join(missing)}")
 
 def main(argv=None):
