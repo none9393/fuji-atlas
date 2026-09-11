@@ -47,8 +47,10 @@ def walk_forward(values,symbol,strategy):
             if tp: outcome="win"; break
         if outcome: results.append(outcome)
     sample=len(results); wins=results.count("win"); losses=results.count("loss"); rate=wins/sample if sample else 0.0; pf=wins/losses if losses else (float("inf") if wins else 0.0)
-    if sample>=30 and rate<.45: decision,color,status="KIRMIZI · GİRME","red","red"
-    elif sample>=30 and rate>=.65: decision,color,status="YEŞİL · GİR","green","green"
+    # Empirical weakness alone does not hide a structurally readable setup.
+    # Red is reserved for verifier-blocked/unreadable structures; otherwise
+    # uncertain or sub-65% walk-forward evidence remains actionable yellow.
+    if sample>=30 and rate>=.65: decision,color,status="YEŞİL · GİR","green","green"
     else: decision,color,status="SARI · TEMKİNLİ","yellow","yellow"
     return {"status":status,"decision":decision,"color":color,"sample_size":sample,"wins":wins,"losses":losses,"win_rate":rate,"profit_factor":pf,"interval":interval,"horizon":horizon,"reason":"giriş tetiklenmiş kapalı mumların walk-forward sonucu" if sample else "giriş tetiklenmiş sonuç yok"}
 def empirical_gate(outcomes,symbol,strategy,config):
