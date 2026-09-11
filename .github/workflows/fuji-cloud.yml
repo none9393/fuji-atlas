@@ -83,9 +83,13 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          xau="$(find cloud-output -maxdepth 1 -type f -name 'XAUUSD_*.pdf' -print | sort | tail -n 1)"
-          eur="$(find cloud-output -maxdepth 1 -type f -name 'EURUSD_*.pdf' -print | sort | tail -n 1)"
-          if [ -z "$xau" ] && [ -z "$eur" ]; then
+          symbols="$(python -c 'import json; print(" ".join(json.load(open("FUJI_RUNTIME_CONFIG.json"))["symbols"]))')"
+          found=0
+          for symbol in $symbols; do
+            file="$(find cloud-output -maxdepth 1 -type f -name "${symbol}_*.pdf" -print | sort | tail -n 1)"
+            if [ -n "$file" ]; then found=1; fi
+          done
+          if [ "$found" -eq 0 ]; then
             echo "No new timestamped PDFs; preserving existing fuji-latest release assets."
             exit 0
           fi
@@ -95,14 +99,10 @@ jobs:
               --notes "Automatically updated latest FUJI PDF reports." \
               --target "${GITHUB_SHA}"
           fi
-          if [ -n "$xau" ]; then
-            cp "$xau" /tmp/XAUUSD-latest.pdf
-            gh release upload fuji-latest /tmp/XAUUSD-latest.pdf --repo "${GITHUB_REPOSITORY}" --clobber
-          fi
-          if [ -n "$eur" ]; then
-            cp "$eur" /tmp/EURUSD-latest.pdf
-            gh release upload fuji-latest /tmp/EURUSD-latest.pdf --repo "${GITHUB_REPOSITORY}" --clobber
-          fi
+          for symbol in $symbols; do
+            file="$(find cloud-output -maxdepth 1 -type f -name "${symbol}_*.pdf" -print | sort | tail -n 1)"
+            if [ -n "$file" ]; then cp "$file" "/tmp/${symbol}-latest.pdf"; gh release upload fuji-latest "/tmp/${symbol}-latest.pdf" --repo "${GITHUB_REPOSITORY}" --clobber; fi
+          done
       - uses: actions/cache/save@v4
         if: always()
         with:
