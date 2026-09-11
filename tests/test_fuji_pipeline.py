@@ -29,8 +29,9 @@ class PipelineTests(unittest.TestCase):
         workflow=(ROOT/".github/workflows/fuji-cloud.yml").read_text(encoding="utf-8")
         self.assertIn("fresh_data:",workflow)
         self.assertIn("Reset market cache for a fresh run",workflow)
-        self.assertIn('35 3 * * 1-5',workflow)
-        self.assertIn('15 5-14 * * 1-5',workflow)
+        self.assertIn('2,32 * * * *',workflow)
+        self.assertNotIn('35 3 * * 1-5',workflow)
+        self.assertNotIn('15 5-14 * * 1-5',workflow)
 
     def test_validator_rejects_heading_only_actionable_fields(self):
         validator=module("validator", "cloud/validate_reports.py")
