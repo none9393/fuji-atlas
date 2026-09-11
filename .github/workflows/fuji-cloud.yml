@@ -7,7 +7,7 @@ on:
     - cron: "15 6-14 * * 1-5"
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -63,6 +63,26 @@ jobs:
           done
           test -f cloud-output/health.json || printf '%s\n' '{"decision":"blocked","reason":"runner did not produce health.json"}' > cloud-output/health.json
           python cloud/build_report_portal.py
+      - name: Publish latest PDF release assets
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          xau="$(find cloud-output -maxdepth 1 -type f -name 'XAUUSD_*.pdf' -print | sort | tail -n 1)"
+          eur="$(find cloud-output -maxdepth 1 -type f -name 'EURUSD_*.pdf' -print | sort | tail -n 1)"
+          if [ -z "$xau" ] && [ -z "$eur" ]; then
+            echo "No new timestamped PDFs; preserving existing fuji-latest release assets."
+            exit 0
+          fi
+          if ! gh release view fuji-latest --repo "${GITHUB_REPOSITORY}" >/dev/null 2>&1; then
+            gh release create fuji-latest --repo "${GITHUB_REPOSITORY}" \
+              --title "FUJI latest reports" \
+              --notes "Automatically updated latest FUJI PDF reports." \
+              --target "${GITHUB_SHA}"
+          fi
+          if [ -n "$xau" ]; then gh release upload fuji-latest "$xau#XAUUSD-latest.pdf" --repo "${GITHUB_REPOSITORY}" --clobber; fi
+          if [ -n "$eur" ]; then gh release upload fuji-latest "$eur#EURUSD-latest.pdf" --repo "${GITHUB_REPOSITORY}" --clobber; fi
       - uses: actions/cache/save@v4
         if: always()
         with:
