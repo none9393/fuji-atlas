@@ -7,10 +7,13 @@ from pathlib import Path
 from pypdf import PdfReader
 
 REQUIRED = (
-    "Yönetici özeti", "Actionable Intelligence", "Piyasa durumu bülteni",
-    "Koşullu giriş", "SL", "TP1", "TP2", "Geçmiş gerçekleşme", "Risk notu",
-    "Açık pozisyon desteği", "Aktif koşullar ve dikkat noktaları", "Fırsat ayrıntıları",
-    "Karar ekranı", "Genel piyasa durumu", "Fırsat planları",
+    "Yönetici özeti", "Genel piyasa görünümü", "Karar ekranı",
+    "Makro ve çapraz piyasa değerlendirmesi", "Fırsat planları", "Karar renkleri",
+)
+FORBIDDEN = (
+    "Açık pozisyon desteği", "Kısacası:", "Risk notu",
+    "Makro takvim/haber akışı bağlı değildir", "ARAŞTIRMA MODU",
+    "Karar renkleri: YEŞİL · GİR / SARI · TEMKİNLİ / KIRMIZI · GİRME",
 )
 DECISIONS = ("YEŞİL · GİR", "SARI · TEMKİNLİ", "KIRMIZI · GİRME")
 ACTIONABLE_SCENARIO = re.compile(r"Koşullu giriş\s*\((?:LONG / ALIM|SHORT / SATIM)\)\s*:\s*[0-9]")
@@ -18,9 +21,10 @@ ACTIONABLE_SCENARIO = re.compile(r"Koşullu giriş\s*\((?:LONG / ALIM|SHORT / SA
 def validate(path: Path) -> None:
     text = "\n".join(page.extract_text() or "" for page in PdfReader(path).pages)
     missing = [item for item in REQUIRED if item not in text]
+    missing.extend(f"yasak ifade: {item}" for item in FORBIDDEN if item in text)
     if not any(item in text for item in DECISIONS): missing.append("karar renk etiketi")
     if "ARAŞTIRMA MODU" in text: missing.append("ARAŞTIRMA MODU yasak")
-    if not ACTIONABLE_SCENARIO.search(text):
+    if not ACTIONABLE_SCENARIO.search(text) and "YENİ POZİSYON YOK" not in text:
         missing.append("sayısal actionable senaryo")
     if missing: raise AssertionError(f"{path.name}: eksik/geçersiz alanlar: {', '.join(missing)}")
 

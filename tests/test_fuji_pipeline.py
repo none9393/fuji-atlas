@@ -92,7 +92,8 @@ class PipelineTests(unittest.TestCase):
                 self.assertTrue((runner.OUT/"XAUUSD_20260102_060405.pdf").exists()); self.assertTrue((runner.OUT/"EURUSD_20260102_060405.pdf").exists())
                 for name in ("XAUUSD_20260102_060405.pdf","EURUSD_20260102_060405.pdf"):
                     text="\n".join(page.extract_text() or "" for page in PdfReader(runner.OUT/name).pages)
-                    for expected in ("Yönetici özeti","Actionable Intelligence","Piyasa durumu bülteni","SARI","Koşullu giriş","SL","TP1","TP2","Geçmiş gerçekleşme","Risk notu"): self.assertIn(expected,text)
+                    for expected in ("Yönetici özeti","Actionable Intelligence","Genel piyasa görünümü","Karar ekranı","Makro ve çapraz piyasa değerlendirmesi","Fırsat planları","Karar renkleri","Koşullu giriş","SL","TP1","TP2","Geçmiş gerçekleşme"): self.assertIn(expected,text)
+                    self.assertNotIn("Açık pozisyon desteği",text); self.assertNotIn("Risk notu",text); self.assertNotIn("Kısacası:",text)
             finally: runner.OUT=old
     def test_portal_lists_latest_history_and_offline_cache(self):
         with tempfile.TemporaryDirectory() as td:
