@@ -10,6 +10,7 @@ REQUIRED = (
     "Yönetici özeti", "Genel piyasa görünümü", "Karar ekranı",
     "Makro ve çapraz piyasa değerlendirmesi", "Fırsat planları", "Karar renkleri",
 )
+BULLETIN_REQUIRED=("FUJI Güncel Piyasa Bülteni","Yönetici özeti","Sembol panoraması","Etki yaratan güncel gelişmeler","Makro saatleri","Federal Reserve","ECB","U.S. EIA","GDELT")
 FORBIDDEN = (
     "Açık pozisyon desteği", "Kısacası:", "Risk notu",
     "Makro takvim/haber akışı bağlı değildir", "ARAŞTIRMA MODU",
@@ -28,12 +29,22 @@ def validate(path: Path) -> None:
         missing.append("sayısal actionable senaryo")
     if missing: raise AssertionError(f"{path.name}: eksik/geçersiz alanlar: {', '.join(missing)}")
 
+def validate_bulletin(path: Path) -> None:
+    pages=[(page.extract_text() or "").strip() for page in PdfReader(path).pages]; text="\n".join(pages)
+    missing=[item for item in BULLETIN_REQUIRED if item not in text]
+    if "ARAŞTIRMA MODU" in text: missing.append("ARAŞTIRMA MODU yasak")
+    if not any(symbol in text for symbol in ("XAUUSD","EURUSD","GBPUSD","USDJPY","USDCAD","AUDUSD","XAGUSD","WTIUSD","NATGAS","DXY","US10Y")): missing.append("sembol satırı")
+    if not pages or any(len(page)<200 for page in pages): missing.append("boş/kısa sayfa")
+    if missing: raise AssertionError(f"{path.name}: bülten sözleşmesi: {', '.join(missing)}")
+
 def main(argv=None):
     root = Path((argv or sys.argv[1:] or ["cloud-output"])[0]); config_path=Path(__file__).resolve().parents[1]/"FUJI_RUNTIME_CONFIG.json"; symbols=json.loads(config_path.read_text(encoding="utf-8")).get("symbols",["XAUUSD","EURUSD"]); files=[]
     for symbol in symbols: files.extend(sorted(root.glob(f"{symbol}_*.pdf")))
     if not files: print(f"PDF bulunamadı: {root}", file=sys.stderr); return 2
     for path in files:
         validate(path); print(f"{path.name}: OK")
+    bulletins=sorted(root.glob("PIYASA_BULTENI_*.pdf"))
+    for path in bulletins: validate_bulletin(path); print(f"{path.name}: BULLETIN OK")
     return 0
 
 if __name__ == "__main__": raise SystemExit(main())
