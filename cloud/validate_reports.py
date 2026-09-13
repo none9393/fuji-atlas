@@ -40,7 +40,7 @@ def validate_bulletin(path: Path) -> None:
 def main(argv=None):
     root = Path((argv or sys.argv[1:] or ["cloud-output"])[0]); config_path=Path(__file__).resolve().parents[1]/"FUJI_RUNTIME_CONFIG.json"; symbols=json.loads(config_path.read_text(encoding="utf-8")).get("symbols",["XAUUSD","EURUSD"]); files=[]
     for symbol in symbols: files.extend(sorted(root.glob(f"{symbol}_*.pdf")))
-    bulletins=sorted(list(root.glob("PIYASA_BULTENI_*.pdf"))+list(root.glob("PIYASA-BULTENI-latest.pdf")))
+    bulletins=sorted(list(root.glob("PIYASA_BULTENI_*.pdf"))+list(root.glob("PIYASA-BULTENI-*.pdf")))
     if not files and not bulletins: print(f"PDF bulunamadı: {root}", file=sys.stderr); return 2
     for path in files:
         validate(path); print(f"{path.name}: OK")
