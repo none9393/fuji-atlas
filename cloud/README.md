@@ -20,10 +20,12 @@ Runner `cloud-output/health.json` dosyasını her durumda üretir. Tüm strateji
 blocked ise exit code 4 döner; workflow bunu veri güvenliği kararı olarak kabul edip
 son geçerli PDF'leri korur ve sağlık portalını yayımlar.
 
+Haber katmanı tek yayın kuruluşuna bağlı değildir: Federal Reserve, ECB ve U.S. EIA resmi RSS akışları; GDELT ise yalnız allowlist içindeki yayınların başlık/URL/tarih metadata keşif indeksidir. Reuters Markets erişilebildiğinde opsiyonel ek kaynaktır. API anahtarı gerekmez; makale gövdeleri kopyalanmaz. Başlıklar son 36 saat filtresi ve deterministik sembol/finans terimi eşleşmesiyle kullanılır; haber tek başına işlem yönü üretmez. Kaynak hataları `health.json` içindeki `market_news.warnings` alanında gösterilir ve birleşik cache en fazla altı saat kullanılır.
+
 Base OHLC serileri timeframe yenileme süresine göre incremental güncellenir. Açık
 1min mum güncellik için saklanır fakat indikatörlere ve kapalı mum resampling'ine
 katılmaz. Her çalışma sabit adın üzerine yazmak yerine
-`XAUUSD_YYYYMMDD_HHMMSS.pdf` ve `EURUSD_YYYYMMDD_HHMMSS.pdf` üretir. Portal en
+`XAUUSD_YYYYMMDD_HHMMSS.pdf` ve diğer sembol raporları ile `PIYASA_BULTENI_YYYYMMDD_HHMMSS.pdf` üretir. Portal en
 güncel raporu öne çıkarır ve sembol başına son 200 raporu “Geçmiş raporlar”
 bölümünde tutar.
 

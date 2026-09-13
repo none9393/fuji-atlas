@@ -25,6 +25,28 @@ def contract(missing=None,xau_source="spot",now=None):
     return {"config_sha256":SHA,"symbols":symbols}
 
 class PipelineTests(unittest.TestCase):
+    def test_public_feed_parsers_and_normalized_contract(self):
+        xml=b'''<rss><channel><item><title>Fed rates and dollar market</title><link>https://example.com/a?utm_source=x</link><pubDate>Sun, 13 Sep 2026 10:00:00 GMT</pubDate></item></channel></rss>'''
+        rows=runner.parse_public_feed(xml,"Federal Reserve",datetime(2026,9,13,11,tzinfo=timezone.utc)); self.assertEqual(rows[0]["url"],"https://example.com/a"); self.assertIn("published_at_utc",rows[0]); self.assertNotIn("description",rows[0])
+        atom=b'''<feed xmlns="http://www.w3.org/2005/Atom"><entry><title>ECB euro inflation</title><link href="https://example.com/b"/><updated>2026-09-13T10:00:00Z</updated></entry></feed>'''; self.assertEqual(runner.parse_public_feed(atom,"ECB",datetime(2026,9,13,11,tzinfo=timezone.utc))[0]["source"],"ECB")
+    def test_gdelt_timestamp_allowlist_and_symbol_mapping(self):
+        self.assertEqual(runner.parse_news_datetime("20260913T100000Z").hour,10); self.assertEqual(runner.related_symbols("Gold and dollar yields lift XAUUSD"),["XAUUSD","EURUSD","XAGUSD","DXY","US10Y"])
+        self.assertIn("reuters.com",runner.TRUSTED_GDELT_DOMAINS); self.assertNotIn("random-blog.example",runner.TRUSTED_GDELT_DOMAINS)
+    def test_news_relevance_word_boundary_and_36h(self):
+        now=datetime(2026,9,13,12,tzinfo=timezone.utc); good={"title":"Fed rates lift dollar market","published_at_utc":"2026-09-13T10:00:00+00:00"}; old={"title":"Fed rates dollar market","published_at_utc":"2026-09-11T23:00:00+00:00"}; self.assertTrue(runner.is_relevant_news(good,now)); self.assertFalse(runner.is_relevant_news(old,now)); self.assertFalse(runner._whole_word("corporate rateside", "rate"))
+    def test_news_cache_failure_isolated_and_age_bounded(self):
+        now=datetime(2026,9,13,12,tzinfo=timezone.utc)
+        with tempfile.TemporaryDirectory() as td:
+            cache=Path(td)/"public-market-news.json"; cache.write_text(json.dumps({"status":"live","retrieved_at_utc":"2026-09-13T10:00:00+00:00","articles":[]}),encoding="utf-8")
+            with patch.object(runner,"_fetch",side_effect=RuntimeError("provider down")): result=runner.load_public_market_news(now,cache); self.assertEqual(result["status"],"cache")
+            cache.write_text(json.dumps({"status":"live","retrieved_at_utc":"2026-09-13T00:00:00+00:00","articles":[]}),encoding="utf-8")
+            with patch.object(runner,"_fetch",side_effect=RuntimeError("provider down")): self.assertEqual(runner.load_public_market_news(now,cache)["status"],"unavailable")
+    def test_bulletin_contract_and_health_market_news(self):
+        with tempfile.TemporaryDirectory() as td:
+            data=Path(td)/"data.json"; data.write_text(json.dumps(contract()),encoding="utf-8"); old=runner.OUT; runner.OUT=Path(td)/"out"
+            try:
+                runner.run(str(data),"rules",datetime(2026,1,2,3,4,5,tzinfo=timezone.utc)); self.assertTrue(next(runner.OUT.glob("PIYASA_BULTENI_*.pdf"),None)); self.assertIn("market_news",json.loads((runner.OUT/"health.json").read_text()))
+            finally: runner.OUT=old
     def test_cross_market_profiles_and_correlations(self):
         self.assertEqual(len(CONFIG["symbols"]),11); self.assertEqual(CONFIG["instrument_profiles"]["USDJPY"]["yahoo"],"JPY=X"); self.assertIsNone(CONFIG["instrument_profiles"]["US10Y"]["twelve"])
         rx=[.01,-.02,.03,-.01,.02,-.03,.015,-.01,.025,-.02]*3; a=100; b=200; av=[]; bv=[]

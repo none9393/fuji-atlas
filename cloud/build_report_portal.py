@@ -9,7 +9,9 @@ def build(source=None,target=None):
     source=Path(source or ROOT/".fuji-published"); target=Path(target or ROOT/"cloud-site"); target.mkdir(parents=True,exist_ok=True); config=json.loads((ROOT/"FUJI_RUNTIME_CONFIG.json").read_text()); limit=config["report_archive_per_symbol"]
     for legacy in (source/"XAUUSD.pdf",source/"EURUSD.pdf"):
         if legacy.exists(): legacy.unlink()
-    by_symbol={s:sorted(source.glob(f"{s}_*.pdf"),reverse=True)[:limit] for s in config["symbols"]}; pdfs=[]; aliases=[]
+    by_symbol={s:sorted(source.glob(f"{s}_*.pdf"),reverse=True)[:limit] for s in config["symbols"]}; bulletins=sorted(source.glob("PIYASA_BULTENI_*.pdf"),reverse=True)[:limit]; pdfs=[]; aliases=[]
+    for pdf in bulletins: shutil.copy2(pdf,target/pdf.name); pdfs.append(pdf.name)
+    if bulletins: shutil.copy2(bulletins[0],target/"PIYASA-BULTENI-latest.pdf"); aliases.append("PIYASA-BULTENI-latest.pdf")
     for paths in by_symbol.values():
         for pdf in paths: shutil.copy2(pdf,target/pdf.name); pdfs.append(pdf.name)
     for symbol,paths in by_symbol.items():
@@ -24,6 +26,9 @@ def build(source=None,target=None):
     version=hashlib.sha256("|".join(sorted(pdfs)).encode()).hexdigest()[:12]
     def asset(name): return f"{name}?v={version}"
     featured=[]; archive=[]
+    if bulletins:
+        featured.append(f'<article><h2>Güncel Piyasa Bülteni</h2><p>En güncel çok kaynaklı haber ve makro özeti</p><a href="{asset("PIYASA-BULTENI-latest.pdf")}">Aç</a><a download href="{asset("PIYASA-BULTENI-latest.pdf")}">İndir</a></article>')
+        archive.append('<section><h3>Piyasa Bültenleri</h3><ul>'+''.join(f'<li><a href="{asset(p.name)}">{p.name}</a></li>' for p in bulletins)+'</ul></section>')
     for symbol,paths in by_symbol.items():
         if paths:
             latest=paths[0].name; alias=f"{symbol}-latest.pdf"; featured.append(f'<article><h2>{symbol}</h2><p>En güncel rapor</p><a href="{asset(alias)}">Aç</a><a download href="{asset(alias)}">İndir</a></article>')

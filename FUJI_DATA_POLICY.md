@@ -40,6 +40,8 @@ gösterilebilir fakat giriş, SL, TP ve R:R araştırma modu dışında yayımla
 
 ## Çalışma ve teslim
 
+Piyasa haberleri için ücretsiz, anahtarsız çok kaynak katmanı kullanılır: Federal Reserve, ECB ve U.S. EIA resmi RSS; GDELT allowlist içindeki güvenilir yayınların yalnız metadata alanları; erişilebildiğinde Reuters Markets ek başlıkları; mevcut Forex Factory/Fair Economy takvimi. Makale gövdeleri veya description alanları saklanmaz. Haberler son 36 saatle sınırlanır, URL duplicate temizlenir ve tek başına LONG/SHORT, giriş, SL veya TP üretmez. Canlı kaynakların tamamı başarısızsa en fazla altı saatlik birleşik cache kullanılır; daha eski cache `unavailable` olur. Durum ve uyarılar `health.json.market_news` alanındadır.
+
 Varsayılan analiz kurala dayalıdır; OpenAI zorunlu değildir. Telegram ve e-posta
 kullanılmaz. GitHub Actions telefon veya laptop açık olmasa bile bulutta çalışır.
 Pages portalı ilk çevrimiçi ziyaretten sonra mevcut raporları offline açabilir ve

@@ -69,9 +69,9 @@ jobs:
         if: always() && (steps.analysis.outputs.exit_code == '4' || (steps.analysis.outputs.exit_code == '0' && steps.validation.outcome == 'success'))
         run: |
           mkdir -p .fuji-published cloud-output
-          rm -f .fuji-published/XAUUSD.pdf .fuji-published/EURUSD.pdf
+          rm -f .fuji-published/*.pdf
           if find cloud-output -maxdepth 1 -name '*.pdf' -print -quit | grep -q .; then cp cloud-output/*.pdf .fuji-published/; fi
-          for symbol in XAUUSD EURUSD; do
+          for symbol in $(python -c 'import json; print(" ".join(json.load(open("FUJI_RUNTIME_CONFIG.json"))["symbols"]))'); do
             find .fuji-published -maxdepth 1 -name "${symbol}_*.pdf" -printf '%T@ %p\n' \
               | sort -rn | tail -n +201 | cut -d' ' -f2- | while IFS= read -r old; do rm -f "$old"; done
           done
@@ -103,6 +103,8 @@ jobs:
             file="$(find cloud-output -maxdepth 1 -type f -name "${symbol}_*.pdf" -print | sort | tail -n 1)"
             if [ -n "$file" ]; then cp "$file" "/tmp/${symbol}-latest.pdf"; gh release upload fuji-latest "/tmp/${symbol}-latest.pdf" --repo "${GITHUB_REPOSITORY}" --clobber; fi
           done
+          bulletin="$(find cloud-output -maxdepth 1 -type f -name 'PIYASA_BULTENI_*.pdf' -print | sort | tail -n 1)"
+          if [ -n "$bulletin" ]; then cp "$bulletin" /tmp/PIYASA-BULTENI-latest.pdf; gh release upload fuji-latest /tmp/PIYASA-BULTENI-latest.pdf --repo "${GITHUB_REPOSITORY}" --clobber; fi
       - uses: actions/cache/save@v4
         if: always()
         with:
