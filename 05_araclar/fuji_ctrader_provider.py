@@ -192,7 +192,10 @@ class CTraderProvider:
                 self.client.send(req, responseTimeoutInSeconds=20).addCallbacks(symbols_response, fail)
                 self._ready.set()
             def account_list(response):
-                ids = list(getattr(response, "ctidTraderAccount", [])) or list(getattr(response, "ctidTraderAccountId", []))
+                accounts = list(getattr(response, "ctidTraderAccount", []))
+                ids = [getattr(x, "ctidTraderAccountId", x) for x in accounts]
+                if not ids:
+                    ids = list(getattr(response, "ctidTraderAccountId", []))
                 if self.account_id and ids and int(self.account_id) not in [int(x) for x in ids]:
                     self._circuit_broken = True; self._ready.set(); return
                 req = ProtoOAAccountAuthReq(ctidTraderAccountId=int(self.account_id), accessToken=self._token)
