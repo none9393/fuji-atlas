@@ -231,7 +231,9 @@ class CTraderProvider:
                 except Exception as exc:
                     fail(exc)
             self.client.setConnectedCallback(connected)
-            self.client.setMessageReceivedCallback(on_message)
+            # Deferred responses are the SDK's authoritative correlation path.
+            # Do not register a second message callback: doing so re-processes
+            # protobuf payloads and can overwrite the discovered symbol list.
             self.client.startService()
             if not reactor.running:
                 threading.Thread(target=lambda: reactor.run(installSignalHandlers=False), daemon=True).start()
