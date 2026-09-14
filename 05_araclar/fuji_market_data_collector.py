@@ -157,7 +157,7 @@ def collect_symbol(symbol,config,cached,now):
 def collect(output=None,now=None):
     global _CTRADER, _CTRADER_ERROR
     _CTRADER, _CTRADER_ERROR = None, None
-    now=now or utcnow(); config,digest=load_config(); cached=load_cache(); contract={"schema_version":config["schema_version"],"config_sha256":digest,"generated_at_utc":now.isoformat(),"symbols":{s:collect_symbol(s,config,cached,now) for s in config["symbols"]}}
+    now=now or utcnow(); config,digest=load_config(); cached=load_cache(); symbols={s:collect_symbol(s,config,cached,now) for s in config["symbols"]}; contract={"schema_version":config["schema_version"],"config_sha256":digest,"generated_at_utc":now.isoformat(),"provider_diagnostics":{"cTrader":{"configured":bool(ctrader_configured()),"error":(_CTRADER_ERROR or "")[:180]}},"symbols":symbols}
     CACHE_PATH.parent.mkdir(parents=True,exist_ok=True); CACHE_PATH.write_text(json.dumps(contract,ensure_ascii=False,indent=2),encoding="utf-8")
     if output: Path(output).write_text(json.dumps(contract,ensure_ascii=False,indent=2),encoding="utf-8")
     return contract
