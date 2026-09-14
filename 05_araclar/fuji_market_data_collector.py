@@ -162,5 +162,5 @@ def collect(output=None,now=None):
     if output: Path(output).write_text(json.dumps(contract,ensure_ascii=False,indent=2),encoding="utf-8")
     return contract
 def main():
-    p=argparse.ArgumentParser(); p.add_argument("--output",default="/tmp/fuji-market-data.json"); a=p.parse_args(); print(json.dumps(collect(a.output),ensure_ascii=False))
+    p=argparse.ArgumentParser(); p.add_argument("--output",default="/tmp/fuji-market-data.json"); a=p.parse_args(); result=collect(a.output); print(json.dumps({"cTrader_diagnostic": {"configured": bool(ctrader_configured()), "error": (_CTRADER_ERROR or "")[:180]}}, ensure_ascii=False)); print(json.dumps(result,ensure_ascii=False))
 if __name__=="__main__": main()
