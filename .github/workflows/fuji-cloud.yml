@@ -63,7 +63,7 @@ jobs:
           CTRADER: ${{ secrets.CTRADER }}
         run: |
           set +e
-          timeout --signal=TERM 240s python cloud/run_cloud.py
+          timeout --signal=TERM --kill-after=5s 240s python cloud/run_cloud.py
           code=$?
           set -e
           echo "exit_code=$code" >> "$GITHUB_OUTPUT"
