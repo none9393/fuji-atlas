@@ -50,6 +50,18 @@ jobs:
       - name: Reset market cache for a fresh run
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.fresh_data }}
         run: rm -rf .fuji-cache /tmp/fuji-market-data.json
+      - name: cTrader connectivity preflight
+        run: |
+          python - <<'PY'
+          import socket
+          for host in ("live.ctraderapi.com", "live1.p.ctrader.com"):
+              try:
+                  addresses = sorted({item[4][0] for item in socket.getaddrinfo(host, 5035, type=socket.SOCK_STREAM)})
+                  with socket.create_connection((host, 5035), timeout=10):
+                      print("CTRADER_TCP_OK", host, addresses)
+              except Exception as exc:
+                  print("CTRADER_TCP_FAIL", host, type(exc).__name__)
+          PY
       - name: Run FUJI safely
         id: analysis
         env:
