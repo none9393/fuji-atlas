@@ -190,7 +190,7 @@ class CTraderProvider:
             def account_auth(_response):
                 self.authenticated = True
                 req = ProtoOASymbolsListReq(ctidTraderAccountId=int(self.account_id), includeArchivedSymbols=False)
-                self.client.send(req, responseTimeoutInSeconds=20).addCallbacks(symbols_response, fail)
+                self.client.send(req, responseTimeoutInSeconds=8).addCallbacks(symbols_response, fail)
                 self._ready.set()
             def account_list(response):
                 response = Protobuf.extract(response)
@@ -201,20 +201,20 @@ class CTraderProvider:
                 if self.account_id and ids and int(self.account_id) not in [int(x) for x in ids]:
                     self._circuit_broken = True; self._ready.set(); return
                 req = ProtoOAAccountAuthReq(ctidTraderAccountId=int(self.account_id), accessToken=self._token)
-                self.client.send(req, responseTimeoutInSeconds=20).addCallbacks(account_auth, fail)
+                self.client.send(req, responseTimeoutInSeconds=10).addCallbacks(account_auth, fail)
             def app_auth(_response):
                 req = ProtoOAGetAccountListByAccessTokenReq(accessToken=self._token)
-                self.client.send(req, responseTimeoutInSeconds=20).addCallbacks(account_list, fail)
+                self.client.send(req, responseTimeoutInSeconds=10).addCallbacks(account_list, fail)
             def connected(_client):
                 req = ProtoOAApplicationAuthReq(clientId=self.env["CTRADER_CLIENT_ID"], clientSecret=self.env["CTRADER_CLIENT_SECRET"])
-                self.client.send(req, responseTimeoutInSeconds=20).addCallbacks(app_auth, fail)
+                self.client.send(req, responseTimeoutInSeconds=10).addCallbacks(app_auth, fail)
             self.client.setConnectedCallback(connected)
             self.client.startService()
             if not reactor.running:
                 threading.Thread(target=lambda: reactor.run(installSignalHandlers=False), daemon=True).start()
-            if not self._ready.wait(25) or not self.authenticated:
+            if not self._ready.wait(12) or not self.authenticated:
                 raise CTraderError("authentication timeout")
-            if not self._symbols_ready.wait(20):
+            if not self._symbols_ready.wait(8):
                 raise CTraderError("symbol list timeout")
             return True
         except Exception as exc:
@@ -255,8 +255,8 @@ class CTraderProvider:
             period=period, fromTimestamp=from_ms, toTimestamp=now_ms,
             count=int(count),
         )
-        self.client.send(req, responseTimeoutInSeconds=20).addCallbacks(received, failed)
-        if not done.wait(25):
+        self.client.send(req, responseTimeoutInSeconds=12).addCallbacks(received, failed)
+        if not done.wait(14):
             raise CTraderError("trendbar timeout")
         if "error" in result:
             raise CTraderError(result["error"])
