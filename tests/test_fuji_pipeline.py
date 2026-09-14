@@ -32,6 +32,9 @@ class PipelineTests(unittest.TestCase):
         resolved=ctrader.resolve_symbol("XAUUSD",[{"symbolName":"GOLD.cash","symbolId":7}]); self.assertEqual(resolved["status"],"resolved")
         self.assertEqual(ctrader.resolve_symbol("XAUUSD",[{"symbolName":"GOLD"},{"symbolName":"XAUUSD"}])["status"],"ambiguous")
         self.assertTrue(ctrader.validate_ohlc({"open":1,"high":2,"low":.5,"close":1.5})); self.assertFalse(ctrader.validate_ohlc({"open":1,"high":.5,"low":.8,"close":1}))
+    def test_ctrader_bundle_configuration_without_logging(self):
+        env={"CTRADER":json.dumps({"client_id":"id","client_secret":"secret","access_token":"token","account_id":"42","environment":"demo"})}
+        self.assertTrue(ctrader.configured(env)); self.assertEqual(ctrader.environment(env),"demo")
     def test_ctrader_relative_prices_and_future_filter(self):
         rows=ctrader.normalize_trendbars([{"timestamp":1735689600000,"open":100000,"high":101000,"low":99000,"close":100500},{"timestamp":4102444800000,"open":1,"high":2,"low":0.5,"close":1}],digits=5,now=datetime(2026,1,1,tzinfo=timezone.utc)); self.assertEqual(len(rows),1); self.assertAlmostEqual(rows[0]["close"],1.005)
     def test_market_agenda_is_nonempty_without_news(self):

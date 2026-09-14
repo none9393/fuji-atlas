@@ -35,14 +35,30 @@ ALIASES = {
 class CTraderError(RuntimeError):
     pass
 
+def credential_env(env=None):
+    """Expand an optional CTRADER JSON bundle without exposing its values."""
+    source = dict(env or os.environ)
+    bundle = source.get("CTRADER")
+    if bundle and not all(source.get(k) for k in ("CTRADER_CLIENT_ID", "CTRADER_CLIENT_SECRET", "CTRADER_ACCESS_TOKEN", "CTRADER_ACCOUNT_ID")):
+        try:
+            parsed = json.loads(bundle)
+            if isinstance(parsed, dict):
+                for key in ("client_id", "client_secret", "access_token", "refresh_token", "account_id", "environment"):
+                    value = parsed.get(key) or parsed.get("CTRADER_" + key.upper())
+                    if value is not None:
+                        source["CTRADER_" + key.upper()] = str(value)
+        except (TypeError, ValueError):
+            pass
+    return source
+
 
 def configured(env=None):
-    env = env or os.environ
+    env = credential_env(env)
     return all(env.get(k) for k in ("CTRADER_CLIENT_ID", "CTRADER_CLIENT_SECRET", "CTRADER_ACCESS_TOKEN", "CTRADER_ACCOUNT_ID"))
 
 
 def environment(env=None):
-    value = (env or os.environ).get("CTRADER_ENVIRONMENT", "demo").lower()
+    value = credential_env(env).get("CTRADER_ENVIRONMENT", "demo").lower()
     return value if value in HOSTS else "demo"
 
 
@@ -129,7 +145,7 @@ def refresh_access_token(env=None, opener=None):
 
 class CTraderProvider:
     def __init__(self, env=None, client_factory=None):
-        self.env = env or os.environ
+        self.env = credential_env(env)
         self.environment = environment(self.env)
         self.host = host_for(self.env)
         self.client_factory = client_factory

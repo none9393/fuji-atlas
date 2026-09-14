@@ -60,6 +60,7 @@ jobs:
           CTRADER_REFRESH_TOKEN: ${{ secrets.CTRADER_REFRESH_TOKEN }}
           CTRADER_ACCOUNT_ID: ${{ secrets.CTRADER_ACCOUNT_ID }}
           CTRADER_ENVIRONMENT: ${{ secrets.CTRADER_ENVIRONMENT }}
+          CTRADER: ${{ secrets.CTRADER }}
         run: |
           set +e
           python cloud/run_cloud.py
