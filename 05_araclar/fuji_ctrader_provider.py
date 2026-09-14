@@ -201,7 +201,10 @@ class CTraderProvider:
                 accounts = list(getattr(response, "ctidTraderAccount", []))
                 ids = [getattr(x, "ctidTraderAccountId", x) for x in accounts]
                 if not ids:
-                    ids = list(getattr(response, "ctidTraderAccountId", []))
+                    raw_ids = getattr(response, "ctidTraderAccountId", [])
+                    # SDK protobuf exposes a repeated field as a list in some
+                    # versions and a scalar when only one account is returned.
+                    ids = list(raw_ids) if isinstance(raw_ids, (list, tuple)) else ([raw_ids] if raw_ids else [])
                 if self.account_id and ids and int(self.account_id) not in [int(x) for x in ids]:
                     self._circuit_broken = True; self._ready.set(); return
                 req = ProtoOAAccountAuthReq(ctidTraderAccountId=int(self.account_id), accessToken=self._token)
