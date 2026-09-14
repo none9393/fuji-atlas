@@ -48,4 +48,9 @@ Pages portalı ilk çevrimiçi ziyaretten sonra mevcut raporları offline açabi
 public olabilir.
 
 Secret'lar yalnız ortam değişkeni veya GitHub Actions Secrets üzerinden okunur.
+cTrader Open API salt-okuma birincil fiyat sağlayıcısıdır; `ctrader-open-api==0.9.2`
+ile çalışır. Kimlik bilgileri yoksa Twelve Data/XAUS/Yahoo fallback zinciri
+kullanılır. “Piyasa gündemi” haber, makro ve doğrulanmış kapalı günlük fiyat
+hareketlerinden oluşturulur; veri yoksa boş bırakılmak yerine bu durum açıkça
+raporlanır. Secret, account ID ve tokenlar metadata/PDF/health çıktısına yazılmaz.
 Sohbette açığa çıkan secret'lar yenilenmelidir; log, PDF veya Git'e yazılmaz.

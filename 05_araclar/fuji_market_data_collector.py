@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Incremental, source-coherent FUJI OHLC collector."""
 from __future__ import annotations
-import argparse, hashlib, json, os, time
+import argparse, hashlib, json, os, time, sys
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from urllib.error import HTTPError, URLError
@@ -9,6 +9,13 @@ from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 
 ROOT=Path(__file__).resolve().parents[1]; CONFIG_PATH=ROOT/"FUJI_RUNTIME_CONFIG.json"; CACHE_PATH=ROOT/".fuji-cache/market-data.json"; UA="FUJI-ATLAS/2.0"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+try:
+    from fuji_ctrader_provider import CTraderError, CTraderProvider, configured as ctrader_configured
+except ImportError:  # pragma: no cover
+    CTraderProvider = None
+    CTraderError = RuntimeError
+    def ctrader_configured(_env=None): return False
 def load_config(path=CONFIG_PATH):
     raw=Path(path).read_bytes(); return json.loads(raw),hashlib.sha256(raw).hexdigest()
 def utcnow(): return datetime.now(timezone.utc)
@@ -80,6 +87,22 @@ def xaus(symbol,interval,_count):
     if symbol!="XAUUSD" or interval not in ("1day","1h"): raise RuntimeError("XAUS interval unavailable")
     api,span={"1day":("1d","1y"),"1h":("1h","1y")}[interval]; points=request_json(f"https://xaus.com/api/v1/chart?symbol=xau&range={span}&interval={api}").get("points") or []
     return [b for b in (normalize_bar(p.get("t"),p.get("o"),p.get("h"),p.get("l"),p.get("c")) for p in points) if b]
+
+_CTRADER = None
+_CTRADER_ERROR = None
+def ctrader_loader(symbol, interval, count):
+    global _CTRADER, _CTRADER_ERROR
+    if not ctrader_configured():
+        raise RuntimeError("cTrader: not_configured")
+    if _CTRADER_ERROR:
+        raise RuntimeError(_CTRADER_ERROR)
+    if _CTRADER is None:
+        _CTRADER = CTraderProvider()
+    try:
+        return _CTRADER.fetch_bars(symbol, interval, count)
+    except Exception as exc:
+        _CTRADER_ERROR = str(exc)[:180]
+        raise
 def metadata(bars,interval,provider,source_type,level,retrieved,mode="live"):
     bars=annotate(bars,interval,retrieved); closed=[b for b in bars if b["is_closed"]]; last_closed=closed[-1] if closed else None; boundary=next_bucket(bucket_start(parse_time(last_closed["datetime"]),interval),interval) if last_closed else None
     return {"status":"ready" if closed else "unavailable","provider":provider,"source_type":source_type,"source_mode":mode,"retrieved_at_utc":retrieved.isoformat(),"last_bar_at_utc":bars[-1]["datetime"] if bars else None,"last_closed_bar_at_utc":last_closed["datetime"] if last_closed else None,"last_bar_closed":bars[-1]["is_closed"] if bars else None,"data_age_seconds":max(0,int((retrieved-boundary).total_seconds())) if boundary else None,"bar_count":len(closed),"total_bar_count":len(bars),"distinct_timestamps":len({b["datetime"] for b in closed}),"fallback_level":level,"values":bars}
@@ -94,9 +117,10 @@ def collect_base(symbol,interval,config,cached,now):
     if fresh: return metadata(old.get("values",[]),interval,old.get("provider"),old.get("source_type"),old.get("fallback_level"),now,"cache_fresh")
     count=config["incremental_outputsize"][interval] if old else config["initial_outputsize"][interval]; key=os.getenv("TWELVEDATA_API_KEY"); plans=[]
     profile=config.get("instrument_profiles",{}).get(symbol,{})
-    if key and profile.get("twelve"): plans.append(("Twelve Data",profile.get("source_type","spot"),0,lambda:twelve(symbol,interval,key,count)))
-    if symbol=="XAUUSD": plans.append(("XAUS","spot",1,lambda:xaus(symbol,interval,count)))
-    plans.append(("Yahoo Finance",profile.get("yahoo_source_type",profile.get("source_type","spot")),2,lambda:yahoo(symbol,interval,count)))
+    if ctrader_configured(): plans.append(("cTrader/broker","broker_cfd",0,lambda:ctrader_loader(symbol,interval,count)))
+    if key and profile.get("twelve"): plans.append(("Twelve Data",profile.get("source_type","spot"),1,lambda:twelve(symbol,interval,key,count)))
+    if symbol=="XAUUSD": plans.append(("XAUS","spot",2,lambda:xaus(symbol,interval,count)))
+    plans.append(("Yahoo Finance",profile.get("yahoo_source_type",profile.get("source_type","spot")),3,lambda:yahoo(symbol,interval,count)))
     error="no provider"
     for provider,source_type,level,loader in plans:
         try:
@@ -117,6 +141,8 @@ def collect_symbol(symbol,config,cached,now):
             intervals[target]=metadata(resample_closed(item.get("values",[]),target,now),target,item.get("provider"),item.get("source_type"),item.get("fallback_level"),now,"derived"); intervals[target]["derived_from"]=source
     return {"intervals":{name:intervals[name] for name in config["required_intervals"]}}
 def collect(output=None,now=None):
+    global _CTRADER, _CTRADER_ERROR
+    _CTRADER, _CTRADER_ERROR = None, None
     now=now or utcnow(); config,digest=load_config(); cached=load_cache(); contract={"schema_version":config["schema_version"],"config_sha256":digest,"generated_at_utc":now.isoformat(),"symbols":{s:collect_symbol(s,config,cached,now) for s in config["symbols"]}}
     CACHE_PATH.parent.mkdir(parents=True,exist_ok=True); CACHE_PATH.write_text(json.dumps(contract,ensure_ascii=False,indent=2),encoding="utf-8")
     if output: Path(output).write_text(json.dumps(contract,ensure_ascii=False,indent=2),encoding="utf-8")
