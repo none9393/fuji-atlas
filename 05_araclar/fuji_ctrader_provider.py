@@ -179,7 +179,7 @@ class CTraderProvider:
             from ctrader_open_api import Client, TcpProtocol, Protobuf
             from ctrader_open_api.messages.OpenApiMessages_pb2 import (ProtoOAApplicationAuthReq, ProtoOAGetAccountListByAccessTokenReq, ProtoOAAccountAuthReq, ProtoOASymbolsListReq)
             from twisted.internet import reactor
-            self.client = (self.client_factory or Client)(SDK_HOSTS[self.environment], PORT, TcpProtocol)
+            self.client = (self.client_factory or Client)(self.host, PORT, TcpProtocol)
             def fail(failure):
                 self._last_failure = sanitize_error(failure)
                 self._circuit_broken = True
