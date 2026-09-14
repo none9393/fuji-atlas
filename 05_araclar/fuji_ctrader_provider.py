@@ -208,7 +208,23 @@ class CTraderProvider:
             def connected(_client):
                 req = ProtoOAApplicationAuthReq(clientId=self.env["CTRADER_CLIENT_ID"], clientSecret=self.env["CTRADER_CLIENT_SECRET"])
                 self.client.send(req, responseTimeoutInSeconds=10).addCallbacks(app_auth, fail)
+            def on_message(_client, message):
+                """SDK 0.9.x delivers responses through this callback reliably."""
+                try:
+                    obj = Protobuf.extract(message)
+                    name = obj.__class__.__name__
+                    if name == "ProtoOAApplicationAuthRes":
+                        app_auth(obj)
+                    elif name == "ProtoOAGetAccountListByAccessTokenRes":
+                        account_list(obj)
+                    elif name == "ProtoOAAccountAuthRes":
+                        account_auth(obj)
+                    elif name == "ProtoOASymbolsListRes":
+                        symbols_response(obj)
+                except Exception as exc:
+                    fail(exc)
             self.client.setConnectedCallback(connected)
+            self.client.setMessageReceivedCallback(on_message)
             self.client.startService()
             if not reactor.running:
                 threading.Thread(target=lambda: reactor.run(installSignalHandlers=False), daemon=True).start()
