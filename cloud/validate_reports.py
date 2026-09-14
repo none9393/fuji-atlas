@@ -32,6 +32,12 @@ def validate(path: Path) -> None:
 def validate_bulletin(path: Path) -> None:
     pages=[(page.extract_text() or "").strip() for page in PdfReader(path).pages]; text="\n".join(pages)
     missing=[item for item in BULLETIN_REQUIRED if item not in text]
+    if "Piyasa gündemi" in text and "Sembol panoraması" in text:
+        agenda=text.split("Piyasa gündemi",1)[1].split("Sembol panoraması",1)[0]
+        if len(agenda.strip()) < 300: missing.append("kısa piyasa gündemi")
+        if "Fiyat teyidi:" not in agenda: missing.append("Fiyat teyidi")
+        for theme in ("Para politikası ve tahviller", "Enerji", "Değerli metaller", "Döviz ve risk iştahı"):
+            if theme not in agenda: missing.append(f"gündem teması: {theme}")
     if "ARAŞTIRMA MODU" in text: missing.append("ARAŞTIRMA MODU yasak")
     if not any(symbol in text for symbol in ("XAUUSD","EURUSD","GBPUSD","USDJPY","USDCAD","AUDUSD","XAGUSD","WTIUSD","NATGAS","DXY","US10Y")): missing.append("sembol satırı")
     if not pages or any(len(page)<200 for page in pages): missing.append("boş/kısa sayfa")

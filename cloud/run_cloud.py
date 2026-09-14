@@ -112,15 +112,35 @@ def market_agenda(news, macro, market, verification, evidence, config):
         items.append(f"Haber gündemi: {article.get('source','Kaynak')} — {article.get('title','Başlık yok')} ({', '.join(related_symbols(article.get('title',''))) or 'piyasa'})")
     for event in (macro.get("events") or [])[:3]:
         items.append(f"Makro gündemi: {event.get('time') or event.get('datetime') or 'zaman belirtilmedi'} · {event.get('title') or event.get('name') or 'olay'}" if isinstance(event,dict) else f"Makro gündemi: {event}")
+    price_items=[]
     for symbol in config.get("symbols",[]):
         values=closed_values(((market.get("symbols",{}).get(symbol) or {}).get("intervals") or {}).get("1day",{}))
         if len(values)<2: continue
         delta=float(values[-1]["close"])-float(values[-2]["close"]); stats=indicators(values); atr=stats.get("atr14") if stats else None; ratio=(abs(delta)/atr) if atr else 0.0
         decisions=[(evidence.get(symbol,{}).get(k,{}) or {}).get("decision") for k in ("swing","intraday","scalping")]; strongest=next((d for d in decisions if d),"SARI · TEMKİNLİ")
         provider=((market.get("symbols",{}).get(symbol) or {}).get("intervals") or {}).get("1day",{}).get("status","unavailable")
-        items.append(f"Fiyat gündemi: {symbol} son günlük kapanışta {delta:+.5f} değişti; hareket {ratio:.2f} ATR, günlük yön {stats.get('direction','belirsiz') if stats else 'belirsiz'}, veri kararı {provider}, en güçlü fırsat {strongest}.")
-        if len(items)>=10: break
-    return items or ["Yeni haber veya makro başlığı yok; doğrulanmış fiyat verisinde ayrıca raporlanabilir günlük hareket oluşmadı."]
+        price_items.append(f"Fiyat teyidi: {symbol} son günlük kapanışta {delta:+.5f} değişti; hareket {ratio:.2f} ATR, günlük yön {stats.get('direction','belirsiz') if stats else 'belirsiz'}, veri kararı {provider}, en güçlü fırsat {strongest}.")
+    items.extend(price_items[:3])
+    theme_map = {
+        "Para politikası ve tahviller": ("Fed ECB BoJ BoE central bank rates inflation Treasury bond yield", ("DXY", "US10Y", "EURUSD", "GBPUSD")),
+        "Enerji": ("oil crude WTI Brent OPEC natural gas LNG storage refinery supply", ("WTIUSD", "NATGAS", "USDCAD")),
+        "Değerli metaller": ("gold silver bullion precious metals safe haven", ("XAUUSD", "XAGUSD")),
+        "Döviz ve risk iştahı": ("dollar euro sterling pound yen currency risk sentiment trade", ("DXY", "EURUSD", "GBPUSD", "USDJPY", "AUDUSD")),
+    }
+    corpus = " ".join(str(a.get("title", "")) for a in news.get("articles", []))
+    for theme, (terms, symbols) in theme_map.items():
+        matches = [a for a in news.get("articles", []) if any(re.search(rf"\\b{re.escape(t)}\\b", str(a.get("title", "")), re.I) for t in terms.split())]
+        linked = [s for s in symbols if s in config.get("symbols", [])]
+        evidence_line = next((p for p in price_items if any(f"{s} " in p for s in linked)), None)
+        if matches:
+            sources = ", ".join(sorted({str(a.get("source", "Kaynak")) for a in matches[:3]}))
+            titles = " | ".join(str(a.get("title", "Başlık yok")) for a in matches[:2])
+            items.append(f"{theme}: {len(matches)} güncel başlık; kaynak: {sources}; ilgili semboller: {', '.join(linked) or 'yok'}. Başlıklar: {titles}. Haber-fiyat teyidi: {evidence_line or 'eşleşen doğrulanmış günlük fiyat satırı yok' }.")
+        else:
+            items.append(f"{theme}: Eşleşen yeni güvenilir başlık yok. İlgili semboller: {', '.join(linked) or 'yok'}. {evidence_line or 'Fiyat teyidi: doğrulanmış günlük hareket hesaplanamadı.'} Sonuç: fiyat yapısı tek mevcut teyit katmanı.")
+    if not price_items:
+        items.insert(0, "Yeni haber veya makro başlığı yok; doğrulanmış fiyat verisinde ayrıca raporlanabilir günlük hareket oluşmadı.")
+    return items[:14]
 
 def digest(): return hashlib.sha256(CONFIG.read_bytes()).hexdigest()
 def load_market(path=None):
