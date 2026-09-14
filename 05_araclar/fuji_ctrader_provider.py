@@ -16,6 +16,7 @@ import urllib.request
 from datetime import datetime, timezone
 
 HOSTS = {"demo": "demo1.p.ctrader.com", "live": "live1.p.ctrader.com"}
+SDK_HOSTS = {"demo": "demo.ctraderapi.com", "live": "live.ctraderapi.com"}
 PORT = 5035
 PERIODS = {"1day": "D1", "1h": "H1", "1min": "M1"}
 ALIASES = {
@@ -157,6 +158,8 @@ class CTraderProvider:
         self._ready = threading.Event()
         self._symbols_ready = threading.Event()
         self._pending = None
+        self.symbols = []
+        self.symbol_metadata = {}
 
     def connect(self):
         if not configured(self.env):
@@ -173,15 +176,21 @@ class CTraderProvider:
         # fully functional with Twelve/XAUS/Yahoo fallbacks.
         try:
             from ctrader_open_api import Client, TcpProtocol
-            from ctrader_open_api.messages.OpenApiMessages_pb2 import (ProtoOAApplicationAuthReq, ProtoOAGetAccountListByAccessTokenReq, ProtoOAAccountAuthReq)
+            from ctrader_open_api.messages.OpenApiMessages_pb2 import (ProtoOAApplicationAuthReq, ProtoOAGetAccountListByAccessTokenReq, ProtoOAAccountAuthReq, ProtoOASymbolsListReq)
             from twisted.internet import reactor
-            self.client = (self.client_factory or Client)(self.host, PORT, TcpProtocol)
+            self.client = (self.client_factory or Client)(SDK_HOSTS[self.environment], PORT, TcpProtocol)
             def fail(failure):
                 self._circuit_broken = True
                 self._ready.set(); self._symbols_ready.set()
                 return failure
+            def symbols_response(response):
+                self.symbols = list(getattr(response, "symbol", []))
+                self._symbols_ready.set()
             def account_auth(_response):
-                self.authenticated = True; self._ready.set()
+                self.authenticated = True
+                req = ProtoOASymbolsListReq(ctidTraderAccountId=int(self.account_id), includeArchivedSymbols=False)
+                self.client.send(req, responseTimeoutInSeconds=20).addCallbacks(symbols_response, fail)
+                self._ready.set()
             def account_list(response):
                 ids = list(getattr(response, "ctidTraderAccount", [])) or list(getattr(response, "ctidTraderAccountId", []))
                 if self.account_id and ids and int(self.account_id) not in [int(x) for x in ids]:
@@ -200,6 +209,8 @@ class CTraderProvider:
                 threading.Thread(target=lambda: reactor.run(installSignalHandlers=False), daemon=True).start()
             if not self._ready.wait(25) or not self.authenticated:
                 raise CTraderError("authentication timeout")
+            if not self._symbols_ready.wait(20):
+                raise CTraderError("symbol list timeout")
             return True
         except Exception as exc:
             self._circuit_broken = True
@@ -210,7 +221,62 @@ class CTraderProvider:
             raise CTraderError("circuit_breaker_open")
         if not self.authenticated:
             self.connect()
-        raise CTraderError("cTrader trendbar request unavailable")
+        match = resolve_symbol(symbol, self.symbols)
+        if match["status"] != "resolved":
+            raise CTraderError(f"symbol_{match['status']}")
+        item = match["symbol"]
+        if isinstance(item, dict):
+            symbol_id = int(item.get("symbolId"))
+        else:
+            symbol_id = int(getattr(item, "symbolId"))
+        try:
+            from ctrader_open_api.messages.OpenApiMessages_pb2 import ProtoOAGetTrendbarsReq
+            from ctrader_open_api.messages.OpenApiModelMessages_pb2 import ProtoOATrendbarPeriod
+            period = getattr(ProtoOATrendbarPeriod, period_for(interval))
+        except Exception as exc:
+            raise CTraderError("trendbar_sdk_unavailable") from exc
+        import time
+        durations = {"1day": 86400, "1h": 3600, "1min": 60}
+        now_ms = int(time.time() * 1000)
+        from_ms = now_ms - durations[interval] * max(int(count), 1) * 1000
+        done = threading.Event()
+        result = {}
+        def received(response):
+            result["response"] = response; done.set()
+        def failed(failure):
+            result["error"] = "trendbar request failed"; done.set()
+        req = ProtoOAGetTrendbarsReq(
+            ctidTraderAccountId=int(self.account_id), symbolId=symbol_id,
+            period=period, fromTimestamp=from_ms, toTimestamp=now_ms,
+            count=int(count),
+        )
+        self.client.send(req, responseTimeoutInSeconds=20).addCallbacks(received, failed)
+        if not done.wait(25):
+            raise CTraderError("trendbar timeout")
+        if "error" in result:
+            raise CTraderError(result["error"])
+        response = result.get("response")
+        bars = list(getattr(response, "trendbar", [])) if response else []
+        if not bars:
+            raise CTraderError("empty trendbar response")
+        out = []
+        for bar in bars:
+            minute = int(getattr(bar, "utcTimestampInMinutes", 0))
+            if not minute:
+                continue
+            low = float(getattr(bar, "low", 0))
+            op = low + float(getattr(bar, "deltaOpen", 0))
+            cl = low + float(getattr(bar, "deltaClose", 0))
+            hi = low + float(getattr(bar, "deltaHigh", 0))
+            scale = 100000.0
+            row = {"datetime": datetime.fromtimestamp(minute * 60, timezone.utc).isoformat(),
+                   "open": op / scale, "high": hi / scale, "low": low / scale, "close": cl / scale}
+            if validate_ohlc(row):
+                out.append(row)
+        normalized = normalize_trendbars(out, now=datetime.now(timezone.utc))
+        if not normalized:
+            raise CTraderError("invalid trendbar response")
+        return normalized
 
 
 __all__ = ["ALIASES", "CTraderError", "CTraderProvider", "configured", "environment", "host_for", "normalize_alias", "resolve_symbol", "period_for", "relative_price", "normalize_trendbars", "validate_ohlc", "refresh_access_token", "sanitize_error"]
