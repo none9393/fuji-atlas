@@ -254,7 +254,11 @@ class CTraderProvider:
             self.connect()
         match = resolve_symbol(symbol, self.symbols)
         if match["status"] != "resolved":
-            raise CTraderError(f"symbol_{match['status']}")
+            names = []
+            for candidate in self.symbols[:12]:
+                names.append(str(getattr(candidate, "symbolName", "") or getattr(candidate, "name", "")))
+            sample = ",".join(x for x in names if x)
+            raise CTraderError(f"symbol_{match['status']}:{symbol}:available={sample[:120]}")
         item = match["symbol"]
         if isinstance(item, dict):
             symbol_id = int(item.get("symbolId"))
