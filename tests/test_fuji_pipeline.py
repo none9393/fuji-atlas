@@ -7,6 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def module(name,path):
     spec=importlib.util.spec_from_file_location(name,ROOT/path); mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod); return mod
 collector=module("collector","05_araclar/fuji_market_data_collector.py"); verifier=module("verifier","05_araclar/fuji_live_data_verifier.py"); runner=module("runner","cloud/run_cloud.py"); portal=module("portal","cloud/build_report_portal.py")
+ctrader=module("ctrader","05_araclar/fuji_ctrader_provider.py")
 CONFIG=json.loads((ROOT/"FUJI_RUNTIME_CONFIG.json").read_text()); SHA=hashlib.sha256((ROOT/"FUJI_RUNTIME_CONFIG.json").read_bytes()).hexdigest()
 def bars(count,interval="1h",source="spot",now=None):
     now=now or datetime.now(timezone.utc).replace(second=30,microsecond=0); seconds={"1month":2678400,"1week":604800,"1day":86400,"4h":14400,"1h":3600,"15min":900,"5min":300,"1min":60}[interval]; start=now-timedelta(seconds=seconds*(count+1)); values=[]
@@ -25,6 +26,16 @@ def contract(missing=None,xau_source="spot",now=None):
     return {"config_sha256":SHA,"symbols":symbols}
 
 class PipelineTests(unittest.TestCase):
+    def test_ctrader_provider_utilities_and_no_secret_metadata(self):
+        self.assertFalse(ctrader.configured({})); self.assertEqual(ctrader.host_for({"CTRADER_ENVIRONMENT":"live"}),"live1.p.ctrader.com"); self.assertEqual(ctrader.period_for("1min"),"M1")
+        self.assertEqual(ctrader.normalize_alias("XAU/USD-m"),"XAUUSDM")
+        resolved=ctrader.resolve_symbol("XAUUSD",[{"symbolName":"GOLD.cash","symbolId":7}]); self.assertEqual(resolved["status"],"resolved")
+        self.assertEqual(ctrader.resolve_symbol("XAUUSD",[{"symbolName":"GOLD"},{"symbolName":"XAUUSD"}])["status"],"ambiguous")
+        self.assertTrue(ctrader.validate_ohlc({"open":1,"high":2,"low":.5,"close":1.5})); self.assertFalse(ctrader.validate_ohlc({"open":1,"high":.5,"low":.8,"close":1}))
+    def test_ctrader_relative_prices_and_future_filter(self):
+        rows=ctrader.normalize_trendbars([{"timestamp":1735689600000,"open":100000,"high":101000,"low":99000,"close":100500},{"timestamp":4102444800000,"open":1,"high":2,"low":0.5,"close":1}],digits=5,now=datetime(2026,1,1,tzinfo=timezone.utc)); self.assertEqual(len(rows),1); self.assertAlmostEqual(rows[0]["close"],1.005)
+    def test_market_agenda_is_nonempty_without_news(self):
+        agenda=runner.market_agenda({"articles":[]},{"events":[]},{"symbols":{}},{"symbols":{}},{}, {"symbols":[]}); self.assertTrue(agenda); self.assertIn("Yeni haber",agenda[0])
     def test_public_feed_parsers_and_normalized_contract(self):
         xml=b'''<rss><channel><item><title>Fed rates and dollar market</title><link>https://example.com/a?utm_source=x</link><pubDate>Sun, 13 Sep 2026 10:00:00 GMT</pubDate></item></channel></rss>'''
         rows=runner.parse_public_feed(xml,"Federal Reserve",datetime(2026,9,13,11,tzinfo=timezone.utc)); self.assertEqual(rows[0]["url"],"https://example.com/a"); self.assertIn("published_at_utc",rows[0]); self.assertNotIn("description",rows[0])

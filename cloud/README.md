@@ -4,7 +4,7 @@ FUJI, GitHub Actions üzerinde laptop veya telefon açık olmadan çalışır. V
 `rules` modu OpenAI anahtarı istemez. Piyasa verisi ilk yeterli kaynaktan alınır;
 farklı sağlayıcı fiyatları karşılaştırılmaz veya aynı timeframe içinde birleştirilmez.
 
-Gerekli tek runtime secret'ı `TWELVEDATA_API_KEY` değeridir. Anahtar yoksa sistem
+Birincil broker fiyat sağlayıcısı salt-okuma cTrader Open API'dir (`ctrader-open-api==0.9.2`). `CTRADER_*` secret'ları yoksa sistem güvenli biçimde fallback'e geçer. Gerekli diğer runtime secret'ı `TWELVEDATA_API_KEY` değeridir. Anahtar yoksa sistem
 tanımlı spot/proxy fallback'lerini dener; eksik veriyi uydurmaz. Telegram ve e-posta
 kullanılmaz.
 

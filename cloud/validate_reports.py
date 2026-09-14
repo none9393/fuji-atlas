@@ -10,7 +10,7 @@ REQUIRED = (
     "Yönetici özeti", "Genel piyasa görünümü", "Karar ekranı",
     "Makro ve çapraz piyasa değerlendirmesi", "Fırsat planları", "Karar renkleri",
 )
-BULLETIN_REQUIRED=("FUJI Güncel Piyasa Bülteni","Yönetici özeti","Sembol panoraması","Etki yaratan güncel gelişmeler","Makro saatleri","Federal Reserve","ECB","U.S. EIA","GDELT")
+BULLETIN_REQUIRED=("FUJI Güncel Piyasa Bülteni","Yönetici özeti","Piyasa gündemi","Sembol panoraması","Etki yaratan güncel gelişmeler","Makro saatleri","Federal Reserve","ECB","U.S. EIA","GDELT")
 FORBIDDEN = (
     "Açık pozisyon desteği", "Kısacası:", "Risk notu",
     "Makro takvim/haber akışı bağlı değildir", "ARAŞTIRMA MODU",

@@ -106,6 +106,22 @@ def load_public_market_news(now=None, cache_path=None):
     result={"status":status,"source":" + ".join(sources) if sources else "","source_url":"https://www.gdeltproject.org/","retrieved_at_utc":now.astimezone(timezone.utc).isoformat(),"articles":articles,"warnings":warnings}
     cache_path.write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding="utf-8"); return result
 
+def market_agenda(news, macro, market, verification, evidence, config):
+    items=[]
+    for article in news.get("articles",[])[:4]:
+        items.append(f"Haber gündemi: {article.get('source','Kaynak')} — {article.get('title','Başlık yok')} ({', '.join(related_symbols(article.get('title',''))) or 'piyasa'})")
+    for event in (macro.get("events") or [])[:3]:
+        items.append(f"Makro gündemi: {event.get('time') or event.get('datetime') or 'zaman belirtilmedi'} · {event.get('title') or event.get('name') or 'olay'}" if isinstance(event,dict) else f"Makro gündemi: {event}")
+    for symbol in config.get("symbols",[]):
+        values=closed_values(((market.get("symbols",{}).get(symbol) or {}).get("intervals") or {}).get("1day",{}))
+        if len(values)<2: continue
+        delta=float(values[-1]["close"])-float(values[-2]["close"]); stats=indicators(values); atr=stats.get("atr14") if stats else None; ratio=(abs(delta)/atr) if atr else 0.0
+        decisions=[(evidence.get(symbol,{}).get(k,{}) or {}).get("decision") for k in ("swing","intraday","scalping")]; strongest=next((d for d in decisions if d),"SARI · TEMKİNLİ")
+        provider=((market.get("symbols",{}).get(symbol) or {}).get("intervals") or {}).get("1day",{}).get("status","unavailable")
+        items.append(f"Fiyat gündemi: {symbol} son günlük kapanışta {delta:+.5f} değişti; hareket {ratio:.2f} ATR, günlük yön {stats.get('direction','belirsiz') if stats else 'belirsiz'}, veri kararı {provider}, en güçlü fırsat {strongest}.")
+        if len(items)>=10: break
+    return items or ["Yeni haber veya makro başlığı yok; doğrulanmış fiyat verisinde ayrıca raporlanabilir günlük hareket oluşmadı."]
+
 def digest(): return hashlib.sha256(CONFIG.read_bytes()).hexdigest()
 def load_market(path=None):
     target=Path(path or "/tmp/fuji-market-data.json")
@@ -235,7 +251,7 @@ def render_pdf(symbol,market,verification,target,report_id,created,evidence,conf
     for interval in config["required_intervals"]:
         item=entries.get(interval,{}); rows.append([interval,item.get("provider") or "-",f"{item.get('source_type') or '-'}/{item.get('source_mode') or '-'}",item.get("last_closed_bar_at_utc") or "-",str(item.get("data_age_seconds")),f"{item.get('bar_count',0)}/{item.get('total_bar_count',0)}"])
     data_table=Table(rows,repeatRows=1,colWidths=[17*mm,25*mm,30*mm,45*mm,18*mm,24*mm]); data_table.setStyle(TableStyle([("FONT",(0,0),(-1,-1),regular,6.5),("FONT",(0,0),(-1,0),bold,6.5),("BACKGROUND",(0,0),(-1,0),colors.HexColor("#dceaf3")),("GRID",(0,0),(-1,-1),.25,colors.grey)])); story.append(data_table); story.append(Paragraph("Karar renkleri",head)); legend=Table([[P("YEŞİL · GİR"),P("SARI · TEMKİNLİ"),P("KIRMIZI · GİRME")]],colWidths=[55*mm]*3); legend.setStyle(TableStyle([("BACKGROUND",(0,0),(0,0),colors.HexColor('#d9f2e6')),("BACKGROUND",(1,0),(1,0),colors.HexColor('#fff0c2')),("BACKGROUND",(2,0),(2,0),colors.HexColor('#f7dada')),('GRID',(0,0),(-1,-1),.25,colors.grey),('VALIGN',(0,0),(-1,-1),'TOP')])); story.append(legend); story.append(Paragraph("Kaynaklar: 107_2_Pariteler Arası Korelasyon Mantığı; 106_1_DXY US Dollar Index Nedir; 108_3_HTF Yapı Analizi ve DXY Kullanımı; 021_3 Önemli Stratejik Kurallar.",body)); story.append(Paragraph("Bu rapor yatırım tavsiyesi değildir.",body)); SimpleDocTemplate(str(target),pagesize=A4,leftMargin=13*mm,rightMargin=13*mm,topMargin=13*mm,bottomMargin=13*mm).build(story,onFirstPage=page_number,onLaterPages=page_number)
-def render_market_bulletin(news, macro, target, created, config):
+def render_market_bulletin(news, macro, agenda, target, created, config):
     from reportlab.lib import colors
     from reportlab.lib.pagesizes import A4
     from reportlab.lib.styles import ParagraphStyle
@@ -243,7 +259,7 @@ def render_market_bulletin(news, macro, target, created, config):
     from reportlab.platypus import SimpleDocTemplate, Paragraph, Table, TableStyle
     regular,bold=font_names(); body=ParagraphStyle("bulletin_body",fontName=regular,fontSize=8.5,leading=11); head=ParagraphStyle("bulletin_head",fontName=bold,fontSize=12,leading=15,spaceBefore=8); title=ParagraphStyle("bulletin_title",fontName=bold,fontSize=17,leading=21)
     story=[Paragraph("FUJI Güncel Piyasa Bülteni",title),Paragraph(f"Gerçek üretim zamanı: {created.astimezone(ISTANBUL).isoformat()}",body),Paragraph(f"Haber kaynak durumu: {news.get('status','unavailable')} · {html.escape(news.get('source','') or 'Kaynak yok')}",body),Paragraph(f"Makro takvim durumu: {macro.get('status','unavailable')}",body),Paragraph("Yönetici özeti",head)]
-    story.append(Paragraph(f"Son 36 saatte {len(news.get('articles',[]))} doğrulanmış piyasa başlığı sembol eşlemesiyle tarandı. Başlıklar yalnız bağlam sağlar; tek başına işlem yönü oluşturmaz.",body)); story.append(Paragraph("Sembol panoraması",head)); story.append(Paragraph(", ".join(config["symbols"]),body)); story.append(Paragraph("Etki yaratan güncel gelişmeler",head))
+    story.append(Paragraph(f"Son 36 saatte {len(news.get('articles',[]))} doğrulanmış piyasa başlığı sembol eşlemesiyle tarandı. Başlıklar yalnız bağlam sağlar; tek başına işlem yönü oluşturmaz.",body)); story.append(Paragraph("Piyasa gündemi",head)); story.extend(Paragraph("• "+html.escape(item),body) for item in agenda); story.append(Paragraph("Sembol panoraması",head)); story.append(Paragraph(", ".join(config["symbols"]),body)); story.append(Paragraph("Etki yaratan güncel gelişmeler",head))
     rows=[[Paragraph("Zaman / kaynak",body),Paragraph("Güncel başlık",body),Paragraph("Bağlanan piyasalar",body)]]
     for a in news.get("articles",[])[:30]:
         local=parse_news_datetime(a["published_at_utc"]).astimezone(ISTANBUL).strftime("%d.%m %H:%M"); link=f'<link href="{html.escape(a["url"],quote=True)}" color="#a00000">{html.escape(a["title"])}</link>'; rows.append([Paragraph(f"{local} · {html.escape(a.get('source',''))}",body),Paragraph(link,body),Paragraph(", ".join(related_symbols(a["title"])),body)])
@@ -265,8 +281,8 @@ def run(market_data=None,analysis_mode="rules",now=None):
     for symbol,detail in verification["symbols"].items():
         if any(value["status"]=="ready" for value in detail["strategies"].values()): name=f"{symbol}_{stamp}.pdf"; render_pdf(symbol,market,verification,OUT/name,f"{symbol}-{stamp}",now.astimezone(ISTANBUL),evidence[symbol],config,news); files.append(name)
     macro={"status":"unavailable","source":"Forex Factory/Fair Economy cache","events":[]}
-    bulletin_name=f"PIYASA_BULTENI_{stamp}.pdf"; render_market_bulletin(news,macro,OUT/bulletin_name,now,config); files.append(bulletin_name)
-    providers={s:{i:{k:v.get(k) for k in ("provider","source_type","source_mode","last_bar_closed","last_bar_at_utc","last_closed_bar_at_utc","data_age_seconds","bar_count","total_bar_count","fallback_level")} for i,v in d["intervals"].items()} for s,d in market["symbols"].items()}; intermarket={s:cross_market_context(market,s) for s in config["symbols"]}; health={"generated_at_utc":now.astimezone(timezone.utc).isoformat(),"generated_at_local":now.astimezone(ISTANBUL).isoformat(),"analysis_mode":analysis_mode,"config_sha256":digest(),"decision":verification["decision"],"symbols":verification["symbols"],"empirical_outcome_gates":evidence,"walk_forward":evidence,"providers":providers,"intermarket_context":intermarket,"macro":macro,"market_news":news,"files":files}; (OUT/"health.json").write_text(json.dumps(health,ensure_ascii=False,indent=2),encoding="utf-8"); return 4 if verification["decision"]=="blocked" else 0
+    agenda=market_agenda(news,macro,market,verification,evidence,config); bulletin_name=f"PIYASA_BULTENI_{stamp}.pdf"; render_market_bulletin(news,macro,agenda,OUT/bulletin_name,now,config); files.append(bulletin_name)
+    providers={s:{i:{k:v.get(k) for k in ("provider","source_type","source_mode","last_bar_closed","last_bar_at_utc","last_closed_bar_at_utc","data_age_seconds","bar_count","total_bar_count","fallback_level")} for i,v in d["intervals"].items()} for s,d in market["symbols"].items()}; intermarket={s:cross_market_context(market,s) for s in config["symbols"]}; health={"generated_at_utc":now.astimezone(timezone.utc).isoformat(),"generated_at_local":now.astimezone(ISTANBUL).isoformat(),"analysis_mode":analysis_mode,"config_sha256":digest(),"decision":verification["decision"],"symbols":verification["symbols"],"empirical_outcome_gates":evidence,"walk_forward":evidence,"providers":providers,"intermarket_context":intermarket,"macro":macro,"market_news":news,"market_agenda":agenda,"files":files}; (OUT/"health.json").write_text(json.dumps(health,ensure_ascii=False,indent=2),encoding="utf-8"); return 4 if verification["decision"]=="blocked" else 0
 def main():
     parser=argparse.ArgumentParser(); parser.add_argument("--market-data"); parser.add_argument("--analysis-mode",choices=("rules","openai"),default="rules"); args=parser.parse_args()
     try: raise SystemExit(run(args.market_data,args.analysis_mode))

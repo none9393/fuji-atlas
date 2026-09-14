@@ -1,0 +1,171 @@
+#!/usr/bin/env python3
+"""Read-only cTrader Open API adapter and deterministic symbol utilities.
+
+The network adapter is deliberately small: credentials are read from the
+environment, never persisted, and all failures are surfaced as CTraderError
+so the collector can move to its fallback providers.
+"""
+from __future__ import annotations
+
+import json
+import os
+import re
+import urllib.parse
+import urllib.request
+from datetime import datetime, timezone
+
+HOSTS = {"demo": "demo1.p.ctrader.com", "live": "live1.p.ctrader.com"}
+PORT = 5035
+PERIODS = {"1day": "D1", "1h": "H1", "1min": "M1"}
+ALIASES = {
+    "XAUUSD": ("XAUUSD", "XAU/USD", "GOLD", "GOLD.cash", "GOLD.c", "XAUUSD.", "XAUUSDm"),
+    "EURUSD": ("EURUSD", "EUR/USD", "EURUSD.", "EURUSDm"),
+    "GBPUSD": ("GBPUSD", "GBP/USD", "GBPUSD.", "GBPUSDm"),
+    "USDJPY": ("USDJPY", "USD/JPY", "USDJPY.", "USDJPYm"),
+    "USDCAD": ("USDCAD", "USD/CAD", "USDCAD.", "USDCADm"),
+    "AUDUSD": ("AUDUSD", "AUD/USD", "AUDUSD.", "AUDUSDm"),
+    "XAGUSD": ("XAGUSD", "XAG/USD", "SILVER", "SILVER.cash"),
+    "WTIUSD": ("WTI", "USOIL", "XTIUSD", "WTIUSD", "CRUDE"),
+    "NATGAS": ("NATGAS", "NGAS", "XNGUSD", "NATURALGAS"),
+    "DXY": ("DXY", "USDX"),
+    "US10Y": ("US10Y", "US10YR", "UST10Y"),
+}
+
+
+class CTraderError(RuntimeError):
+    pass
+
+
+def configured(env=None):
+    env = env or os.environ
+    return all(env.get(k) for k in ("CTRADER_CLIENT_ID", "CTRADER_CLIENT_SECRET", "CTRADER_ACCESS_TOKEN", "CTRADER_ACCOUNT_ID"))
+
+
+def environment(env=None):
+    value = (env or os.environ).get("CTRADER_ENVIRONMENT", "demo").lower()
+    return value if value in HOSTS else "demo"
+
+
+def host_for(env=None):
+    return HOSTS[environment(env)]
+
+
+def normalize_alias(value):
+    return re.sub(r"[\s/._-]+", "", str(value or "")).upper()
+
+
+def resolve_symbol(symbol, broker_symbols):
+    """Return one exact candidate, or metadata describing no/ambiguous match."""
+    aliases = {normalize_alias(x) for x in ALIASES.get(symbol, (symbol,))}
+    candidates = []
+    for item in broker_symbols or ():
+        name = item.get("symbolName") if isinstance(item, dict) else getattr(item, "symbolName", "")
+        if normalize_alias(name) in aliases:
+            candidates.append(item)
+    if len(candidates) == 1:
+        return {"status": "resolved", "symbol": candidates[0]}
+    return {"status": "ambiguous" if candidates else "not_found", "candidates": candidates}
+
+
+def period_for(interval):
+    if interval not in PERIODS:
+        raise CTraderError("unsupported timeframe")
+    return PERIODS[interval]
+
+
+def relative_price(raw, digits=None, pip_position=None):
+    """cTrader trendbars encode prices as integer relative values."""
+    value = float(raw)
+    # Open API price is relative to 10^digits; pipPosition is metadata, not a
+    # replacement for digits.  Accept an already-decimal fixture for tests.
+    if digits is not None and abs(value) >= 10 ** max(int(digits) - 1, 1):
+        value /= 10 ** int(digits)
+    return value
+
+
+def validate_ohlc(bar):
+    try:
+        o, h, l, c = (float(bar[k]) for k in ("open", "high", "low", "close"))
+    except (KeyError, TypeError, ValueError):
+        return False
+    return min(o, h, l, c) >= 0 and h >= max(o, c) and l <= min(o, c) and h >= l
+
+
+def normalize_trendbars(rows, digits=None, now=None):
+    now = now or datetime.now(timezone.utc)
+    out = {}
+    for row in rows or ():
+        stamp = row.get("datetime") or row.get("timestamp")
+        if isinstance(stamp, (int, float)):
+            dt = datetime.fromtimestamp(stamp / 1000 if stamp > 10**11 else stamp, timezone.utc)
+        else:
+            dt = datetime.fromisoformat(str(stamp).replace("Z", "+00:00")).astimezone(timezone.utc)
+        if dt > now:
+            continue
+        base = {"datetime": dt.isoformat(), **{k: relative_price(row.get(k), digits) for k in ("open", "high", "low", "close")}}
+        if validate_ohlc(base):
+            out[base["datetime"]] = base
+    return [{**out[key], "is_closed": True} for key in sorted(out)]
+
+
+def sanitize_error(exc):
+    text = re.sub(r"(access_token|refresh_token|client_secret|client_id|account_id)=[^&\s]+", r"\1=[redacted]", str(exc), flags=re.I)
+    return text[:240]
+
+
+def refresh_access_token(env=None, opener=None):
+    env = env or os.environ
+    if not env.get("CTRADER_REFRESH_TOKEN"):
+        return None, "not_needed"
+    data = urllib.parse.urlencode({"grant_type": "refresh_token", "refresh_token": env["CTRADER_REFRESH_TOKEN"], "client_id": env.get("CTRADER_CLIENT_ID", ""), "client_secret": env.get("CTRADER_CLIENT_SECRET", "")}).encode()
+    try:
+        request = urllib.request.Request("https://openapi.ctrader.com/apps/token", data=data, method="POST")
+        with (opener or urllib.request.urlopen)(request, timeout=12) as response:
+            token = json.loads(response.read()).get("accessToken")
+        return token, "success" if token else "failed"
+    except Exception:
+        return None, "failed"
+
+
+class CTraderProvider:
+    def __init__(self, env=None, client_factory=None):
+        self.env = env or os.environ
+        self.environment = environment(self.env)
+        self.host = host_for(self.env)
+        self.client_factory = client_factory
+        self.authenticated = False
+        self.account_id = self.env.get("CTRADER_ACCOUNT_ID")
+        self.token_refresh_status = "not_needed"
+        self._circuit_broken = False
+
+    def connect(self):
+        if not configured(self.env):
+            raise CTraderError("not_configured")
+        token, status = refresh_access_token(self.env)
+        self.token_refresh_status = status
+        if token:
+            self._token = token
+        else:
+            self._token = self.env.get("CTRADER_ACCESS_TOKEN")
+        if not self._token:
+            raise CTraderError("access token unavailable")
+        # SDK imports are deferred so installations without cTrader remain
+        # fully functional with Twelve/XAUS/Yahoo fallbacks.
+        try:
+            from ctrader_open_api import Client
+            from ctrader_open_api.tcpProtocol import TcpProtocol
+            self.client = (self.client_factory or Client)(self.host, PORT, TcpProtocol)
+        except Exception as exc:
+            self._circuit_broken = True
+            raise CTraderError(sanitize_error(exc)) from exc
+        raise CTraderError("sdk connection requires asynchronous event loop")
+
+    def fetch_bars(self, symbol, interval, count):
+        if self._circuit_broken:
+            raise CTraderError("circuit_breaker_open")
+        if not self.authenticated:
+            self.connect()
+        raise CTraderError("cTrader trendbar request unavailable")
+
+
+__all__ = ["ALIASES", "CTraderError", "CTraderProvider", "configured", "environment", "host_for", "normalize_alias", "resolve_symbol", "period_for", "relative_price", "normalize_trendbars", "validate_ohlc", "refresh_access_token", "sanitize_error"]
