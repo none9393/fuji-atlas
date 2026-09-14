@@ -158,6 +158,7 @@ class CTraderProvider:
         self._ready = threading.Event()
         self._symbols_ready = threading.Event()
         self._pending = None
+        self._last_failure = ""
         self.symbols = []
         self.symbol_metadata = {}
 
@@ -180,6 +181,7 @@ class CTraderProvider:
             from twisted.internet import reactor
             self.client = (self.client_factory or Client)(SDK_HOSTS[self.environment], PORT, TcpProtocol)
             def fail(failure):
+                self._last_failure = sanitize_error(failure)
                 self._circuit_broken = True
                 self._ready.set(); self._symbols_ready.set()
                 return failure
@@ -229,7 +231,8 @@ class CTraderProvider:
             if not reactor.running:
                 threading.Thread(target=lambda: reactor.run(installSignalHandlers=False), daemon=True).start()
             if not self._ready.wait(12) or not self.authenticated:
-                raise CTraderError("authentication timeout")
+                detail = self._last_failure or "authentication timeout"
+                raise CTraderError(detail)
             if not self._symbols_ready.wait(8):
                 raise CTraderError("symbol list timeout")
             return True
