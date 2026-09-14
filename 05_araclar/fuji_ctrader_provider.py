@@ -175,7 +175,7 @@ class CTraderProvider:
         # SDK imports are deferred so installations without cTrader remain
         # fully functional with Twelve/XAUS/Yahoo fallbacks.
         try:
-            from ctrader_open_api import Client, TcpProtocol
+            from ctrader_open_api import Client, TcpProtocol, Protobuf
             from ctrader_open_api.messages.OpenApiMessages_pb2 import (ProtoOAApplicationAuthReq, ProtoOAGetAccountListByAccessTokenReq, ProtoOAAccountAuthReq, ProtoOASymbolsListReq)
             from twisted.internet import reactor
             self.client = (self.client_factory or Client)(SDK_HOSTS[self.environment], PORT, TcpProtocol)
@@ -184,6 +184,7 @@ class CTraderProvider:
                 self._ready.set(); self._symbols_ready.set()
                 return failure
             def symbols_response(response):
+                response = Protobuf.extract(response)
                 self.symbols = list(getattr(response, "symbol", []))
                 self._symbols_ready.set()
             def account_auth(_response):
@@ -192,6 +193,7 @@ class CTraderProvider:
                 self.client.send(req, responseTimeoutInSeconds=20).addCallbacks(symbols_response, fail)
                 self._ready.set()
             def account_list(response):
+                response = Protobuf.extract(response)
                 accounts = list(getattr(response, "ctidTraderAccount", []))
                 ids = [getattr(x, "ctidTraderAccountId", x) for x in accounts]
                 if not ids:
@@ -245,7 +247,7 @@ class CTraderProvider:
         done = threading.Event()
         result = {}
         def received(response):
-            result["response"] = response; done.set()
+            result["response"] = Protobuf.extract(response); done.set()
         def failed(failure):
             result["error"] = "trendbar request failed"; done.set()
         req = ProtoOAGetTrendbarsReq(
