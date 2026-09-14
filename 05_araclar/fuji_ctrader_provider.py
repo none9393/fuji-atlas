@@ -10,6 +10,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import threading
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -153,6 +154,9 @@ class CTraderProvider:
         self.account_id = self.env.get("CTRADER_ACCOUNT_ID")
         self.token_refresh_status = "not_needed"
         self._circuit_broken = False
+        self._ready = threading.Event()
+        self._symbols_ready = threading.Event()
+        self._pending = None
 
     def connect(self):
         if not configured(self.env):
@@ -168,13 +172,38 @@ class CTraderProvider:
         # SDK imports are deferred so installations without cTrader remain
         # fully functional with Twelve/XAUS/Yahoo fallbacks.
         try:
-            from ctrader_open_api import Client
-            from ctrader_open_api.tcpProtocol import TcpProtocol
+            from ctrader_open_api import Client, TcpProtocol
+            from ctrader_open_api.messages.OpenApiMessages_pb2 import (ProtoOAApplicationAuthReq, ProtoOAGetAccountListByAccessTokenReq, ProtoOAAccountAuthReq)
+            from twisted.internet import reactor
             self.client = (self.client_factory or Client)(self.host, PORT, TcpProtocol)
+            def fail(failure):
+                self._circuit_broken = True
+                self._ready.set(); self._symbols_ready.set()
+                return failure
+            def account_auth(_response):
+                self.authenticated = True; self._ready.set()
+            def account_list(response):
+                ids = list(getattr(response, "ctidTraderAccount", [])) or list(getattr(response, "ctidTraderAccountId", []))
+                if self.account_id and ids and int(self.account_id) not in [int(x) for x in ids]:
+                    self._circuit_broken = True; self._ready.set(); return
+                req = ProtoOAAccountAuthReq(ctidTraderAccountId=int(self.account_id), accessToken=self._token)
+                self.client.send(req, responseTimeoutInSeconds=20).addCallbacks(account_auth, fail)
+            def app_auth(_response):
+                req = ProtoOAGetAccountListByAccessTokenReq(accessToken=self._token)
+                self.client.send(req, responseTimeoutInSeconds=20).addCallbacks(account_list, fail)
+            def connected(_client):
+                req = ProtoOAApplicationAuthReq(clientId=self.env["CTRADER_CLIENT_ID"], clientSecret=self.env["CTRADER_CLIENT_SECRET"])
+                self.client.send(req, responseTimeoutInSeconds=20).addCallbacks(app_auth, fail)
+            self.client.setConnectedCallback(connected)
+            self.client.startService()
+            if not reactor.running:
+                threading.Thread(target=lambda: reactor.run(installSignalHandlers=False), daemon=True).start()
+            if not self._ready.wait(25) or not self.authenticated:
+                raise CTraderError("authentication timeout")
+            return True
         except Exception as exc:
             self._circuit_broken = True
             raise CTraderError(sanitize_error(exc)) from exc
-        raise CTraderError("sdk connection requires asynchronous event loop")
 
     def fetch_bars(self, symbol, interval, count):
         if self._circuit_broken:
