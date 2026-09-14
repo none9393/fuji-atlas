@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Incremental, source-coherent FUJI OHLC collector."""
 from __future__ import annotations
-import argparse, hashlib, json, os, time, sys, threading
+import argparse, hashlib, json, os, time, sys, threading, multiprocessing
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from urllib.error import HTTPError, URLError
@@ -90,6 +90,12 @@ def xaus(symbol,interval,_count):
 
 _CTRADER = None
 _CTRADER_ERROR = None
+def _ctrader_process_worker(symbol, interval, count, output):
+    try:
+        provider = CTraderProvider()
+        output.put({"ok": True, "bars": provider.fetch_bars(symbol, interval, count)})
+    except Exception as exc:
+        output.put({"ok": False, "error": str(exc)[:180]})
 def ctrader_loader(symbol, interval, count):
     global _CTRADER, _CTRADER_ERROR
     if not ctrader_configured():
@@ -99,16 +105,15 @@ def ctrader_loader(symbol, interval, count):
     if _CTRADER is None:
         _CTRADER = CTraderProvider()
     try:
-        result, failure, done = [], [], threading.Event()
-        def worker():
-            try: result.append(_CTRADER.fetch_bars(symbol, interval, count))
-            except Exception as exc: failure.append(exc)
-            finally: done.set()
-        threading.Thread(target=worker, daemon=True, name="fuji-ctrader-worker").start()
-        if not done.wait(20):
+        queue = multiprocessing.get_context("fork").Queue()
+        process = multiprocessing.get_context("fork").Process(target=_ctrader_process_worker, args=(symbol, interval, count, queue), daemon=True)
+        process.start(); process.join(35)
+        if process.is_alive():
+            process.terminate(); process.join(3)
             raise RuntimeError("cTrader worker deadline exceeded")
-        if failure: raise failure[0]
-        return result[0]
+        result = queue.get_nowait() if not queue.empty() else {"ok": False, "error": "cTrader worker returned no result"}
+        if not result.get("ok"): raise RuntimeError(result.get("error", "cTrader worker failed"))
+        return result["bars"]
     except Exception as exc:
         _CTRADER_ERROR = str(exc)[:180]
         raise
