@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Incremental, source-coherent FUJI OHLC collector."""
 from __future__ import annotations
-import argparse, hashlib, json, os, time, sys
+import argparse, hashlib, json, os, time, sys, threading
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from urllib.error import HTTPError, URLError
@@ -99,7 +99,16 @@ def ctrader_loader(symbol, interval, count):
     if _CTRADER is None:
         _CTRADER = CTraderProvider()
     try:
-        return _CTRADER.fetch_bars(symbol, interval, count)
+        result, failure, done = [], [], threading.Event()
+        def worker():
+            try: result.append(_CTRADER.fetch_bars(symbol, interval, count))
+            except Exception as exc: failure.append(exc)
+            finally: done.set()
+        threading.Thread(target=worker, daemon=True, name="fuji-ctrader-worker").start()
+        if not done.wait(20):
+            raise RuntimeError("cTrader worker deadline exceeded")
+        if failure: raise failure[0]
+        return result[0]
     except Exception as exc:
         _CTRADER_ERROR = str(exc)[:180]
         raise
