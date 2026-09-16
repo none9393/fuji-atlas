@@ -2,7 +2,7 @@
 """Rule-based FUJI runner with cached-OHLC walk-forward evidence."""
 from __future__ import annotations
 import argparse, hashlib, html, json, os, re, subprocess, sys
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from email.utils import parsedate_to_datetime
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 from urllib.request import Request, urlopen
@@ -10,7 +10,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-ROOT=Path(__file__).resolve().parents[1]; OUT=ROOT/"cloud-output"; CONFIG=ROOT/"FUJI_RUNTIME_CONFIG.json"; ISTANBUL=ZoneInfo("Europe/Istanbul")
+ROOT=Path(__file__).resolve().parents[1]; OUT=ROOT/"cloud-output"; CONFIG=ROOT/"FUJI_RUNTIME_CONFIG.json"; ISTANBUL=ZoneInfo("Europe/Istanbul"); NEW_YORK=ZoneInfo("America/New_York")
 STRATEGY_PLAN={"swing":("1day",20),"intraday":("1h",12),"scalping":("5min",18)}
 
 PUBLIC_NEWS_FEEDS=(
@@ -79,6 +79,29 @@ def is_relevant_news(article, now=None):
 def _fetch(url, timeout=12):
     request=Request(url,headers={"User-Agent":"FUJI-ATLAS/1.0"})
     with urlopen(request,timeout=timeout) as response: return response.read()
+
+MACRO_FEED_URL="https://nfs.faireconomy.media/ff_calendar_thisweek.xml"
+def load_macro_calendar(now=None, cache_path=None):
+    now=now or datetime.now(timezone.utc); cache_path=Path(cache_path or ROOT/".fuji-cache/macro-calendar.json"); cache_path.parent.mkdir(parents=True,exist_ok=True)
+    try:
+        root=ET.fromstring(_fetch(MACRO_FEED_URL)); events=[]
+        for node in root.findall(".//event"):
+            title=_text(node.find("title")); country=_text(node.find("country")); date=_text(node.find("date")); clock=_text(node.find("time")); impact=_text(node.find("impact"))
+            if not title or not date: continue
+            parsed=None
+            for fmt in ("%m-%d-%Y %I:%M%p","%m/%d/%Y %I:%M%p","%Y-%m-%d %H:%M"):
+                try: parsed=datetime.strptime(f"{date} {clock or '12:00am'}",fmt).replace(tzinfo=NEW_YORK).astimezone(timezone.utc); break
+                except ValueError: continue
+            if parsed: events.append({"title":title,"country":country,"impact":impact,"datetime_utc":parsed.isoformat(),"time":parsed.astimezone(ISTANBUL).strftime("%d.%m.%Y %H:%M")})
+        result={"status":"live","source":"Fair Economy / Forex Factory","retrieved_at_utc":now.isoformat(),"events":events,"warnings":[]}; cache_path.write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding="utf-8"); return result
+    except Exception as exc:
+        warning=f"Fair Economy: {type(exc).__name__}"
+        if cache_path.exists():
+            try:
+                cached=json.loads(cache_path.read_text(encoding="utf-8")); retrieved=parse_news_datetime(cached.get("retrieved_at_utc"))
+                if retrieved and (now-retrieved).total_seconds()<=21600: cached["status"]="cache"; cached.setdefault("warnings",[]).append(warning); return cached
+            except (OSError,json.JSONDecodeError): pass
+        return {"status":"unavailable","source":"Fair Economy / Forex Factory","retrieved_at_utc":now.isoformat(),"events":[],"warnings":[warning]}
 
 def _gdelt_articles(now):
     query=" OR ".join('"'+x+'"' for x in GDELT_THEMES); url=GDELT_ENDPOINT+"?"+urlencode({"query":query,"mode":"ArtList","maxrecords":250,"format":"json","timespan":"36h","sort":"HybridRel"}); payload=json.loads(_fetch(url)); out=[]
@@ -300,7 +323,7 @@ def run(market_data=None,analysis_mode="rules",now=None):
     stamp=now.astimezone(ISTANBUL).strftime("%Y%m%d_%H%M%S"); files=[]
     for symbol,detail in verification["symbols"].items():
         if any(value["status"]=="ready" for value in detail["strategies"].values()): name=f"{symbol}_{stamp}.pdf"; render_pdf(symbol,market,verification,OUT/name,f"{symbol}-{stamp}",now.astimezone(ISTANBUL),evidence[symbol],config,news); files.append(name)
-    macro={"status":"unavailable","source":"Forex Factory/Fair Economy cache","events":[]}
+    macro=load_macro_calendar(now.astimezone(timezone.utc)) if market_data is None else {"status":"unavailable","source":"fixture run","events":[],"warnings":["network disabled for fixture input"]}
     agenda=market_agenda(news,macro,market,verification,evidence,config); bulletin_name=f"PIYASA_BULTENI_{stamp}.pdf"; render_market_bulletin(news,macro,agenda,OUT/bulletin_name,now,config); files.append(bulletin_name)
     fields=("provider","source_type","source_mode","last_bar_closed","last_bar_at_utc","last_closed_bar_at_utc","data_age_seconds","bar_count","total_bar_count","fallback_level","error")
     provider_diagnostics=market.get("provider_diagnostics",{}); providers={s:{i:{k:v.get(k) for k in fields} for i,v in d["intervals"].items()} for s,d in market["symbols"].items()}; intermarket={s:cross_market_context(market,s) for s in config["symbols"]}; health={"generated_at_utc":now.astimezone(timezone.utc).isoformat(),"generated_at_local":now.astimezone(ISTANBUL).isoformat(),"analysis_mode":analysis_mode,"config_sha256":digest(),"decision":verification["decision"],"symbols":verification["symbols"],"empirical_outcome_gates":evidence,"walk_forward":evidence,"providers":providers,"provider_diagnostics":provider_diagnostics,"intermarket_context":intermarket,"macro":macro,"market_news":news,"market_agenda":agenda,"files":files}; (OUT/"health.json").write_text(json.dumps(health,ensure_ascii=False,indent=2),encoding="utf-8"); return 4 if verification["decision"]=="blocked" else 0
